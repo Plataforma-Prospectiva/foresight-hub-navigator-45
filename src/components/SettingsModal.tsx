@@ -7,7 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Settings, MapPin, TrendingUp, Users, Brain, Target, Zap, BarChart3, Activity, Lightbulb } from "lucide-react";
 import { tools } from "@/data/tools";
-import { useTechniques } from "@/hooks/useTechniques";
+import { useTechniques } from "@/context/TechniqueContext";
 import { Badge } from "@/components/ui/badge";
 
 const availableIcons = {
@@ -29,6 +29,7 @@ interface SettingsModalProps {
 
 export const SettingsModal = ({ onIconChange, onAddTool }: SettingsModalProps) => {
   const { resourceOptions, addResourceOption, updateResourceOption, deleteResourceOption } = useTechniques();
+  
   const [selectedTool, setSelectedTool] = useState("");
   const [selectedIcon, setSelectedIcon] = useState<keyof typeof availableIcons>("MapPin");
   

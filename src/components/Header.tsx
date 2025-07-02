@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { HelpCircle, Brain } from "lucide-react";
@@ -42,10 +43,9 @@ export const Header = ({ onIconChange, onAddTool }: HeaderProps) => {
         </div>
       </div>
 
-      <DocumentationModal
-        open={showDocumentation}
-        onOpenChange={setShowDocumentation}
-      />
+      {showDocumentation && (
+        <DocumentationModal />
+      )}
     </header>
   );
 };
