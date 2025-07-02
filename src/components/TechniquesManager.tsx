@@ -6,10 +6,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Search, Filter, BookOpen, Brain, Plus } from "lucide-react";
+import { Search, Filter, BookOpen, Brain, Plus, Settings } from "lucide-react";
 import { useTechniques } from "@/context/TechniqueContext";
 import { TechniqueCard } from "./TechniqueCard";
-import { AddTechniqueModal } from "./AddTechniqueModal";
 import { StudyAnalyzer } from "./StudyAnalyzer";
 
 export const TechniquesManager = () => {
@@ -41,6 +40,14 @@ export const TechniquesManager = () => {
 
   const stats = getComplexityStats();
 
+  const scrollToSettings = () => {
+    // Buscar el botón de configuración en el header y hacer click
+    const settingsButton = document.querySelector('[data-settings-button]') as HTMLButtonElement;
+    if (settingsButton) {
+      settingsButton.click();
+    }
+  };
+
   return (
     <div className="space-y-6">
       {/* Header con estadísticas */}
@@ -56,7 +63,13 @@ export const TechniquesManager = () => {
                 Gestiona y explora metodologías para estudios de prospectiva estratégica
               </CardDescription>
             </div>
-            <AddTechniqueModal />
+            <Button 
+              onClick={scrollToSettings}
+              className="flex items-center gap-2"
+            >
+              <Plus className="w-4 h-4" />
+              Agregar Técnica
+            </Button>
           </div>
         </CardHeader>
         <CardContent>

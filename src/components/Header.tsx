@@ -1,10 +1,8 @@
-
-import { Menu } from "lucide-react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { SettingsModal } from "@/components/SettingsModal";
-import { AuthModal } from "@/components/AuthModal";
+import { HelpCircle, Brain } from "lucide-react";
 import { DocumentationModal } from "@/components/DocumentationModal";
-import { UserManagement } from "@/components/UserManagement";
+import { SettingsModal } from "@/components/SettingsModal";
 
 interface HeaderProps {
   onIconChange: (toolId: string, newIcon: string) => void;
@@ -12,42 +10,42 @@ interface HeaderProps {
 }
 
 export const Header = ({ onIconChange, onAddTool }: HeaderProps) => {
+  const [showDocumentation, setShowDocumentation] = useState(false);
+
   return (
-    <header className="bg-white shadow-sm border-b border-slate-200">
+    <header className="bg-white border-b border-slate-200 sticky top-0 z-50">
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-4">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">P</span>
+          <div className="flex items-center space-x-3">
+            <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-2 rounded-lg">
+              <Brain className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h2 className="text-xl font-semibold text-slate-800">
-                Plataforma Prospectiva
-              </h2>
-              <p className="text-sm text-slate-500">Herramientas Estratégicas</p>
+              <h1 className="text-xl font-bold text-slate-800">Plataforma Prospectiva</h1>
+              <p className="text-sm text-slate-600">Suite de Herramientas Estratégicas</p>
             </div>
           </div>
 
-          <nav className="hidden md:flex items-center space-x-6">
-            <a href="#" className="text-slate-600 hover:text-blue-600 transition-colors">
-              Herramientas
-            </a>
-            <DocumentationModal />
-            <a href="#" className="text-slate-600 hover:text-blue-600 transition-colors">
-              Soporte
-            </a>
-          </nav>
-
-          <div className="flex items-center space-x-3">
-            <UserManagement />
-            <SettingsModal onIconChange={onIconChange} onAddTool={onAddTool} />
-            <AuthModal />
-            <Button variant="ghost" size="sm" className="md:hidden">
-              <Menu className="w-4 h-4" />
+          <div className="flex items-center space-x-4">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setShowDocumentation(true)}
+            >
+              <HelpCircle className="w-4 h-4" />
             </Button>
+
+            <div data-settings-button>
+              <SettingsModal onIconChange={onIconChange} onAddTool={onAddTool} />
+            </div>
           </div>
         </div>
       </div>
+
+      <DocumentationModal
+        open={showDocumentation}
+        onOpenChange={setShowDocumentation}
+      />
     </header>
   );
 };

@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,6 +7,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Settings, MapPin, TrendingUp, Users, Brain, Target, Zap, BarChart3, Activity, Lightbulb } from "lucide-react";
 import { tools } from "@/data/tools";
+import { useTechniques } from "@/hooks/useTechniques";
+import { Badge } from "@/components/ui/badge";
 
 const availableIcons = {
   MapPin,
@@ -27,6 +28,7 @@ interface SettingsModalProps {
 }
 
 export const SettingsModal = ({ onIconChange, onAddTool }: SettingsModalProps) => {
+  const { resourceOptions, addResourceOption, updateResourceOption, deleteResourceOption } = useTechniques();
   const [selectedTool, setSelectedTool] = useState("");
   const [selectedIcon, setSelectedIcon] = useState<keyof typeof availableIcons>("MapPin");
   
@@ -38,6 +40,12 @@ export const SettingsModal = ({ onIconChange, onAddTool }: SettingsModalProps) =
   const [newToolIcon, setNewToolIcon] = useState<keyof typeof availableIcons>("MapPin");
   const [newToolComplexity, setNewToolComplexity] = useState<"básico" | "intermedio" | "avanzado">("básico");
   const [newToolTime, setNewToolTime] = useState("");
+
+  // Estados para gestión de recursos
+  const [newResourceName, setNewResourceName] = useState("");
+  const [newResourceDescription, setNewResourceDescription] = useState("");
+  const [newResourceCategory, setNewResourceCategory] = useState<"financial" | "human" | "technical" | "institutional" | "informational">("technical");
+  const [editingResource, setEditingResource] = useState<string | null>(null);
 
   const handleIconChange = () => {
     if (selectedTool && selectedIcon) {
@@ -72,6 +80,47 @@ export const SettingsModal = ({ onIconChange, onAddTool }: SettingsModalProps) =
     }
   };
 
+  const handleAddResource = () => {
+    if (newResourceName && newResourceDescription) {
+      if (editingResource) {
+        updateResourceOption(editingResource, {
+          name: newResourceName,
+          description: newResourceDescription,
+          category: newResourceCategory
+        });
+        setEditingResource(null);
+      } else {
+        addResourceOption({
+          name: newResourceName,
+          description: newResourceDescription,
+          category: newResourceCategory
+        });
+      }
+      
+      setNewResourceName("");
+      setNewResourceDescription("");
+      setNewResourceCategory("technical");
+    }
+  };
+
+  const handleEditResource = (resource: any) => {
+    setNewResourceName(resource.name);
+    setNewResourceDescription(resource.description);
+    setNewResourceCategory(resource.category);
+    setEditingResource(resource.id);
+  };
+
+  const getCategoryColor = (category: string) => {
+    const colors = {
+      financial: 'bg-green-100 text-green-800',
+      human: 'bg-blue-100 text-blue-800',
+      technical: 'bg-purple-100 text-purple-800',
+      institutional: 'bg-orange-100 text-orange-800',
+      informational: 'bg-cyan-100 text-cyan-800'
+    };
+    return colors[category as keyof typeof colors] || 'bg-gray-100 text-gray-800';
+  };
+
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -83,11 +132,111 @@ export const SettingsModal = ({ onIconChange, onAddTool }: SettingsModalProps) =
         <SheetHeader>
           <SheetTitle>Configuración</SheetTitle>
           <SheetDescription>
-            Personaliza la apariencia y configuración de la plataforma.
+            Personaliza la plataforma y gestiona recursos disponibles.
           </SheetDescription>
         </SheetHeader>
         
-        <div className="mt-6 space-y-6">
+        <div className="mt-6 space-y-8">
+          {/* Gestión de Recursos */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-medium">Gestión de Recursos</h3>
+            
+            <div className="space-y-3">
+              <div className="space-y-2">
+                <Label htmlFor="resource-name">Nombre del Recurso</Label>
+                <Input
+                  id="resource-name"
+                  value={newResourceName}
+                  onChange={(e) => setNewResourceName(e.target.value)}
+                  placeholder="Ej: Laboratorio de datos"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="resource-description">Descripción</Label>
+                <Textarea
+                  id="resource-description"
+                  value={newResourceDescription}
+                  onChange={(e) => setNewResourceDescription(e.target.value)}
+                  placeholder="Describe el recurso y su utilidad"
+                  rows={2}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="resource-category">Categoría</Label>
+                <Select value={newResourceCategory} onValueChange={(value) => setNewResourceCategory(value as any)}>
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="financial">Financiero</SelectItem>
+                    <SelectItem value="human">Recurso Humano</SelectItem>
+                    <SelectItem value="technical">Técnico</SelectItem>
+                    <SelectItem value="institutional">Institucional</SelectItem>
+                    <SelectItem value="informational">Informacional</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <Button onClick={handleAddResource} className="w-full">
+                {editingResource ? "Actualizar Recurso" : "Agregar Recurso"}
+              </Button>
+
+              {editingResource && (
+                <Button 
+                  variant="outline" 
+                  onClick={() => {
+                    setEditingResource(null);
+                    setNewResourceName("");
+                    setNewResourceDescription("");
+                    setNewResourceCategory("technical");
+                  }} 
+                  className="w-full"
+                >
+                  Cancelar Edición
+                </Button>
+              )}
+            </div>
+
+            <div className="space-y-2 max-h-40 overflow-y-auto">
+              <Label>Recursos Actuales</Label>
+              <div className="space-y-2">
+                {resourceOptions.map((resource) => (
+                  <div key={resource.id} className="flex items-center justify-between p-2 border rounded">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2">
+                        <span className="font-medium text-sm">{resource.name}</span>
+                        <Badge className={`text-xs ${getCategoryColor(resource.category)}`}>
+                          {resource.category}
+                        </Badge>
+                      </div>
+                      <p className="text-xs text-gray-600">{resource.description}</p>
+                    </div>
+                    <div className="flex gap-1">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => handleEditResource(resource)}
+                        className="h-6 px-2 text-xs"
+                      >
+                        Editar
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => deleteResourceOption(resource.id)}
+                        className="h-6 px-2 text-xs text-red-600"
+                      >
+                        Eliminar
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
           {/* Cambiar Iconos */}
           <div className="space-y-4">
             <h3 className="text-lg font-medium">Cambiar Iconos de Herramientas</h3>
