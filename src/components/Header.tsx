@@ -4,12 +4,14 @@ import { Button } from "@/components/ui/button";
 import { SettingsModal } from "@/components/SettingsModal";
 import { AuthModal } from "@/components/AuthModal";
 import { DocumentationModal } from "@/components/DocumentationModal";
+import { UserManagement } from "@/components/UserManagement";
 
 interface HeaderProps {
   onIconChange: (toolId: string, newIcon: string) => void;
+  onAddTool: (newTool: any) => void;
 }
 
-export const Header = ({ onIconChange }: HeaderProps) => {
+export const Header = ({ onIconChange, onAddTool }: HeaderProps) => {
   return (
     <header className="bg-white shadow-sm border-b border-slate-200">
       <div className="container mx-auto px-6 py-4">
@@ -37,7 +39,8 @@ export const Header = ({ onIconChange }: HeaderProps) => {
           </nav>
 
           <div className="flex items-center space-x-3">
-            <SettingsModal onIconChange={onIconChange} />
+            <UserManagement />
+            <SettingsModal onIconChange={onIconChange} onAddTool={onAddTool} />
             <AuthModal />
             <Button variant="ghost" size="sm" className="md:hidden">
               <Menu className="w-4 h-4" />
