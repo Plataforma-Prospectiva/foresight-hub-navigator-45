@@ -1,8 +1,15 @@
 
-import { Menu, Settings, User } from "lucide-react";
+import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SettingsModal } from "@/components/SettingsModal";
+import { AuthModal } from "@/components/AuthModal";
+import { DocumentationModal } from "@/components/DocumentationModal";
 
-export const Header = () => {
+interface HeaderProps {
+  onIconChange: (toolId: string, newIcon: string) => void;
+}
+
+export const Header = ({ onIconChange }: HeaderProps) => {
   return (
     <header className="bg-white shadow-sm border-b border-slate-200">
       <div className="container mx-auto px-6 py-4">
@@ -23,21 +30,15 @@ export const Header = () => {
             <a href="#" className="text-slate-600 hover:text-blue-600 transition-colors">
               Herramientas
             </a>
-            <a href="#" className="text-slate-600 hover:text-blue-600 transition-colors">
-              Documentación
-            </a>
+            <DocumentationModal />
             <a href="#" className="text-slate-600 hover:text-blue-600 transition-colors">
               Soporte
             </a>
           </nav>
 
           <div className="flex items-center space-x-3">
-            <Button variant="ghost" size="sm">
-              <Settings className="w-4 h-4" />
-            </Button>
-            <Button variant="ghost" size="sm">
-              <User className="w-4 h-4" />
-            </Button>
+            <SettingsModal onIconChange={onIconChange} />
+            <AuthModal />
             <Button variant="ghost" size="sm" className="md:hidden">
               <Menu className="w-4 h-4" />
             </Button>

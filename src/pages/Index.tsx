@@ -4,14 +4,42 @@ import { Header } from "@/components/Header";
 import { ToolsGrid } from "@/components/ToolsGrid";
 import { ToolCategory } from "@/components/ToolCategory";
 import { SearchBar } from "@/components/SearchBar";
+import { tools as initialTools } from "@/data/tools";
+import { MapPin, TrendingUp, Users, Brain, Target, Zap, BarChart3, Activity, Lightbulb } from "lucide-react";
+
+const iconMap = {
+  MapPin,
+  TrendingUp,
+  Users,
+  Brain,
+  Target,
+  Zap,
+  BarChart3,
+  Activity,
+  Lightbulb
+};
 
 const Index = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [tools, setTools] = useState(initialTools);
+
+  const handleIconChange = (toolId: string, newIconName: string) => {
+    const newIcon = iconMap[newIconName as keyof typeof iconMap];
+    if (newIcon) {
+      setTools(prevTools => 
+        prevTools.map(tool => 
+          tool.id === toolId 
+            ? { ...tool, icon: newIcon }
+            : tool
+        )
+      );
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      <Header />
+      <Header onIconChange={handleIconChange} />
       
       <main className="container mx-auto px-6 py-8">
         {/* Hero Section */}
@@ -41,6 +69,7 @@ const Index = () => {
         <ToolsGrid 
           searchTerm={searchTerm}
           selectedCategory={selectedCategory}
+          tools={tools}
         />
       </main>
 

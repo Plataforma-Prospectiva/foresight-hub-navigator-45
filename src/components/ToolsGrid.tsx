@@ -1,13 +1,25 @@
 
 import { ToolCard } from "@/components/ToolCard";
-import { tools } from "@/data/tools";
+
+interface Tool {
+  id: string;
+  name: string;
+  description: string;
+  icon: any;
+  url: string;
+  category: string;
+  status: "active" | "beta" | "coming-soon";
+  estimatedTime: string;
+  complexity: "básico" | "intermedio" | "avanzado";
+}
 
 interface ToolsGridProps {
   searchTerm: string;
   selectedCategory: string;
+  tools: Tool[];
 }
 
-export const ToolsGrid = ({ searchTerm, selectedCategory }: ToolsGridProps) => {
+export const ToolsGrid = ({ searchTerm, selectedCategory, tools }: ToolsGridProps) => {
   const filteredTools = tools.filter((tool) => {
     const matchesSearch = tool.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          tool.description.toLowerCase().includes(searchTerm.toLowerCase());
