@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,36 +10,32 @@ import { useTechniques } from "@/context/TechniqueContext";
 import { TechniqueCard } from "./TechniqueCard";
 import { StudyAnalyzer } from "./StudyAnalyzer";
 import { ComplexityPyramid } from "./ComplexityPyramid";
-
 export const TechniquesManager = () => {
-  const { techniques } = useTechniques();
+  const {
+    techniques
+  } = useTechniques();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedComplexity, setSelectedComplexity] = useState("all");
   const [expandedTechnique, setExpandedTechnique] = useState<string | null>(null);
-
   const categories = ["all", ...Array.from(new Set(techniques.map(t => t.category)))];
   const complexities = ["all", "básico", "intermedio", "avanzado"];
-
   const filteredTechniques = techniques.filter(technique => {
-    const matchesSearch = technique.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         technique.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         technique.category.toLowerCase().includes(searchTerm.toLowerCase());
-    
+    const matchesSearch = technique.name.toLowerCase().includes(searchTerm.toLowerCase()) || technique.description.toLowerCase().includes(searchTerm.toLowerCase()) || technique.category.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = selectedCategory === "all" || technique.category === selectedCategory;
     const matchesComplexity = selectedComplexity === "all" || technique.complexity === selectedComplexity;
-    
     return matchesSearch && matchesCategory && matchesComplexity;
   });
-
   const getComplexityStats = () => {
-    const stats = { básico: 0, intermedio: 0, avanzado: 0 };
+    const stats = {
+      básico: 0,
+      intermedio: 0,
+      avanzado: 0
+    };
     techniques.forEach(t => stats[t.complexity]++);
     return stats;
   };
-
   const stats = getComplexityStats();
-
   const scrollToSettings = () => {
     // Buscar el botón de configuración en el header y hacer click
     const settingsButton = document.querySelector('[data-settings-button]') as HTMLButtonElement;
@@ -48,9 +43,7 @@ export const TechniquesManager = () => {
       settingsButton.click();
     }
   };
-
-  return (
-    <div className="space-y-6">
+  return <div className="space-y-6">
       {/* Header con estadísticas */}
       <Card>
         <CardHeader>
@@ -64,13 +57,7 @@ export const TechniquesManager = () => {
                 Gestiona y explora metodologías para estudios de prospectiva estratégica
               </CardDescription>
             </div>
-            <Button 
-              onClick={scrollToSettings}
-              className="flex items-center gap-2"
-            >
-              <Plus className="w-4 h-4" />
-              Agregar Técnica
-            </Button>
+            
           </div>
         </CardHeader>
         <CardContent>
@@ -88,11 +75,7 @@ export const TechniquesManager = () => {
                 </div>
               </div>
             </div>
-            <ComplexityPyramid 
-              basicCount={stats.básico}
-              intermediateCount={stats.intermedio}
-              advancedCount={stats.avanzado}
-            />
+            <ComplexityPyramid basicCount={stats.básico} intermediateCount={stats.intermedio} advancedCount={stats.avanzado} />
           </div>
         </CardContent>
       </Card>
@@ -124,12 +107,7 @@ export const TechniquesManager = () => {
                   <label className="text-sm font-medium">Buscar</label>
                   <div className="relative">
                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-                    <Input
-                      placeholder="Buscar técnicas..."
-                      value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                      className="pl-10"
-                    />
+                    <Input placeholder="Buscar técnicas..." value={searchTerm} onChange={e => setSearchTerm(e.target.value)} className="pl-10" />
                   </div>
                 </div>
 
@@ -140,11 +118,9 @@ export const TechniquesManager = () => {
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      {categories.map(category => (
-                        <SelectItem key={category} value={category}>
+                      {categories.map(category => <SelectItem key={category} value={category}>
                           {category === "all" ? "Todas las categorías" : category}
-                        </SelectItem>
-                      ))}
+                        </SelectItem>)}
                     </SelectContent>
                   </Select>
                 </div>
@@ -156,11 +132,9 @@ export const TechniquesManager = () => {
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      {complexities.map(complexity => (
-                        <SelectItem key={complexity} value={complexity}>
+                      {complexities.map(complexity => <SelectItem key={complexity} value={complexity}>
                           {complexity === "all" ? "Todas las complejidades" : complexity}
-                        </SelectItem>
-                      ))}
+                        </SelectItem>)}
                     </SelectContent>
                   </Select>
                 </div>
@@ -169,19 +143,13 @@ export const TechniquesManager = () => {
                   <label className="text-sm font-medium">Resultados</label>
                   <div className="flex items-center gap-2">
                     <Badge variant="outline">{filteredTechniques.length} técnicas</Badge>
-                    {(searchTerm || selectedCategory !== "all" || selectedComplexity !== "all") && (
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => {
-                          setSearchTerm("");
-                          setSelectedCategory("all");
-                          setSelectedComplexity("all");
-                        }}
-                      >
+                    {(searchTerm || selectedCategory !== "all" || selectedComplexity !== "all") && <Button variant="ghost" size="sm" onClick={() => {
+                    setSearchTerm("");
+                    setSelectedCategory("all");
+                    setSelectedComplexity("all");
+                  }}>
                         Limpiar
-                      </Button>
-                    )}
+                      </Button>}
                   </div>
                 </div>
               </div>
@@ -190,45 +158,28 @@ export const TechniquesManager = () => {
 
           {/* Lista de técnicas */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {filteredTechniques.map(technique => (
-              <TechniqueCard
-                key={technique.id}
-                technique={technique}
-                isExpanded={expandedTechnique === technique.id}
-                onToggleExpand={() => 
-                  setExpandedTechnique(prev => 
-                    prev === technique.id ? null : technique.id
-                  )
-                }
-              />
-            ))}
+            {filteredTechniques.map(technique => <TechniqueCard key={technique.id} technique={technique} isExpanded={expandedTechnique === technique.id} onToggleExpand={() => setExpandedTechnique(prev => prev === technique.id ? null : technique.id)} />)}
           </div>
 
-          {filteredTechniques.length === 0 && (
-            <Card>
+          {filteredTechniques.length === 0 && <Card>
               <CardContent className="text-center py-8">
                 <div className="text-gray-500 mb-4">
                   No se encontraron técnicas que coincidan con los filtros aplicados.
                 </div>
-                <Button
-                  variant="outline"
-                  onClick={() => {
-                    setSearchTerm("");
-                    setSelectedCategory("all");
-                    setSelectedComplexity("all");
-                  }}
-                >
+                <Button variant="outline" onClick={() => {
+              setSearchTerm("");
+              setSelectedCategory("all");
+              setSelectedComplexity("all");
+            }}>
                   Limpiar filtros
                 </Button>
               </CardContent>
-            </Card>
-          )}
+            </Card>}
         </TabsContent>
 
         <TabsContent value="analyze">
           <StudyAnalyzer />
         </TabsContent>
       </Tabs>
-    </div>
-  );
+    </div>;
 };
