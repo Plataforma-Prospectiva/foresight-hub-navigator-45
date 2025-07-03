@@ -10,6 +10,7 @@ import { Search, Filter, BookOpen, Brain, Plus, Settings } from "lucide-react";
 import { useTechniques } from "@/context/TechniqueContext";
 import { TechniqueCard } from "./TechniqueCard";
 import { StudyAnalyzer } from "./StudyAnalyzer";
+import { ComplexityPyramid } from "./ComplexityPyramid";
 
 export const TechniquesManager = () => {
   const { techniques } = useTechniques();
@@ -73,23 +74,25 @@ export const TechniquesManager = () => {
           </div>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div className="text-center">
-              <div className="text-2xl font-bold text-blue-600">{techniques.length}</div>
-              <div className="text-sm text-gray-600">Total Técnicas</div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="space-y-4">
+              <h4 className="font-semibold">Resumen General</h4>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="text-center p-4 bg-blue-50 rounded-lg">
+                  <div className="text-3xl font-bold text-blue-600">{techniques.length}</div>
+                  <div className="text-sm text-gray-600">Total Técnicas</div>
+                </div>
+                <div className="text-center p-4 bg-purple-50 rounded-lg">
+                  <div className="text-3xl font-bold text-purple-600">{categories.length - 1}</div>
+                  <div className="text-sm text-gray-600">Categorías</div>
+                </div>
+              </div>
             </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-green-600">{stats.básico}</div>
-              <div className="text-sm text-gray-600">Básicas</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-yellow-600">{stats.intermedio}</div>
-              <div className="text-sm text-gray-600">Intermedias</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-red-600">{stats.avanzado}</div>
-              <div className="text-sm text-gray-600">Avanzadas</div>
-            </div>
+            <ComplexityPyramid 
+              basicCount={stats.básico}
+              intermediateCount={stats.intermedio}
+              advancedCount={stats.avanzado}
+            />
           </div>
         </CardContent>
       </Card>
