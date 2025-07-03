@@ -9,10 +9,8 @@ import { MapPin, TrendingUp, Users, Brain, Target, Zap, BarChart3, Activity, Lig
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-
 import { TechniqueProvider } from "@/context/TechniqueContext";
 import { TechniquesManager } from "@/components/TechniquesManager";
-
 const iconMap = {
   MapPin,
   TrendingUp,
@@ -24,32 +22,24 @@ const iconMap = {
   Activity,
   Lightbulb
 };
-
 const Index = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [tools, setTools] = useState(initialTools);
-
   const handleIconChange = (toolId: string, newIconName: string) => {
     const newIcon = iconMap[newIconName as keyof typeof iconMap];
     if (newIcon) {
-      setTools(prevTools => 
-        prevTools.map(tool => 
-          tool.id === toolId 
-            ? { ...tool, icon: newIcon }
-            : tool
-        )
-      );
+      setTools(prevTools => prevTools.map(tool => tool.id === toolId ? {
+        ...tool,
+        icon: newIcon
+      } : tool));
     }
   };
-
   const handleAddTool = (newTool: any) => {
     setTools(prevTools => [...prevTools, newTool]);
     console.log('Nueva herramienta agregada:', newTool);
   };
-
-  return (
-    <AuthProvider>
+  return <AuthProvider>
       <TechniqueProvider>
         <div className="min-h-screen bg-gradient-to-br from-background via-background to-secondary/20">
           <Header onIconChange={handleIconChange} onAddTool={handleAddTool} />
@@ -58,18 +48,19 @@ const Index = () => {
             {/* Animated Background Elements */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
               <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-float"></div>
-              <div className="absolute top-40 right-20 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl animate-float" style={{animationDelay: '2s'}}></div>
-              <div className="absolute bottom-40 left-1/3 w-80 h-80 bg-green-500/5 rounded-full blur-3xl animate-float" style={{animationDelay: '4s'}}></div>
+              <div className="absolute top-40 right-20 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl animate-float" style={{
+              animationDelay: '2s'
+            }}></div>
+              <div className="absolute bottom-40 left-1/3 w-80 h-80 bg-green-500/5 rounded-full blur-3xl animate-float" style={{
+              animationDelay: '4s'
+            }}></div>
             </div>
 
             <div className="container mx-auto px-6 py-8 relative">
               {/* Enhanced Hero Section */}
               <section className="text-center mb-16 animate-fade-in">
                 <div className="mb-8">
-                  <Badge variant="secondary" className="mb-4 px-4 py-2 text-sm font-medium animate-glow">
-                    <Sparkles className="w-4 h-4 mr-2" />
-                    Plataforma Líder en Prospectiva Estratégica
-                  </Badge>
+                  
                   <h1 className="text-6xl md:text-7xl font-bold mb-6 gradient-text leading-tight">
                     Plataforma Prospectiva
                   </h1>
@@ -80,20 +71,15 @@ const Index = () => {
                   
                   {/* CTA Buttons */}
                   <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-                    <Button 
-                      size="lg" 
-                      className="px-8 py-4 text-lg font-semibold shadow-elegant hover:shadow-glow transition-all duration-300"
-                      onClick={() => document.getElementById('techniques-section')?.scrollIntoView({ behavior: 'smooth' })}
-                    >
+                    <Button size="lg" className="px-8 py-4 text-lg font-semibold shadow-elegant hover:shadow-glow transition-all duration-300" onClick={() => document.getElementById('techniques-section')?.scrollIntoView({
+                    behavior: 'smooth'
+                  })}>
                       <TrendIcon className="w-5 h-5 mr-2" />
                       Explorar Técnicas
                     </Button>
-                    <Button 
-                      variant="outline" 
-                      size="lg" 
-                      className="px-8 py-4 text-lg font-semibold hover-lift"
-                      onClick={() => document.getElementById('tools-section')?.scrollIntoView({ behavior: 'smooth' })}
-                    >
+                    <Button variant="outline" size="lg" className="px-8 py-4 text-lg font-semibold hover-lift" onClick={() => document.getElementById('tools-section')?.scrollIntoView({
+                    behavior: 'smooth'
+                  })}>
                       Ver Herramientas
                     </Button>
                   </div>
@@ -160,22 +146,12 @@ const Index = () => {
 
                 {/* Search and Filters */}
                 <div className="mb-8 space-y-6">
-                  <SearchBar 
-                    searchTerm={searchTerm} 
-                    onSearchChange={setSearchTerm}
-                  />
-                  <ToolCategory 
-                    selectedCategory={selectedCategory}
-                    onCategoryChange={setSelectedCategory}
-                  />
+                  <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
+                  <ToolCategory selectedCategory={selectedCategory} onCategoryChange={setSelectedCategory} />
                 </div>
 
                 {/* Tools Grid */}
-                <ToolsGrid 
-                  searchTerm={searchTerm}
-                  selectedCategory={selectedCategory}
-                  tools={tools}
-                />
+                <ToolsGrid searchTerm={searchTerm} selectedCategory={selectedCategory} tools={tools} />
               </section>
             </div>
           </main>
@@ -201,8 +177,6 @@ const Index = () => {
           </footer>
         </div>
       </TechniqueProvider>
-    </AuthProvider>
-  );
+    </AuthProvider>;
 };
-
 export default Index;
