@@ -10,9 +10,5 @@ export const ComplexityPyramid = ({
   advancedCount
 }: ComplexityPyramidProps) => {
   const total = basicCount + intermediateCount + advancedCount;
-  return <Card className="w-full">
-      <CardContent className="p-6">
-        
-      </CardContent>
-    </Card>;
+  return;
 };
