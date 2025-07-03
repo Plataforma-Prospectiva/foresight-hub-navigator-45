@@ -4,7 +4,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { ComplexityPyramid } from './ComplexityPyramid';
 import { Technique } from "@/types/technique";
 import { Clock, Users, Target, BookOpen, Lightbulb, AlertTriangle } from "lucide-react";
 
@@ -22,11 +23,11 @@ const complexityColors = {
   avanzado: '#ef4444'
 };
 
-const getComplexityData = (complexity: string) => [
-  { name: 'Básico', value: complexity === 'básico' ? 100 : 0, color: '#22c55e' },
-  { name: 'Intermedio', value: complexity === 'intermedio' ? 100 : 0, color: '#f59e0b' },
-  { name: 'Avanzado', value: complexity === 'avanzado' ? 100 : 0, color: '#ef4444' }
-];
+const getComplexityCount = (complexity: string) => {
+  const counts = { básico: 0, intermedio: 0, avanzado: 0 };
+  counts[complexity] = 1;
+  return counts;
+};
 
 const getResourcesData = (technique: Technique) => [
   { name: 'Tiempo', value: technique.applicationTime.includes('semana') ? 
@@ -213,23 +214,13 @@ export const TechniqueCard = ({ technique, onEdit, onDelete, isExpanded, onToggl
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <h4 className="font-semibold text-slate-700 mb-3">Nivel de Complejidad</h4>
-                  <ResponsiveContainer width="100%" height={150}>
-                    <PieChart>
-                      <Pie
-                        data={getComplexityData(technique.complexity)}
-                        cx="50%"
-                        cy="50%"
-                        innerRadius={40}
-                        outerRadius={60}
-                        dataKey="value"
-                      >
-                        {getComplexityData(technique.complexity).map((entry, index) => (
-                          <Cell key={index} fill={entry.color} />
-                        ))}
-                      </Pie>
-                      <Tooltip />
-                    </PieChart>
-                  </ResponsiveContainer>
+                  <div className="h-[150px] flex items-center justify-center">
+                    <ComplexityPyramid 
+                      basicCount={getComplexityCount(technique.complexity).básico}
+                      intermediateCount={getComplexityCount(technique.complexity).intermedio}
+                      advancedCount={getComplexityCount(technique.complexity).avanzado}
+                    />
+                  </div>
                 </div>
 
                 <div>
