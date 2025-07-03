@@ -152,7 +152,7 @@ const Index = () => {
               {/* Tools Section */}
               <section id="tools-section" className="animate-slide-up">
                 <div className="text-center mb-12">
-                  <h2 className="text-4xl font-bold text-primary mb-4">Herramientas Complementarias</h2>
+                  <h2 className="text-4xl font-bold text-primary mb-4">Desarrolladas para aplicar técnicas prospectivas</h2>
                   <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
                     Potencia tu análisis con herramientas especializadas para cada fase del proceso prospectivo
                   </p>
