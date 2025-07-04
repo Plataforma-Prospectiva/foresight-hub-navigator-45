@@ -65,7 +65,7 @@ const Index = () => {
                     Plataforma Prospectiva
                   </h1>
                   <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-8">
-                    Suite integral de <span className="font-semibold text-primary">herramientas especializadas</span> para análisis prospectivo, 
+                    <span className="font-semibold text-primary">Toolkit de herramientas prospectivas</span> para análisis prospectivo, 
                     desarrollo de escenarios y toma de decisiones estratégicas
                   </p>
                   
