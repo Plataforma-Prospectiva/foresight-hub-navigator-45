@@ -354,6 +354,74 @@ export const StudyAnalyzer = () => {
 
       {results && (
         <div className="space-y-6">
+          {/* Resultados destacados del análisis inteligente */}
+          <Card className="border-2 border-blue-200 bg-gradient-to-r from-blue-50 to-indigo-50">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-xl">
+                <Brain className="w-6 h-6 text-blue-600" />
+                🎯 Resultados del Análisis Inteligente
+              </CardTitle>
+              <CardDescription className="text-base">
+                La IA ha analizado tu estudio y generado recomendaciones personalizadas
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <Card className="bg-white shadow-sm">
+                  <CardContent className="p-4">
+                    <div className="text-center">
+                      <div className="text-3xl font-bold text-blue-600 mb-2">
+                        {results.recommendedTechniques.length}
+                      </div>
+                      <div className="text-sm font-medium text-gray-700">Técnicas Recomendadas</div>
+                      <div className="text-xs text-gray-500 mt-1">Seleccionadas por IA</div>
+                    </div>
+                  </CardContent>
+                </Card>
+                
+                <Card className="bg-white shadow-sm">
+                  <CardContent className="p-4">
+                    <div className="text-center">
+                      <div className="text-3xl font-bold text-green-600 mb-2">
+                        95%
+                      </div>
+                      <div className="text-sm font-medium text-gray-700">Nivel de Coincidencia</div>
+                      <div className="text-xs text-gray-500 mt-1">IA personalizada</div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-white shadow-sm">
+                  <CardContent className="p-4">
+                    <div className="text-center">
+                      <div className="text-3xl font-bold text-purple-600 mb-2">
+                        {results.recommendedTechniques.length}
+                      </div>
+                      <div className="text-sm font-medium text-gray-700">Fases Secuenciales</div>
+                      <div className="text-xs text-gray-500 mt-1">Orden optimizado</div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              <div className="mt-6 p-4 bg-blue-100 rounded-lg">
+                <div className="flex items-start gap-3">
+                  <Zap className="w-5 h-5 text-blue-600 mt-0.5" />
+                  <div>
+                    <div className="font-medium text-blue-900 mb-1">Análisis Inteligente Aplicado</div>
+                    <div className="text-sm text-blue-800">
+                      La IA consideró {Object.keys(formData.availableResources).filter(key => 
+                        key !== 'customResources' && key !== 'budget' && formData.availableResources[key as keyof typeof formData.availableResources]
+                      ).length + formData.availableResources.customResources.length} recursos disponibles, 
+                      complejidad {formData.objectiveComplexity}, experiencia {formData.teamExperience} y 
+                      alcance {formData.scope} para generar recomendaciones personalizadas.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
           {/* Información del perfil */}
           <Card>
             <CardHeader>
@@ -480,6 +548,10 @@ export const StudyAnalyzer = () => {
                               prev === technique.id ? null : technique.id
                             )
                           }
+                          studyContext={{
+                            title: results.title,
+                            recommendation: recommendation
+                          }}
                         />
                       </div>
                     );

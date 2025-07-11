@@ -4,10 +4,11 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer } from 'recharts';
 import { ComplexityPyramid } from './ComplexityPyramid';
 import { Technique } from "@/types/technique";
-import { Clock, Users, Target, BookOpen, Lightbulb, AlertTriangle } from "lucide-react";
+import { Clock, Users, Target, BookOpen, Lightbulb, AlertTriangle, HelpCircle, Brain } from "lucide-react";
 
 interface TechniqueCardProps {
   technique: Technique;
@@ -15,6 +16,14 @@ interface TechniqueCardProps {
   onDelete?: () => void;
   isExpanded?: boolean;
   onToggleExpand?: () => void;
+  studyContext?: {
+    title: string;
+    recommendation: {
+      techniqueId: string;
+      justification: string;
+      sequenceOrder: number;
+    };
+  };
 }
 
 const complexityColors = {
@@ -38,15 +47,30 @@ const getResourcesData = (technique: Technique) => [
     technique.complexity === 'intermedio' ? 5 : 8 }
 ];
 
-export const TechniqueCard = ({ technique, onEdit, onDelete, isExpanded, onToggleExpand }: TechniqueCardProps) => {
+export const TechniqueCard = ({ technique, onEdit, onDelete, isExpanded, onToggleExpand, studyContext }: TechniqueCardProps) => {
   return (
-    <Card className="w-full hover:shadow-lg transition-shadow duration-300">
-      <CardHeader className="pb-4">
-        <div className="flex justify-between items-start">
-          <div className="flex-1">
-            <CardTitle className="text-xl font-bold text-slate-800 mb-2">
-              {technique.name}
-            </CardTitle>
+    <TooltipProvider>
+      <Card className="w-full hover:shadow-lg transition-shadow duration-300">
+        <CardHeader className="pb-4">
+          <div className="flex justify-between items-start">
+            <div className="flex-1">
+              <div className="flex items-center gap-2 mb-2">
+                <CardTitle className="text-xl font-bold text-slate-800">
+                  {technique.name}
+                </CardTitle>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <HelpCircle className="w-4 h-4 text-blue-500 hover:text-blue-700" />
+                  </TooltipTrigger>
+                  <TooltipContent className="max-w-xs">
+                    <p className="text-sm">
+                      <strong>Técnica Prospectiva:</strong> Esta es una ficha básica informativa que describe 
+                      la metodología, recursos y aplicación de la técnica. Para herramientas interactivas 
+                      y software especializado, consulta la sección de Herramientas.
+                    </p>
+                  </TooltipContent>
+                </Tooltip>
+              </div>
             <CardDescription className="text-slate-600 mb-3">
               {technique.objective}
             </CardDescription>
@@ -200,12 +224,30 @@ export const TechniqueCard = ({ technique, onEdit, onDelete, isExpanded, onToggl
 
               <div>
                 <h4 className="font-semibold text-slate-700 mb-2">Ejemplos de Aplicación</h4>
-                <div className="flex flex-wrap gap-2">
-                  {technique.examples.map((example, index) => (
-                    <Badge key={index} variant="secondary" className="text-xs">
-                      {example}
-                    </Badge>
-                  ))}
+                <div className="space-y-3">
+                  <div className="flex flex-wrap gap-2">
+                    {technique.examples.map((example, index) => (
+                      <Badge key={index} variant="secondary" className="text-xs">
+                        {example}
+                      </Badge>
+                    ))}
+                  </div>
+                  {studyContext && (
+                    <div className="p-3 bg-amber-50 border border-amber-200 rounded-lg">
+                      <div className="flex items-start gap-2">
+                        <Brain className="w-4 h-4 text-amber-600 mt-0.5" />
+                        <div>
+                          <div className="text-sm font-medium text-amber-800 mb-1">
+                            Aplicación Sugerida por IA para tu Estudio
+                          </div>
+                          <div className="text-sm text-amber-700">
+                            Para "{studyContext.title}": Esta técnica se recomienda en la fase {studyContext.recommendation.sequenceOrder} 
+                            del análisis. {studyContext.recommendation.justification}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </TabsContent>
@@ -230,7 +272,7 @@ export const TechniqueCard = ({ technique, onEdit, onDelete, isExpanded, onToggl
                       <CartesianGrid strokeDasharray="3 3" />
                       <XAxis dataKey="name" fontSize={12} />
                       <YAxis fontSize={12} />
-                      <Tooltip />
+                      <RechartsTooltip />
                       <Bar dataKey="value" fill="#3b82f6" />
                     </BarChart>
                   </ResponsiveContainer>
@@ -276,5 +318,6 @@ export const TechniqueCard = ({ technique, onEdit, onDelete, isExpanded, onToggl
         </div>
       </CardContent>
     </Card>
+    </TooltipProvider>
   );
 };

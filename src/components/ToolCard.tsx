@@ -1,8 +1,9 @@
 
-import { ExternalLink, Clock, Users, BarChart3 } from "lucide-react";
+import { ExternalLink, Clock, Users, BarChart3, HelpCircle } from "lucide-react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 interface Tool {
   id: string;
@@ -40,17 +41,32 @@ export const ToolCard = ({ tool }: ToolCardProps) => {
   };
 
   return (
-    <Card className="group hover:shadow-xl transition-all duration-300 border-slate-200 hover:border-blue-300 bg-white">
-      <CardHeader className="pb-4">
-        <div className="flex items-start justify-between">
-          <div className="flex items-center space-x-4">
-            <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-              <tool.icon className="w-8 h-8 text-white" />
-            </div>
-            <div className="flex-1">
-              <h3 className="text-lg font-semibold text-slate-800 group-hover:text-blue-600 transition-colors">
-                {tool.name}
-              </h3>
+    <TooltipProvider>
+      <Card className="group hover:shadow-xl transition-all duration-300 border-slate-200 hover:border-blue-300 bg-white">
+        <CardHeader className="pb-4">
+          <div className="flex items-start justify-between">
+            <div className="flex items-center space-x-4">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <tool.icon className="w-8 h-8 text-white" />
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-2">
+                  <h3 className="text-lg font-semibold text-slate-800 group-hover:text-blue-600 transition-colors">
+                    {tool.name}
+                  </h3>
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <HelpCircle className="w-4 h-4 text-green-500 hover:text-green-700" />
+                    </TooltipTrigger>
+                    <TooltipContent className="max-w-xs">
+                      <p className="text-sm">
+                        <strong>Herramienta Interactiva:</strong> Este es software especializado que puedes 
+                        usar directamente para aplicar técnicas prospectivas. Incluye interfaces, 
+                        calculadoras y aplicaciones para facilitar tu análisis.
+                      </p>
+                    </TooltipContent>
+                  </Tooltip>
+                </div>
               <div className="flex gap-2 mt-2">
                 <Badge className={getStatusColor(tool.status)} variant="secondary">
                   {tool.status === "active" ? "Activo" : 
@@ -91,5 +107,6 @@ export const ToolCard = ({ tool }: ToolCardProps) => {
         </Button>
       </CardContent>
     </Card>
+    </TooltipProvider>
   );
 };
