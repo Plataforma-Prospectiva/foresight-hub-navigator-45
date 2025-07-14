@@ -3,6 +3,27 @@ import { Technique } from '@/types/technique';
 
 export const initialTechniques: Technique[] = [
   {
+    id: '21',
+    name: 'Curva X (X-Curve)',
+    objective: 'Mapear las dinámicas de transición y facilitar la co-creación para el cambio sistémico',
+    recommendedUse: 'Para entender dinámicas de transición en sistemas sociotécnicos y diseñar intervenciones transformativas',
+    requiredInputs: ['Límites del sistema definidos', 'Visión de futuro compartida', 'Participantes multistakeholder'],
+    applicationTime: '1 día (4 horas por sesión)',
+    requiredPeople: '1-2 facilitadores + 5-7 participantes por grupo',
+    complexity: 'intermedio',
+    category: 'Análisis de Transiciones',
+    description: 'Herramienta visual para crear una comprensión más rica de las dinámicas de transición dentro de la sociedad o contexto específico, mediante patrones de construcción y descomposición.',
+    advantages: ['Comprensión sistémica', 'Lenguaje común', 'Identifica intervenciones', 'Facilita co-creación'],
+    limitations: ['Requiere facilitación experta', 'Interpretación subjetiva', 'Dependiente del contexto'],
+    methodology: 'Definición de límites → Visión de futuro → Identificación de dinámicas → Mapeo en curva X → Identificación de intervenciones',
+    expectedOutputs: ['Mapa de dinámicas de transición', 'Narrativas colectivas', 'Portafolio de intervenciones'],
+    resources: ['Plantilla de curva X', 'Post-its digitales/físicos', 'Espacio colaborativo'],
+    prerequisites: ['Sistema bien definido', 'Grupo multidisciplinario', 'Conocimiento básico de transiciones'],
+    examples: ['Transición energética', 'Economía circular', 'Movilidad sostenible', 'Sistemas alimentarios'],
+    relatedTechniques: ['Análisis de Transiciones', 'Mapeo de Stakeholders', 'Construcción de Escenarios'],
+    references: ['Silvestri, G., Diercks, G., & Matti, C. (2022). X-Curve Booklet. DRIFT & EIT Climate-KIC', 'DRIFT Transition Studies Institute', 'EIT Climate-KIC Transitions Hub']
+  },
+  {
     id: '16',
     name: 'Rueda de Wheaton',
     objective: 'Generar ideas innovadoras mediante la combinación sistemática de diferentes elementos',
