@@ -6,9 +6,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer } from 'recharts';
-import { ComplexityPyramid } from './ComplexityPyramid';
+import { ComplexityIndicator } from './ComplexityIndicator';
+import { MethodologySteps } from './MethodologySteps';
 import { Technique } from "@/types/technique";
-import { Clock, Users, Target, BookOpen, Lightbulb, AlertTriangle, HelpCircle, Brain } from "lucide-react";
+import { Clock, Users, Target, BookOpen, Lightbulb, AlertTriangle, HelpCircle, Brain, ExternalLink, FileText } from "lucide-react";
 
 interface TechniqueCardProps {
   technique: Technique;
@@ -119,11 +120,12 @@ export const TechniqueCard = ({ technique, onEdit, onDelete, isExpanded, onToggl
 
         {isExpanded ? (
           <Tabs defaultValue="overview" className="w-full">
-            <TabsList className="grid w-full grid-cols-4">
+            <TabsList className="grid w-full grid-cols-5">
               <TabsTrigger value="overview">Resumen</TabsTrigger>
               <TabsTrigger value="methodology">Metodología</TabsTrigger>
               <TabsTrigger value="resources">Recursos</TabsTrigger>
               <TabsTrigger value="analytics">Análisis</TabsTrigger>
+              <TabsTrigger value="bibliography">Fuentes</TabsTrigger>
             </TabsList>
 
             <TabsContent value="overview" className="space-y-4">
@@ -164,10 +166,10 @@ export const TechniqueCard = ({ technique, onEdit, onDelete, isExpanded, onToggl
 
             <TabsContent value="methodology" className="space-y-4">
               <div>
-                <h4 className="font-semibold text-slate-700 mb-2 flex items-center gap-2">
-                  <BookOpen className="w-4 h-4" /> Metodología
+                <h4 className="font-semibold text-slate-700 mb-4 flex items-center gap-2">
+                  <BookOpen className="w-4 h-4" /> Metodología Interactiva
                 </h4>
-                <p className="text-sm text-slate-600 mb-4">{technique.methodology}</p>
+                <MethodologySteps methodology={technique.methodology} techniqueId={technique.id} />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -255,14 +257,8 @@ export const TechniqueCard = ({ technique, onEdit, onDelete, isExpanded, onToggl
             <TabsContent value="analytics" className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <h4 className="font-semibold text-slate-700 mb-3">Nivel de Complejidad</h4>
-                  <div className="h-[150px] flex items-center justify-center">
-                    <ComplexityPyramid 
-                      basicCount={getComplexityCount(technique.complexity).básico}
-                      intermediateCount={getComplexityCount(technique.complexity).intermedio}
-                      advancedCount={getComplexityCount(technique.complexity).avanzado}
-                    />
-                  </div>
+                  <h4 className="font-semibold text-slate-700 mb-3">Análisis de Complejidad</h4>
+                  <ComplexityIndicator complexity={technique.complexity} interactive={true} />
                 </div>
 
                 <div>
@@ -287,6 +283,73 @@ export const TechniqueCard = ({ technique, onEdit, onDelete, isExpanded, onToggl
                       {related}
                     </Badge>
                   ))}
+                </div>
+              </div>
+            </TabsContent>
+
+            <TabsContent value="bibliography" className="space-y-4">
+              <div>
+                <h4 className="font-semibold text-slate-700 mb-3 flex items-center gap-2">
+                  <FileText className="w-4 h-4" /> Fuentes Bibliográficas
+                </h4>
+                
+                {technique.bibliographicSources && technique.bibliographicSources.length > 0 ? (
+                  <div className="space-y-4">
+                    {technique.bibliographicSources.map((source, index) => (
+                      <Card key={index} className="p-4 bg-slate-50">
+                        <div className="space-y-2">
+                          <div className="flex items-start justify-between">
+                            <Badge variant="outline" className="text-xs">
+                              {source.type}
+                            </Badge>
+                            <span className="text-xs text-slate-500">{source.year}</span>
+                          </div>
+                          
+                          <div>
+                            <h5 className="font-medium text-slate-800 text-sm mb-1">
+                              {source.title}
+                            </h5>
+                            <p className="text-xs text-slate-600">
+                              <strong>Autores:</strong> {source.authors}
+                            </p>
+                            <p className="text-xs text-slate-600">
+                              <strong>Institución:</strong> {source.institution}
+                            </p>
+                          </div>
+                          
+                          {source.url && (
+                            <a 
+                              href={source.url} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 text-xs text-blue-600 hover:text-blue-800 transition-colors"
+                            >
+                              <ExternalLink className="w-3 h-3" />
+                              Ver fuente
+                            </a>
+                          )}
+                        </div>
+                      </Card>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="p-4 bg-gray-50 rounded-lg text-center">
+                    <p className="text-sm text-gray-600">
+                      Fuentes bibliográficas en proceso de actualización.
+                    </p>
+                  </div>
+                )}
+
+                <div className="mt-6">
+                  <h5 className="font-medium text-slate-700 mb-2">Referencias Adicionales</h5>
+                  <div className="space-y-1">
+                    {technique.references.map((reference, index) => (
+                      <div key={index} className="flex items-start gap-2 text-sm text-slate-600">
+                        <span className="text-blue-500 mt-1">•</span>
+                        {reference}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </TabsContent>

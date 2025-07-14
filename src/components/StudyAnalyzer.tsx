@@ -8,13 +8,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Brain, Target, Clock, Users, Zap, MapPin, Building, FileText, ArrowDown } from "lucide-react";
+import { Brain, Target, Clock, Users, Zap, MapPin, Building, FileText, ArrowDown, BarChart3 } from "lucide-react";
 import { useTechniques } from "@/context/TechniqueContext";
 import { StudyProfile } from "@/types/technique";
 import { TechniqueCard } from "./TechniqueCard";
+import { SequenceVisualization } from "./SequenceVisualization";
 
 export const StudyAnalyzer = () => {
-  const { createStudyProfile, getRecommendedTechniques } = useTechniques();
+  const { createStudyProfile, getRecommendedTechniques, techniques } = useTechniques();
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [results, setResults] = useState<StudyProfile | null>(null);
   const [expandedTechnique, setExpandedTechnique] = useState<string | null>(null);
@@ -114,11 +115,11 @@ export const StudyAnalyzer = () => {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Brain className="w-5 h-5 text-blue-600" />
-            Análisis Inteligente de Estudio Prospectivo
+            <BarChart3 className="w-5 h-5 text-blue-600" />
+            Analizador de Secuencias Metodológicas
           </CardTitle>
           <CardDescription>
-            Describe tu estudio en detalle y obtén recomendaciones personalizadas con justificaciones y secuencia de aplicación.
+            Describe tu estudio en detalle y obtén un análisis inteligente con secuencias metodológicas personalizadas, justificaciones expertas y visualización gráfica de las etapas.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
@@ -467,61 +468,23 @@ export const StudyAnalyzer = () => {
             </CardContent>
           </Card>
 
-          {/* Esquema de secuencia */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <FileText className="w-5 h-5 text-blue-600" />
-                Secuencia de Aplicación Recomendada
-              </CardTitle>
-              <CardDescription>
-                Orden sugerido para la implementación de las técnicas
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="flex flex-wrap items-center gap-4">
-                {results.recommendedTechniques
-                  .sort((a, b) => a.sequenceOrder - b.sequenceOrder)
-                  .map((rec, index) => {
-                    const technique = getRecommendedTechniques(results).find(t => t.id === rec.techniqueId);
-                    if (!technique) return null;
-                    
-                    return (
-                      <div key={rec.techniqueId} className="flex items-center gap-2">
-                        <div className={`w-8 h-8 rounded-full ${getSequenceColor(rec.sequenceOrder)} text-white flex items-center justify-center text-sm font-bold`}>
-                          {rec.sequenceOrder}
-                        </div>
-                        <Badge variant="outline" className="text-xs">
-                          {technique.name}
-                        </Badge>
-                        {index < results.recommendedTechniques.length - 1 && (
-                          <ArrowDown className="w-4 h-4 text-gray-400 rotate-90" />
-                        )}
-                      </div>
-                    );
-                  })}
-              </div>
-            </CardContent>
-          </Card>
+          {/* Visualización de secuencias */}
+          <SequenceVisualization results={results} techniques={techniques} />
 
           {/* Técnicas recomendadas con justificaciones */}
           <Card>
             <CardHeader>
               <CardTitle>
-                Técnicas Recomendadas con Justificación ({getRecommendedTechniques(results).length})
+                Técnicas Recomendadas con Justificación ({results.recommendedTechniques.length})
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-6">
-                {getRecommendedTechniques(results)
-                  .sort((a, b) => {
-                    const recA = getTechniqueRecommendation(a.id);
-                    const recB = getTechniqueRecommendation(b.id);
-                    return (recA?.sequenceOrder || 0) - (recB?.sequenceOrder || 0);
-                  })
-                  .map((technique) => {
-                    const recommendation = getTechniqueRecommendation(technique.id);
-                    if (!recommendation) return null;
+                {results.recommendedTechniques
+                  .sort((a, b) => a.sequenceOrder - b.sequenceOrder)
+                  .map((recommendation) => {
+                    const technique = techniques.find(t => t.id === recommendation.techniqueId);
+                    if (!technique) return null;
                     
                     return (
                       <div key={technique.id} className="border-l-4 border-blue-500 pl-4 space-y-3">

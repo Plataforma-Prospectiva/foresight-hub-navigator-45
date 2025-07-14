@@ -21,7 +21,25 @@ export const initialTechniques: Technique[] = [
     prerequisites: ['Sistema bien definido', 'Grupo multidisciplinario', 'Conocimiento básico de transiciones'],
     examples: ['Transición energética', 'Economía circular', 'Movilidad sostenible', 'Sistemas alimentarios'],
     relatedTechniques: ['Análisis de Transiciones', 'Mapeo de Stakeholders', 'Construcción de Escenarios'],
-    references: ['Silvestri, G., Diercks, G., & Matti, C. (2022). X-Curve Booklet. DRIFT & EIT Climate-KIC', 'DRIFT Transition Studies Institute', 'EIT Climate-KIC Transitions Hub']
+    references: ['Silvestri, G., Diercks, G., & Matti, C. (2022). X-Curve Booklet. DRIFT & EIT Climate-KIC', 'DRIFT Transition Studies Institute', 'EIT Climate-KIC Transitions Hub'],
+    bibliographicSources: [
+      {
+        type: 'Metodológica',
+        title: 'X-Curve Booklet: A tool for transition dynamics',
+        authors: 'Silvestri, G., Diercks, G., & Matti, C.',
+        year: 2022,
+        institution: 'DRIFT & EIT Climate-KIC',
+        url: 'https://cristianmatti.com/wp-content/uploads/2022/02/x-curve-booklet-drift-eit-climate-kic-2022-6.pdf'
+      },
+      {
+        type: 'Teórica',
+        title: 'Transition Dynamics and Co-creation',
+        authors: 'DRIFT Research Team',
+        year: 2021,
+        institution: 'DRIFT Transition Studies Institute',
+        url: 'https://drift.eur.nl'
+      }
+    ]
   },
   {
     id: '16',

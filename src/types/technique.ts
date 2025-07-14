@@ -19,6 +19,14 @@ export interface Technique {
   examples: string[];
   relatedTechniques: string[];
   references: string[];
+  bibliographicSources?: {
+    type: 'Metodológica' | 'Teórica' | 'Práctica' | 'Institucional';
+    title: string;
+    authors: string;
+    year: number;
+    institution: string;
+    url?: string;
+  }[];
   sequenceOrder?: number;
   justification?: string;
 }
@@ -54,6 +62,7 @@ export interface StudyProfile {
     justification: string;
     sequenceOrder: number;
   }[];
+  estimatedDuration?: string;
   createdAt: Date;
 }
 
