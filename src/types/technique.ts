@@ -1,34 +1,38 @@
+import type { LucideIcon } from 'lucide-react';
+
+export interface MethodologyStep {
+  step: number;
+  title: string;
+  description: string;
+  duration: string;
+}
+
+export interface BibliographicSource {
+  type: 'book' | 'article' | 'report' | 'guide' | 'methodological' | 'theoretical' | 'institutional';
+  title: string;
+  authors?: string[];
+  year: number;
+  publisher?: string;
+  journal?: string;
+  institution?: string;
+  url?: string;
+}
 
 export interface Technique {
   id: string;
   name: string;
-  objective: string;
-  recommendedUse: string;
-  requiredInputs: string[];
-  applicationTime: string;
-  requiredPeople: string;
-  complexity: 'básico' | 'intermedio' | 'avanzado';
+  icon: LucideIcon;
+  complexity: number; // 1-5 scale
   category: string;
   description: string;
+  objectives: string[];
+  applications: string[];
+  methodology: MethodologyStep[];
   advantages: string[];
   limitations: string[];
-  methodology: string;
-  expectedOutputs: string[];
-  resources: string[];
-  prerequisites: string[];
-  examples: string[];
-  relatedTechniques: string[];
-  references: string[];
-  bibliographicSources?: {
-    type: 'Metodológica' | 'Teórica' | 'Práctica' | 'Institucional';
-    title: string;
-    authors: string;
-    year: number;
-    institution: string;
-    url?: string;
-  }[];
-  sequenceOrder?: number;
-  justification?: string;
+  timeHorizon: string;
+  participants: string;
+  bibliographicSources: BibliographicSource[];
 }
 
 export interface StudyProfile {
@@ -36,15 +40,15 @@ export interface StudyProfile {
   title: string;
   description: string;
   country: string;
-  stateLevel: 'nacional' | 'regional' | 'local' | 'municipal';
+  stateLevel: 'national' | 'regional' | 'local' | 'municipal';
   territoryName?: string;
-  scope: 'público' | 'privado' | 'mixto';
+  scope: 'public' | 'private' | 'mixed';
   estimatedTime: string;
   studyObjective: string;
   timeHorizon: string;
-  objectiveComplexity: 'baja' | 'media' | 'alta';
+  objectiveComplexity: 'low' | 'medium' | 'high';
   availableResources: {
-    budget: 'limitado' | 'medio' | 'amplio';
+    budget: 'limited' | 'medium' | 'extensive';
     expertAccess: boolean;
     fieldPersonnel: boolean;
     physicalInfrastructure: boolean;
@@ -56,7 +60,7 @@ export interface StudyProfile {
     institutionalFramework: boolean;
     customResources: string[];
   };
-  teamExperience: 'principiante' | 'intermedio' | 'experto';
+  teamExperience: 'beginner' | 'intermediate' | 'expert';
   recommendedTechniques: {
     techniqueId: string;
     justification: string;

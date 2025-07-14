@@ -1,506 +1,1217 @@
+import type { Technique } from '../types/technique';
+import { 
+  TrendingUp, BarChart3, GitBranch, Network, Brain, Target,
+  Search, Users, Map, Layers, Activity, Zap, TreePine, Shuffle,
+  Lightbulb, ChevronRight, Timer, Building, Globe, Compass,
+  FileText, PieChart, LineChart, Microscope, Calculator, 
+  FlaskConical, Grid3x3, ArrowUpDown, ArrowLeftRight, Workflow,
+  Scale, Gauge, Eye, Crosshair
+} from 'lucide-react';
 
-import { Technique } from '@/types/technique';
-
-export const initialTechniques: Technique[] = [
+export const techniques: Technique[] = [
   {
-    id: '21',
-    name: 'Curva X (X-Curve)',
-    objective: 'Mapear las dinámicas de transición y facilitar la co-creación para el cambio sistémico',
-    recommendedUse: 'Para entender dinámicas de transición en sistemas sociotécnicos y diseñar intervenciones transformativas',
-    requiredInputs: ['Límites del sistema definidos', 'Visión de futuro compartida', 'Participantes multistakeholder'],
-    applicationTime: '1 día (4 horas por sesión)',
-    requiredPeople: '1-2 facilitadores + 5-7 participantes por grupo',
-    complexity: 'intermedio',
-    category: 'Análisis de Transiciones',
-    description: 'Herramienta visual para crear una comprensión más rica de las dinámicas de transición dentro de la sociedad o contexto específico, mediante patrones de construcción y descomposición.',
-    advantages: ['Comprensión sistémica', 'Lenguaje común', 'Identifica intervenciones', 'Facilita co-creación'],
-    limitations: ['Requiere facilitación experta', 'Interpretación subjetiva', 'Dependiente del contexto'],
-    methodology: 'Definición de límites → Visión de futuro → Identificación de dinámicas → Mapeo en curva X → Identificación de intervenciones',
-    expectedOutputs: ['Mapa de dinámicas de transición', 'Narrativas colectivas', 'Portafolio de intervenciones'],
-    resources: ['Plantilla de curva X', 'Post-its digitales/físicos', 'Espacio colaborativo'],
-    prerequisites: ['Sistema bien definido', 'Grupo multidisciplinario', 'Conocimiento básico de transiciones'],
-    examples: ['Transición energética', 'Economía circular', 'Movilidad sostenible', 'Sistemas alimentarios'],
-    relatedTechniques: ['Análisis de Transiciones', 'Mapeo de Stakeholders', 'Construcción de Escenarios'],
-    references: ['Silvestri, G., Diercks, G., & Matti, C. (2022). X-Curve Booklet. DRIFT & EIT Climate-KIC', 'DRIFT Transition Studies Institute', 'EIT Climate-KIC Transitions Hub'],
+    id: 'trend-analysis',
+    name: 'Trend Analysis',
+    icon: TrendingUp,
+    complexity: 3,
+    category: 'exploratory',
+    description: 'Systematic study of patterns and changes over time to identify emerging trends and their potential future trajectories.',
+    objectives: [
+      'Identify and analyze current trends',
+      'Project trend evolution over time',
+      'Evaluate trend impact and implications',
+      'Detect weak signals and emerging patterns'
+    ],
+    applications: [
+      'Technology forecasting',
+      'Market research and consumer behavior',
+      'Social and demographic changes',
+      'Economic indicators analysis'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Data Collection',
+        description: 'Gather quantitative and qualitative data from multiple sources over extended time periods.',
+        duration: '2-4 weeks'
+      },
+      {
+        step: 2,
+        title: 'Pattern Recognition',
+        description: 'Identify recurring patterns, cycles, and anomalies in the data using statistical methods.',
+        duration: '1-2 weeks'
+      },
+      {
+        step: 3,
+        title: 'Trend Extrapolation',
+        description: 'Project identified trends into the future using mathematical models and expert judgment.',
+        duration: '1-2 weeks'
+      },
+      {
+        step: 4,
+        title: 'Impact Assessment',
+        description: 'Evaluate potential consequences and implications of trend continuation or disruption.',
+        duration: '1 week'
+      },
+      {
+        step: 5,
+        title: 'Monitoring System',
+        description: 'Establish indicators and metrics to track trend evolution and validate projections.',
+        duration: '1 week'
+      }
+    ],
+    advantages: [
+      'Based on empirical data and historical evidence',
+      'Quantitative foundation for decision-making',
+      'Early detection of emerging changes',
+      'Provides baseline for scenario development'
+    ],
+    limitations: [
+      'Assumes continuity of current patterns',
+      'May miss discontinuous changes or ruptures',
+      'Quality depends on data availability and reliability',
+      'Vulnerable to confirmation bias'
+    ],
+    timeHorizon: '1-10 years',
+    participants: '3-8 participants',
     bibliographicSources: [
       {
-        type: 'Metodológica',
+        type: 'book',
+        title: 'Strategic Foresight: The Power of Standing in the Future',
+        authors: ['Patricia Lustig'],
+        year: 2015,
+        publisher: 'Triarchy Press'
+      },
+      {
+        type: 'article',
+        title: 'Trend Analysis and Strategic Planning',
+        authors: ['John Naisbitt'],
+        journal: 'Strategic Management Journal',
+        year: 2019
+      },
+      {
+        type: 'report',
+        title: 'UNDP Foresight Manual',
+        authors: ['UNDP Team'],
+        institution: 'United Nations Development Programme',
+        year: 2018
+      }
+    ]
+  },
+  {
+    id: 'delphi-method',
+    name: 'Delphi Method',
+    icon: Users,
+    complexity: 5,
+    category: 'expert-consultation',
+    description: 'Structured communication technique that relies on a panel of experts to converge on complex issues through iterative rounds of surveys.',
+    objectives: [
+      'Achieve expert consensus on complex topics',
+      'Minimize bias from group dynamics',
+      'Leverage collective expert knowledge',
+      'Handle uncertain future scenarios'
+    ],
+    applications: [
+      'Technology priority setting',
+      'Policy development',
+      'Risk assessment',
+      'Future scenarios validation'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Expert Selection',
+        description: 'Identify and recruit relevant experts with diverse backgrounds and expertise.',
+        duration: '1-2 weeks'
+      },
+      {
+        step: 2,
+        title: 'First Round Survey',
+        description: 'Send initial open-ended questionnaire to gather broad perspectives on the topic.',
+        duration: '2-3 weeks'
+      },
+      {
+        step: 3,
+        title: 'Analysis & Synthesis',
+        description: 'Analyze responses and synthesize key themes for the second round.',
+        duration: '1 week'
+      },
+      {
+        step: 4,
+        title: 'Second Round Survey',
+        description: 'Send structured questionnaire based on first round results for rating and ranking.',
+        duration: '2 weeks'
+      },
+      {
+        step: 5,
+        title: 'Consensus Analysis',
+        description: 'Analyze convergence, prepare final report with expert consensus findings.',
+        duration: '1-2 weeks'
+      }
+    ],
+    advantages: [
+      'Eliminates geographical constraints',
+      'Reduces dominant personality effects',
+      'Maintains expert anonymity',
+      'Structured approach to complex problems'
+    ],
+    limitations: [
+      'Time-consuming process',
+      'Requires expert availability',
+      'May lead to artificial consensus',
+      'Quality depends on expert selection'
+    ],
+    timeHorizon: '1-20 years',
+    participants: '1 facilitator + 10-30 experts',
+    bibliographicSources: [
+      {
+        type: 'book',
+        title: 'The Delphi Method: Techniques and Applications',
+        authors: ['Harold A. Linstone', 'Murray Turoff'],
+        year: 2011,
+        publisher: 'Addison-Wesley'
+      },
+      {
+        type: 'article',
+        title: 'Expert Consultation in Foresight',
+        authors: ['Theodore J. Gordon'],
+        journal: 'Futures',
+        year: 2009
+      }
+    ]
+  },
+  {
+    id: 'morphological-analysis',
+    name: 'Morphological Analysis',
+    icon: Grid3x3,
+    complexity: 4,
+    category: 'scenario-building',
+    description: 'Systematic method for exploring all possible solutions to a multi-dimensional problem by decomposing it into its fundamental parameters.',
+    objectives: [
+      'Explore comprehensive solution space',
+      'Generate scenario combinations systematically',
+      'Structure complex multi-dimensional problems',
+      'Identify unexpected configurations'
+    ],
+    applications: [
+      'Product development scenarios',
+      'Technology configuration analysis',
+      'Policy option exploration',
+      'Strategic alternative generation'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Problem Definition',
+        description: 'Clearly define the problem and establish the scope of analysis.',
+        duration: '1-2 days'
+      },
+      {
+        step: 2,
+        title: 'Parameter Identification',
+        description: 'Identify key parameters that characterize the problem space.',
+        duration: '1 week'
+      },
+      {
+        step: 3,
+        title: 'Value Range Definition',
+        description: 'Define possible values or states for each parameter dimension.',
+        duration: '1 week'
+      },
+      {
+        step: 4,
+        title: 'Morphological Box Creation',
+        description: 'Construct the multi-dimensional morphological box with all parameter combinations.',
+        duration: '2-3 days'
+      },
+      {
+        step: 5,
+        title: 'Configuration Assessment',
+        description: 'Evaluate feasibility and consistency of different parameter combinations.',
+        duration: '1-2 weeks'
+      },
+      {
+        step: 6,
+        title: 'Scenario Development',
+        description: 'Develop detailed scenarios from selected viable configurations.',
+        duration: '1-2 weeks'
+      }
+    ],
+    advantages: [
+      'Systematic and comprehensive exploration',
+      'Reveals unexpected combinations',
+      'Structured approach to complexity',
+      'Forces consideration of all dimensions'
+    ],
+    limitations: [
+      'Can become computationally complex',
+      'May generate many impractical combinations',
+      'Requires careful parameter selection',
+      'Does not indicate probability of outcomes'
+    ],
+    timeHorizon: '2-15 years',
+    participants: '3-8 participants',
+    bibliographicSources: [
+      {
+        type: 'methodological',
+        title: 'Morphological Analysis: A Method for Building Futures Scenarios',
+        authors: ['Véronique Lamblin'],
+        year: 2020,
+        institution: 'Futuribles International',
+        url: 'https://www.futuribles.com/en/la-prospective/methodes-et-outils/la-toolbox/'
+      },
+      {
+        type: 'book',
+        title: 'General Morphological Analysis: A General Method for Non-Quantified Modelling',
+        authors: ['Tom Ritchey'],
+        year: 2011,
+        publisher: 'Swedish Morphological Society'
+      }
+    ]
+  },
+  {
+    id: 'competing-hypotheses',
+    name: 'Analysis of Competing Hypotheses (ACH)',
+    icon: Scale,
+    complexity: 4,
+    category: 'analytical',
+    description: 'Analytical methodology for evaluating multiple plausible hypotheses by systematically testing available evidence against each hypothesis.',
+    objectives: [
+      'Reduce cognitive bias in analysis',
+      'Systematically evaluate alternative explanations',
+      'Provide transparent analytical reasoning',
+      'Identify most consistent hypothesis with evidence'
+    ],
+    applications: [
+      'Intelligence analysis',
+      'Strategic decision making',
+      'Risk assessment',
+      'Future scenario validation',
+      'Policy analysis'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Hypothesis Generation',
+        description: 'Brainstorm and formulate mutually exclusive hypotheses for the question under analysis.',
+        duration: '1-2 days'
+      },
+      {
+        step: 2,
+        title: 'Evidence Collection',
+        description: 'Gather significant evidence and arguments for and against each hypothesis.',
+        duration: '1-2 weeks'
+      },
+      {
+        step: 3,
+        title: 'Matrix Construction',
+        description: 'Create matrix with hypotheses as columns and evidence as rows, analyze diagnosticity.',
+        duration: '1-2 days'
+      },
+      {
+        step: 4,
+        title: 'Hypothesis Refinement',
+        description: 'Review and refine hypotheses based on evidence pattern analysis.',
+        duration: '1 day'
+      },
+      {
+        step: 5,
+        title: 'Likelihood Assessment',
+        description: 'Evaluate relative likelihood by focusing on disproving rather than proving hypotheses.',
+        duration: '1-2 days'
+      },
+      {
+        step: 6,
+        title: 'Sensitivity Analysis',
+        description: 'Test sensitivity of conclusions to key pieces of evidence.',
+        duration: '1 day'
+      },
+      {
+        step: 7,
+        title: 'Conclusion Reporting',
+        description: 'Report relative likelihood of all hypotheses with supporting rationale.',
+        duration: '1-2 days'
+      },
+      {
+        step: 8,
+        title: 'Milestone Setting',
+        description: 'Identify future milestones that would indicate different outcomes.',
+        duration: '1 day'
+      }
+    ],
+    advantages: [
+      'Reduces confirmation bias',
+      'Structured and transparent process',
+      'Forces consideration of alternatives',
+      'Captures analytical reasoning for review'
+    ],
+    limitations: [
+      'Limited to available evidence quality',
+      'May not handle all types of uncertainty',
+      'Requires trained analysts',
+      'Time-intensive for complex problems'
+    ],
+    timeHorizon: 'Any timeframe',
+    participants: '1-5 analysts',
+    bibliographicSources: [
+      {
+        type: 'methodological',
+        title: 'Analysis of Competing Hypotheses',
+        authors: ['Kristan Wheaton'],
+        year: 2018,
+        institution: 'Futuribles International',
+        url: 'https://www.futuribles.com/en/la-prospective/methodes-et-outils/la-toolbox/'
+      },
+      {
+        type: 'book',
+        title: 'Psychology of Intelligence Analysis',
+        authors: ['Richards Heuer'],
+        year: 1999,
+        publisher: 'CIA Center for the Study of Intelligence'
+      },
+      {
+        type: 'book',
+        title: 'Structured Analytic Techniques for Intelligence Analysis',
+        authors: ['Richards Heuer', 'Randolph Pherson'],
+        year: 2014,
+        publisher: 'CQ Press'
+      }
+    ]
+  },
+  {
+    id: 'scenario-building',
+    name: 'Scenario Building',
+    icon: GitBranch,
+    complexity: 5,
+    category: 'scenario-building',
+    description: 'Construction of multiple coherent and plausible future narratives to explore different possibilities and their implications.',
+    objectives: [
+      'Explore multiple future possibilities',
+      'Prepare for uncertainty and change',
+      'Challenge assumptions about the future',
+      'Develop robust strategies'
+    ],
+    applications: [
+      'Strategic planning',
+      'Climate change planning',
+      'Technology assessment',
+      'Policy development',
+      'Business strategy'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Focal Question Definition',
+        description: 'Define clear focal question and temporal scope for scenario development.',
+        duration: '1-2 days'
+      },
+      {
+        step: 2,
+        title: 'Driving Forces Identification',
+        description: 'Identify key driving forces that will shape the future context.',
+        duration: '1-2 weeks'
+      },
+      {
+        step: 3,
+        title: 'Critical Uncertainties Selection',
+        description: 'Select the most critical and uncertain driving forces as scenario axes.',
+        duration: '2-3 days'
+      },
+      {
+        step: 4,
+        title: 'Scenario Framework Development',
+        description: 'Create scenario matrix or framework based on critical uncertainties.',
+        duration: '1 day'
+      },
+      {
+        step: 5,
+        title: 'Scenario Narrative Development',
+        description: 'Develop detailed, coherent narratives for each scenario.',
+        duration: '2-3 weeks'
+      },
+      {
+        step: 6,
+        title: 'Implications Assessment',
+        description: 'Analyze implications and strategic options for each scenario.',
+        duration: '1-2 weeks'
+      }
+    ],
+    advantages: [
+      'Explores multiple future possibilities',
+      'Challenges conventional thinking',
+      'Improves strategic flexibility',
+      'Facilitates robust decision-making'
+    ],
+    limitations: [
+      'Resource intensive process',
+      'Requires creative thinking skills',
+      'No probability assignments',
+      'May oversimplify complex realities'
+    ],
+    timeHorizon: '5-30 years',
+    participants: '6-12 participants',
+    bibliographicSources: [
+      {
+        type: 'book',
+        title: 'The Art of the Long View',
+        authors: ['Peter Schwartz'],
+        year: 1996,
+        publisher: 'Currency Doubleday'
+      },
+      {
+        type: 'book',
+        title: 'Scenario Planning: The Link Between Future and Strategy',
+        authors: ['Mats Lindgren', 'Hans Bandhold'],
+        year: 2009,
+        publisher: 'Palgrave Macmillan'
+      }
+    ]
+  },
+  {
+    id: 'cross-impact-analysis',
+    name: 'Cross-Impact Analysis',
+    icon: Network,
+    complexity: 5,
+    category: 'systems-analysis',
+    description: 'Systematic approach to analyze interdependencies between different factors and their mutual influences in complex systems.',
+    objectives: [
+      'Understand system interdependencies',
+      'Identify indirect effects and feedback loops',
+      'Quantify relationships between variables',
+      'Support scenario development with systemic view'
+    ],
+    applications: [
+      'Complex systems modeling',
+      'Technology impact assessment',
+      'Policy analysis',
+      'Economic forecasting',
+      'Environmental systems analysis'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Variable Identification',
+        description: 'Identify key variables and factors that compose the system under study.',
+        duration: '1-2 weeks'
+      },
+      {
+        step: 2,
+        title: 'Impact Matrix Construction',
+        description: 'Build matrix to evaluate how each variable influences every other variable.',
+        duration: '1 week'
+      },
+      {
+        step: 3,
+        title: 'Impact Assessment',
+        description: 'Assess direct impacts between variables using expert judgment or data.',
+        duration: '2-3 weeks'
+      },
+      {
+        step: 4,
+        title: 'Indirect Effects Calculation',
+        description: 'Calculate indirect effects and system-wide impacts using matrix multiplication.',
+        duration: '1 week'
+      },
+      {
+        step: 5,
+        title: 'Sensitivity Analysis',
+        description: 'Identify most influential variables and critical system leverage points.',
+        duration: '1 week'
+      }
+    ],
+    advantages: [
+      'Captures system complexity',
+      'Reveals indirect effects',
+      'Quantifies relationships',
+      'Identifies leverage points'
+    ],
+    limitations: [
+      'Requires precise data',
+      'Computationally intensive',
+      'Difficult to validate',
+      'May oversimplify relationships'
+    ],
+    timeHorizon: '2-15 years',
+    participants: '4-8 participants',
+    bibliographicSources: [
+      {
+        type: 'book',
+        title: 'Cross-Impact Analysis and Scenario Planning',
+        authors: ['Theodore J. Gordon', 'Selwyn Enzer'],
+        year: 1973,
+        publisher: 'RAND Corporation'
+      },
+      {
+        type: 'article',
+        title: 'Systems Analysis in Foresight',
+        authors: ['Michel Godet'],
+        journal: 'Technological Forecasting and Social Change',
+        year: 2000
+      }
+    ]
+  },
+  {
+    id: 'stakeholder-mapping',
+    name: 'Stakeholder Mapping',
+    icon: Users,
+    complexity: 2,
+    category: 'actor-analysis',
+    description: 'Systematic identification and analysis of relevant actors, their interests, influences, and interrelationships within a system.',
+    objectives: [
+      'Identify all relevant stakeholders',
+      'Analyze stakeholder influence and interest',
+      'Map relationships and power dynamics',
+      'Develop engagement strategies'
+    ],
+    applications: [
+      'Project management',
+      'Policy development',
+      'Change management',
+      'Innovation ecosystems',
+      'Community planning'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Stakeholder Identification',
+        description: 'Brainstorm and systematically identify all potential stakeholders.',
+        duration: '1 week'
+      },
+      {
+        step: 2,
+        title: 'Stakeholder Categorization',
+        description: 'Categorize stakeholders by type, role, and relationship to the system.',
+        duration: '2-3 days'
+      },
+      {
+        step: 3,
+        title: 'Influence-Interest Analysis',
+        description: 'Assess each stakeholder\'s level of influence and interest in the issue.',
+        duration: '1 week'
+      },
+      {
+        step: 4,
+        title: 'Relationship Mapping',
+        description: 'Map relationships, alliances, and conflicts between stakeholders.',
+        duration: '1 week'
+      },
+      {
+        step: 5,
+        title: 'Engagement Strategy',
+        description: 'Develop targeted strategies for engaging different stakeholder groups.',
+        duration: '1 week'
+      }
+    ],
+    advantages: [
+      'Comprehensive stakeholder view',
+      'Identifies key influencers',
+      'Guides engagement strategy',
+      'Reveals hidden relationships'
+    ],
+    limitations: [
+      'Static snapshot in time',
+      'Subjective assessments',
+      'Requires regular updates',
+      'May miss emerging stakeholders'
+    ],
+    timeHorizon: '1-5 years',
+    participants: '2-6 participants',
+    bibliographicSources: [
+      {
+        type: 'book',
+        title: 'Stakeholder Theory: Impact and Prospects',
+        authors: ['R. Edward Freeman'],
+        year: 2010,
+        publisher: 'Edward Elgar Publishing'
+      },
+      {
+        type: 'guide',
+        title: 'Stakeholder Analysis Guidelines',
+        institution: 'World Bank',
+        year: 2005
+      }
+    ]
+  },
+  {
+    id: 'environmental-scanning',
+    name: 'Environmental Scanning',
+    icon: Search,
+    complexity: 3,
+    category: 'information-analysis',
+    description: 'Systematic monitoring of external environment to identify emerging trends, issues, and weak signals that may impact the future.',
+    objectives: [
+      'Monitor external environment continuously',
+      'Detect weak signals and emerging issues',
+      'Identify opportunities and threats',
+      'Support strategic planning and foresight'
+    ],
+    applications: [
+      'Strategic intelligence',
+      'Technology watch',
+      'Competitive intelligence',
+      'Risk management',
+      'Innovation monitoring'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Scanning Framework Setup',
+        description: 'Define scanning scope, categories (STEEP), and information sources.',
+        duration: '1 week'
+      },
+      {
+        step: 2,
+        title: 'Information Collection',
+        description: 'Systematically collect information from diverse sources using manual and automated methods.',
+        duration: 'Ongoing'
+      },
+      {
+        step: 3,
+        title: 'Signal Identification',
+        description: 'Filter and identify relevant signals, trends, and emerging issues.',
+        duration: 'Weekly'
+      },
+      {
+        step: 4,
+        title: 'Impact Assessment',
+        description: 'Assess potential impact and relevance of identified signals.',
+        duration: 'Weekly'
+      },
+      {
+        step: 5,
+        title: 'Reporting & Dissemination',
+        description: 'Prepare and distribute intelligence reports to stakeholders.',
+        duration: 'Monthly'
+      }
+    ],
+    advantages: [
+      'Early warning capability',
+      'Broad environmental awareness',
+      'Continuous monitoring',
+      'Supports proactive planning'
+    ],
+    limitations: [
+      'Information overload risk',
+      'Requires ongoing resources',
+      'Signal-to-noise ratio challenges',
+      'Interpretation bias'
+    ],
+    timeHorizon: 'Continuous process',
+    participants: '2-5 participants',
+    bibliographicSources: [
+      {
+        type: 'book',
+        title: 'Environmental Scanning for Strategic Information',
+        authors: ['Chun Wei Choo'],
+        year: 2001,
+        publisher: 'Information Today'
+      },
+      {
+        type: 'article',
+        title: 'Strategic Intelligence and Foresight',
+        authors: ['Rafael Popper'],
+        journal: 'Foresight',
+        year: 2008
+      }
+    ]
+  },
+  {
+    id: 'future-workshops',
+    name: 'Future Workshops',
+    icon: Building,
+    complexity: 3,
+    category: 'participatory',
+    description: 'Participatory methodology for involving diverse stakeholders in collective exploration and construction of desirable futures.',
+    objectives: [
+      'Enable collective future exploration',
+      'Build shared vision and ownership',
+      'Generate innovative solutions',
+      'Foster collaboration and commitment'
+    ],
+    applications: [
+      'Community planning',
+      'Organizational development',
+      'Policy co-creation',
+      'Innovation processes',
+      'Social transformation'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Preparation Phase',
+        description: 'Define objectives, select participants, and prepare workshop materials and logistics.',
+        duration: '2-3 weeks'
+      },
+      {
+        step: 2,
+        title: 'Problem Phase',
+        description: 'Identify and analyze current problems and challenges collectively.',
+        duration: '2-4 hours'
+      },
+      {
+        step: 3,
+        title: 'Fantasy Phase',
+        description: 'Generate creative visions and ideas for ideal future solutions.',
+        duration: '2-4 hours'
+      },
+      {
+        step: 4,
+        title: 'Implementation Phase',
+        description: 'Develop concrete action plans and implementation strategies.',
+        duration: '2-4 hours'
+      },
+      {
+        step: 5,
+        title: 'Follow-up',
+        description: 'Document outcomes, plan next steps, and maintain momentum.',
+        duration: '1-2 weeks'
+      }
+    ],
+    advantages: [
+      'High participant engagement',
+      'Builds ownership and commitment',
+      'Diverse perspectives included',
+      'Action-oriented outcomes'
+    ],
+    limitations: [
+      'Complex logistics',
+      'Group dynamics challenges',
+      'Requires skilled facilitation',
+      'Time-intensive process'
+    ],
+    timeHorizon: '1-10 years',
+    participants: '1-2 facilitators + 15-50 participants',
+    bibliographicSources: [
+      {
+        type: 'book',
+        title: 'Future Workshops: How to Create Desirable Futures',
+        authors: ['Robert Jungk', 'Norbert Müllert'],
+        year: 1987,
+        publisher: 'Institute for Social Inventions'
+      },
+      {
+        type: 'guide',
+        title: 'Participatory Foresight Methods',
+        institution: 'European Foresight Platform',
+        year: 2010
+      }
+    ]
+  },
+  {
+    id: 'x-curve',
+    name: 'X-Curve Analysis',
+    icon: Workflow,
+    complexity: 4,
+    category: 'transition-analysis',
+    description: 'Visual tool for mapping transition dynamics and facilitating co-creation for systemic change by understanding building and breaking patterns.',
+    objectives: [
+      'Map transition dynamics systematically',
+      'Facilitate co-creation for change',
+      'Identify intervention opportunities',
+      'Build shared understanding of transitions'
+    ],
+    applications: [
+      'Energy transition planning',
+      'Circular economy development',
+      'Sustainable mobility systems',
+      'Food system transformation',
+      'Urban transition initiatives'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'System Boundary Definition',
+        description: 'Clearly define the system boundaries and scope of the transition analysis.',
+        duration: '1 day'
+      },
+      {
+        step: 2,
+        title: 'Future Vision Development',
+        description: 'Co-create a shared vision of the desired future state with stakeholders.',
+        duration: '4 hours'
+      },
+      {
+        step: 3,
+        title: 'Dynamics Identification',
+        description: 'Identify building dynamics (emerging elements) and breaking dynamics (declining elements).',
+        duration: '4 hours'
+      },
+      {
+        step: 4,
+        title: 'X-Curve Mapping',
+        description: 'Map identified dynamics on the X-curve framework showing transition pathways.',
+        duration: '2 hours'
+      },
+      {
+        step: 5,
+        title: 'Intervention Portfolio',
+        description: 'Identify and prioritize intervention opportunities to accelerate transition.',
+        duration: '2 hours'
+      }
+    ],
+    advantages: [
+      'Systems thinking approach',
+      'Visual and intuitive framework',
+      'Facilitates stakeholder alignment',
+      'Identifies leverage points'
+    ],
+    limitations: [
+      'Requires skilled facilitation',
+      'Context-dependent interpretation',
+      'Subjective assessment elements',
+      'May oversimplify complex transitions'
+    ],
+    timeHorizon: '5-20 years',
+    participants: '1-2 facilitators + 5-15 participants',
+    bibliographicSources: [
+      {
+        type: 'methodological',
         title: 'X-Curve Booklet: A tool for transition dynamics',
-        authors: 'Silvestri, G., Diercks, G., & Matti, C.',
+        authors: ['G. Silvestri', 'G. Diercks', 'C. Matti'],
         year: 2022,
         institution: 'DRIFT & EIT Climate-KIC',
         url: 'https://cristianmatti.com/wp-content/uploads/2022/02/x-curve-booklet-drift-eit-climate-kic-2022-6.pdf'
       },
       {
-        type: 'Teórica',
+        type: 'theoretical',
         title: 'Transition Dynamics and Co-creation',
-        authors: 'DRIFT Research Team',
+        authors: ['DRIFT Research Team'],
         year: 2021,
-        institution: 'DRIFT Transition Studies Institute',
-        url: 'https://drift.eur.nl'
+        institution: 'DRIFT Transition Studies Institute'
       }
     ]
   },
   {
-    id: '16',
-    name: 'Rueda de Wheaton',
-    objective: 'Generar ideas innovadoras mediante la combinación sistemática de diferentes elementos',
-    recommendedUse: 'Para estimular la creatividad y generar nuevas perspectivas sobre problemas complejos',
-    requiredInputs: ['Problema central definido', 'Lista de elementos o variables', 'Facilitador experimentado'],
-    applicationTime: '2-4 horas',
-    requiredPeople: '1 facilitador + 6-12 participantes',
-    complexity: 'básico',
-    category: 'Creatividad e Innovación',
-    description: 'Técnica de creatividad que utiliza una rueda dividida en segmentos para combinar sistemáticamente diferentes elementos y generar ideas innovadoras.',
-    advantages: ['Estimula creatividad', 'Enfoque sistemático', 'Fácil de implementar'],
-    limitations: ['Requiere facilitación', 'Puede generar ideas irrelevantes', 'Limitado por elementos iniciales'],
-    methodology: 'Definición del problema → Identificación de elementos → Construcción de la rueda → Combinaciones sistemáticas → Evaluación de ideas',
-    expectedOutputs: ['Lista de ideas generadas', 'Combinaciones prometedoras', 'Propuestas innovadoras'],
-    resources: ['Rueda física o digital', 'Materiales de registro', 'Espacio colaborativo'],
-    prerequisites: ['Problema bien definido', 'Elementos identificados'],
-    examples: ['Desarrollo de productos', 'Soluciones tecnológicas', 'Estrategias creativas'],
-    relatedTechniques: ['Brainstorming', 'Análisis Morfológico'],
-    references: ['Wheaton Innovation Wheel', 'Creative Problem Solving Methods']
+    id: 'regnier-abacus',
+    name: 'Régnier Abacus',
+    icon: Gauge,
+    complexity: 2,
+    category: 'evaluation',
+    description: 'Survey tool using chromatic scale to evaluate group consensus or dissensus on different propositions in participatory processes.',
+    objectives: [
+      'Measure group agreement levels',
+      'Visualize consensus and dissensus',
+      'Identify areas of convergence',
+      'Support group decision-making'
+    ],
+    applications: [
+      'Policy evaluation',
+      'Project prioritization',
+      'Strategic consensus building',
+      'Participatory assessment',
+      'Group consultation'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Proposition Preparation',
+        description: 'Prepare clear and unambiguous propositions for group evaluation.',
+        duration: '1-2 days'
+      },
+      {
+        step: 2,
+        title: 'Scale Explanation',
+        description: 'Explain the chromatic scale and evaluation criteria to participants.',
+        duration: '30 minutes'
+      },
+      {
+        step: 3,
+        title: 'Individual Evaluation',
+        description: 'Participants individually assess each proposition using the color scale.',
+        duration: '30-60 minutes'
+      },
+      {
+        step: 4,
+        title: 'Results Compilation',
+        description: 'Compile individual assessments into visual consensus matrix.',
+        duration: '30 minutes'
+      },
+      {
+        step: 5,
+        title: 'Analysis & Discussion',
+        description: 'Analyze patterns of agreement/disagreement and facilitate group discussion.',
+        duration: '1-2 hours'
+      }
+    ],
+    advantages: [
+      'Clear visual representation',
+      'Easy to understand and use',
+      'Identifies consensus areas',
+      'Inclusive participation method'
+    ],
+    limitations: [
+      'Subjective assessments',
+      'Potential group influence',
+      'Oversimplifies complex opinions',
+      'Cultural color interpretation differences'
+    ],
+    timeHorizon: 'Present/immediate',
+    participants: '1 facilitator + 8-30 participants',
+    bibliographicSources: [
+      {
+        type: 'methodological',
+        title: 'L\'abaque de Régnier: Un outil d\'enquête adapté aux démarches de prospective',
+        authors: ['Nathalie Bassaler'],
+        year: 2020,
+        institution: 'Futuribles International'
+      },
+      {
+        type: 'guide',
+        title: 'Group Decision Making Methods',
+        institution: 'European Foresight Platform',
+        year: 2008
+      }
+    ]
   },
   {
-    id: '17',
-    name: 'Ábaco de Régnier',
-    objective: 'Evaluar y visualizar el grado de consenso o disenso en un grupo sobre diferentes proposiciones',
-    recommendedUse: 'Para medir acuerdos grupales y identificar áreas de consenso en procesos participativos',
-    requiredInputs: ['Lista de proposiciones', 'Grupo de evaluadores', 'Escala de colores definida'],
-    applicationTime: '1-2 horas',
-    requiredPeople: '1 facilitador + 8-20 participantes',
-    complexity: 'básico',
-    category: 'Evaluación Grupal',
-    description: 'Método de consulta que utiliza una escala cromática para evaluar el nivel de acuerdo de un grupo sobre diferentes proposiciones.',
-    advantages: ['Visualización clara', 'Fácil comprensión', 'Identifica consensos'],
-    limitations: ['Subjetividad en evaluación', 'Influencia grupal', 'Simplificación de opiniones'],
-    methodology: 'Preparación de proposiciones → Explicación de escala → Evaluación individual → Compilación → Análisis de resultados',
-    expectedOutputs: ['Matriz de consenso', 'Áreas de acuerdo/desacuerdo', 'Visualización cromática'],
-    resources: ['Tarjetas de colores', 'Matriz de evaluación', 'Software de visualización'],
-    prerequisites: ['Proposiciones claras', 'Grupo representativo'],
-    examples: ['Evaluación de políticas', 'Priorización de proyectos', 'Consenso estratégico'],
-    relatedTechniques: ['Método Delphi', 'Encuestas de Opinión'],
-    references: ['Abaque de Régnier Manual', 'Group Decision Methods']
-  },
-  {
-    id: '18',
-    name: 'Análisis de Actores Clave',
-    objective: 'Identificar y analizar los actores más influyentes en un sistema o proceso de cambio',
-    recommendedUse: 'Para entender las dinámicas de poder e influencia en procesos de transformación',
-    requiredInputs: ['Lista inicial de actores', 'Criterios de influencia', 'Matriz de relaciones'],
-    applicationTime: '2-3 semanas',
-    requiredPeople: '3-5 analistas',
-    complexity: 'intermedio',
-    category: 'Análisis de Poder',
-    description: 'Metodología para identificar, categorizar y analizar los actores con mayor capacidad de influencia en un sistema.',
-    advantages: ['Identifica actores clave', 'Analiza dinámicas de poder', 'Orienta estrategias'],
-    limitations: ['Dinámico y cambiante', 'Subjetividad en evaluación', 'Requiere información actualizada'],
-    methodology: 'Identificación → Categorización → Análisis de influencia → Mapeo de relaciones → Estrategias de engagement',
-    expectedOutputs: ['Mapa de actores clave', 'Matriz de influencia', 'Estrategias diferenciadas'],
-    resources: ['Bases de datos', 'Herramientas de análisis', 'Red de contactos'],
-    prerequisites: ['Conocimiento del sector', 'Acceso a información'],
-    examples: ['Reforma de políticas', 'Cambio organizacional', 'Procesos legislativos'],
-    relatedTechniques: ['Mapeo de Stakeholders', 'Análisis de Redes'],
-    references: ['Stakeholder Power Analysis', 'Political Economy Analysis']
-  },
-  {
-    id: '19',
-    name: 'Técnica de Grupo Nominal',
-    objective: 'Generar y priorizar ideas en grupo minimizando la influencia de dinámicas grupales negativas',
-    recommendedUse: 'Cuando se necesita participación equitativa y priorización objetiva de ideas',
-    requiredInputs: ['Pregunta o problema definido', 'Participantes diversos', 'Sistema de votación'],
-    applicationTime: '3-4 horas',
-    requiredPeople: '1 facilitador + 6-10 participantes',
-    complexity: 'básico',
-    category: 'Generación de Ideas',
-    description: 'Proceso estructurado que combina trabajo individual y grupal para generar y priorizar ideas de manera objetiva.',
-    advantages: ['Participación equitativa', 'Minimiza sesgos grupales', 'Priorización clara'],
-    limitations: ['Proceso rígido', 'Puede limitar creatividad', 'Requiere tiempo'],
-    methodology: 'Generación silenciosa → Registro round-robin → Discusión → Votación → Priorización',
-    expectedOutputs: ['Lista priorizada de ideas', 'Ranking consensuado', 'Justificaciones'],
-    resources: ['Materiales de escritura', 'Sistema de votación', 'Facilitador entrenado'],
-    prerequisites: ['Pregunta clara', 'Grupo balanceado'],
-    examples: ['Identificación de problemas', 'Generación de soluciones', 'Priorización de acciones'],
-    relatedTechniques: ['Brainstorming', 'Método Delphi'],
-    references: ['Nominal Group Technique Guide', 'Structured Group Methods']
-  },
-  {
-    id: '20',
-    name: 'Análisis de Fuerzas Motrices',
-    objective: 'Identificar y analizar las fuerzas principales que impulsan el cambio en un sistema',
-    recommendedUse: 'Para entender los motores de cambio antes de desarrollar escenarios o estrategias',
-    requiredInputs: ['Análisis del contexto', 'Datos de tendencias', 'Panel de expertos'],
-    applicationTime: '3-5 semanas',
-    requiredPeople: '4-8 analistas',
-    complexity: 'intermedio',
-    category: 'Análisis Estructural',
-    description: 'Metodología para identificar y evaluar las fuerzas fundamentales que generan cambio y transformación en un sistema.',
-    advantages: ['Identifica motores de cambio', 'Base para escenarios', 'Enfoque sistémico'],
-    limitations: ['Complejidad analítica', 'Requiere datos', 'Interpretación subjetiva'],
-    methodology: 'Análisis contextual → Identificación de fuerzas → Evaluación de impacto → Análisis de interacciones → Síntesis',
-    expectedOutputs: ['Mapa de fuerzas motrices', 'Análisis de impactos', 'Jerarquización de fuerzas'],
-    resources: ['Bases de datos', 'Herramientas analíticas', 'Panel de expertos'],
-    prerequisites: ['Comprensión del sistema', 'Acceso a información'],
-    examples: ['Transformación digital', 'Cambio climático', 'Evolución sectorial'],
-    relatedTechniques: ['Análisis de Tendencias', 'Construcción de Escenarios'],
-    references: ['Driving Forces Analysis', 'Systems Change Methods']
-  },
-  {
-    id: '1',
-    name: 'Análisis de Tendencias',
-    objective: 'Identificar y analizar tendencias emergentes que pueden impactar el futuro',
-    recommendedUse: 'Ideal para estudios de horizonte temporal medio a largo plazo',
-    requiredInputs: ['Datos históricos', 'Fuentes de información diversas', 'Indicadores clave'],
-    applicationTime: '2-4 semanas',
-    requiredPeople: '3-5 personas',
-    complexity: 'intermedio',
-    category: 'Análisis Exploratorio',
-    description: 'Técnica sistemática para identificar patrones y tendencias emergentes a través del análisis de datos cuantitativos y cualitativos.',
-    advantages: ['Basado en evidencia', 'Detecta cambios tempranos', 'Múltiples fuentes'],
-    limitations: ['Requiere datos históricos', 'Puede ser reactivo', 'Sesgos en las fuentes'],
-    methodology: 'Recopilación de datos → Análisis de patrones → Identificación de tendencias → Validación → Proyección',
-    expectedOutputs: ['Mapa de tendencias', 'Informe de análisis', 'Gráficos evolutivos'],
-    resources: ['Bases de datos', 'Software de análisis', 'Acceso a fuentes'],
-    prerequisites: ['Conocimiento estadístico básico', 'Acceso a información'],
-    examples: ['Tendencias tecnológicas', 'Cambios demográficos', 'Evolución del mercado'],
-    relatedTechniques: ['Escaneo del Entorno', 'Análisis de Impactos Cruzados'],
-    references: ['UNDP Foresight Manual', 'Trend Analysis Handbook']
-  },
-  {
-    id: '2',
-    name: 'Método Delphi',
-    objective: 'Obtener consenso de expertos sobre temas complejos y futuros inciertos',
-    recommendedUse: 'Cuando se requiere opinión experta para temas sin precedentes claros',
-    requiredInputs: ['Panel de expertos', 'Cuestionarios estructurados', 'Criterios de evaluación'],
-    applicationTime: '6-12 semanas',
-    requiredPeople: '1 facilitador + 10-20 expertos',
-    complexity: 'avanzado',
-    category: 'Consulta de Expertos',
-    description: 'Método estructurado de consulta a expertos mediante rondas iterativas para alcanzar consenso sobre temas complejos.',
-    advantages: ['Elimina sesgos grupales', 'Aprovecha conocimiento experto', 'Genera consenso'],
-    limitations: ['Proceso largo', 'Requiere expertos disponibles', 'Puede converger artificialmente'],
-    methodology: 'Selección de expertos → Ronda 1 → Análisis → Ronda 2 → Síntesis → Consenso',
-    expectedOutputs: ['Informe de consenso', 'Ranking de prioridades', 'Análisis de convergencia'],
-    resources: ['Plataforma online', 'Base de datos de expertos', 'Sistema de análisis'],
-    prerequisites: ['Identificación de expertos', 'Diseño de cuestionarios'],
-    examples: ['Prioridades tecnológicas', 'Riesgos futuros', 'Políticas públicas'],
-    relatedTechniques: ['Encuestas de Expertos', 'Análisis de Stakeholders'],
-    references: ['Delphi Method Guide', 'Expert Consultation Handbook']
-  },
-  {
-    id: '3',
-    name: 'Construcción de Escenarios',
-    objective: 'Desarrollar múltiples futuros plausibles para explorar incertidumbres',
-    recommendedUse: 'Para explorar diferentes posibilidades futuras y preparar estrategias',
-    requiredInputs: ['Factores clave', 'Tendencias identificadas', 'Incertidumbres críticas'],
-    applicationTime: '4-8 semanas',
-    requiredPeople: '5-8 personas',
-    complexity: 'avanzado',
-    category: 'Exploración de Futuros',
-    description: 'Técnica para crear narrativas coherentes de futuros alternativos basados en diferentes combinaciones de factores clave.',
-    advantages: ['Explora múltiples posibilidades', 'Prepara para incertidumbre', 'Facilita planificación'],
-    limitations: ['Requiere creatividad', 'Puede ser subjetivo', 'Complejidad en validación'],
-    methodology: 'Identificación de factores → Análisis de incertidumbres → Construcción de escenarios → Desarrollo de narrativas → Validación',
-    expectedOutputs: ['Set de escenarios', 'Narrativas detalladas', 'Matriz de implicaciones'],
-    resources: ['Talleres facilitados', 'Herramientas de mapeo', 'Espacios colaborativos'],
-    prerequisites: ['Análisis previo del sistema', 'Equipo multidisciplinario'],
-    examples: ['Escenarios climáticos', 'Futuros tecnológicos', 'Desarrollo urbano'],
-    relatedTechniques: ['Análisis Morfológico', 'Impactos Cruzados'],
-    references: ['Scenario Planning Guide', 'Shell Scenarios Methodology']
-  },
-  {
-    id: '4',
-    name: 'Mapeo de Stakeholders',
-    objective: 'Identificar y analizar actores relevantes y sus interrelaciones',
-    recommendedUse: 'Al inicio de estudios prospectivos para entender el ecosistema de actores',
-    requiredInputs: ['Lista inicial de actores', 'Criterios de relevancia', 'Información sobre intereses'],
-    applicationTime: '1-2 semanas',
-    requiredPeople: '2-4 personas',
-    complexity: 'básico',
-    category: 'Análisis de Actores',
-    description: 'Técnica para identificar, categorizar y analizar las relaciones entre los diferentes actores que influyen en el sistema estudiado.',
-    advantages: ['Visión sistémica', 'Identifica influencias clave', 'Base para participación'],
-    limitations: ['Puede ser estático', 'Subjetividad en categorización', 'Requiere actualización'],
-    methodology: 'Identificación → Categorización → Análisis de influencia → Mapeo de relaciones → Priorización',
-    expectedOutputs: ['Mapa de stakeholders', 'Matriz de influencia', 'Estrategia de engagement'],
-    resources: ['Software de mapeo', 'Plantillas de análisis', 'Bases de datos'],
-    prerequisites: ['Conocimiento del sector', 'Acceso a información'],
-    examples: ['Actores en política pública', 'Ecosistema empresarial', 'Red de innovación'],
-    relatedTechniques: ['Análisis de Redes', 'Análisis Institucional'],
-    references: ['Stakeholder Analysis Manual', 'Actor Mapping Guide']
-  },
-  {
-    id: '5',
-    name: 'Análisis de Impactos Cruzados',
-    objective: 'Analizar las interacciones entre diferentes factores y sus efectos mutuos',
-    recommendedUse: 'Para entender sistemas complejos con múltiples variables interconectadas',
-    requiredInputs: ['Lista de factores clave', 'Matriz de interacciones', 'Datos de relaciones'],
-    applicationTime: '3-5 semanas',
-    requiredPeople: '4-6 personas',
-    complexity: 'avanzado',
-    category: 'Análisis Sistémico',
-    description: 'Método para evaluar cómo los cambios en un factor pueden influir en otros factores del sistema.',
-    advantages: ['Captura complejidad sistémica', 'Identifica efectos indirectos', 'Cuantifica relaciones'],
-    limitations: ['Requiere datos precisos', 'Complejidad computacional', 'Validación difícil'],
-    methodology: 'Identificación de factores → Construcción de matriz → Evaluación de impactos → Análisis de efectos → Síntesis',
-    expectedOutputs: ['Matriz de impactos', 'Análisis de sensibilidad', 'Ranking de factores clave'],
-    resources: ['Software especializado', 'Bases de datos', 'Capacidad de modelado'],
-    prerequisites: ['Conocimiento del sistema', 'Habilidades analíticas'],
-    examples: ['Sistemas socioeconómicos', 'Cadenas de valor', 'Ecosistemas urbanos'],
-    relatedTechniques: ['Dinámica de Sistemas', 'Análisis de Redes'],
-    references: ['Cross Impact Analysis Manual', 'Systems Analysis Guide']
-  },
-  {
-    id: '6',
-    name: 'Talleres de Futuro',
-    objective: 'Facilitar la participación colectiva en la exploración de futuros deseables',
-    recommendedUse: 'Cuando se requiere involucrar a la comunidad en la construcción de visiones de futuro',
-    requiredInputs: ['Participantes diversos', 'Metodología de taller', 'Materiales de trabajo'],
-    applicationTime: '1-3 días',
-    requiredPeople: '1-2 facilitadores + 15-30 participantes',
-    complexity: 'intermedio',
-    category: 'Participación Ciudadana',
-    description: 'Metodología participativa para involucrar a diversos actores en la construcción colectiva de visiones de futuro.',
-    advantages: ['Alta participación', 'Genera apropiación', 'Diversidad de perspectivas'],
-    limitations: ['Logística compleja', 'Sesgos grupales', 'Requiere facilitación experta'],
-    methodology: 'Preparación → Sesión de apertura → Trabajo en grupos → Plenarias → Síntesis → Compromiso',
-    expectedOutputs: ['Visión colectiva', 'Plan de acción', 'Compromisos de participantes'],
-    resources: ['Espacio adecuado', 'Materiales de trabajo', 'Facilitadores entrenados'],
-    prerequisites: ['Convocatoria efectiva', 'Diseño metodológico'],
-    examples: ['Planificación urbana', 'Desarrollo rural', 'Políticas sectoriales'],
-    relatedTechniques: ['Café Mundial', 'Open Space Technology'],
-    references: ['Future Search Manual', 'Participatory Methods Guide']
-  },
-  {
-    id: '7',
-    name: 'Environmental Scanning',
-    objective: 'Identificar señales tempranas de cambio en el entorno externo',
-    recommendedUse: 'Para detectar cambios emergentes que pueden afectar políticas públicas',
-    requiredInputs: ['Fuentes de información diversas', 'Criterios de búsqueda', 'Sistema de monitoreo'],
-    applicationTime: 'Proceso continuo',
-    requiredPeople: '2-3 analistas',
-    complexity: 'intermedio',
-    category: 'Monitoreo Estratégico',
-    description: 'Proceso sistemático de recopilación y análisis de información sobre el entorno para identificar tendencias emergentes y señales débiles.',
-    advantages: ['Detección temprana', 'Amplitud de cobertura', 'Base para otros métodos'],
-    limitations: ['Información fragmentada', 'Requiere recursos continuos', 'Sobrecarga informativa'],
-    methodology: 'Definición de áreas → Identificación de fuentes → Recopilación → Análisis → Síntesis → Comunicación',
-    expectedOutputs: ['Boletines de tendencias', 'Base de datos de señales', 'Informes de alerta'],
-    resources: ['Herramientas de búsqueda', 'Acceso a bases de datos', 'Software de análisis'],
-    prerequisites: ['Red de fuentes', 'Capacidad analítica'],
-    examples: ['Monitoreo tecnológico', 'Vigilancia social', 'Análisis geopolítico'],
-    relatedTechniques: ['Análisis de Tendencias', 'Método Delphi'],
-    references: ['UK Futures Toolkit', 'Environmental Scanning Guide']
-  },
-  {
-    id: '8',
-    name: 'Backcasting',
-    objective: 'Trabajar hacia atrás desde un futuro deseado para identificar pasos necesarios',
-    recommendedUse: 'Cuando se tiene una visión clara del futuro deseado y se necesita un camino para llegar',
-    requiredInputs: ['Visión de futuro definida', 'Conocimiento del estado actual', 'Identificación de hitos'],
-    applicationTime: '3-6 semanas',
-    requiredPeople: '4-8 personas',
-    complexity: 'intermedio',
-    category: 'Planificación Estratégica',
-    description: 'Metodología que parte de un futuro deseado y trabaja hacia atrás para determinar los pasos necesarios para alcanzarlo.',
-    advantages: ['Orientado a objetivos', 'Identifica requisitos críticos', 'Facilita planificación'],
-    limitations: ['Requiere visión clara', 'Puede ignorar obstáculos', 'Menos exploración de alternativas'],
-    methodology: 'Definición de futuro → Identificación de hitos → Análisis de requisitos → Mapeo de pasos → Validación',
-    expectedOutputs: ['Hoja de ruta', 'Cronograma de hitos', 'Identificación de barreras'],
-    resources: ['Herramientas de planificación', 'Talleres estructurados', 'Software de mapeo'],
-    prerequisites: ['Visión consensuada', 'Conocimiento técnico'],
-    examples: ['Sostenibilidad urbana', 'Transición energética', 'Desarrollo social'],
-    relatedTechniques: ['Construcción de Escenarios', 'Planificación Estratégica'],
-    references: ['Backcasting for Sustainability', 'UK Policy Toolkit']
-  },
-  {
-    id: '9',
-    name: 'Cross-Impact Analysis',
-    objective: 'Evaluar las probabilidades de ocurrencia de eventos considerando sus interacciones mutuas',
-    recommendedUse: 'Para analizar sistemas complejos con múltiples eventos interdependientes',
-    requiredInputs: ['Lista de eventos clave', 'Probabilidades iniciales', 'Matriz de impactos'],
-    applicationTime: '4-8 semanas',
-    requiredPeople: '3-6 analistas + expertos',
-    complexity: 'avanzado',
-    category: 'Análisis Cuantitativo',
-    description: 'Técnica matemática que analiza cómo la ocurrencia de un evento afecta la probabilidad de que ocurran otros eventos.',
-    advantages: ['Cuantifica interacciones', 'Maneja incertidumbre', 'Base para simulación'],
-    limitations: ['Requiere expertise técnico', 'Complejidad computacional', 'Sesgos en estimaciones'],
-    methodology: 'Identificación de eventos → Estimación de probabilidades → Construcción de matriz → Cálculo de impactos → Análisis de resultados',
-    expectedOutputs: ['Probabilidades ajustadas', 'Matriz de impactos', 'Análisis de sensibilidad'],
-    resources: ['Software especializado', 'Capacidad computacional', 'Panel de expertos'],
-    prerequisites: ['Conocimiento estadístico', 'Identificación precisa de eventos'],
-    examples: ['Análisis de riesgos', 'Planificación tecnológica', 'Políticas públicas'],
-    relatedTechniques: ['Análisis de Impactos Cruzados', 'Simulación Monte Carlo'],
-    references: ['Cross-Impact Methods', 'Futures Research Methodology']
-  },
-  {
-    id: '10',
-    name: 'Wild Cards Analysis',
-    objective: 'Identificar y prepararse para eventos de baja probabilidad pero alto impacto',
-    recommendedUse: 'Para considerar disrupciones potenciales que podrían cambiar radicalmente el contexto',
-    requiredInputs: ['Brainstorming de eventos extremos', 'Análisis de impactos', 'Evaluación de probabilidades'],
-    applicationTime: '2-4 semanas',
-    requiredPeople: '5-10 personas',
-    complexity: 'intermedio',
-    category: 'Gestión de Riesgos',
-    description: 'Análisis de eventos de baja probabilidad pero alto impacto que podrían alterar significativamente el curso de los acontecimientos.',
-    advantages: ['Prepara para disrupciones', 'Amplía perspectiva', 'Mejora resiliencia'],
-    limitations: ['Difícil de cuantificar', 'Puede generar ansiedad', 'Recursos limitados para preparación'],
-    methodology: 'Identificación de wild cards → Evaluación de impactos → Análisis de probabilidades → Desarrollo de respuestas → Monitoreo',
-    expectedOutputs: ['Catálogo de wild cards', 'Planes de contingencia', 'Sistema de alerta'],
-    resources: ['Sesiones creativas', 'Análisis de casos', 'Herramientas de evaluación'],
-    prerequisites: ['Pensamiento lateral', 'Conocimiento sectorial'],
-    examples: ['Pandemias', 'Colapsos financieros', 'Avances tecnológicos disruptivos'],
-    relatedTechniques: ['Análisis de Riesgos', 'Construcción de Escenarios'],
-    references: ['Wild Cards in Futures Studies', 'UK Government Risk Assessment']
-  },
-  {
-    id: '11',
-    name: 'Morphological Analysis',
-    objective: 'Explorar sistemáticamente todas las combinaciones posibles de diferentes parámetros',
-    recommendedUse: 'Para generar opciones comprehensivas cuando hay múltiples dimensiones de variación',
-    requiredInputs: ['Parámetros clave', 'Valores posibles para cada parámetro', 'Criterios de factibilidad'],
-    applicationTime: '3-5 semanas',
-    requiredPeople: '3-5 analistas',
-    complexity: 'avanzado',
-    category: 'Análisis Estructural',
-    description: 'Método sistemático para explorar todas las configuraciones posibles de un problema multidimensional.',
-    advantages: ['Exhaustivo', 'Estructurado', 'Revela opciones no obvias'],
-    limitations: ['Puede ser complejo', 'Explosión combinatoria', 'Requiere filtrado posterior'],
-    methodology: 'Definición de parámetros → Identificación de valores → Construcción de caja morfológica → Evaluación de combinaciones → Selección',
-    expectedOutputs: ['Caja morfológica', 'Configuraciones viables', 'Análisis de opciones'],
-    resources: ['Software de análisis', 'Herramientas de visualización', 'Capacidad computacional'],
-    prerequisites: ['Definición clara del problema', 'Conocimiento del dominio'],
-    examples: ['Diseño de políticas', 'Desarrollo de productos', 'Planificación urbana'],
-    relatedTechniques: ['Análisis de Sistemas', 'Generación de Alternativas'],
-    references: ['Morphological Analysis Guide', 'Systematic Innovation Methods']
-  },
-  {
-    id: '12',
-    name: 'Systems Mapping',
-    objective: 'Visualizar y analizar las relaciones complejas dentro de un sistema',
-    recommendedUse: 'Para entender sistemas complejos antes de aplicar otras técnicas prospectivas',
-    requiredInputs: ['Componentes del sistema', 'Relaciones identificadas', 'Flujos de información/recursos'],
-    applicationTime: '2-4 semanas',
-    requiredPeople: '4-8 personas',
-    complexity: 'intermedio',
-    category: 'Análisis de Sistemas',
-    description: 'Técnica de visualización que mapea los componentes de un sistema y sus interrelaciones para entender su funcionamiento.',
-    advantages: ['Visión holística', 'Identifica puntos de apalancamiento', 'Base para intervenciones'],
-    limitations: ['Puede ser complejo', 'Requiere validación', 'Dinámico/cambiante'],
-    methodology: 'Identificación de componentes → Mapeo de relaciones → Análisis de flujos → Identificación de bucles → Validación',
-    expectedOutputs: ['Mapa del sistema', 'Análisis de relaciones', 'Puntos de intervención'],
-    resources: ['Software de mapeo', 'Talleres colaborativos', 'Herramientas de visualización'],
-    prerequisites: ['Conocimiento del sistema', 'Pensamiento sistémico'],
-    examples: ['Sistema de salud', 'Ecosistema de innovación', 'Cadena de suministro'],
-    relatedTechniques: ['Análisis de Stakeholders', 'Dinámica de Sistemas'],
-    references: ['Systems Thinking Guide', 'Complexity and Policy Making']
-  },
-  {
-    id: '13',
+    id: 'weak-signals',
     name: 'Weak Signals Detection',
-    objective: 'Identificar señales tempranas de cambio que podrían convertirse en tendencias importantes',
-    recommendedUse: 'Para detectar cambios emergentes antes de que se conviertan en tendencias mainstream',
-    requiredInputs: ['Fuentes de información diversas', 'Criterios de relevancia', 'Sistema de filtrado'],
-    applicationTime: 'Proceso continuo',
-    requiredPeople: '2-4 analistas',
-    complexity: 'intermedio',
-    category: 'Detección Temprana',
-    description: 'Proceso de identificación y análisis de señales débiles que podrían indicar cambios futuros significativos.',
-    advantages: ['Detección temprana', 'Ventaja competitiva', 'Preparación proactiva'],
-    limitations: ['Alto ruido/señal', 'Interpretación subjetiva', 'Falsos positivos'],
-    methodology: 'Definición de áreas → Identificación de fuentes → Recopilación → Filtrado → Análisis → Validación',
-    expectedOutputs: ['Catálogo de señales', 'Análisis de relevancia', 'Alertas tempranas'],
-    resources: ['Herramientas de monitoreo', 'Acceso a información', 'Capacidad analítica'],
-    prerequisites: ['Red de fuentes', 'Criterios claros de relevancia'],
-    examples: ['Cambios en comportamiento', 'Innovaciones emergentes', 'Movimientos sociales'],
-    relatedTechniques: ['Environmental Scanning', 'Análisis de Tendencias'],
-    references: ['Weak Signals for Strategic Intelligence', 'Early Warning Systems']
+    icon: Eye,
+    complexity: 3,
+    category: 'early-warning',
+    description: 'Systematic approach to identify and analyze emerging phenomena that could become significant trends or disruptions in the future.',
+    objectives: [
+      'Detect early indicators of change',
+      'Identify potential disruptions',
+      'Monitor emerging phenomena',
+      'Enable proactive response'
+    ],
+    applications: [
+      'Technology emergence monitoring',
+      'Social change detection',
+      'Market disruption anticipation',
+      'Risk early warning',
+      'Innovation opportunity identification'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Scanning Framework',
+        description: 'Define scanning scope, sources, and criteria for weak signal identification.',
+        duration: '1 week'
+      },
+      {
+        step: 2,
+        title: 'Signal Detection',
+        description: 'Systematically scan environment for unusual patterns or emerging phenomena.',
+        duration: 'Ongoing'
+      },
+      {
+        step: 3,
+        title: 'Signal Validation',
+        description: 'Verify signal authenticity and assess its potential significance.',
+        duration: '1-2 days per signal'
+      },
+      {
+        step: 4,
+        title: 'Impact Assessment',
+        description: 'Evaluate potential future impact and relevance of validated signals.',
+        duration: '1 week'
+      },
+      {
+        step: 5,
+        title: 'Monitoring System',
+        description: 'Establish monitoring system to track signal evolution over time.',
+        duration: 'Ongoing'
+      }
+    ],
+    advantages: [
+      'Early warning capability',
+      'Competitive advantage potential',
+      'Supports proactive planning',
+      'Identifies emerging opportunities'
+    ],
+    limitations: [
+      'High false positive rate',
+      'Difficult to validate significance',
+      'Requires diverse information sources',
+      'Interpretation challenges'
+    ],
+    timeHorizon: '1-15 years',
+    participants: '2-5 participants',
+    bibliographicSources: [
+      {
+        type: 'book',
+        title: 'Weak Signals for Strategic Intelligence',
+        authors: ['Henri Dou', 'Philippe Clerc'],
+        year: 2013,
+        publisher: 'ISTE Editions'
+      },
+      {
+        type: 'article',
+        title: 'Early Warning Systems and Weak Signals',
+        authors: ['Igor Ansoff'],
+        journal: 'Strategic Management Journal',
+        year: 1975
+      }
+    ]
   },
   {
-    id: '14',
-    name: 'Expert Elicitation',
-    objective: 'Obtener conocimiento especializado de expertos para informar decisiones prospectivas',
-    recommendedUse: 'Cuando se necesita conocimiento específico que no está disponible en fuentes documentales',
-    requiredInputs: ['Lista de expertos relevantes', 'Preguntas estructuradas', 'Protocolo de consulta'],
-    applicationTime: '2-6 semanas',
-    requiredPeople: '1-2 facilitadores + 5-15 expertos',
-    complexity: 'intermedio',
-    category: 'Consulta de Expertos',
-    description: 'Proceso estructurado para extraer y sintetizar conocimiento experto sobre temas específicos.',
-    advantages: ['Acceso a conocimiento especializado', 'Múltiples perspectivas', 'Validación cruzada'],
-    limitations: ['Sesgos de expertos', 'Disponibilidad limitada', 'Posibles conflictos de interés'],
-    methodology: 'Identificación de expertos → Diseño de consulta → Recopilación → Análisis → Síntesis → Validación',
-    expectedOutputs: ['Síntesis de conocimiento', 'Áreas de consenso/disenso', 'Recomendaciones'],
-    resources: ['Red de contactos', 'Plataformas de consulta', 'Capacidad de análisis'],
-    prerequisites: ['Identificación clara de expertise necesaria', 'Preguntas bien formuladas'],
-    examples: ['Evaluación tecnológica', 'Análisis de políticas', 'Prospectiva sectorial'],
-    relatedTechniques: ['Método Delphi', 'Entrevistas Estructuradas'],
-    references: ['Expert Elicitation Protocol', 'Structured Expert Judgment']
+    id: 'backcasting',
+    name: 'Backcasting',
+    icon: Target,
+    complexity: 4,
+    category: 'normative',
+    description: 'Planning methodology that starts from a desired future vision and works backward to identify necessary steps and pathways to achieve it.',
+    objectives: [
+      'Design pathways to desired futures',
+      'Identify necessary preconditions',
+      'Plan strategic interventions',
+      'Align actions with long-term vision'
+    ],
+    applications: [
+      'Sustainability planning',
+      'Strategic goal achievement',
+      'Policy roadmap development',
+      'Organizational transformation',
+      'Technology deployment planning'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Vision Definition',
+        description: 'Define clear, detailed vision of desired future state with specific timeframe.',
+        duration: '1-2 weeks'
+      },
+      {
+        step: 2,
+        title: 'Milestone Identification',
+        description: 'Identify key milestones and checkpoints along the pathway to the vision.',
+        duration: '1 week'
+      },
+      {
+        step: 3,
+        title: 'Barrier Analysis',
+        description: 'Identify potential barriers, constraints, and challenges to achieving the vision.',
+        duration: '1 week'
+      },
+      {
+        step: 4,
+        title: 'Pathway Design',
+        description: 'Design specific pathways and strategies to overcome barriers and reach milestones.',
+        duration: '2-3 weeks'
+      },
+      {
+        step: 5,
+        title: 'Action Planning',
+        description: 'Develop detailed action plans with timelines, responsibilities, and resources.',
+        duration: '1-2 weeks'
+      }
+    ],
+    advantages: [
+      'Goal-oriented approach',
+      'Clarifies necessary actions',
+      'Aligns stakeholders around vision',
+      'Identifies critical pathways'
+    ],
+    limitations: [
+      'Assumes vision is achievable',
+      'May miss alternative pathways',
+      'Requires clear vision consensus',
+      'Can be overly deterministic'
+    ],
+    timeHorizon: '5-50 years',
+    participants: '5-15 participants',
+    bibliographicSources: [
+      {
+        type: 'book',
+        title: 'Backcasting for Sustainable Development',
+        authors: ['John Robinson'],
+        year: 2003,
+        publisher: 'Cambridge University Press'
+      },
+      {
+        type: 'article',
+        title: 'Backcasting as Strategic Planning Tool',
+        authors: ['Karl Henrik Dreborg'],
+        journal: 'Futures',
+        year: 1996
+      }
+    ]
   },
   {
-    id: '15',
-    name: 'Horizon Scanning',
-    objective: 'Identificar sistemáticamente temas emergentes que podrían requerir atención política',
-    recommendedUse: 'Para mantener una visión amplia de cambios potenciales que podrían requerir respuesta gubernamental',
-    requiredInputs: ['Fuentes de información amplias', 'Criterios de relevancia política', 'Red de observadores'],
-    applicationTime: 'Proceso continuo',
-    requiredPeople: '5-10 analistas',
-    complexity: 'intermedio',
-    category: 'Vigilancia Estratégica',
-    description: 'Proceso sistemático de búsqueda de temas emergentes que podrían tener implicaciones para políticas futuras.',
-    advantages: ['Cobertura amplia', 'Orientado a políticas', 'Identificación temprana de temas'],
-    limitations: ['Requiere recursos continuos', 'Puede ser superficial', 'Dificultad para priorizar'],
-    methodology: 'Definición de alcance → Identificación de fuentes → Búsqueda sistemática → Análisis → Priorización → Comunicación',
-    expectedOutputs: ['Informes de horizonte', 'Lista de temas emergentes', 'Evaluación de relevancia'],
-    resources: ['Sistema de información', 'Red de contactos', 'Herramientas de análisis'],
-    prerequisites: ['Mandato institucional', 'Capacidad analítica sostenida'],
-    examples: ['Cambios tecnológicos', 'Tendencias sociales', 'Riesgos globales'],
-    relatedTechniques: ['Environmental Scanning', 'Weak Signals Detection'],
-    references: ['UK Government Horizon Scanning', 'Foresight for Government']
-  },
-  {
-    id: '21',
-    name: 'Future Wheel',
-    objective: 'Explorar de manera sistemática las consecuencias e implicaciones futuras de un evento o tendencia central',
-    recommendedUse: 'Para analizar efectos en cadena y consecuencias de segundo y tercer orden de cambios o decisiones',
-    requiredInputs: ['Evento o tendencia central definida', 'Grupo de trabajo multidisciplinario', 'Conocimiento del sistema'],
-    applicationTime: '2-4 horas',
-    requiredPeople: '1 facilitador + 5-8 participantes',
-    complexity: 'básico',
-    category: 'Análisis de Impactos',
-    description: 'Herramienta visual que utiliza una estructura radial para mapear las consecuencias directas e indirectas de un evento central.',
-    advantages: ['Visualización clara de consecuencias', 'Identifica efectos no obvios', 'Fácil de entender y usar'],
-    limitations: ['Puede volverse complejo rápidamente', 'Subjetividad en las conexiones', 'Dificultad para cuantificar impactos'],
-    methodology: 'Definición del evento central → Identificación de consecuencias primarias → Exploración de efectos secundarios → Análisis de impactos terciarios → Síntesis',
-    expectedOutputs: ['Diagrama de rueda de futuros', 'Lista de consecuencias jerarquizadas', 'Análisis de interconexiones'],
-    resources: ['Materiales de dibujo', 'Pizarra o software de mapeo', 'Espacio colaborativo'],
-    prerequisites: ['Evento central bien definido', 'Conocimiento del contexto'],
-    examples: ['Impacto de nueva tecnología', 'Consecuencias de política pública', 'Efectos del cambio climático'],
-    relatedTechniques: ['Análisis de Impactos Cruzados', 'Systems Mapping'],
-    references: ['Futures Wheel Method Guide', 'Strategic Impact Analysis']
-  },
-  {
-    id: '22',
-    name: 'Wind Tunneling',
-    objective: 'Probar la robustez de políticas o estrategias bajo diferentes condiciones y marcos de referencia',
-    recommendedUse: 'Para evaluar cómo diferentes perspectivas ciudadanas o marcos interpretativos afectan la efectividad de políticas',
-    requiredInputs: ['Política o estrategia definida', 'Marcos de referencia diversos', 'Grupos representativos'],
-    applicationTime: '3-6 semanas',
-    requiredPeople: '3-5 facilitadores + 15-30 participantes',
-    complexity: 'intermedio',
-    category: 'Evaluación de Políticas',
-    description: 'Metodología que simula diferentes condiciones interpretativas para probar la resistencia y adaptabilidad de políticas o estrategias.',
-    advantages: ['Identifica puntos débiles', 'Considera múltiples perspectivas', 'Mejora robustez de políticas'],
-    limitations: ['Requiere grupos diversos', 'Proceso intensivo', 'Interpretación compleja de resultados'],
-    methodology: 'Definición de política → Identificación de marcos → Simulación con grupos → Análisis de respuestas → Refinamiento',
-    expectedOutputs: ['Informe de robustez', 'Recomendaciones de mejora', 'Mapa de vulnerabilidades'],
-    resources: ['Espacios de simulación', 'Facilitadores entrenados', 'Herramientas de análisis'],
-    prerequisites: ['Política bien articulada', 'Acceso a grupos diversos'],
-    examples: ['Políticas públicas', 'Estrategias corporativas', 'Programas sociales'],
-    relatedTechniques: ['Análisis de Stakeholders', 'Talleres de Futuro'],
-    references: ['Wind Tunneling Methodology', 'Policy Testing Framework']
+    id: 'causal-layered-analysis',
+    name: 'Causal Layered Analysis (CLA)',
+    icon: Layers,
+    complexity: 4,
+    category: 'deep-analysis',
+    description: 'Four-level analytical framework that examines surface trends, systems, worldviews, and myths/metaphors to understand deeper causes of change.',
+    objectives: [
+      'Understand deeper causes of phenomena',
+      'Examine multiple levels of reality',
+      'Challenge dominant paradigms',
+      'Develop transformative solutions'
+    ],
+    applications: [
+      'Social transformation analysis',
+      'Organizational change',
+      'Policy analysis',
+      'Cultural studies',
+      'Future studies research'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Litany Level Analysis',
+        description: 'Examine surface-level trends, statistics, and commonly reported phenomena.',
+        duration: '1 week'
+      },
+      {
+        step: 2,
+        title: 'Systems Level Analysis',
+        description: 'Analyze underlying systems, structures, and relationships that create the trends.',
+        duration: '2 weeks'
+      },
+      {
+        step: 3,
+        title: 'Worldview Level Analysis',
+        description: 'Examine worldviews, ideologies, and paradigms that legitimize the systems.',
+        duration: '1-2 weeks'
+      },
+      {
+        step: 4,
+        title: 'Myth/Metaphor Level Analysis',
+        description: 'Explore deep stories, myths, and metaphors that underpin worldviews.',
+        duration: '1-2 weeks'
+      },
+      {
+        step: 5,
+        title: 'Alternative Futures Creation',
+        description: 'Develop alternative scenarios at each level to create transformative futures.',
+        duration: '2-3 weeks'
+      }
+    ],
+    advantages: [
+      'Holistic multi-level analysis',
+      'Reveals hidden assumptions',
+      'Enables deep transformation',
+      'Challenges conventional thinking'
+    ],
+    limitations: [
+      'Highly subjective interpretation',
+      'Requires cultural sensitivity',
+      'Time-intensive process',
+      'May be too abstract for some applications'
+    ],
+    timeHorizon: '10-50 years',
+    participants: '3-8 participants',
+    bibliographicSources: [
+      {
+        type: 'methodological',
+        title: 'Causal Layered Analysis: A Four-Level Approach to Alternative Futures',
+        authors: ['Sohail Inayatullah'],
+        year: 2020,
+        institution: 'Futuribles International'
+      },
+      {
+        type: 'book',
+        title: 'Questioning the Future: Methods and Tools for Organizational and Societal Transformation',
+        authors: ['Sohail Inayatullah'],
+        year: 2007,
+        publisher: 'Tamkang University Press'
+      }
+    ]
   }
 ];
+
+export const initialTechniques = techniques;
