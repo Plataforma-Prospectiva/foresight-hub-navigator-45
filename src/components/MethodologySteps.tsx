@@ -4,8 +4,10 @@ import { Button } from "@/components/ui/button";
 import { ChevronRight, PlayCircle, CheckCircle2, ArrowRight } from "lucide-react";
 import { useState } from "react";
 
+import { MethodologyStep } from "@/types/technique";
+
 interface MethodologyStepsProps {
-  methodology: string;
+  methodology: MethodologyStep[];
   techniqueId: string;
 }
 
@@ -13,7 +15,7 @@ export const MethodologySteps = ({ methodology, techniqueId }: MethodologyStepsP
   const [currentStep, setCurrentStep] = useState(0);
   const [completedSteps, setCompletedSteps] = useState<number[]>([]);
 
-  const steps = methodology.split('→').map(step => step.trim());
+  const steps = methodology;
 
   const handleStepClick = (index: number) => {
     setCurrentStep(index);
@@ -45,13 +47,13 @@ export const MethodologySteps = ({ methodology, techniqueId }: MethodologyStepsP
     <div className="space-y-4">
       <div className="flex items-center gap-2 mb-4">
         <PlayCircle className="w-5 h-5 text-blue-600" />
-        <h4 className="font-semibold text-slate-700">Metodología Paso a Paso</h4>
+        <h4 className="font-semibold text-slate-700">Step-by-Step Methodology</h4>
         <Badge variant="outline" className="text-xs">
-          {completedSteps.length}/{steps.length} completados
+          {completedSteps.length}/{steps.length} completed
         </Badge>
       </div>
 
-      {/* Vista gráfica interactiva */}
+      {/* Interactive graphical view */}
       <div className="grid grid-cols-1 gap-3">
         {steps.map((step, index) => {
           const status = getStepStatus(index);
@@ -72,7 +74,7 @@ export const MethodologySteps = ({ methodology, techniqueId }: MethodologyStepsP
                       {completedSteps.includes(index) ? (
                         <CheckCircle2 className="w-4 h-4" />
                       ) : (
-                        index + 1
+                        step.step
                       )}
                     </div>
                     {index < steps.length - 1 && (
@@ -85,11 +87,16 @@ export const MethodologySteps = ({ methodology, techniqueId }: MethodologyStepsP
                       status === 'current' ? 'text-blue-700' : 
                       status === 'completed' ? 'text-green-700' : 'text-gray-700'
                     }`}>
-                      Paso {index + 1}
+                      Step {step.step}: {step.title}
                     </div>
                     <div className="text-sm text-gray-600 mt-1">
-                      {step}
+                      {step.description}
                     </div>
+                    {step.duration && (
+                      <div className="text-xs text-blue-600 mt-1">
+                        Duration: {step.duration}
+                      </div>
+                    )}
                   </div>
 
                   <Button
@@ -101,17 +108,17 @@ export const MethodologySteps = ({ methodology, techniqueId }: MethodologyStepsP
                     }}
                     className="ml-2"
                   >
-                    {completedSteps.includes(index) ? 'Completado' : 'Marcar'}
+                    {completedSteps.includes(index) ? 'Completed' : 'Mark'}
                   </Button>
                 </div>
 
                 {status === 'current' && (
                   <div className="mt-3 p-3 bg-blue-50 rounded-lg border-l-4 border-blue-500">
                     <div className="text-sm font-medium text-blue-900 mb-1">
-                      Paso Actual en Detalle
+                      Current Step Details
                     </div>
                     <div className="text-sm text-blue-800">
-                      {step} - Enfócate en esta etapa para avanzar en la implementación de la técnica.
+                      {step.description} - Focus on this stage to advance in the technique implementation.
                     </div>
                   </div>
                 )}
@@ -121,11 +128,11 @@ export const MethodologySteps = ({ methodology, techniqueId }: MethodologyStepsP
         })}
       </div>
 
-      {/* Barra de progreso general */}
+      {/* Overall progress bar */}
       <Card className="bg-gradient-to-r from-blue-50 to-indigo-50">
         <CardContent className="p-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-gray-700">Progreso General</span>
+            <span className="text-sm font-medium text-gray-700">Overall Progress</span>
             <span className="text-sm font-bold text-blue-600">
               {Math.round((completedSteps.length / steps.length) * 100)}%
             </span>
@@ -138,8 +145,8 @@ export const MethodologySteps = ({ methodology, techniqueId }: MethodologyStepsP
           </div>
           <div className="text-xs text-gray-600 mt-2">
             {completedSteps.length === steps.length 
-              ? "¡Metodología completada! 🎉" 
-              : `${steps.length - completedSteps.length} pasos restantes`
+              ? "Methodology completed! 🎉" 
+              : `${steps.length - completedSteps.length} steps remaining`
             }
           </div>
         </CardContent>

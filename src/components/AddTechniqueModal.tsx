@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
-import { Plus, X } from "lucide-react";
+import { Plus, X, BookOpen } from "lucide-react";
 import { useTechniques } from "@/context/TechniqueContext";
 import { Technique } from "@/types/technique";
 
@@ -15,33 +15,33 @@ export const AddTechniqueModal = () => {
   const { addTechnique } = useTechniques();
   const [isOpen, setIsOpen] = useState(false);
   
-  // Estados del formulario
+  // Form states
   const [formData, setFormData] = useState({
     name: "",
-    objective: "",
-    recommendedUse: "",
-    applicationTime: "",
-    requiredPeople: "",
-    complexity: "básico" as "básico" | "intermedio" | "avanzado",
     category: "",
     description: "",
-    methodology: "",
+    timeHorizon: "",
+    participants: "",
+    complexity: 1 as number,
   });
 
   const [listFields, setListFields] = useState({
-    requiredInputs: [] as string[],
+    objectives: [] as string[],
+    applications: [] as string[],
     advantages: [] as string[],
     limitations: [] as string[],
-    expectedOutputs: [] as string[],
-    resources: [] as string[],
-    prerequisites: [] as string[],
-    examples: [] as string[],
-    relatedTechniques: [] as string[],
-    references: [] as string[],
   });
 
+  const [methodologySteps, setMethodologySteps] = useState([
+    { step: 1, title: "", description: "", duration: "" }
+  ]);
+
+  const [bibliographicSources, setBibliographicSources] = useState([
+    { type: 'book' as const, title: "", authors: [], year: new Date().getFullYear(), institution: "" }
+  ]);
+
   const [currentInput, setCurrentInput] = useState("");
-  const [currentField, setCurrentField] = useState<keyof typeof listFields>("requiredInputs");
+  const [currentField, setCurrentField] = useState<keyof typeof listFields>("objectives");
 
   const handleInputChange = (field: keyof typeof formData, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -68,50 +68,56 @@ export const AddTechniqueModal = () => {
     e.preventDefault();
     
     const newTechnique: Omit<Technique, 'id'> = {
-      ...formData,
-      ...listFields,
+      name: formData.name,
+      icon: BookOpen, // Default icon
+      complexity: formData.complexity,
+      category: formData.category,
+      description: formData.description,
+      objectives: listFields.objectives,
+      applications: listFields.applications,
+      methodology: methodologySteps,
+      advantages: listFields.advantages,
+      limitations: listFields.limitations,
+      timeHorizon: formData.timeHorizon,
+      participants: formData.participants,
+      bibliographicSources: bibliographicSources.filter(source => source.title.trim() !== ""),
     };
 
     addTechnique(newTechnique);
     
-    // Limpiar formulario
+    // Clear form
     setFormData({
       name: "",
-      objective: "",
-      recommendedUse: "",
-      applicationTime: "",
-      requiredPeople: "",
-      complexity: "básico",
       category: "",
       description: "",
-      methodology: "",
+      timeHorizon: "",
+      participants: "",
+      complexity: 1,
     });
     
     setListFields({
-      requiredInputs: [],
+      objectives: [],
+      applications: [],
       advantages: [],
       limitations: [],
-      expectedOutputs: [],
-      resources: [],
-      prerequisites: [],
-      examples: [],
-      relatedTechniques: [],
-      references: [],
     });
+    
+    setMethodologySteps([
+      { step: 1, title: "", description: "", duration: "" }
+    ]);
+    
+    setBibliographicSources([
+      { type: 'book', title: "", authors: [], year: new Date().getFullYear(), institution: "" }
+    ]);
     
     setIsOpen(false);
   };
 
   const fieldLabels = {
-    requiredInputs: "Insumos Requeridos",
-    advantages: "Ventajas",
-    limitations: "Limitaciones",
-    expectedOutputs: "Resultados Esperados",
-    resources: "Recursos Necesarios",
-    prerequisites: "Prerrequisitos",
-    examples: "Ejemplos",
-    relatedTechniques: "Técnicas Relacionadas",
-    references: "Referencias"
+    objectives: "Objectives",
+    applications: "Applications",
+    advantages: "Advantages",
+    limitations: "Limitations"
   };
 
   return (
@@ -119,21 +125,21 @@ export const AddTechniqueModal = () => {
       <DialogTrigger asChild>
         <Button className="flex items-center gap-2">
           <Plus className="w-4 h-4" />
-          Nueva Técnica
+          New Technique
         </Button>
       </DialogTrigger>
       <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle>Agregar Nueva Técnica Prospectiva</DialogTitle>
+          <DialogTitle>Add New Prospective Technique</DialogTitle>
           <DialogDescription>
-            Complete la información de la nueva técnica metodológica.
+            Complete the information for the new methodological technique.
           </DialogDescription>
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="name">Nombre de la Técnica</Label>
+              <Label htmlFor="name">Technique Name</Label>
               <Input
                 id="name"
                 value={formData.name}
@@ -143,7 +149,7 @@ export const AddTechniqueModal = () => {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="category">Categoría</Label>
+              <Label htmlFor="category">Category</Label>
               <Input
                 id="category"
                 value={formData.category}
@@ -154,18 +160,7 @@ export const AddTechniqueModal = () => {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="objective">Objetivo</Label>
-            <Textarea
-              id="objective"
-              value={formData.objective}
-              onChange={(e) => handleInputChange("objective", e.target.value)}
-              required
-              rows={2}
-            />
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="description">Descripción</Label>
+            <Label htmlFor="description">Description</Label>
             <Textarea
               id="description"
               value={formData.description}
@@ -177,71 +172,51 @@ export const AddTechniqueModal = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="applicationTime">Tiempo de Aplicación</Label>
+              <Label htmlFor="timeHorizon">Time Horizon</Label>
               <Input
-                id="applicationTime"
-                value={formData.applicationTime}
-                onChange={(e) => handleInputChange("applicationTime", e.target.value)}
-                placeholder="ej: 2-4 semanas"
+                id="timeHorizon"
+                value={formData.timeHorizon}
+                onChange={(e) => handleInputChange("timeHorizon", e.target.value)}
+                placeholder="e.g., Short-term, Medium-term"
                 required
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="requiredPeople">Personas Requeridas</Label>
+              <Label htmlFor="participants">Participants</Label>
               <Input
-                id="requiredPeople"
-                value={formData.requiredPeople}
-                onChange={(e) => handleInputChange("requiredPeople", e.target.value)}
-                placeholder="ej: 3-5 personas"
+                id="participants"
+                value={formData.participants}
+                onChange={(e) => handleInputChange("participants", e.target.value)}
+                placeholder="e.g., 5-10 participants"
                 required
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="complexity">Complejidad</Label>
-              <Select value={formData.complexity} onValueChange={(value) => handleInputChange("complexity", value)}>
+              <Label htmlFor="complexity">Complexity (1-5)</Label>
+              <Select value={formData.complexity.toString()} onValueChange={(value) => handleInputChange("complexity", parseInt(value) as any)}>
                 <SelectTrigger>
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="básico">Básico</SelectItem>
-                  <SelectItem value="intermedio">Intermedio</SelectItem>
-                  <SelectItem value="avanzado">Avanzado</SelectItem>
+                  <SelectItem value="1">1 - Basic</SelectItem>
+                  <SelectItem value="2">2 - Easy</SelectItem>
+                  <SelectItem value="3">3 - Intermediate</SelectItem>
+                  <SelectItem value="4">4 - Advanced</SelectItem>
+                  <SelectItem value="5">5 - Expert</SelectItem>
                 </SelectContent>
               </Select>
             </div>
           </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="recommendedUse">Uso Recomendado</Label>
-            <Textarea
-              id="recommendedUse"
-              value={formData.recommendedUse}
-              onChange={(e) => handleInputChange("recommendedUse", e.target.value)}
-              required
-              rows={2}
-            />
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="methodology">Metodología</Label>
-            <Textarea
-              id="methodology"
-              value={formData.methodology}
-              onChange={(e) => handleInputChange("methodology", e.target.value)}
-              required
-              rows={3}
-            />
-          </div>
-
-          {/* Sección para listas */}
+          {/* Lists section */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Información Adicional</h3>
+            <h3 className="text-lg font-semibold">Additional Information</h3>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label>Campo a agregar</Label>
+                <Label>Field to add</Label>
                 <Select value={currentField} onValueChange={(value) => setCurrentField(value as keyof typeof listFields)}>
                   <SelectTrigger>
                     <SelectValue />
@@ -255,12 +230,12 @@ export const AddTechniqueModal = () => {
               </div>
 
               <div className="space-y-2">
-                <Label>Agregar elemento</Label>
+                <Label>Add element</Label>
                 <div className="flex gap-2">
                   <Input
                     value={currentInput}
                     onChange={(e) => setCurrentInput(e.target.value)}
-                    placeholder={`Agregar ${fieldLabels[currentField].toLowerCase()}`}
+                    placeholder={`Add ${fieldLabels[currentField].toLowerCase()}`}
                     onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addToList(currentField))}
                   />
                   <Button type="button" onClick={() => addToList(currentField)}>
@@ -270,7 +245,7 @@ export const AddTechniqueModal = () => {
               </div>
             </div>
 
-            {/* Mostrar elementos agregados */}
+            {/* Show added elements */}
             {Object.entries(listFields).map(([field, items]) => (
               items.length > 0 && (
                 <div key={field} className="space-y-2">
@@ -293,10 +268,10 @@ export const AddTechniqueModal = () => {
 
           <div className="flex justify-end gap-2">
             <Button type="button" variant="outline" onClick={() => setIsOpen(false)}>
-              Cancelar
+              Cancel
             </Button>
             <Button type="submit">
-              Agregar Técnica
+              Add Technique
             </Button>
           </div>
         </form>

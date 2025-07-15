@@ -19,21 +19,21 @@ export const TechniquesManager = () => {
   const [selectedComplexity, setSelectedComplexity] = useState("all");
   const [expandedTechnique, setExpandedTechnique] = useState<string | null>(null);
   const categories = ["all", ...Array.from(new Set(techniques.map(t => t.category)))];
-  const complexities = ["all", "básico", "intermedio", "avanzado"];
+  const complexities = ["all", "1", "2", "3", "4", "5"];
   const filteredTechniques = techniques.filter(technique => {
     const matchesSearch = technique.name.toLowerCase().includes(searchTerm.toLowerCase()) || technique.description.toLowerCase().includes(searchTerm.toLowerCase()) || technique.category.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = selectedCategory === "all" || technique.category === selectedCategory;
-    const matchesComplexity = selectedComplexity === "all" || technique.complexity === selectedComplexity;
+    const matchesComplexity = selectedComplexity === "all" || technique.complexity.toString() === selectedComplexity;
     return matchesSearch && matchesCategory && matchesComplexity;
   });
   const getComplexityStats = () => {
-    const stats = {
-      básico: 0,
-      intermedio: 0,
-      avanzado: 0
+    const stats = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+    techniques.forEach(t => stats[t.complexity as keyof typeof stats]++);
+    return {
+      básico: stats[1] + stats[2],
+      intermedio: stats[3],
+      avanzado: stats[4] + stats[5]
     };
-    techniques.forEach(t => stats[t.complexity]++);
-    return stats;
   };
   const stats = getComplexityStats();
   const scrollToSettings = () => {
@@ -140,8 +140,8 @@ export const TechniquesManager = () => {
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      {complexities.map(complexity => <SelectItem key={complexity} value={complexity}>
-                          {complexity === "all" ? "Todas las complejidades" : complexity}
+                    {complexities.map(complexity => <SelectItem key={complexity} value={complexity}>
+                          {complexity === "all" ? "All complexities" : `Level ${complexity}`}
                         </SelectItem>)}
                     </SelectContent>
                   </Select>

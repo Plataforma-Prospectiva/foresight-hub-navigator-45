@@ -24,15 +24,15 @@ export const StudyAnalyzer = () => {
     title: "",
     description: "",
     country: "",
-    stateLevel: "nacional" as "nacional" | "regional" | "local" | "municipal",
+    stateLevel: "national" as "national" | "regional" | "local" | "municipal",
     territoryName: "",
-    scope: "público" as "público" | "privado" | "mixto",
+    scope: "public" as "public" | "private" | "mixed",
     estimatedTime: "",
     studyObjective: "",
     timeHorizon: "",
-    objectiveComplexity: "media" as "baja" | "media" | "alta",
+    objectiveComplexity: "medium" as "low" | "medium" | "high",
     availableResources: {
-      budget: "medio" as "limitado" | "medio" | "amplio",
+      budget: "medium" as "limited" | "medium" | "extensive",
       expertAccess: false,
       fieldPersonnel: false,
       physicalInfrastructure: false,
@@ -44,7 +44,7 @@ export const StudyAnalyzer = () => {
       institutionalFramework: false,
       customResources: [] as string[],
     },
-    teamExperience: "intermedio" as "principiante" | "intermedio" | "experto",
+    teamExperience: "intermediate" as "beginner" | "intermediate" | "expert",
   });
 
   const [customResource, setCustomResource] = useState("");
@@ -154,7 +154,7 @@ export const StudyAnalyzer = () => {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="nacional">Nacional</SelectItem>
+                  <SelectItem value="national">National</SelectItem>
                   <SelectItem value="regional">Regional</SelectItem>
                   <SelectItem value="local">Local</SelectItem>
                   <SelectItem value="municipal">Municipal</SelectItem>
@@ -179,9 +179,9 @@ export const StudyAnalyzer = () => {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="público">Público</SelectItem>
-                  <SelectItem value="privado">Privado</SelectItem>
-                  <SelectItem value="mixto">Mixto</SelectItem>
+                  <SelectItem value="public">Public</SelectItem>
+                  <SelectItem value="private">Private</SelectItem>
+                  <SelectItem value="mixed">Mixed</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -240,9 +240,9 @@ export const StudyAnalyzer = () => {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="baja">Baja</SelectItem>
-                  <SelectItem value="media">Media</SelectItem>
-                  <SelectItem value="alta">Alta</SelectItem>
+                  <SelectItem value="low">Low</SelectItem>
+                  <SelectItem value="medium">Medium</SelectItem>
+                  <SelectItem value="high">High</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -254,9 +254,9 @@ export const StudyAnalyzer = () => {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="principiante">Principiante</SelectItem>
-                  <SelectItem value="intermedio">Intermedio</SelectItem>
-                  <SelectItem value="experto">Experto</SelectItem>
+                  <SelectItem value="beginner">Beginner</SelectItem>
+                  <SelectItem value="intermediate">Intermediate</SelectItem>
+                  <SelectItem value="expert">Expert</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -273,9 +273,9 @@ export const StudyAnalyzer = () => {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="limitado">Limitado</SelectItem>
-                  <SelectItem value="medio">Medio</SelectItem>
-                  <SelectItem value="amplio">Amplio</SelectItem>
+                  <SelectItem value="limited">Limited</SelectItem>
+                  <SelectItem value="medium">Medium</SelectItem>
+                  <SelectItem value="extensive">Extensive</SelectItem>
                 </SelectContent>
               </Select>
             </div>

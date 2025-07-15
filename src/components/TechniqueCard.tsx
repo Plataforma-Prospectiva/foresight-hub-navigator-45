@@ -28,24 +28,25 @@ interface TechniqueCardProps {
 }
 
 const complexityColors = {
-  básico: '#22c55e',
-  intermedio: '#f59e0b', 
-  avanzado: '#ef4444'
+  1: '#22c55e',
+  2: '#84cc16',
+  3: '#f59e0b', 
+  4: '#f97316',
+  5: '#ef4444'
 };
 
-const getComplexityCount = (complexity: string) => {
-  const counts = { básico: 0, intermedio: 0, avanzado: 0 };
+const getComplexityCount = (complexity: number) => {
+  const counts = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
   counts[complexity] = 1;
   return counts;
 };
 
 const getResourcesData = (technique: Technique) => [
-  { name: 'Tiempo', value: technique.applicationTime.includes('semana') ? 
-    parseInt(technique.applicationTime) * 7 : parseInt(technique.applicationTime) || 7 },
-  { name: 'Personas', value: parseInt(technique.requiredPeople) || 3 },
-  { name: 'Recursos', value: technique.resources.length * 2 },
-  { name: 'Complejidad', value: technique.complexity === 'básico' ? 2 : 
-    technique.complexity === 'intermedio' ? 5 : 8 }
+  { name: 'Time Horizon', value: technique.timeHorizon.includes('Short') ? 2 : 
+    technique.timeHorizon.includes('Medium') ? 5 : 8 },
+  { name: 'Participants', value: parseInt(technique.participants) || 5 },
+  { name: 'Complexity', value: technique.complexity },
+  { name: 'Applications', value: technique.applications.length }
 ];
 
 export const TechniqueCard = ({ technique, onEdit, onDelete, isExpanded, onToggleExpand, studyContext }: TechniqueCardProps) => {
@@ -73,7 +74,7 @@ export const TechniqueCard = ({ technique, onEdit, onDelete, isExpanded, onToggl
                 </Tooltip>
               </div>
             <CardDescription className="text-slate-600 mb-3">
-              {technique.objective}
+              {technique.objectives.join('. ')}
             </CardDescription>
             <div className="flex flex-wrap gap-2">
               <Badge variant="outline" className="text-xs">
@@ -83,7 +84,7 @@ export const TechniqueCard = ({ technique, onEdit, onDelete, isExpanded, onToggl
                 variant="outline" 
                 style={{ backgroundColor: complexityColors[technique.complexity], color: 'white' }}
               >
-                {technique.complexity}
+                Level {technique.complexity}
               </Badge>
             </div>
           </div>
@@ -106,33 +107,33 @@ export const TechniqueCard = ({ technique, onEdit, onDelete, isExpanded, onToggl
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           <div className="flex items-center gap-2">
             <Clock className="w-4 h-4 text-blue-600" />
-            <span className="text-sm font-medium">Tiempo: {technique.applicationTime}</span>
+            <span className="text-sm font-medium">Time: {technique.timeHorizon}</span>
           </div>
           <div className="flex items-center gap-2">
             <Users className="w-4 h-4 text-green-600" />
-            <span className="text-sm font-medium">Personas: {technique.requiredPeople}</span>
+            <span className="text-sm font-medium">Participants: {technique.participants}</span>
           </div>
           <div className="flex items-center gap-2">
             <Target className="w-4 h-4 text-purple-600" />
-            <span className="text-sm font-medium">Complejidad: {technique.complexity}</span>
+            <span className="text-sm font-medium">Complexity: Level {technique.complexity}</span>
           </div>
         </div>
 
         {isExpanded ? (
           <Tabs defaultValue="overview" className="w-full">
             <TabsList className="grid w-full grid-cols-5">
-              <TabsTrigger value="overview">Resumen</TabsTrigger>
-              <TabsTrigger value="methodology">Metodología</TabsTrigger>
-              <TabsTrigger value="resources">Recursos</TabsTrigger>
-              <TabsTrigger value="analytics">Análisis</TabsTrigger>
-              <TabsTrigger value="bibliography">Fuentes</TabsTrigger>
+              <TabsTrigger value="overview">Overview</TabsTrigger>
+              <TabsTrigger value="methodology">Methodology</TabsTrigger>
+              <TabsTrigger value="resources">Applications</TabsTrigger>
+              <TabsTrigger value="analytics">Analytics</TabsTrigger>
+              <TabsTrigger value="bibliography">Sources</TabsTrigger>
             </TabsList>
 
             <TabsContent value="overview" className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <h4 className="font-semibold text-slate-700 mb-2 flex items-center gap-2">
-                    <Lightbulb className="w-4 h-4" /> Ventajas
+                    <Lightbulb className="w-4 h-4" /> Advantages
                   </h4>
                   <ul className="text-sm text-slate-600 space-y-1">
                     {technique.advantages.map((advantage, index) => (
@@ -145,7 +146,7 @@ export const TechniqueCard = ({ technique, onEdit, onDelete, isExpanded, onToggl
                 </div>
                 <div>
                   <h4 className="font-semibold text-slate-700 mb-2 flex items-center gap-2">
-                    <AlertTriangle className="w-4 h-4" /> Limitaciones
+                    <AlertTriangle className="w-4 h-4" /> Limitations
                   </h4>
                   <ul className="text-sm text-slate-600 space-y-1">
                     {technique.limitations.map((limitation, index) => (
@@ -159,110 +160,67 @@ export const TechniqueCard = ({ technique, onEdit, onDelete, isExpanded, onToggl
               </div>
               
               <div>
-                <h4 className="font-semibold text-slate-700 mb-2">Uso Recomendado</h4>
-                <p className="text-sm text-slate-600">{technique.recommendedUse}</p>
+                <h4 className="font-semibold text-slate-700 mb-2">Applications</h4>
+                <ul className="text-sm text-slate-600 space-y-1">
+                  {technique.applications.map((application, index) => (
+                    <li key={index} className="flex items-start gap-2">
+                      <span className="text-blue-500 mt-1">•</span>
+                      {application}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </TabsContent>
 
             <TabsContent value="methodology" className="space-y-4">
               <div>
                 <h4 className="font-semibold text-slate-700 mb-4 flex items-center gap-2">
-                  <BookOpen className="w-4 h-4" /> Metodología Interactiva
+                  <BookOpen className="w-4 h-4" /> Interactive Methodology
                 </h4>
                 <MethodologySteps methodology={technique.methodology} techniqueId={technique.id} />
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <h4 className="font-semibold text-slate-700 mb-2">Insumos Requeridos</h4>
-                  <ul className="text-sm text-slate-600 space-y-1">
-                    {technique.requiredInputs.map((input, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <span className="text-blue-500 mt-1">•</span>
-                        {input}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-slate-700 mb-2">Resultados Esperados</h4>
-                  <ul className="text-sm text-slate-600 space-y-1">
-                    {technique.expectedOutputs.map((output, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <span className="text-purple-500 mt-1">•</span>
-                        {output}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
               </div>
             </TabsContent>
 
             <TabsContent value="resources" className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <h4 className="font-semibold text-slate-700 mb-2">Recursos Necesarios</h4>
-                  <ul className="text-sm text-slate-600 space-y-1">
-                    {technique.resources.map((resource, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <span className="text-orange-500 mt-1">•</span>
-                        {resource}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-slate-700 mb-2">Prerrequisitos</h4>
-                  <ul className="text-sm text-slate-600 space-y-1">
-                    {technique.prerequisites.map((prereq, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <span className="text-cyan-500 mt-1">•</span>
-                        {prereq}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+              <div>
+                <h4 className="font-semibold text-slate-700 mb-2">Applications in Practice</h4>
+                <ul className="text-sm text-slate-600 space-y-1">
+                  {technique.applications.map((application, index) => (
+                    <li key={index} className="flex items-start gap-2">
+                      <span className="text-blue-500 mt-1">•</span>
+                      {application}
+                    </li>
+                  ))}
+                </ul>
               </div>
 
-              <div>
-                <h4 className="font-semibold text-slate-700 mb-2">Ejemplos de Aplicación</h4>
-                <div className="space-y-3">
-                  <div className="flex flex-wrap gap-2">
-                    {technique.examples.map((example, index) => (
-                      <Badge key={index} variant="secondary" className="text-xs">
-                        {example}
-                      </Badge>
-                    ))}
-                  </div>
-                  {studyContext && (
-                    <div className="p-3 bg-amber-50 border border-amber-200 rounded-lg">
-                      <div className="flex items-start gap-2">
-                        <Brain className="w-4 h-4 text-amber-600 mt-0.5" />
-                        <div>
-                          <div className="text-sm font-medium text-amber-800 mb-1">
-                            Aplicación Sugerida por IA para tu Estudio
-                          </div>
-                          <div className="text-sm text-amber-700">
-                            Para "{studyContext.title}": Esta técnica se recomienda en la fase {studyContext.recommendation.sequenceOrder} 
-                            del análisis. {studyContext.recommendation.justification}
-                          </div>
-                        </div>
+              {studyContext && (
+                <div className="p-3 bg-amber-50 border border-amber-200 rounded-lg">
+                  <div className="flex items-start gap-2">
+                    <Brain className="w-4 h-4 text-amber-600 mt-0.5" />
+                    <div>
+                      <div className="text-sm font-medium text-amber-800 mb-1">
+                        AI Suggested Application for Your Study
+                      </div>
+                      <div className="text-sm text-amber-700">
+                        For "{studyContext.title}": This technique is recommended in phase {studyContext.recommendation.sequenceOrder} 
+                        of the analysis. {studyContext.recommendation.justification}
                       </div>
                     </div>
-                  )}
+                  </div>
                 </div>
-              </div>
+              )}
             </TabsContent>
 
             <TabsContent value="analytics" className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <h4 className="font-semibold text-slate-700 mb-3">Análisis de Complejidad</h4>
+                  <h4 className="font-semibold text-slate-700 mb-3">Complexity Analysis</h4>
                   <ComplexityIndicator complexity={technique.complexity} interactive={true} />
                 </div>
 
                 <div>
-                  <h4 className="font-semibold text-slate-700 mb-3">Análisis de Recursos</h4>
+                  <h4 className="font-semibold text-slate-700 mb-3">Resource Analysis</h4>
                   <ResponsiveContainer width="100%" height={150}>
                     <BarChart data={getResourcesData(technique)}>
                       <CartesianGrid strokeDasharray="3 3" />
@@ -274,23 +232,12 @@ export const TechniqueCard = ({ technique, onEdit, onDelete, isExpanded, onToggl
                   </ResponsiveContainer>
                 </div>
               </div>
-
-              <div>
-                <h4 className="font-semibold text-slate-700 mb-2">Técnicas Relacionadas</h4>
-                <div className="flex flex-wrap gap-2">
-                  {technique.relatedTechniques.map((related, index) => (
-                    <Badge key={index} variant="outline" className="text-xs">
-                      {related}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
             </TabsContent>
 
             <TabsContent value="bibliography" className="space-y-4">
               <div>
                 <h4 className="font-semibold text-slate-700 mb-3 flex items-center gap-2">
-                  <FileText className="w-4 h-4" /> Fuentes Bibliográficas
+                  <FileText className="w-4 h-4" /> Bibliographic Sources
                 </h4>
                 
                 {technique.bibliographicSources && technique.bibliographicSources.length > 0 ? (
@@ -309,12 +256,16 @@ export const TechniqueCard = ({ technique, onEdit, onDelete, isExpanded, onToggl
                             <h5 className="font-medium text-slate-800 text-sm mb-1">
                               {source.title}
                             </h5>
-                            <p className="text-xs text-slate-600">
-                              <strong>Autores:</strong> {source.authors}
-                            </p>
-                            <p className="text-xs text-slate-600">
-                              <strong>Institución:</strong> {source.institution}
-                            </p>
+                            {source.authors && source.authors.length > 0 && (
+                              <p className="text-xs text-slate-600">
+                                <strong>Authors:</strong> {source.authors.join(', ')}
+                              </p>
+                            )}
+                            {source.institution && (
+                              <p className="text-xs text-slate-600">
+                                <strong>Institution:</strong> {source.institution}
+                              </p>
+                            )}
                           </div>
                           
                           {source.url && (
@@ -325,7 +276,7 @@ export const TechniqueCard = ({ technique, onEdit, onDelete, isExpanded, onToggl
                               className="inline-flex items-center gap-1 text-xs text-blue-600 hover:text-blue-800 transition-colors"
                             >
                               <ExternalLink className="w-3 h-3" />
-                              Ver fuente
+                              View source
                             </a>
                           )}
                         </div>
@@ -335,22 +286,10 @@ export const TechniqueCard = ({ technique, onEdit, onDelete, isExpanded, onToggl
                 ) : (
                   <div className="p-4 bg-gray-50 rounded-lg text-center">
                     <p className="text-sm text-gray-600">
-                      Fuentes bibliográficas en proceso de actualización.
+                      Bibliographic sources being updated.
                     </p>
                   </div>
                 )}
-
-                <div className="mt-6">
-                  <h5 className="font-medium text-slate-700 mb-2">Referencias Adicionales</h5>
-                  <div className="space-y-1">
-                    {technique.references.map((reference, index) => (
-                      <div key={index} className="flex items-start gap-2 text-sm text-slate-600">
-                        <span className="text-blue-500 mt-1">•</span>
-                        {reference}
-                      </div>
-                    ))}
-                  </div>
-                </div>
               </div>
             </TabsContent>
           </Tabs>
@@ -376,7 +315,7 @@ export const TechniqueCard = ({ technique, onEdit, onDelete, isExpanded, onToggl
             onClick={onToggleExpand}
             className="w-full"
           >
-            {isExpanded ? 'Ver menos' : 'Ver detalles completos'}
+            {isExpanded ? 'Show less' : 'Show full details'}
           </Button>
         </div>
       </CardContent>

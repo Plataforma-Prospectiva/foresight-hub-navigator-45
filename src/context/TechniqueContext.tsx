@@ -84,52 +84,52 @@ export const TechniqueProvider = ({ children }: { children: ReactNode }) => {
       let justification = "";
       let sequenceOrder = 0;
       
-      // Análisis por complejidad
-      if (profile.objectiveComplexity === 'alta' && technique.complexity === 'avanzado') {
+      // Complexity analysis
+      if (profile.objectiveComplexity === 'high' && technique.complexity >= 4) {
         score += 30;
-        justification += "Complejidad alta requiere técnicas avanzadas. ";
+        justification += "High complexity requires advanced techniques. ";
       }
-      if (profile.objectiveComplexity === 'media' && technique.complexity === 'intermedio') {
+      if (profile.objectiveComplexity === 'medium' && technique.complexity === 3) {
         score += 25;
-        justification += "Complejidad media se alinea con técnicas intermedias. ";
+        justification += "Medium complexity aligns with intermediate techniques. ";
       }
-      if (profile.objectiveComplexity === 'baja' && technique.complexity === 'básico') {
+      if (profile.objectiveComplexity === 'low' && technique.complexity <= 2) {
         score += 20;
-        justification += "Complejidad baja permite técnicas básicas efectivas. ";
+        justification += "Low complexity allows for effective basic techniques. ";
       }
       
-      // Análisis por experiencia del equipo
-      if (profile.teamExperience === 'experto' && technique.complexity === 'avanzado') {
+      // Team experience analysis
+      if (profile.teamExperience === 'expert' && technique.complexity >= 4) {
         score += 25;
-        justification += "Equipo experto puede manejar técnicas avanzadas. ";
+        justification += "Expert team can handle advanced techniques. ";
       }
-      if (profile.teamExperience === 'intermedio' && technique.complexity !== 'avanzado') {
+      if (profile.teamExperience === 'intermediate' && technique.complexity <= 3) {
         score += 20;
-        justification += "Experiencia intermedia se ajusta bien a esta técnica. ";
+        justification += "Intermediate experience fits well with this technique. ";
       }
-      if (profile.teamExperience === 'principiante' && technique.complexity === 'básico') {
+      if (profile.teamExperience === 'beginner' && technique.complexity <= 2) {
         score += 25;
-        justification += "Técnica apropiada para equipos principiantes. ";
+        justification += "Appropriate technique for beginner teams. ";
       }
       
-      // Análisis por ámbito y nivel
-      if (profile.scope === 'público' && technique.category.includes('participativ')) {
+      // Scope and level analysis
+      if (profile.scope === 'public' && technique.category.includes('participativ')) {
         score += 15;
-        justification += "Ámbito público favorece técnicas participativas. ";
+        justification += "Public scope favors participatory techniques. ";
       }
       if (profile.stateLevel === 'local' && technique.name.toLowerCase().includes('taller')) {
         score += 10;
         justification += "Nivel local permite talleres más efectivos. ";
       }
       
-      // Análisis por recursos disponibles
-      if (profile.availableResources.expertAccess && technique.complexity === 'avanzado') {
+      // Available resources analysis
+      if (profile.availableResources.expertAccess && technique.complexity >= 4) {
         score += 15;
-        justification += "Acceso a expertos permite técnicas más sofisticadas. ";
+        justification += "Expert access enables more sophisticated techniques. ";
       }
-      if (!profile.availableResources.expertAccess && technique.complexity === 'básico') {
+      if (!profile.availableResources.expertAccess && technique.complexity <= 2) {
         score += 10;
-        justification += "Sin acceso a expertos, técnicas básicas son más viables. ";
+        justification += "Without expert access, basic techniques are more viable. ";
       }
       
       // Determinar orden de secuencia basado en la categoría y complejidad
@@ -148,7 +148,7 @@ export const TechniqueProvider = ({ children }: { children: ReactNode }) => {
       .slice(0, 5)
       .map(([techniqueId, data]) => ({
         techniqueId,
-        justification: data.justification || "Técnica recomendada según el análisis general del perfil del estudio.",
+        justification: data.justification || "Technique recommended based on general study profile analysis.",
         sequenceOrder: data.sequenceOrder
       }));
     
