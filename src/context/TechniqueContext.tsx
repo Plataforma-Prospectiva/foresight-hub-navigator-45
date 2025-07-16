@@ -1,7 +1,8 @@
 
-import { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { Technique, StudyProfile, ResourceOption } from '@/types/technique';
-import { initialTechniques } from '@/data/techniques';
+import { getTechniques } from '@/data/techniques';
+import { useLanguage } from './LanguageContext';
 
 interface TechniqueContextType {
   techniques: Technique[];
@@ -35,9 +36,15 @@ const defaultResourceOptions: ResourceOption[] = [
 const TechniqueContext = createContext<TechniqueContextType | null>(null);
 
 export const TechniqueProvider = ({ children }: { children: ReactNode }) => {
-  const [techniques, setTechniques] = useState<Technique[]>(initialTechniques);
+  const { language } = useLanguage();
+  const [techniques, setTechniques] = useState<Technique[]>(getTechniques(language));
   const [studyProfiles, setStudyProfiles] = useState<StudyProfile[]>([]);
   const [resourceOptions, setResourceOptions] = useState<ResourceOption[]>(defaultResourceOptions);
+
+  // Update techniques when language changes
+  React.useEffect(() => {
+    setTechniques(getTechniques(language));
+  }, [language]);
 
   const addTechnique = (techniqueData: Omit<Technique, 'id'>) => {
     const newTechnique: Technique = {
@@ -113,13 +120,13 @@ export const TechniqueProvider = ({ children }: { children: ReactNode }) => {
       }
       
       // Scope and level analysis
-      if (profile.scope === 'public' && technique.category.includes('participativ')) {
+      if (profile.scope === 'public' && technique.category.includes('participatory')) {
         score += 15;
         justification += "Public scope favors participatory techniques. ";
       }
-      if (profile.stateLevel === 'local' && technique.name.toLowerCase().includes('taller')) {
+      if (profile.stateLevel === 'local' && technique.name.toLowerCase().includes('workshop')) {
         score += 10;
-        justification += "Nivel local permite talleres más efectivos. ";
+        justification += "Local level allows more effective workshops. ";
       }
       
       // Available resources analysis
@@ -132,11 +139,11 @@ export const TechniqueProvider = ({ children }: { children: ReactNode }) => {
         justification += "Without expert access, basic techniques are more viable. ";
       }
       
-      // Determinar orden de secuencia basado en la categoría y complejidad
-      if (technique.category.includes('explorator')) sequenceOrder = 1;
-      else if (technique.category.includes('estructurant')) sequenceOrder = 2;
-      else if (technique.category.includes('participativ')) sequenceOrder = 3;
-      else if (technique.category.includes('validación')) sequenceOrder = 4;
+      // Determine sequence order based on category and complexity
+      if (technique.category.includes('exploratory')) sequenceOrder = 1;
+      else if (technique.category.includes('structural')) sequenceOrder = 2;
+      else if (technique.category.includes('participatory')) sequenceOrder = 3;
+      else if (technique.category.includes('validation')) sequenceOrder = 4;
       else sequenceOrder = Math.floor(score / 20) + 1;
       
       compatibilityScores[technique.id] = { score, justification: justification.trim(), sequenceOrder };
@@ -197,7 +204,7 @@ export const TechniqueProvider = ({ children }: { children: ReactNode }) => {
 export const useTechniques = () => {
   const context = useContext(TechniqueContext);
   if (!context) {
-    throw new Error('useTechniques debe ser usado dentro de un TechniqueProvider');
+    throw new Error('useTechniques must be used within a TechniqueProvider');
   }
   return context;
 };

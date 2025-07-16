@@ -7,6 +7,7 @@ import {
   FlaskConical, Grid3x3, ArrowUpDown, ArrowLeftRight, Workflow,
   Scale, Gauge, Eye, Crosshair
 } from 'lucide-react';
+import { techniquesES } from './techniques-es';
 
 export const techniques: Technique[] = [
   {
@@ -1213,5 +1214,9 @@ export const techniques: Technique[] = [
     ]
   }
 ];
+
+export const getTechniques = (language: 'en' | 'es'): Technique[] => {
+  return language === 'es' ? techniquesES : techniques;
+};
 
 export const initialTechniques = techniques;
