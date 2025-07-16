@@ -27,7 +27,13 @@ export const TechniquesManager = () => {
     return matchesSearch && matchesCategory && matchesComplexity;
   });
   const getComplexityStats = () => {
-    const stats = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+    const stats = {
+      1: 0,
+      2: 0,
+      3: 0,
+      4: 0,
+      5: 0
+    };
     techniques.forEach(t => stats[t.complexity as keyof typeof stats]++);
     return {
       básico: stats[1] + stats[2],
@@ -45,40 +51,7 @@ export const TechniquesManager = () => {
   };
   return <div className="space-y-6">
       {/* Header con estadísticas */}
-      <Card>
-        <CardHeader>
-          <div className="flex justify-between items-start">
-            <div>
-              <CardTitle className="flex items-center gap-2">
-                <BookOpen className="w-5 h-5 text-blue-600" />
-                Base de Datos de Técnicas Prospectivas
-              </CardTitle>
-              <CardDescription>
-                Gestiona y explora metodologías para estudios de prospectiva estratégica
-              </CardDescription>
-            </div>
-            
-          </div>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="space-y-4">
-              <h4 className="font-semibold">Resumen General</h4>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="text-center p-4 bg-blue-50 rounded-lg">
-                  <div className="text-3xl font-bold text-blue-600">{techniques.length}</div>
-                  <div className="text-sm text-gray-600">Total Técnicas</div>
-                </div>
-                <div className="text-center p-4 bg-purple-50 rounded-lg">
-                  <div className="text-3xl font-bold text-purple-600">{categories.length - 1}</div>
-                  <div className="text-sm text-gray-600">Categorías</div>
-                </div>
-              </div>
-            </div>
-            <ComplexityPyramid basicCount={stats.básico} intermediateCount={stats.intermedio} advancedCount={stats.avanzado} />
-          </div>
-        </CardContent>
-      </Card>
+      
 
       <Tabs defaultValue="browse" className="w-full">
         <TabsList className="grid w-full grid-cols-4">
