@@ -88,50 +88,23 @@ const Index = () => {
                 {/* Stats Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto animate-slide-up">
                   <Card className="hover-lift shadow-elegant border-0 bg-gradient-to-br from-primary/5 to-primary/10">
-                    <CardContent className="p-6 text-center">
-                      <div className="w-12 h-12 mx-auto mb-4 bg-primary/10 rounded-lg flex items-center justify-center">
-                        <Brain className="w-6 h-6 text-primary" />
-                      </div>
-                      <h3 className="text-2xl font-bold text-primary mb-2">22+</h3>
-                      <p className="text-muted-foreground font-medium">Técnicas Prospectivas</p>
-                    </CardContent>
+                    
                   </Card>
                   
-                  <Card className="hover-lift shadow-elegant border-0 bg-gradient-to-br from-blue-500/5 to-blue-500/10">
-                    <CardContent className="p-6 text-center">
-                      <div className="w-12 h-12 mx-auto mb-4 bg-blue-500/10 rounded-lg flex items-center justify-center">
-                        <Target className="w-6 h-6 text-blue-600" />
-                      </div>
-                      <h3 className="text-2xl font-bold text-blue-600 mb-2">5</h3>
-                      <p className="text-muted-foreground font-medium">Categorías Especializadas</p>
-                    </CardContent>
-                  </Card>
                   
-                  <Card className="hover-lift shadow-elegant border-0 bg-gradient-to-br from-green-500/5 to-green-500/10">
-                    <CardContent className="p-6 text-center">
-                      <div className="w-12 h-12 mx-auto mb-4 bg-green-500/10 rounded-lg flex items-center justify-center">
-                        <Zap className="w-6 h-6 text-green-600" />
-                      </div>
-                      <h3 className="text-2xl font-bold text-green-600 mb-2">100%</h3>
-                      <p className="text-muted-foreground font-medium">Metodologías Validadas</p>
-                    </CardContent>
-                  </Card>
+                  
+                  
                 </div>
 
                 {/* Scroll Indicator */}
                 <div className="mt-16 animate-bounce">
-                  <ChevronDown className="w-8 h-8 mx-auto text-muted-foreground" />
+                  
                 </div>
               </section>
 
               {/* Techniques Manager Section */}
               <section id="techniques-section" className="mb-20 animate-slide-up">
-                <div className="text-center mb-12">
-                  <h2 className="text-4xl font-bold text-primary mb-4">Base de Conocimiento Prospectivo</h2>
-                  <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                    Accede a metodologías probadas y herramientas de análisis para construir futuros estratégicos
-                  </p>
-                </div>
+                
                 <TechniquesManager />
               </section>
 
