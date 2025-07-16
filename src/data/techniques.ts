@@ -5,7 +5,9 @@ import {
   Lightbulb, ChevronRight, Timer, Building, Globe, Compass,
   FileText, PieChart, LineChart, Microscope, Calculator, 
   FlaskConical, Grid3x3, ArrowUpDown, ArrowLeftRight, Workflow,
-  Scale, Gauge, Eye, Crosshair
+  Scale, Gauge, Eye, Crosshair, UserCheck, Shapes, Palette,
+  Settings, Presentation, Camera, Clock, Sparkles, Heart,
+  MessageSquare, Layers3, Puzzle, TestTube, Rocket, Users2
 } from 'lucide-react';
 import { techniquesES } from './techniques-es';
 
@@ -1210,6 +1212,930 @@ export const techniques: Technique[] = [
         authors: ['Sohail Inayatullah'],
         year: 2007,
         publisher: 'Tamkang University Press'
+      }
+    ]
+  },
+  {
+    id: 'collaborative-speculation',
+    name: 'Collaborative Speculation',
+    icon: Users2,
+    complexity: 3,
+    category: 'participatory',
+    description: 'Experimental methodology for science communication that brings together academic research, design, and society through collaborative future-building processes.',
+    objectives: [
+      'Foster creative exchange between science and society',
+      'Generate research-inspired speculative scenarios',
+      'Build shared understanding of future possibilities',
+      'Create tangible artifacts from future visions'
+    ],
+    applications: [
+      'Science communication',
+      'Public engagement with research',
+      'Co-design workshops',
+      'Innovation processes',
+      'Future literacy development'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Setting the Space',
+        description: 'Create a welcoming atmosphere with curated objects, images, and materials that set the tone for speculation.',
+        duration: '30 minutes'
+      },
+      {
+        step: 2,
+        title: 'Speculation Groups Formation',
+        description: 'Form groups of 3-5 co-speculators using various methods (self-assembly, name tags, or topic-based).',
+        duration: '15 minutes'
+      },
+      {
+        step: 3,
+        title: 'Research Insights Sharing',
+        description: 'Present research-backed information to level the knowledge playing field and provide speculation foundation.',
+        duration: '45-60 minutes'
+      },
+      {
+        step: 4,
+        title: 'Speculation Phase',
+        description: 'Imagine future scenarios 25 years ahead, focusing on everyday experiences and incorporating frictions.',
+        duration: '60-90 minutes'
+      },
+      {
+        step: 5,
+        title: 'Prototyping',
+        description: 'Create tangible objects or collages that embody the speculative scenarios using diverse materials.',
+        duration: '30-45 minutes'
+      },
+      {
+        step: 6,
+        title: 'Sharing Futures',
+        description: 'Present scenarios and prototypes through pitches, exhibitions, or gallery walks for collective reflection.',
+        duration: '30-45 minutes'
+      }
+    ],
+    advantages: [
+      'Bridges science and society creatively',
+      'Generates tangible future artifacts',
+      'Inclusive participatory approach',
+      'Combines research with imagination'
+    ],
+    limitations: [
+      'Requires skilled facilitation',
+      'Material-intensive setup',
+      'May produce unrealistic scenarios',
+      'Outcomes depend on group dynamics'
+    ],
+    timeHorizon: '25 years (workshop focus)',
+    participants: '1-2 facilitators + 15-50 participants',
+    bibliographicSources: [
+      {
+        type: 'guide',
+        title: 'Co-Creating Futures: How can public engagement foster creative exchange between science and society?',
+        authors: ['Kristin Werner', 'Antje Nestler'],
+        year: 2025,
+        institution: 'CollActive Materials',
+        url: 'https://doi.org/10.18452/31342'
+      }
+    ]
+  },
+  {
+    id: 'futures-check-in',
+    name: 'Futures Check-In',
+    icon: UserCheck,
+    complexity: 1,
+    category: 'orientation',
+    description: 'Reflective activity where participants identify their roles, interests, and values as starting point for speculative engagement.',
+    objectives: [
+      'Establish personal perspective baseline',
+      'Identify participant values and interests',
+      'Create awareness of diverse viewpoints',
+      'Prepare for speculation mindset'
+    ],
+    applications: [
+      'Workshop introduction',
+      'Team building for futures work',
+      'Stakeholder perspective mapping',
+      'Personal reflection exercises',
+      'Group orientation activities'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Template Distribution',
+        description: 'Provide futures check-in templates for participants to fill individually.',
+        duration: '5 minutes'
+      },
+      {
+        step: 2,
+        title: 'Personal Reflection',
+        description: 'Participants reflect on their roles, interests, and select areas of importance from provided list.',
+        duration: '10-15 minutes'
+      },
+      {
+        step: 3,
+        title: 'Group Sharing',
+        description: 'Optional sharing within speculation groups or display on board for facilitator awareness.',
+        duration: '10-20 minutes'
+      },
+      {
+        step: 4,
+        title: 'Reference Throughout',
+        description: 'Encourage participants to reference their check-in throughout the workshop process.',
+        duration: 'Ongoing'
+      }
+    ],
+    advantages: [
+      'Quick and accessible activity',
+      'Creates inclusive starting point',
+      'Reveals diverse perspectives',
+      'Low barrier to participation'
+    ],
+    limitations: [
+      'Surface-level reflection only',
+      'May not capture complexity',
+      'Requires honest self-assessment',
+      'Cultural differences in self-disclosure'
+    ],
+    timeHorizon: 'Present moment',
+    participants: 'Any number',
+    bibliographicSources: [
+      {
+        type: 'guide',
+        title: 'Co-Creating Futures: How can public engagement foster creative exchange between science and society?',
+        authors: ['Kristin Werner', 'Antje Nestler'],
+        year: 2025,
+        institution: 'CollActive Materials',
+        url: 'https://doi.org/10.18452/31342'
+      }
+    ]
+  },
+  {
+    id: 'research-storytelling',
+    name: 'Research Storytelling',
+    icon: MessageSquare,
+    complexity: 2,
+    category: 'knowledge-transfer',
+    description: 'Method for presenting research insights through narrative formats that make complex information accessible and engaging for diverse audiences.',
+    objectives: [
+      'Make research accessible to non-experts',
+      'Create emotional connection to research',
+      'Provide foundation for speculation',
+      'Bridge academic and public understanding'
+    ],
+    applications: [
+      'Science communication',
+      'Research dissemination',
+      'Public engagement events',
+      'Educational workshops',
+      'Policy briefings'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Research Analysis',
+        description: 'Identify key research insights, unanswered questions, and potential implications.',
+        duration: '1-2 hours'
+      },
+      {
+        step: 2,
+        title: 'Audience Consideration',
+        description: 'Understand audience knowledge level, interests, and preferred communication styles.',
+        duration: '30 minutes'
+      },
+      {
+        step: 3,
+        title: 'Narrative Structure',
+        description: 'Develop story structure with clear beginning, development, and open ending for speculation.',
+        duration: '1 hour'
+      },
+      {
+        step: 4,
+        title: 'Multi-modal Preparation',
+        description: 'Prepare visual aids, physical objects, or interactive elements to support the story.',
+        duration: '2-4 hours'
+      },
+      {
+        step: 5,
+        title: 'Story Delivery',
+        description: 'Present research story in engaging, interactive format that invites questions.',
+        duration: '15-30 minutes'
+      }
+    ],
+    advantages: [
+      'Makes complex research accessible',
+      'Creates emotional engagement',
+      'Memorable and relatable format',
+      'Encourages questions and discussion'
+    ],
+    limitations: [
+      'Risk of oversimplification',
+      'May introduce narrative bias',
+      'Requires storytelling skills',
+      'Time-intensive preparation'
+    ],
+    timeHorizon: 'Present/educational',
+    participants: '1 presenter + audience',
+    bibliographicSources: [
+      {
+        type: 'guide',
+        title: 'Co-Creating Futures: How can public engagement foster creative exchange between science and society?',
+        authors: ['Kristin Werner', 'Antje Nestler'],
+        year: 2025,
+        institution: 'CollActive Materials',
+        url: 'https://doi.org/10.18452/31342'
+      }
+    ]
+  },
+  {
+    id: 'hands-on-experience',
+    name: 'Hands-On Experience',
+    icon: TestTube,
+    complexity: 2,
+    category: 'experiential',
+    description: 'Interactive activities that allow participants to directly engage with research materials, processes, or phenomena through tactile exploration.',
+    objectives: [
+      'Provide direct research experience',
+      'Create embodied understanding',
+      'Generate material for speculation',
+      'Bridge theory and practice'
+    ],
+    applications: [
+      'Science museums',
+      'Research demonstrations',
+      'Educational workshops',
+      'Innovation labs',
+      'Material exploration sessions'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Experience Design',
+        description: 'Design safe, accessible hands-on activities that illustrate key research concepts.',
+        duration: '2-4 hours'
+      },
+      {
+        step: 2,
+        title: 'Material Preparation',
+        description: 'Gather and prepare all necessary materials, tools, and safety equipment.',
+        duration: '1-2 hours'
+      },
+      {
+        step: 3,
+        title: 'Instructions & Safety',
+        description: 'Provide clear instructions and safety guidelines to participants.',
+        duration: '10-15 minutes'
+      },
+      {
+        step: 4,
+        title: 'Guided Exploration',
+        description: 'Facilitate participant exploration with questions and observations.',
+        duration: '20-45 minutes'
+      },
+      {
+        step: 5,
+        title: 'Reflection & Connection',
+        description: 'Connect experience to research insights and potential future implications.',
+        duration: '10-20 minutes'
+      }
+    ],
+    advantages: [
+      'Creates memorable experiences',
+      'Appeals to different learning styles',
+      'Generates authentic curiosity',
+      'Provides concrete reference point'
+    ],
+    limitations: [
+      'Requires material resources',
+      'Safety considerations',
+      'Space and equipment needs',
+      'May not suit all research topics'
+    ],
+    timeHorizon: 'Present/immediate',
+    participants: '1-2 facilitators + groups',
+    bibliographicSources: [
+      {
+        type: 'guide',
+        title: 'Co-Creating Futures: How can public engagement foster creative exchange between science and society?',
+        authors: ['Kristin Werner', 'Antje Nestler'],
+        year: 2025,
+        institution: 'CollActive Materials',
+        url: 'https://doi.org/10.18452/31342'
+      }
+    ]
+  },
+  {
+    id: 'brainwriting',
+    name: 'Brainwriting',
+    icon: Sparkles,
+    complexity: 1,
+    category: 'ideation',
+    description: 'Silent ideation technique where participants write down ideas individually before sharing, promoting equal participation and diverse thinking.',
+    objectives: [
+      'Generate diverse ideas rapidly',
+      'Ensure equal participation',
+      'Avoid groupthink dynamics',
+      'Build on others\' ideas systematically'
+    ],
+    applications: [
+      'Scenario ideation',
+      'Problem-solving sessions',
+      'Creative workshops',
+      'Innovation processes',
+      'Futures speculation'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Question/Prompt Setup',
+        description: 'Present clear, specific question or prompt for ideation focus.',
+        duration: '5 minutes'
+      },
+      {
+        step: 2,
+        title: 'Silent Ideation',
+        description: 'Participants write ideas individually on paper or cards for set time period.',
+        duration: '10-15 minutes'
+      },
+      {
+        step: 3,
+        title: 'Idea Rotation',
+        description: 'Participants pass their ideas to next person who adds or builds upon them.',
+        duration: '10-15 minutes'
+      },
+      {
+        step: 4,
+        title: 'Collection & Sharing',
+        description: 'Collect all ideas and share highlights with the group.',
+        duration: '10-20 minutes'
+      },
+      {
+        step: 5,
+        title: 'Clustering & Selection',
+        description: 'Group similar ideas and select most promising ones for development.',
+        duration: '15-20 minutes'
+      }
+    ],
+    advantages: [
+      'Equal participation opportunity',
+      'Rapid idea generation',
+      'Builds on collective intelligence',
+      'Reduces social pressure'
+    ],
+    limitations: [
+      'Limited to written communication',
+      'May miss verbal insights',
+      'Requires literacy skills',
+      'Ideas may lack depth initially'
+    ],
+    timeHorizon: 'Any timeframe',
+    participants: '4-12 participants',
+    bibliographicSources: [
+      {
+        type: 'guide',
+        title: 'Co-Creating Futures: How can public engagement foster creative exchange between science and society?',
+        authors: ['Kristin Werner', 'Antje Nestler'],
+        year: 2025,
+        institution: 'CollActive Materials',
+        url: 'https://doi.org/10.18452/31342'
+      }
+    ]
+  },
+  {
+    id: 'artifact-from-future',
+    name: 'An Artifact from the Future',
+    icon: Rocket,
+    complexity: 3,
+    category: 'speculative-design',
+    description: 'Creative exercise where participants design and describe objects that could exist in future scenarios, making abstract concepts tangible.',
+    objectives: [
+      'Make future scenarios tangible',
+      'Stimulate concrete imagination',
+      'Create discussion anchors',
+      'Bridge present and future thinking'
+    ],
+    applications: [
+      'Design fiction workshops',
+      'Future scenario development',
+      'Innovation ideation',
+      'Product concept development',
+      'Strategic foresight exercises'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Future Context Setting',
+        description: 'Establish the future scenario timeframe and context for artifact creation.',
+        duration: '10 minutes'
+      },
+      {
+        step: 2,
+        title: 'Artifact Ideation',
+        description: 'Brainstorm objects that might exist in this future, considering function and meaning.',
+        duration: '20-30 minutes'
+      },
+      {
+        step: 3,
+        title: 'Artifact Selection',
+        description: 'Choose one artifact to develop in detail, considering its purpose and impact.',
+        duration: '10 minutes'
+      },
+      {
+        step: 4,
+        title: 'Detailed Description',
+        description: 'Write detailed description including function, appearance, user experience, and context.',
+        duration: '30-45 minutes'
+      },
+      {
+        step: 5,
+        title: 'Presentation & Discussion',
+        description: 'Present artifacts to group and discuss implications and assumptions.',
+        duration: '20-30 minutes'
+      }
+    ],
+    advantages: [
+      'Makes abstract futures concrete',
+      'Encourages detailed thinking',
+      'Creates memorable concepts',
+      'Reveals implicit assumptions'
+    ],
+    limitations: [
+      'May focus too much on objects',
+      'Requires creative imagination',
+      'Could reinforce current paradigms',
+      'Time-intensive for complex artifacts'
+    ],
+    timeHorizon: '10-50 years',
+    participants: '3-8 participants per group',
+    bibliographicSources: [
+      {
+        type: 'guide',
+        title: 'Co-Creating Futures: How can public engagement foster creative exchange between science and society?',
+        authors: ['Kristin Werner', 'Antje Nestler'],
+        year: 2025,
+        institution: 'CollActive Materials',
+        url: 'https://doi.org/10.18452/31342'
+      }
+    ]
+  },
+  {
+    id: 'speculation-sketch',
+    name: 'Speculation Sketch',
+    icon: Palette,
+    complexity: 2,
+    category: 'visualization',
+    description: 'Visual documentation method where groups sketch their speculative scenarios and artifacts with accompanying descriptions.',
+    objectives: [
+      'Document speculative ideas visually',
+      'Create shareable representations',
+      'Facilitate group synthesis',
+      'Enable cross-group communication'
+    ],
+    applications: [
+      'Workshop documentation',
+      'Scenario visualization',
+      'Idea communication',
+      'Concept development',
+      'Portfolio creation'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Template Preparation',
+        description: 'Provide templates with spaces for title, sketch, and description.',
+        duration: '5 minutes'
+      },
+      {
+        step: 2,
+        title: 'Group Discussion',
+        description: 'Groups discuss their scenarios and decide on key elements to illustrate.',
+        duration: '10-15 minutes'
+      },
+      {
+        step: 3,
+        title: 'Collaborative Sketching',
+        description: 'Groups create visual representation of their scenario or artifact.',
+        duration: '15-20 minutes'
+      },
+      {
+        step: 4,
+        title: 'Description Writing',
+        description: 'Add brief written description to explain and contextualize the sketch.',
+        duration: '10-15 minutes'
+      },
+      {
+        step: 5,
+        title: 'Documentation & Display',
+        description: 'Collect sketches for display or further use in sharing phase.',
+        duration: '5 minutes'
+      }
+    ],
+    advantages: [
+      'Accessible to all skill levels',
+      'Quick documentation method',
+      'Facilitates group collaboration',
+      'Creates visual discussion anchors'
+    ],
+    limitations: [
+      'Limited by drawing skills',
+      'May oversimplify complex ideas',
+      'Visual bias toward certain concepts',
+      'Requires basic materials'
+    ],
+    timeHorizon: 'Any timeframe',
+    participants: '3-5 per sketch group',
+    bibliographicSources: [
+      {
+        type: 'guide',
+        title: 'Co-Creating Futures: How can public engagement foster creative exchange between science and society?',
+        authors: ['Kristin Werner', 'Antje Nestler'],
+        year: 2025,
+        institution: 'CollActive Materials',
+        url: 'https://doi.org/10.18452/31342'
+      }
+    ]
+  },
+  {
+    id: 'object-prototyping',
+    name: 'Object Prototyping',
+    icon: Shapes,
+    complexity: 3,
+    category: 'prototyping',
+    description: 'Three-dimensional creation method where speculation groups build tangible models or objects that embody their future scenarios.',
+    objectives: [
+      'Make speculative ideas tangible',
+      'Enable tactile exploration',
+      'Create presentation artifacts',
+      'Facilitate deeper understanding'
+    ],
+    applications: [
+      'Design workshops',
+      'Innovation labs',
+      'Future scenario embodiment',
+      'Product concept development',
+      'Educational demonstrations'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Material Setup',
+        description: 'Provide diverse materials including base materials, binders, cutting tools, and drawing supplies.',
+        duration: '15 minutes'
+      },
+      {
+        step: 2,
+        title: 'Concept Discussion',
+        description: 'Groups discuss which aspects of their scenario to make tangible.',
+        duration: '10-15 minutes'
+      },
+      {
+        step: 3,
+        title: 'Collaborative Building',
+        description: 'Groups work together to create three-dimensional representations of their ideas.',
+        duration: '30-45 minutes'
+      },
+      {
+        step: 4,
+        title: 'Documentation',
+        description: 'Photograph prototypes and prepare them for presentation or transport.',
+        duration: '10 minutes'
+      },
+      {
+        step: 5,
+        title: 'Presentation Preparation',
+        description: 'Prepare brief presentation explaining the prototype and its significance.',
+        duration: '10-15 minutes'
+      }
+    ],
+    advantages: [
+      'Creates memorable artifacts',
+      'Encourages hands-on creativity',
+      'Appeals to kinesthetic learners',
+      'Generates discussion objects'
+    ],
+    limitations: [
+      'Requires diverse materials',
+      'Time-intensive process',
+      'Fragile final products',
+      'Not suitable for all concepts'
+    ],
+    timeHorizon: 'Any timeframe',
+    participants: '3-5 per group',
+    bibliographicSources: [
+      {
+        type: 'guide',
+        title: 'Co-Creating Futures: How can public engagement foster creative exchange between science and society?',
+        authors: ['Kristin Werner', 'Antje Nestler'],
+        year: 2025,
+        institution: 'CollActive Materials',
+        url: 'https://doi.org/10.18452/31342'
+      }
+    ]
+  },
+  {
+    id: 'collage-prototyping',
+    name: 'Collage Prototyping',
+    icon: Layers3,
+    complexity: 2,
+    category: 'prototyping',
+    description: 'Visual composition method using images, materials, and text to create representations of future scenarios or concepts.',
+    objectives: [
+      'Create quick visual prototypes',
+      'Combine diverse visual elements',
+      'Express complex ideas simply',
+      'Generate discussion materials'
+    ],
+    applications: [
+      'Mood board creation',
+      'Scenario visualization',
+      'Concept communication',
+      'Workshop outputs',
+      'Vision board development'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Material Collection',
+        description: 'Gather magazines, printed images, colored paper, fabric, and adhesive materials.',
+        duration: '15 minutes'
+      },
+      {
+        step: 2,
+        title: 'Theme Discussion',
+        description: 'Groups discuss the mood, feeling, and key elements of their scenario.',
+        duration: '10 minutes'
+      },
+      {
+        step: 3,
+        title: 'Element Selection',
+        description: 'Search for and select images, textures, and materials that represent their ideas.',
+        duration: '20 minutes'
+      },
+      {
+        step: 4,
+        title: 'Composition Creation',
+        description: 'Arrange and adhere selected elements to create cohesive visual composition.',
+        duration: '20-30 minutes'
+      },
+      {
+        step: 5,
+        title: 'Final Touches',
+        description: 'Add text, drawings, or additional elements to complete the collage.',
+        duration: '10-15 minutes'
+      }
+    ],
+    advantages: [
+      'Quick and accessible method',
+      'Requires minimal skills',
+      'Combines multiple visual languages',
+      'Creates rich, layered representations'
+    ],
+    limitations: [
+      'Limited by available images',
+      'May lack specificity',
+      'Dependent on material quality',
+      'Interpretation challenges'
+    ],
+    timeHorizon: 'Any timeframe',
+    participants: '3-5 per group',
+    bibliographicSources: [
+      {
+        type: 'guide',
+        title: 'Co-Creating Futures: How can public engagement foster creative exchange between science and society?',
+        authors: ['Kristin Werner', 'Antje Nestler'],
+        year: 2025,
+        institution: 'CollActive Materials',
+        url: 'https://doi.org/10.18452/31342'
+      }
+    ]
+  },
+  {
+    id: 'future-pitch',
+    name: 'Future Pitch',
+    icon: Presentation,
+    complexity: 2,
+    category: 'communication',
+    description: 'Structured presentation format where groups share their speculative scenarios and prototypes with the larger group.',
+    objectives: [
+      'Share speculative scenarios effectively',
+      'Practice futures communication',
+      'Generate cross-group learning',
+      'Create collective knowledge'
+    ],
+    applications: [
+      'Workshop presentations',
+      'Stakeholder communication',
+      'Scenario sharing sessions',
+      'Innovation showcases',
+      'Futures conferences'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Pitch Structure Setup',
+        description: 'Establish time limits, presentation format, and key elements to include.',
+        duration: '10 minutes'
+      },
+      {
+        step: 2,
+        title: 'Preparation Time',
+        description: 'Groups organize their thoughts and decide on presentation approach.',
+        duration: '10-15 minutes'
+      },
+      {
+        step: 3,
+        title: 'Sequential Presentations',
+        description: 'Each group presents their scenario and prototypes to the full group.',
+        duration: '3-5 minutes per group'
+      },
+      {
+        step: 4,
+        title: 'Questions & Discussion',
+        description: 'Allow time for questions and brief discussion after each pitch.',
+        duration: '2-3 minutes per group'
+      },
+      {
+        step: 5,
+        title: 'Collective Reflection',
+        description: 'Facilitate reflection on patterns, insights, and connections across pitches.',
+        duration: '10-20 minutes'
+      }
+    ],
+    advantages: [
+      'Efficient knowledge sharing',
+      'Builds presentation skills',
+      'Creates group learning',
+      'Enables comparison and synthesis'
+    ],
+    limitations: [
+      'Time pressure limits depth',
+      'Presentation anxiety for some',
+      'May rush complex ideas',
+      'Limited interaction time'
+    ],
+    timeHorizon: 'Workshop timeframe',
+    participants: 'All workshop participants',
+    bibliographicSources: [
+      {
+        type: 'guide',
+        title: 'Co-Creating Futures: How can public engagement foster creative exchange between science and society?',
+        authors: ['Kristin Werner', 'Antje Nestler'],
+        year: 2025,
+        institution: 'CollActive Materials',
+        url: 'https://doi.org/10.18452/31342'
+      }
+    ]
+  },
+  {
+    id: 'gallery-walk',
+    name: 'Gallery Walk',
+    icon: Camera,
+    complexity: 1,
+    category: 'exhibition',
+    description: 'Self-paced exploration method where participants move through displayed speculative scenarios and prototypes at their own rhythm.',
+    objectives: [
+      'Enable detailed exploration',
+      'Allow personal reflection pace',
+      'Facilitate intimate discussions',
+      'Create exhibition atmosphere'
+    ],
+    applications: [
+      'Workshop conclusions',
+      'Public exhibitions',
+      'Reflection sessions',
+      'Peer learning events',
+      'Community showcases'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Display Setup',
+        description: 'Arrange prototypes and documentation around room for easy circulation.',
+        duration: '15 minutes'
+      },
+      {
+        step: 2,
+        title: 'Creator Positioning',
+        description: 'Group creators stand near their displays to answer questions and explain.',
+        duration: '5 minutes'
+      },
+      {
+        step: 3,
+        title: 'Free Exploration',
+        description: 'Participants move freely through displays, examining and discussing at own pace.',
+        duration: '20-30 minutes'
+      },
+      {
+        step: 4,
+        title: 'Reflection Collection',
+        description: 'Optional: collect written reflections or comments on display materials.',
+        duration: '10 minutes'
+      },
+      {
+        step: 5,
+        title: 'Group Reconvening',
+        description: 'Bring group back together for final reflections and closing.',
+        duration: '10-15 minutes'
+      }
+    ],
+    advantages: [
+      'Self-paced exploration',
+      'Natural conversation facilitation',
+      'Detailed examination opportunity',
+      'Creates exhibition feeling'
+    ],
+    limitations: [
+      'Requires space for circulation',
+      'Some displays may be missed',
+      'Less structured learning',
+      'Creator fatigue from repeated explanations'
+    ],
+    timeHorizon: 'Workshop timeframe',
+    participants: 'All workshop participants',
+    bibliographicSources: [
+      {
+        type: 'guide',
+        title: 'Co-Creating Futures: How can public engagement foster creative exchange between science and society?',
+        authors: ['Kristin Werner', 'Antje Nestler'],
+        year: 2025,
+        institution: 'CollActive Materials',
+        url: 'https://doi.org/10.18452/31342'
+      }
+    ]
+  },
+  {
+    id: 'takeaways-reflection',
+    name: 'Takeaways Reflection',
+    icon: Heart,
+    complexity: 1,
+    category: 'reflection',
+    description: 'Closing activity where participants identify and share their key insights, learnings, and commitments from the speculative process.',
+    objectives: [
+      'Consolidate learning insights',
+      'Create personal meaning-making',
+      'Plan future actions',
+      'Generate group closure'
+    ],
+    applications: [
+      'Workshop closings',
+      'Learning consolidation',
+      'Action planning',
+      'Program evaluation',
+      'Reflection sessions'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Reflection Prompts',
+        description: 'Provide guiding questions about insights, surprises, and future intentions.',
+        duration: '5 minutes'
+      },
+      {
+        step: 2,
+        title: 'Individual Reflection',
+        description: 'Participants reflect individually on their experience and key takeaways.',
+        duration: '10-15 minutes'
+      },
+      {
+        step: 3,
+        title: 'Pair Sharing',
+        description: 'Share reflections in pairs or small groups for deeper processing.',
+        duration: '10-15 minutes'
+      },
+      {
+        step: 4,
+        title: 'Group Harvest',
+        description: 'Collect key insights and commitments in plenary session.',
+        duration: '15-20 minutes'
+      },
+      {
+        step: 5,
+        title: 'Closing Circle',
+        description: 'End with appreciation round or closing ritual to mark completion.',
+        duration: '10 minutes'
+      }
+    ],
+    advantages: [
+      'Consolidates learning experience',
+      'Creates personal commitment',
+      'Enables group appreciation',
+      'Provides evaluation data'
+    ],
+    limitations: [
+      'May feel forced or artificial',
+      'Limited time for deep reflection',
+      'Depends on participant openness',
+      'Risk of superficial sharing'
+    ],
+    timeHorizon: 'Present/immediate',
+    participants: 'All workshop participants',
+    bibliographicSources: [
+      {
+        type: 'guide',
+        title: 'Co-Creating Futures: How can public engagement foster creative exchange between science and society?',
+        authors: ['Kristin Werner', 'Antje Nestler'],
+        year: 2025,
+        institution: 'CollActive Materials',
+        url: 'https://doi.org/10.18452/31342'
       }
     ]
   }
