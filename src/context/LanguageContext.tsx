@@ -5,7 +5,7 @@ export type Language = 'en' | 'es';
 interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
-  t: (key: string, fallback?: string) => string;
+  t: (key: string, fallback?: string, params?: Record<string, any>) => string;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -360,6 +360,64 @@ const translations: Translations = {
   'message.noResults': {
     en: 'No results found',
     es: 'No se encontraron resultados'
+  },
+  
+  // Additional keys for new components
+  'categoryCreated': {
+    en: 'Category Created',
+    es: 'Categoría Creada'
+  },
+  'categoryCreatedDescription': {
+    en: 'Category "{name}" has been created successfully.',
+    es: 'La categoría "{name}" ha sido creada exitosamente.'
+  },
+  'categoryUpdated': {
+    en: 'Category Updated',
+    es: 'Categoría Actualizada'
+  },
+  'categoryUpdatedDescription': {
+    en: 'Category "{oldName}" has been renamed to "{newName}".',
+    es: 'La categoría "{oldName}" ha sido renombrada a "{newName}".'
+  },
+  'techniqueMoved': {
+    en: 'Technique Moved',
+    es: 'Técnica Movida'
+  },
+  'techniqueMovedDescription': {
+    en: '"{technique}" has been moved to "{category}" category.',
+    es: '"{technique}" ha sido movida a la categoría "{category}".'
+  },
+  'techniquesInCategory': {
+    en: '{count} techniques',
+    es: '{count} técnicas'
+  },
+  'aiSequenceDescription': {
+    en: 'AI has designed an optimized sequence of {count} prospective techniques based on the specific characteristics of your study, available resources and stated objectives.',
+    es: 'La IA ha diseñado una secuencia optimizada de {count} técnicas prospectivas basada en las características específicas de tu estudio, recursos disponibles y objetivos planteados.'
+  },
+  'techniqueStatistics': {
+    en: 'Technique Statistics',
+    es: 'Estadísticas de Técnicas'
+  },
+  'totalTechniques': {
+    en: 'Total Techniques',
+    es: 'Total de Técnicas'
+  },
+  'avgTeamSize': {
+    en: 'Avg Team Size',
+    es: 'Tamaño Promedio del Equipo'
+  },
+  'categoryManager': {
+    en: 'Category Manager',
+    es: 'Gestor de Categorías'
+  },
+  'overview': {
+    en: 'Overview',
+    es: 'Resumen'
+  },
+  'manageCategories': {
+    en: 'Manage Categories',
+    es: 'Gestionar Categorías'
   }
 };
 
@@ -378,12 +436,17 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     localStorage.setItem('language', lang);
   };
 
-  const t = (key: string, fallback?: string): string => {
+  const t = (key: string, fallback?: string, params?: Record<string, any>): string => {
     const translation = translations[key];
-    if (translation) {
-      return translation[language];
+    let result = translation ? translation[language] : (fallback || key);
+    
+    if (params && typeof result === 'string') {
+      result = result.replace(/\{(\w+)\}/g, (match, paramKey) => {
+        return params[paramKey]?.toString() || match;
+      });
     }
-    return fallback || key;
+    
+    return result;
   };
 
   return (
