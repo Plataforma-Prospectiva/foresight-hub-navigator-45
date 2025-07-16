@@ -5,7 +5,9 @@ import {
   Lightbulb, ChevronRight, Timer, Building, Globe, Compass,
   FileText, PieChart, LineChart, Microscope, Calculator, 
   FlaskConical, Grid3x3, ArrowUpDown, ArrowLeftRight, Workflow,
-  Scale, Gauge, Eye, Crosshair
+  Scale, Gauge, Eye, Crosshair, UserCheck, Shapes, Palette,
+  Settings, Presentation, Camera, Clock, Sparkles, Heart,
+  MessageSquare, Layers3, Puzzle, TestTube, Rocket, Users2
 } from 'lucide-react';
 
 export const techniquesES: Technique[] = [
@@ -833,6 +835,1084 @@ export const techniquesES: Technique[] = [
         authors: ['Kimberly Wheaton'],
         institution: 'Futuribles International',
         year: 2020
+      }
+    ]
+  },
+  {
+    id: 'setting-the-space',
+    name: 'Configuración del Espacio',
+    icon: Settings,
+    complexity: 1,
+    category: 'preparation',
+    description: 'Diseño intencional del espacio físico de taller para crear una atmósfera acogedora que establezca expectativas y facilite la especulación colaborativa.',
+    objectives: [
+      'Crear ambiente acogedor y estimulante',
+      'Establecer tono especulativo',
+      'Facilitar interacción grupal',
+      'Preparar materiales y recursos'
+    ],
+    applications: [
+      'Talleres de especulación',
+      'Sesiones de diseño colaborativo',
+      'Workshops creativos',
+      'Facilitación de grupos',
+      'Eventos participativos'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Planificación del Espacio',
+        description: 'Diseñar layout que facilite movimiento y trabajo grupal, considerando acústica y iluminación.',
+        duration: '30 minutos'
+      },
+      {
+        step: 2,
+        title: 'Selección de Objetos',
+        description: 'Elegir objetos, imágenes o materiales que ilustren el tema y estimulen la creatividad.',
+        duration: '15 minutos'
+      },
+      {
+        step: 3,
+        title: 'Ambientación Sensorial',
+        description: 'Configurar música, aromas, temperatura y otros elementos sensoriales apropiados.',
+        duration: '10 minutos'
+      },
+      {
+        step: 4,
+        title: 'Preparación de Materiales',
+        description: 'Organizar y distribuir materiales de trabajo, herramientas y recursos necesarios.',
+        duration: '15 minutos'
+      },
+      {
+        step: 5,
+        title: 'Verificación Final',
+        description: 'Revisar que todo esté en orden y ajustar elementos según necesidades específicas.',
+        duration: '5 minutos'
+      }
+    ],
+    advantages: [
+      'Establece expectativas apropiadas',
+      'Reduce ansiedad de participantes',
+      'Estimula creatividad desde el inicio',
+      'Facilita engagement natural'
+    ],
+    limitations: [
+      'Requiere tiempo de preparación',
+      'Depende de recursos disponibles',
+      'Puede ser sensible culturalmente',
+      'Limitado por restricciones espaciales'
+    ],
+    timeHorizon: 'Duración del taller',
+    participants: 'Facilitadores y organizadores',
+    bibliographicSources: [
+      {
+        type: 'guide',
+        title: 'Co-Creating Futures: How can public engagement foster creative exchange between science and society?',
+        authors: ['Kristin Werner', 'Antje Nestler'],
+        year: 2025,
+        institution: 'CollActive Materials',
+        url: 'https://doi.org/10.18452/31342'
+      }
+    ]
+  },
+  {
+    id: 'speculation-groups',
+    name: 'Grupos de Especulación',
+    icon: Users2,
+    complexity: 1,
+    category: 'group-dynamics',
+    description: 'Formación estratégica de grupos pequeños de 3-5 participantes para facilitar la especulación colaborativa efectiva y la participación equitativa.',
+    objectives: [
+      'Optimizar dinámicas grupales',
+      'Facilitar participación equitativa',
+      'Crear diversidad de perspectivas',
+      'Mantener enfoque productivo'
+    ],
+    applications: [
+      'Talleres participativos',
+      'Sesiones de brainstorming',
+      'Workshops de diseño',
+      'Consultas ciudadanas',
+      'Procesos colaborativos'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Determinación del Tamaño',
+        description: 'Establecer grupos de 3-5 personas para equilibrar diversidad y eficiencia decisional.',
+        duration: '5 minutos'
+      },
+      {
+        step: 2,
+        title: 'Criterios de Agrupación',
+        description: 'Decidir método: auto-selección, aleatorio, por experticia o por tema de interés.',
+        duration: '10 minutos'
+      },
+      {
+        step: 3,
+        title: 'Asignación de Grupos',
+        description: 'Implementar método elegido usando técnicas como etiquetas de colores o símbolos.',
+        duration: '10 minutos'
+      },
+      {
+        step: 4,
+        title: 'Acomodación Espacial',
+        description: 'Organizar espacios físicos que permitan trabajo íntimo del grupo sin interferencias.',
+        duration: '5 minutos'
+      },
+      {
+        step: 5,
+        title: 'Verificación de Balance',
+        description: 'Revisar composición de grupos y hacer ajustes si es necesario para equilibrio.',
+        duration: '5 minutos'
+      }
+    ],
+    advantages: [
+      'Tamaño óptimo para participación',
+      'Facilita toma de decisiones',
+      'Reduce intimidación social',
+      'Permite múltiples perspectivas'
+    ],
+    limitations: [
+      'Puede crear fragmentación',
+      'Algunos grupos pueden dominar',
+      'Requiere facilitación múltiple',
+      'Dinámicas pueden variar significativamente'
+    ],
+    timeHorizon: 'Duración del proceso',
+    participants: '3-5 personas por grupo',
+    bibliographicSources: [
+      {
+        type: 'guide',
+        title: 'Co-Creating Futures: How can public engagement foster creative exchange between science and society?',
+        authors: ['Kristin Werner', 'Antje Nestler'],
+        year: 2025,
+        institution: 'CollActive Materials',
+        url: 'https://doi.org/10.18452/31342'
+      }
+    ]
+  },
+  {
+    id: 'speculative-introductions',
+    name: 'Introducciones Especulativas',
+    icon: Presentation,
+    complexity: 1,
+    category: 'icebreaker',
+    description: 'Actividad de presentación que introduce a los participantes en modo especulativo, compartiendo perspectivas personales y estableciendo conexiones temáticas.',
+    objectives: [
+      'Activar pensamiento especulativo',
+      'Establecer conexiones personales',
+      'Introducir perspectivas diversas',
+      'Crear ambiente de apertura'
+    ],
+    applications: [
+      'Apertura de talleres',
+      'Inicio de procesos participativos',
+      'Actividades de integración',
+      'Sesiones de diseño colaborativo',
+      'Encuentros interdisciplinarios'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Preparación de Preguntas',
+        description: 'Diseñar preguntas especulativas que conecten lo personal con el tema del taller.',
+        duration: '10 minutos'
+      },
+      {
+        step: 2,
+        title: 'Instrucciones Claras',
+        description: 'Explicar el formato y establecer tiempo límite para cada presentación.',
+        duration: '5 minutos'
+      },
+      {
+        step: 3,
+        title: 'Ronda de Presentaciones',
+        description: 'Cada participante se presenta usando las preguntas especulativas como guía.',
+        duration: '2-3 minutos por persona'
+      },
+      {
+        step: 4,
+        title: 'Identificación de Conexiones',
+        description: 'Facilitador destaca temas comunes o contrastes interesantes entre presentaciones.',
+        duration: '10 minutos'
+      },
+      {
+        step: 5,
+        title: 'Transición al Tema',
+        description: 'Conectar insights de presentaciones con objetivos principales del taller.',
+        duration: '5 minutos'
+      }
+    ],
+    advantages: [
+      'Activa mindset especulativo',
+      'Revela diversidad de perspectivas',
+      'Crea base común para trabajo',
+      'Reduce barreras sociales'
+    ],
+    limitations: [
+      'Puede consumir tiempo considerable',
+      'Algunos participantes pueden resistirse',
+      'Requiere facilitación hábil',
+      'Puede generar ansiedad inicial'
+    ],
+    timeHorizon: 'Inicio del proceso',
+    participants: 'Todos los participantes',
+    bibliographicSources: [
+      {
+        type: 'guide',
+        title: 'Co-Creating Futures: How can public engagement foster creative exchange between science and society?',
+        authors: ['Kristin Werner', 'Antje Nestler'],
+        year: 2025,
+        institution: 'CollActive Materials',
+        url: 'https://doi.org/10.18452/31342'
+      }
+    ]
+  },
+  {
+    id: 'futures-check-in',
+    name: 'Check-in de Futuros',
+    icon: UserCheck,
+    complexity: 1,
+    category: 'reflection',
+    description: 'Reflexión inicial donde participantes identifican sus roles personales, intereses y valores, creando base para perspectivas especulativas auténticas.',
+    objectives: [
+      'Conectar identidad personal con proceso',
+      'Clarificar perspectivas individuales',
+      'Establecer relevancia personal',
+      'Crear autoconciencia reflexiva'
+    ],
+    applications: [
+      'Inicio de talleres especulativos',
+      'Sesiones de reflexión',
+      'Procesos de co-diseño',
+      'Consultas participativas',
+      'Workshops de futuros'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Distribución de Plantillas',
+        description: 'Proporcionar formulario de check-in con espacios para nombre, roles e intereses.',
+        duration: '5 minutos'
+      },
+      {
+        step: 2,
+        title: 'Reflexión Individual',
+        description: 'Participantes completan reflexión sobre roles cotidianos y áreas de interés.',
+        duration: '10-15 minutos'
+      },
+      {
+        step: 3,
+        title: 'Compartir en Grupos',
+        description: 'Opcionalmente compartir reflexiones en grupos pequeños o con pareja.',
+        duration: '10 minutos'
+      },
+      {
+        step: 4,
+        title: 'Conexión con Proceso',
+        description: 'Facilitador conecta reflexiones personales con objetivos del taller.',
+        duration: '5 minutos'
+      },
+      {
+        step: 5,
+        title: 'Referencia Continua',
+        description: 'Invitar a participantes a retomar check-in durante proceso especulativo.',
+        duration: 'Continuo'
+      }
+    ],
+    advantages: [
+      'Personaliza experiencia de aprendizaje',
+      'Aumenta relevancia percibida',
+      'Facilita autenticidad en especulación',
+      'Crea base para facilitación'
+    ],
+    limitations: [
+      'Puede sentirse abstracto inicialmente',
+      'Requiere procesamiento adicional',
+      'Algunos pueden resistir introspección',
+      'Tiempo adicional necesario'
+    ],
+    timeHorizon: 'Duración del taller',
+    participants: 'Individual o en grupos pequeños',
+    bibliographicSources: [
+      {
+        type: 'guide',
+        title: 'Co-Creating Futures: How can public engagement foster creative exchange between science and society?',
+        authors: ['Kristin Werner', 'Antje Nestler'],
+        year: 2025,
+        institution: 'CollActive Materials',
+        url: 'https://doi.org/10.18452/31342'
+      }
+    ]
+  },
+  {
+    id: 'research-storytelling',
+    name: 'Narrativa de Investigación',
+    icon: MessageSquare,
+    complexity: 2,
+    category: 'knowledge-transfer',
+    description: 'Presentación narrativa de insights de investigación que conecta hallazgos científicos con experiencias humanas para inspirar especulación futura.',
+    objectives: [
+      'Hacer investigación accesible',
+      'Conectar ciencia con experiencia cotidiana',
+      'Inspirar especulación informada',
+      'Nivelar conocimiento grupal'
+    ],
+    applications: [
+      'Comunicación científica',
+      'Talleres de co-diseño',
+      'Consultas públicas',
+      'Procesos participativos',
+      'Educación científica'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Selección de Narrativas',
+        description: 'Identificar aspectos de investigación que se prestan a narrativa humana compelling.',
+        duration: '1-2 horas'
+      },
+      {
+        step: 2,
+        title: 'Desarrollo de Historia',
+        description: 'Crear narrativa que conecte hallazgos técnicos con experiencias relacionables.',
+        duration: '2-3 horas'
+      },
+      {
+        step: 3,
+        title: 'Preparación de Apoyos',
+        description: 'Desarrollar visuales, objetos o demos que apoyen la narrativa sin dominarla.',
+        duration: '1 hora'
+      },
+      {
+        step: 4,
+        title: 'Presentación Narrativa',
+        description: 'Contar historia de manera engaging, enfocando aspectos humanos de la investigación.',
+        duration: '10-15 minutos'
+      },
+      {
+        step: 5,
+        title: 'Diálogo Abierto',
+        description: 'Facilitar preguntas y conexiones entre narrativa e intereses de participantes.',
+        duration: '10-15 minutos'
+      }
+    ],
+    advantages: [
+      'Hace ciencia más accesible',
+      'Crea conexión emocional',
+      'Facilita retención de información',
+      'Inspira especulación creativa'
+    ],
+    limitations: [
+      'Puede simplificar excesivamente',
+      'Requiere habilidades narrativas',
+      'Riesgo de distorsión científica',
+      'Tiempo de preparación intensivo'
+    ],
+    timeHorizon: 'Inmediato al proceso',
+    participants: 'Investigador y audiencia',
+    bibliographicSources: [
+      {
+        type: 'guide',
+        title: 'Co-Creating Futures: How can public engagement foster creative exchange between science and society?',
+        authors: ['Kristin Werner', 'Antje Nestler'],
+        year: 2025,
+        institution: 'CollActive Materials',
+        url: 'https://doi.org/10.18452/31342'
+      }
+    ]
+  },
+  {
+    id: 'hands-on-experience',
+    name: 'Experiencia Práctica',
+    icon: TestTube,
+    complexity: 2,
+    category: 'experiential',
+    description: 'Actividad práctica que permite a participantes experimentar directamente con conceptos, materiales o procesos de investigación para comprender de manera visceral.',
+    objectives: [
+      'Crear comprensión experiencial',
+      'Facilitar aprendizaje kinestésico',
+      'Generar insights viscerales',
+      'Democratizar conocimiento especializado'
+    ],
+    applications: [
+      'Talleres científicos',
+      'Educación experiencial',
+      'Procesos de co-diseño',
+      'Consultas técnicas',
+      'Workshops de innovación'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Diseño de Experiencia',
+        description: 'Crear actividad hands-on que capte esencia de conceptos de investigación.',
+        duration: '2-3 horas'
+      },
+      {
+        step: 2,
+        title: 'Preparación de Materiales',
+        description: 'Organizar materiales, herramientas y espacios necesarios para experiencia segura.',
+        duration: '1 hora'
+      },
+      {
+        step: 3,
+        title: 'Instrucciones Claras',
+        description: 'Explicar actividad, objetivos de aprendizaje y medidas de seguridad necesarias.',
+        duration: '5-10 minutos'
+      },
+      {
+        step: 4,
+        title: 'Experiencia Práctica',
+        description: 'Participantes realizan actividad con apoyo y orientación según necesidad.',
+        duration: '20-45 minutos'
+      },
+      {
+        step: 5,
+        title: 'Reflexión y Conexión',
+        description: 'Procesar experiencia y conectar con conceptos más amplios de investigación.',
+        duration: '15-20 minutos'
+      }
+    ],
+    advantages: [
+      'Comprensión profunda y memorable',
+      'Compromete múltiples sentidos',
+      'Nivela campo de conocimiento',
+      'Genera engagement natural'
+    ],
+    limitations: [
+      'Requiere preparación intensiva',
+      'Limitaciones de seguridad',
+      'Puede ser costoso en materiales',
+      'No todos aprenden kinestésicamente'
+    ],
+    timeHorizon: 'Sesión específica',
+    participants: 'Individual o grupos pequeños',
+    bibliographicSources: [
+      {
+        type: 'guide',
+        title: 'Co-Creating Futures: How can public engagement foster creative exchange between science and society?',
+        authors: ['Kristin Werner', 'Antje Nestler'],
+        year: 2025,
+        institution: 'CollActive Materials',
+        url: 'https://doi.org/10.18452/31342'
+      }
+    ]
+  },
+  {
+    id: 'brainwriting',
+    name: 'Lluvia de Ideas Escrita',
+    icon: Puzzle,
+    complexity: 1,
+    category: 'ideation',
+    description: 'Técnica de generación de ideas donde participantes escriben ideas silenciosamente antes de compartir, permitiendo participación más equitativa e ideas más diversas.',
+    objectives: [
+      'Generar máximo número de ideas',
+      'Evitar dominancia verbal',
+      'Permitir reflexión antes de compartir',
+      'Capturar ideas de participantes introvertidos'
+    ],
+    applications: [
+      'Sesiones de brainstorming',
+      'Procesos de especulación',
+      'Talleres creativos',
+      'Consultas participativas',
+      'Workshops de innovación'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Preparación de Materiales',
+        description: 'Distribuir papel, post-its o dispositivos digitales para escritura individual.',
+        duration: '5 minutos'
+      },
+      {
+        step: 2,
+        title: 'Explicación de Reglas',
+        description: 'Clarificar que fase inicial es silenciosa y que todas las ideas son bienvenidas.',
+        duration: '5 minutos'
+      },
+      {
+        step: 3,
+        title: 'Escritura Silenciosa',
+        description: 'Participantes escriben ideas individualmente sin discusión ni comentarios.',
+        duration: '10-15 minutos'
+      },
+      {
+        step: 4,
+        title: 'Compartir Ideas',
+        description: 'Cada persona comparte una idea por turno hasta agotar todas las ideas escritas.',
+        duration: '15-20 minutos'
+      },
+      {
+        step: 5,
+        title: 'Agrupación y Desarrollo',
+        description: 'Organizar ideas por temas y desarrollar las más prometedoras colaborativamente.',
+        duration: '20-30 minutos'
+      }
+    ],
+    advantages: [
+      'Participación más equitativa',
+      'Ideas más diversas y creativas',
+      'Reduce influencia de personalidades dominantes',
+      'Permite procesamiento reflexivo'
+    ],
+    limitations: [
+      'Menos energía que brainstorming oral',
+      'Puede sentirse artificial inicialmente',
+      'Requiere habilidades de escritura',
+      'Menos construcción inmediata sobre ideas'
+    ],
+    timeHorizon: 'Sesión específica',
+    participants: 'Grupos de 4-12 personas',
+    bibliographicSources: [
+      {
+        type: 'guide',
+        title: 'Co-Creating Futures: How can public engagement foster creative exchange between science and society?',
+        authors: ['Kristin Werner', 'Antje Nestler'],
+        year: 2025,
+        institution: 'CollActive Materials',
+        url: 'https://doi.org/10.18452/31342'
+      }
+    ]
+  },
+  {
+    id: 'artifact-from-future',
+    name: 'Artefacto del Futuro',
+    icon: Rocket,
+    complexity: 3,
+    category: 'speculative-design',
+    description: 'Creación de objetos tangibles que representan productos, servicios o sistemas que podrían existir en escenarios futuros especulados.',
+    objectives: [
+      'Hacer futuros tangibles y concretos',
+      'Estimular imaginación especulativa',
+      'Facilitar discusión sobre implicaciones',
+      'Crear prototipos narrativos'
+    ],
+    applications: [
+      'Diseño especulativo',
+      'Workshops de futuros',
+      'Procesos de innovación',
+      'Consultas sobre tecnología',
+      'Educación sobre futuros'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Definición de Escenario',
+        description: 'Establecer contexto futuro específico con timeline y condiciones clave.',
+        duration: '15-20 minutos'
+      },
+      {
+        step: 2,
+        title: 'Ideación de Artefacto',
+        description: 'Imaginar objeto específico que existiría en ese futuro y su función.',
+        duration: '20-30 minutos'
+      },
+      {
+        step: 3,
+        title: 'Creación Física',
+        description: 'Construir representación física usando materiales disponibles de prototipado.',
+        duration: '45-60 minutos'
+      },
+      {
+        step: 4,
+        title: 'Desarrollo de Narrativa',
+        description: 'Crear historia sobre cómo se usa el artefacto y qué implica socialmente.',
+        duration: '20-30 minutos'
+      },
+      {
+        step: 5,
+        title: 'Presentación y Crítica',
+        description: 'Presentar artefacto a otros grupos para feedback y discusión.',
+        duration: '30-45 minutos'
+      }
+    ],
+    advantages: [
+      'Hace especulación tangible',
+      'Facilita comunicación de ideas complejas',
+      'Estimula pensamiento divergente',
+      'Crea objetos para discusión continua'
+    ],
+    limitations: [
+      'Requiere tiempo y materiales significativos',
+      'Habilidades de prototipado necesarias',
+      'Puede enfocarse demasiado en objeto',
+      'Limitado por materiales disponibles'
+    ],
+    timeHorizon: 'Horizonte del escenario especulado',
+    participants: 'Grupos de 3-5 personas',
+    bibliographicSources: [
+      {
+        type: 'guide',
+        title: 'Co-Creating Futures: How can public engagement foster creative exchange between science and society?',
+        authors: ['Kristin Werner', 'Antje Nestler'],
+        year: 2025,
+        institution: 'CollActive Materials',
+        url: 'https://doi.org/10.18452/31342'
+      }
+    ]
+  },
+  {
+    id: 'speculation-sketch',
+    name: 'Boceto de Especulación',
+    icon: Palette,
+    complexity: 2,
+    category: 'visualization',
+    description: 'Creación de representaciones visuales rápidas de ideas especulativas para capturar conceptos, comunicar visiones y facilitar iteración.',
+    objectives: [
+      'Capturar ideas especulativas visualmente',
+      'Facilitar comunicación rápida',
+      'Permitir iteración ágil de conceptos',
+      'Crear documentación visual'
+    ],
+    applications: [
+      'Workshops de especulación',
+      'Sesiones de ideación',
+      'Procesos de co-diseño',
+      'Documentación de talleres',
+      'Comunicación de conceptos'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Preparación de Materiales',
+        description: 'Distribuir papel, marcadores y plantillas de boceto si están disponibles.',
+        duration: '5 minutos'
+      },
+      {
+        step: 2,
+        title: 'Instrucciones de Boceto',
+        description: 'Explicar que objetivo es capturar esencia, no crear arte perfecto.',
+        duration: '5 minutos'
+      },
+      {
+        step: 3,
+        title: 'Boceto Individual/Grupal',
+        description: 'Crear representaciones visuales de escenarios o artefactos especulativos.',
+        duration: '15-30 minutos'
+      },
+      {
+        step: 4,
+        title: 'Anotación y Descripción',
+        description: 'Agregar texto explicativo y detalles que clarifiquen la visión.',
+        duration: '10-15 minutos'
+      },
+      {
+        step: 5,
+        title: 'Compartir y Refinar',
+        description: 'Presentar bocetos a otros para feedback e iteración.',
+        duration: '20-30 minutos'
+      }
+    ],
+    advantages: [
+      'Rápido y accesible',
+      'No requiere habilidades artísticas',
+      'Facilita comunicación visual',
+      'Permite iteración rápida'
+    ],
+    limitations: [
+      'Limitado por habilidades de dibujo',
+      'Puede ser ambiguo sin explicación',
+      'Menos detallado que prototipos',
+      'Algunos se sienten cohibidos dibujando'
+    ],
+    timeHorizon: 'Sesión específica',
+    participants: 'Individual o grupos pequeños',
+    bibliographicSources: [
+      {
+        type: 'guide',
+        title: 'Co-Creating Futures: How can public engagement foster creative exchange between science and society?',
+        authors: ['Kristin Werner', 'Antje Nestler'],
+        year: 2025,
+        institution: 'CollActive Materials',
+        url: 'https://doi.org/10.18452/31342'
+      }
+    ]
+  },
+  {
+    id: 'object-prototyping',
+    name: 'Prototipado de Objetos',
+    icon: Shapes,
+    complexity: 3,
+    category: 'prototyping',
+    description: 'Construcción de modelos físicos tridimensionales que materializan ideas especulativas usando materiales diversos para exploración táctil.',
+    objectives: [
+      'Materializar conceptos especulativos',
+      'Facilitar exploración táctil',
+      'Crear objetos para discusión',
+      'Desarrollar thinking a través del hacer'
+    ],
+    applications: [
+      'Talleres de especulación',
+      'Procesos de co-diseño',
+      'Prototipado de conceptos',
+      'Exhibiciones participativas',
+      'Workshops de materiales'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Selección de Materiales',
+        description: 'Proporcionar variedad de materiales: cartón, arcilla, textiles, elementos reciclados.',
+        duration: '10 minutos'
+      },
+      {
+        step: 2,
+        title: 'Definición de Concepto',
+        description: 'Clarificar qué aspecto de la especulación se materializará físicamente.',
+        duration: '15 minutos'
+      },
+      {
+        step: 3,
+        title: 'Construcción Colaborativa',
+        description: 'Crear prototipo físico como grupo, experimentando con formas y funciones.',
+        duration: '45-60 minutos'
+      },
+      {
+        step: 4,
+        title: 'Documentación Fotográfica',
+        description: 'Capturar múltiples ángulos del prototipo para preservación y comunicación.',
+        duration: '10 minutos'
+      },
+      {
+        step: 5,
+        title: 'Reflexión sobre Proceso',
+        description: 'Discutir qué insights surgieron durante construcción física.',
+        duration: '15-20 minutos'
+      }
+    ],
+    advantages: [
+      'Engagement kinestésico profundo',
+      'Revela aspectos inesperados',
+      'Crea objetos duraderos para exhibición',
+      'Facilita pensamiento no-verbal'
+    ],
+    limitations: [
+      'Intensivo en tiempo y materiales',
+      'Requiere espacio de trabajo adecuado',
+      'Prototipos pueden ser frágiles',
+      'No todos se sienten cómodos construyendo'
+    ],
+    timeHorizon: 'Sesión específica',
+    participants: 'Grupos de 3-5 personas',
+    bibliographicSources: [
+      {
+        type: 'guide',
+        title: 'Co-Creating Futures: How can public engagement foster creative exchange between science and society?',
+        authors: ['Kristin Werner', 'Antje Nestler'],
+        year: 2025,
+        institution: 'CollActive Materials',
+        url: 'https://doi.org/10.18452/31342'
+      }
+    ]
+  },
+  {
+    id: 'future-pitch',
+    name: 'Pitch de Futuro',
+    icon: Presentation,
+    complexity: 2,
+    category: 'communication',
+    description: 'Presentación estructurada donde grupos comunican sus escenarios especulativos de manera compelling y persuasiva a audiencia.',
+    objectives: [
+      'Comunicar visiones especulativas efectivamente',
+      'Practicar advocacy de futuros',
+      'Generar diálogo entre diferentes visiones',
+      'Desarrollar habilidades de presentación'
+    ],
+    applications: [
+      'Cierre de talleres especulativos',
+      'Consultas públicas',
+      'Procesos participativos',
+      'Workshops de futuros',
+      'Eventos de comunidad'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Preparación de Estructura',
+        description: 'Definir formato de pitch: duración, elementos requeridos, criterios de evaluación.',
+        duration: '10 minutos'
+      },
+      {
+        step: 2,
+        title: 'Desarrollo de Narrativa',
+        description: 'Grupos crean narrativa compelling que conecte emocionalmente con audiencia.',
+        duration: '30-45 minutos'
+      },
+      {
+        step: 3,
+        title: 'Preparación de Apoyos',
+        description: 'Organizar prototipos, bocetos o props que apoyen la presentación.',
+        duration: '15 minutos'
+      },
+      {
+        step: 4,
+        title: 'Presentaciones',
+        description: 'Cada grupo presenta su visión futura con tiempo limitado para impacto.',
+        duration: '5-10 minutos por grupo'
+      },
+      {
+        step: 5,
+        title: 'Q&A y Feedback',
+        description: 'Audiencia hace preguntas y proporciona feedback constructivo.',
+        duration: '5-10 minutos por grupo'
+      }
+    ],
+    advantages: [
+      'Desarrolla habilidades de comunicación',
+      'Crea momento culminante',
+      'Facilita comparación de visiones',
+      'Genera engagement de audiencia'
+    ],
+    limitations: [
+      'Puede crear competitividad no deseada',
+      'Requiere habilidades de presentación',
+      'Algunos grupos pueden dominar',
+      'Presión de tiempo puede estresar'
+    ],
+    timeHorizon: 'Cierre de proceso',
+    participants: 'Grupos presentando a audiencia',
+    bibliographicSources: [
+      {
+        type: 'guide',
+        title: 'Co-Creating Futures: How can public engagement foster creative exchange between science and society?',
+        authors: ['Kristin Werner', 'Antje Nestler'],
+        year: 2025,
+        institution: 'CollActive Materials',
+        url: 'https://doi.org/10.18452/31342'
+      }
+    ]
+  },
+  {
+    id: 'impromptu-exhibition',
+    name: 'Exhibición Improvisada',
+    icon: Camera,
+    complexity: 2,
+    category: 'display',
+    description: 'Creación rápida de espacio expositivo temporal donde grupos muestran prototipos y especulaciones para exploración pública informal.',
+    objectives: [
+      'Crear espacio de exhibición accesible',
+      'Facilitar exploración informal',
+      'Generar sentimiento de logro',
+      'Permitir documentación visual'
+    ],
+    applications: [
+      'Cierre de talleres',
+      'Eventos comunitarios',
+      'Procesos participativos',
+      'Workshops educativos',
+      'Celebraciones de progreso'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Preparación Rápida del Espacio',
+        description: 'Organizar área para display con mesas, paredes o pedestales improvisados.',
+        duration: '15-20 minutos'
+      },
+      {
+        step: 2,
+        title: 'Instalación de Trabajos',
+        description: 'Grupos instalan prototipos, bocetos y materiales con etiquetas identificatorias.',
+        duration: '20-30 minutos'
+      },
+      {
+        step: 3,
+        title: 'Apertura Informal',
+        description: 'Invitar a exploración libre con creadores disponibles para explicar.',
+        duration: '30-45 minutos'
+      },
+      {
+        step: 4,
+        title: 'Documentación Colectiva',
+        description: 'Tomar fotos de instalación y permitir que participantes documenten.',
+        duration: '15 minutos'
+      },
+      {
+        step: 5,
+        title: 'Reflexión de Cierre',
+        description: 'Reunir grupo para reflexiones finales sobre experiencia expositiva.',
+        duration: '15 minutos'
+      }
+    ],
+    advantages: [
+      'Celebra logros tangibles',
+      'Crea experiencia memorable',
+      'Facilita documentación natural',
+      'Genera orgullo en participantes'
+    ],
+    limitations: [
+      'Requiere espacio adecuado',
+      'Calidad variable de exhibición',
+      'Puede sentirse amateur',
+      'Limitado por materiales disponibles'
+    ],
+    timeHorizon: 'Final de proceso',
+    participants: 'Todos los participantes',
+    bibliographicSources: [
+      {
+        type: 'guide',
+        title: 'Co-Creating Futures: How can public engagement foster creative exchange between science and society?',
+        authors: ['Kristin Werner', 'Antje Nestler'],
+        year: 2025,
+        institution: 'CollActive Materials',
+        url: 'https://doi.org/10.18452/31342'
+      }
+    ]
+  },
+  {
+    id: 'gallery-walk',
+    name: 'Caminata de Galería',
+    icon: Eye,
+    complexity: 1,
+    category: 'sharing',
+    description: 'Actividad donde participantes circulan libremente explorando trabajos de otros grupos en formato de galería auto-dirigida.',
+    objectives: [
+      'Facilitar exploración auto-dirigida',
+      'Permitir conversaciones naturales',
+      'Crear oportunidad de aprendizaje peer-to-peer',
+      'Generar ambiente de galería profesional'
+    ],
+    applications: [
+      'Cierre de talleres',
+      'Exhibiciones públicas',
+      'Sesiones de reflexión',
+      'Eventos de aprendizaje peer',
+      'Showcases comunitarios'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Configuración de Display',
+        description: 'Organizar prototipos y documentación alrededor del espacio para circulación fácil.',
+        duration: '15 minutos'
+      },
+      {
+        step: 2,
+        title: 'Posicionamiento de Creadores',
+        description: 'Creadores de grupos se posicionan cerca de sus displays para explicaciones.',
+        duration: '5 minutos'
+      },
+      {
+        step: 3,
+        title: 'Exploración Libre',
+        description: 'Participantes se mueven libremente por displays, examinando y discutiendo a su ritmo.',
+        duration: '20-30 minutos'
+      },
+      {
+        step: 4,
+        title: 'Recolección de Reflexiones',
+        description: 'Opcionalmente recoger comentarios escritos o reflexiones en materiales de display.',
+        duration: '10 minutos'
+      },
+      {
+        step: 5,
+        title: 'Reconvocatoria Grupal',
+        description: 'Reunir grupo para reflexiones finales y cierre después de exploración.',
+        duration: '10-15 minutos'
+      }
+    ],
+    advantages: [
+      'Exploración a ritmo propio',
+      'Facilita conversación natural',
+      'Oportunidad de examen detallado',
+      'Crea sentimiento de galería'
+    ],
+    limitations: [
+      'Requiere espacio para circulación',
+      'Algunos displays pueden perderse',
+      'Aprendizaje menos estructurado',
+      'Fatiga de creadores por explicaciones repetidas'
+    ],
+    timeHorizon: 'Marco temporal del taller',
+    participants: 'Todos los participantes del taller',
+    bibliographicSources: [
+      {
+        type: 'guide',
+        title: 'Co-Creating Futures: How can public engagement foster creative exchange between science and society?',
+        authors: ['Kristin Werner', 'Antje Nestler'],
+        year: 2025,
+        institution: 'CollActive Materials',
+        url: 'https://doi.org/10.18452/31342'
+      }
+    ]
+  },
+  {
+    id: 'takeaways-reflection',
+    name: 'Reflexión de Aprendizajes',
+    icon: Heart,
+    complexity: 1,
+    category: 'reflection',
+    description: 'Actividad de cierre donde participantes identifican y comparten insights clave, aprendizajes y compromisos del proceso especulativo.',
+    objectives: [
+      'Consolidar insights de aprendizaje',
+      'Crear construcción personal de significado',
+      'Planificar acciones futuras',
+      'Generar cierre grupal'
+    ],
+    applications: [
+      'Cierre de talleres',
+      'Consolidación de aprendizaje',
+      'Planificación de acciones',
+      'Evaluación de programas',
+      'Sesiones de reflexión'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Prompts de Reflexión',
+        description: 'Proporcionar preguntas guía sobre insights, sorpresas e intenciones futuras.',
+        duration: '5 minutos'
+      },
+      {
+        step: 2,
+        title: 'Reflexión Individual',
+        description: 'Participantes reflexionan individualmente sobre su experiencia y aprendizajes clave.',
+        duration: '10-15 minutos'
+      },
+      {
+        step: 3,
+        title: 'Compartir en Parejas',
+        description: 'Compartir reflexiones en parejas o grupos pequeños para procesamiento más profundo.',
+        duration: '10-15 minutos'
+      },
+      {
+        step: 4,
+        title: 'Cosecha Grupal',
+        description: 'Recopilar insights clave y compromisos en sesión plenaria.',
+        duration: '15-20 minutos'
+      },
+      {
+        step: 5,
+        title: 'Círculo de Cierre',
+        description: 'Terminar con ronda de apreciación o ritual de cierre para marcar culminación.',
+        duration: '10 minutos'
+      }
+    ],
+    advantages: [
+      'Consolida experiencia de aprendizaje',
+      'Crea compromiso personal',
+      'Permite apreciación grupal',
+      'Proporciona datos de evaluación'
+    ],
+    limitations: [
+      'Puede sentirse forzado o artificial',
+      'Tiempo limitado para reflexión profunda',
+      'Depende de apertura de participantes',
+      'Riesgo de compartir superficial'
+    ],
+    timeHorizon: 'Presente/inmediato',
+    participants: 'Todos los participantes del taller',
+    bibliographicSources: [
+      {
+        type: 'guide',
+        title: 'Co-Creating Futures: How can public engagement foster creative exchange between science and society?',
+        authors: ['Kristin Werner', 'Antje Nestler'],
+        year: 2025,
+        institution: 'CollActive Materials',
+        url: 'https://doi.org/10.18452/31342'
       }
     ]
   }
