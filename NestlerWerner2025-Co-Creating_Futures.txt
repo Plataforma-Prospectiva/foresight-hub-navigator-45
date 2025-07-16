@@ -1,0 +1,928 @@
+Kristin Werner 
+& Antje Nestler 
+
+
+
+How can public engagement foster creative exchangebetween science and society? CollActive Materials, an 
+experimental laboratory for science communication, offersa fresh approach through collaborative speculation. Fromfoundational concepts to practical workshop tools andworksheets, this guide offers tested methods for bringing 
+together academic research, design, and society in cocreating 
+pathways into a sustainable future. 
+
+
+© CollActive Materials, 2025 
+
+A digital version of this guidebook with worksheets is available online at: ↗ doi.org/10.18452/31342. 
+
+This publication and all worksheets templates herein are published under a CC BY 4.0 licence. This means that you 
+may use, share, and adapt them for any purpose, provided that you attribute them to CollActive Materials. Please 
+find further information on attribution online at ↗ creativecommons.org. 
+
+Content 
+
+4 Introduction 
+6 
+
+14 
+
+20 
+22 Getting Started 
+
+Chapter 1 Why Speculate with Research? 
+Chapter 2 Guiding Questions for Designing Collaborative Speculation 
+Chapter 3 Speculative Workshop Tools 
+↗ Setting the Space 
+↗ Speculation Groups 
+↗ Speculative Introductions 
+↗ Theme-Based Introductions 
+↗ Futures Check-In 
+28 Research Insights 
+↗ Three Research Objects 
+↗ Research Storytelling 
+↗ Hands-On Experience 
+34 Speculation 
+↗ Speculation Tasks for Future Scenarios 
+↗ Brainwriting 
+↗ An Artifact from the Future 
+↗ Speculation Sketch 
+44 Prototyping 
+↗ Object Prototyping 
+↗ Collage Prototyping 
+↗ Free Prototyping 
+52 Sharing Futures 
+↗ Future Pitch 
+↗ Impromptu Exhibition 
+↗ Gallery Walk 
+↗ Takeaways 
+58 
+60 What is the Future Made Of? 
+64 Futures of Air & AIRBOUND 
+68 Visiting Material Futures 
+
+Chapter 4 Case Studies from CollActive Materials 
+75 Imprint 
+
+76 About Us 
+
+
+67 
+
+
+WhySpeculate
+
+In this chapter, we introduce key conceptsunderpinning our approach to speculatingwith research and its potential for sciencecommunication, research, individuals, and 
+societies. At the end of the chapter, you will 
+
+find case studies illustrating how collaborativespeculation can be applied across a broadspectrum of research and design disciplines. 
+
+with 
+
+Research? 
+
+
+10 11 
+
+
+12 13 
+
+
+s• Nanotechnology (Schuijer,
+Broerse, and Kupper 2021)
+s• Nanotechnology (Schuijer,
+Broerse, and Kupper 2021)
+• Community Food-Growing(Chopra et al. 2022)
+• Marginalized Communities 
+Healthcare 
+•Healthcare in Aging(Tsekleves et al. 2019) 
+•Assisted Living, AssistedDying (Tsekleves et al.
+2017) 
+PolicyMaking• Dementia Policy (Darbyand Tsekleves 2018)
+• Blockchain Policy(Pólvora and Nascimento2021) 
+EmergingTechnologieUrbanDesign 
+• Smart Cities(Forlano and Mathew 2014;
+Nijs et al. 2020)
+• More-than-Human Cities(Nijs et al. 2020) 
+CommunityDev
+Climate &
+Ecology 
+• Climate Futures (Beach,
+Graves, and Fox 2024) 
+• Bioeconomy (Schwabe,
+Hülsen, and Trübswetter2022) 
+• Anthropocene Crises(Tyszczuk 2021) 
+and Values (Liao and Muller 
+Chapter 1 — Why Speculate with Research? 
+Education 
+Systems 
+• Near Future Schools(Duggan, Lindley, andMcNicol 2017)
+• Augmented RealityLearning (Hansen, Knudsen,
+and Ørngreen 2021) 
+(Beattie, Brown, and Kindon• Digital Futures (Rülleret al. 2022) 
+Figure 2: Selected collaborative speculation case studies 
+14 
+Reference List 
+
+Ashby, Simone, Julian Hanna, Alwin 
+De Rooij, Michelle Kasprzak, Julianne 
+Hoekstra, and Sjuul Bos. 2023. 
+»Articulating (Uncertain) AI Futures of 
+Artistic Practice: A Speculative Design 
+and Manifesto Sprint Approach.« In 
+
+Proceedings of the 15th Conference 
+on Creativity and Cognition (C&C '23). 
+Association for Computing Machinery, 
+New York, NY, USA, 312–318. 
+↗ doi.org/10.1145/3591196.3596819. 
+
+Berlin School of Public Engagement 
+and Open Science, and Cyber Valley. 
+2023. The Principles of Public 
+Engagement, 2nd Edition. Museum für 
+Naturkunde Berlin. 
+
+Beach, Michael W., Christina Graves, 
+and Tyler Fox. 2024. »Speculative F/ 
+Actors: Climate Futures – Crafting 
+a Workshop for Collaborative 
+Worldbuilding in Cataclysmic 
+Climates.« In Proceedings of the 
+Halfway to the Future Symposium 
+
+(HttF '24). Association for 
+Computing Machinery, New York, 
+NY, USA, Article 41, 1–9. 
+↗ doi.org/10.1145/3686169.3686192. 
+
+Beattie, Hamish, David Brown, and 
+Sarah Kindon. 2020. »Solidarity 
+through Difference: Speculative 
+Participatory Serious Urban Gaming 
+(SPS-UG).« International Journal of 
+Architectural Computing 18 (2): 141–54. 
+↗ doi.org/10.1177/1478077120924337. 
+
+Chopra, Simran, Rachel E. Clarke, 
+Adrian K. Clear, Sara Heitlinger, Ozge 
+Dilaver, and Christina Vasiliou. 2022. 
+»Negotiating Sustainable Futures in 
+Communities through Participatory 
+Speculative Design and Experiments 
+in Living.« In Proceedings of the 2022 
+CHI Conference on Human Factors in 
+Computing Systems (CHI '22). 
+Association for Computing Machinery, 
+New York, NY, USA, Article 334, 1–17. 
+↗ doi.org/10.1145/3491102.3501929. 
+
+Darby, Andy, and Emmanuel Tsekleves. 
+2018. »Mentian: Developing Design 
+Fiction for Dementia Policy.« In 
+
+Design as a Catalyst for Change – DRS 
+International Conference 2018, 
+edited by Carla Storni, Kate Leahy, 
+Mark McMahon, Peter Lloyd, 
+and Emanuela Bohemia, 25–28 
+June, Limerick, Ireland. 
+↗ doi.org/10.21606/drs.2018.608. 
+
+Duggan, James R., Joseph Lindley, and 
+Sarah McNicol. 2017. »Near Future 
+School: World Building beyond a 
+Neoliberal Present with Participatory 
+Design Fictions.« Futures 94: 15–23. 
+↗ doi.org/10.1016/j.futures.2017.04.001. 
+
+Dunne, Anthony, and Fiona Raby. 2013. 
+
+Speculative Everything: Design, Fiction, 
+and Social Dreaming. Cambridge, MA: 
+The MIT Press. 
+
+Forlano, Laura, and Anijo Mathew. 
+2014. »From Design Fiction to Design 
+Friction: Speculative and Participatory 
+Design of Values-Embedded Urban 
+Technology.« Journal of Urban 
+Technology 21 (4): 7–24. ↗ doi.org/10.10 
+80/10630732.2014.971525. 
+
+Groß, Benedikt, and Eileen Mandir. 
+2022. Zukünfte gestalten: Spekulation. 
+Kritik. Innovation. Verlag Hermann 
+Schmidt. 
+
+Hancock, Trevor, and Clement Bezold. 
+1994. »Possible Futures, 
+Preferable Futures.« Healthcare 
+Forum Journal 37 (2): 23–29. 
+↗ pubmed.ncbi.nlm.nih.gov/10132155. 
+
+Hansen, Helene H., Sara P. Knudsen, 
+and Rikke Ørngreen. 2021. 
+»Speculative Design as a Method 
+of Inquiry in an Online Workshop 
+Setting.« In 20th European Conference 
+on e-Learning, ECEL 2021, edited 
+by Carsten Busch, Martin Steinicke, 
+Regina Frieß, and Tilo Wendler, 218–26. 
+
+Lau, Hebitz C. H., and Jeffrey C. F. Ho. 
+2021. »Dimension-Based Interactions 
+with Virtual Assistants: A Co-Design 
+Project with Design Fictions.« 
+
+Multimodal Technologies and 
+Interaction 5 (12): 78. 
+↗ doi.org/10.3390/mti5120078. 
+
+Liao, Q. Vera, and Michael Muller. 
+2019. »Enabling Value Sensitive 
+AI Systems through Participatory 
+Design Fictions.« arXiv, preprint 
+arXiv:1912.07381. 
+↗ arxiv.org/abs/1912.07381. 
+
+Nijs, Greg, Giulietta Laki, Rafaella 
+Houlstan, Guillaume Slizewicz, 
+and Thomas Laureyssens. 2020. 
+»Fostering More-than-Human 
+Imaginaries: Introducing DIY 
+Speculative Fabulation in Civic HCI.« 
+In Proceedings of the 11th Nordic 
+Conference on Human-Computer 
+Interaction: Shaping Experiences, 
+Shaping Society (NordiCHI 2020). 
+Association for Computing Machinery, 
+New York, NY, USA, Article 36, 1–12. 
+↗ doi.org/10.1145/3419249.3420147. 
+
+Pólvora, Alexandre, and Susana 
+Nascimento. 2021. »Foresight and 
+Design Fictions Meet at a Policy Lab: 
+An Experimentation Approach 
+in Public Sector Innovation.« 
+Futures 128: 102709. 
+↗ doi.org/10.1016/j.futures.2021.102709. 
+
+Rüller, Sarah, Konstantin Aal, 
+Peter Tolmie, Andrea Hartmann, 
+Markus Rohde, and Volker Wulf. 
+2022. »Speculative Design as a 
+Collaborative Practice: Ameliorating 
+the Consequences of Illiteracy 
+through Digital Touch.« ACM 
+Transactions on Computer-Human 
+Interaction 29 (3): Article 23, 1–58. 
+↗ doi.org/10.1145/3487917. 
+
+Schuijer, Jantien W., Jacqueline E.W. 
+Broerse, and Frank Kupper. 2021. 
+»Citizen Science Fiction: The Potential 
+of Situated Speculative Prototyping 
+for Public Engagement on Emerging 
+Technologies.« NanoEthics 15: 1–18. 
+↗ doi.org/10.1007/s11569-020-00382-4. 
+
+Schwabe, Stefan, Jannis Hülsen, and 
+Angelika Trübswetter, eds. 2022. 
+Farming the Uncanny Valley. Verlag 
+der Universität der Künste Berlin. 
+↗ doi.org/10.25624/kuenste-1787. 
+
+Tsekleves, Emmanuel, Andy Darby, 
+Anna Whicher, and Piotr Swiatek. 2017. 
+»Co-Designing Design Fictions: A New 
+Approach for Debating and Priming 
+Future Healthcare Technologies 
+and Services.« Archives of Design 
+Research 30 (2): 5–21. 
+
+Tsekleves, Emmanuel, Min Hooi Yong, 
+Clarissa Ai Ling Lee, Sabir Giga, 
+Jung Shan Hwang, and Sian Lun Lau. 
+2019. »Rethinking How Healthcare Is 
+Conceptualised and Delivered through 
+Speculative Design in the UK and 
+Malaysia: A Comparative Study.« The 
+Design Journal 22 (sup1): 429–44. 
+↗ doi.org/10.1080/14606925.2019.15 
+95430. 
+
+Trier, Steffen Hviid, and Tom Jenkins. 
+2021. »Participatory Sensing in 
+the Speculative Smart City.« In 
+
+Proceedings of the 32nd Australian 
+Conference on Human-Computer 
+Interaction (OzCHI '20). Association 
+for Computing Machinery, New York, 
+NY, USA, 462–70. 
+↗ doi.org/10.1145/3441000.3441079. 
+
+Tyszczuk, Renata. 2021. »Collective 
+Scenarios: Speculative Improvisations 
+for the Anthropocene.« Futures 
+134: 102854. ↗ doi.org/10.1016/j. 
+futures.2021.102854. 
+
+Ye, Yingfei, and Duoduo Zhang. 2024. 
+»Co-Creating Pluralistic Futures: 
+A Systematic Literature Review on 
+Participatory Speculative Design.« In 
+DRS2024: Boston, edited by C. Gray, 
+
+E. Ciliotta Chehade, P. Hekkert, L. 
+Forlano, P. Ciuccarelli, and P. Lloyd. 
+↗ doi.org/10.21606/drs.2024.1316. 
+15 
+
+ Guiding 2 
+
+To fully realize the potential of collaborative speculation,
+designing the process well in advance is essential. Thisincludes understanding why you want to speculate andwhat you ideally want to achieve through speculation,
+finding themes and questions to speculate about,
+identifying with whom you want to speculate, and finally,
+finding the right conditions for all these ideas to flourish
+
+ Questions
+
+and create valuable engagement. 
+
+for DesigningCollaborative 
+Speculation 
+
+
+18 Chapter 2 — Guiding Questions for Designing Collaborative Speculation 19 
+
+
+’ 
+
+20 Chapter 2 — Guiding Questions for Designing Collaborative Speculation 21 
+
+
+Speculative 3
+
+ Workshop 
+
+In this chapter, we give you the tools youneed to start speculating. Mix and matchand see what works best for you! 
+
+Worksheets to accompany the speculation methodspresented in this chapter can be found online at:
+↗ doi.org/10.18452/31342
+
+Tools 
+
+
+Tools for creating a welcoming atmosphere, formingspeculation groups, and entering a speculative mode ofinteraction. 
+3.1 Getting Started 
+3.1 Getting Started 
+Tools for creating a welcoming atmosphere, formingspeculation groups, and entering a speculative mode ofinteraction. 
+
+Setting the Space 
+
+Upon entering, the setup of the 
+workshop space will influence each 
+participant’s expectations for the session. 
+Use this opportunity to set the tone for 
+speculation: What images, materials, 
+or objects will participants see as they 
+enter? What music or soundscapes will 
+they encounter? 
+
+You can choose to place objects in 
+the workshop space for participants 
+to interact with, e.g., research objects, 
+objects illustrating the theme, or material 
+samples. Or you might choose to display 
+images on the walls to illustrate the topic; 
+these images could be curated by you 
+or sent in by the participants. If you are 
+in contact with the participants before 
+the workshop, you could share a topical 
+question and ask participants to send an 
+image in response (e.g., »What comes to 
+mind when you think about …?«) 
+
+What kinds of workshop materials 
+do you want to be visible (e.g., materials 
+for note-taking, sketching, prototyping)? 
+What should not be revealed until the 
+actual start of the workshop? 
+
+Workshop participants deliberating in a speculation group. 
+Photo: Felix Noak 
+
+
+Speculation Groups 
+
+To prepare for collaborative speculation, 
+we recommend forming groups of three 
+to five co-speculators. With groups 
+of this size, every member is likely to 
+
+contribute, while group decision-making 
+is still feasible within reasonable time 
+limits. 
+
+Self-assembled groups 
+
+In short workshops with little time for 
+introductions, consider allowing groups 
+to form organically, with the participants 
+speculating with the people whom 
+they arrived with. Simply set up the 
+workshop space with tables that can 
+accommodate chairs for three to five 
+people. Participants can choose where to 
+sit when they enter, and each table forms 
+a speculation group. 
+
+Groups based on name tags 
+
+If there is more time for introductions, 
+consider forming groups randomly so 
+that participants encounter unfamiliar 
+perspectives in their interactions with 
+their co-speculators. An elegant method 
+for randomly assigning groups is to use 
+name tags in different colors or with 
+specific symbols; these are given out to 
+participants as they arrive. Later in the 
+workshop, participants with matching 
+tags find each other to form speculation 
+groups. 
+
+Groups based on speculation topics 
+
+If speculation groups will work on 
+different topics during the workshop, 
+consider allowing participants to choose 
+their group. To do so, label the tables in 
+the workshop space with keywords that 
+broadly describe the speculation topics 
+(e.g., communication, health, mobility, …) 
+and ask participants to choose a keyword 
+when they arrive. Participants then 
+select a topic (and a group) by sitting at 
+the table corresponding to their chosen 
+keyword. 
+
+25 
+
+26 Chapter 3 — Speculative Workshop Tools 27 
+
+
+Futures Check-In 
+
+
+Individually or in groups of 3–5 
+3–12 min
+→ Participants reflect on personal roles, interests, and values 
+A ›futures check-in‹ encourages participants to start the workshop with 
+a brief reflection: What perspectives do I bring to the table? What is 
+important to me today? Participants can reflect either individually or jointly 
+in the speculation groups as a way to introduce themselves to each other. 
+
+You will find the futures check-in template on the following page and 
+online.* In our version, participants fill in their (first) name, two roles they 
+take on in their daily lives, and then select up to three areas of interest 
+from a list. 
+
+Throughout the course of the workshop, ask participants to return to 
+their futures check-in. What was particularly important to them when they 
+entered the workshop? How do their everyday roles reflect the way in 
+which they interact with the world around them? Could this feed into their 
+speculations? 
+
+For facilitators, the futures check-in can be a very helpful way to grasp 
+the different perspectives in the room, even if you are not able to follow all 
+individual introductions. To this end, you can invite participants to leave 
+their check-ins out on the table or to share them with the whole group by 
+displaying them on a board. 
+
+
+A simple workshop setup for a speculation group featuring the 
+futures check-in. Photo: Richard Ley 
+
+* The worksheet templates mentioned in this guidebook, as the guide itself, are available online at ↗ doi.org/10.18452/31342. 
+They are published under a CC BY 4.0 licence, which means that you may use, share, and adapt them for any purpose, 
+provided that you attribute them to CollActive Materials. Please find further information at ↗ creativecommons.org. 
+28 Chapter 3 — Speculative Workshop Tools 29 
+
+
+Tried-and-tested approaches for grounding speculations inscientific research. 
+3.2 Research Insights 
+Tried-and-tested approaches for grounding speculations inscientific research. 
+3.2 Research Insights 
+Research informs and inspires futures, and thus plays anintegral role in our speculation process. This second phaseof the workshop provides participants with research-backed 
+basic information about the theme and highlights unansweredquestions and untapped potential. The aim of this phase is tolevel the knowledge playing field – to reach a state in whicheveryone has the information they need to speculate, withoutplacing ›experts‹ on a pedestal. If possible, consider expandingthis informative phase by also including perspectives from 
+non-academic contexts. 
+
+31 
+
+’ 
+
+32 Chapter 3 — Speculative Workshop Tools 33 
+
+
+34 35 
+
+
+3.3 Speculation 
+A step-by-step guide to facilitating research-inspiredspeculations. 
+
+This phase is the heart of every speculation workshop. It invitesparticipants to imagine future worlds inspired by researchinsights and their own experiences, values, and interests. At 
+the end, each group will have created a future scenario andideally a tangible artifact, represented through sketches and 
+
+descriptions. 
+
+Facilitating Speculation 
+
+Below we share a few guidelines to help 
+facilitate speculation. Pick and choose 
+what supports your topic and aims – 
+speculation is a mindset rather than a set 
+of rules. 
+
+Speculating, not forecasting 
+
+Speculation opens up a space of 
+imagination in which many things are 
+possible. Explain to participants that 
+the aim is not to predict the most likely 
+version of the future, but to imagine 
+different possible scenarios. Likewise, it 
+is not necessary to map out exactly how 
+a new technology (or any other concept) 
+will work. Encourage participants 
+to embrace unknown possibilities in 
+research and societal developments 
+rather than focusing on how feasible 
+their scenarios are or how exactly their 
+imagined technologies would work. 
+
+Set a timeframe 
+
+Give participants guidance by setting a 
+timeframe. In our workshops, 25 years 
+into the future has proved to be the sweet 
+spot for meaningful speculation. This 
+timeframe is sufficiently far in the future 
+for significant changes to occur while at 
+the same time being close enough for 
+participants to have agency in bringing 
+these changes about. 
+
+Encourage individual perspectives 
+
+Most meaningful speculations are 
+informed by personal experiences, tastes, 
+emotions, and knowledge – in general, 
+
+personal ways of looking at the world(s) 
+around us. Encourage participants to 
+bring what they know, think, and feel to 
+the speculation table. 
+
+Focus on the everyday 
+
+Future transformations become relatable 
+when they are expressed through the 
+lens of everyday experience. Always 
+invite participants to imagine what might 
+change on an individual or family level, or 
+among circles of friends, colleagues, or 
+any other groups in their lives: How would 
+the day-to-day be different in the future 
+scenario? 
+
+Find the friction 
+
+It is tempting to enter into entirely 
+utopian or dystopian narratives, but 
+the magic of speculation lies in the 
+in-between. Invite participants to 
+get specific and build frictions and 
+ambiguities into their scenarios. How 
+would different people’s experiences 
+vary? What values might be in conflict? 
+Is the scenario really as perfect or as 
+strange as it seems? 
+
+Use examples with care 
+
+One of the fundamental challenges 
+of facilitating speculation is that 
+participants are often uncertain as to 
+what a speculative scenario or artifact 
+might look like. You can use examples 
+to illustrate, but be cautious – examples 
+often stick in the mind and influence final 
+ideas. Try to explain without examples or 
+use a variety of different examples and 
+limit the time that you spend discussing 
+each of them. 
+
+37 
+
+39 39 
+
+41 41 
+
+42 43 
+
+
+Speculation Sketch
+
+ 
+Speculation groups of 3–5 
+5–15 min / For workshops of any length 
+→ Speculators sketch out their ideas 
+In this final stage of the speculation phase, each group puts their ideas for 
+future scenarios or artifacts down on paper. You can use and adapt the 
+speculation sketch template we provide online; on the template, each group 
+enters their (first) names, gives their scenario/artifact a title, draws a sketch, 
+and provides a brief description. Speculation sketches can be shared with 
+other groups in the final phase of the workshop or be used afterward to 
+display the outcomes. 
+
+
+Speculation sketches from a speculation 
+workshop on mycelium use in architecture. 
+Photos: Richard Ley 
+
+44 Chapter 3 — Speculative Workshop Tools 45 
+
+
+Prototyping makes speculative ideas tangible. This allowsfutures to be shared and discussed with all participants – orwith a wider audience after the workshop. 
+Prototyping makes speculative ideas tangible. This allows 
+
+3.4 Prototyping futures to be shared and discussed with all participants – orwith a wider audience after the workshop. 
+Quick methods for bringing speculations to life. 
+
+47 
+
+Object Prototyping
+
+ 
+Speculation groups of 3–5 
+30–45 min / For workshops of any length 
+→ Speculators turn their ideas into tangible objects 
+In this often-used form of prototyping, speculation groups bring their ideas 
+to life in small-scale models or objects that embody the essence of their 
+future scenarios or artifacts. 
+
+For this method, provide the workshop participants with various 
+materials and tools (see below). Encourage creativity and remind the 
+groups that the goal is to communicate ideas, not to create perfect objects. 
+Allocate at least 30 minutes to this phase and check in with the groups 
+regularly to help them manage their time. 
+
+Given the fragility of many prototypes, consider documenting them with 
+photographs during or immediately after the workshop. If you intend to 
+display or transport the prototypes, bring a sturdy box or container to store 
+them in safely. This is especially important if you are planning an exhibition 
+or future presentations. 
+
+Materials and tools 
+
+The selection of prototyping materials provided should be diverse but 
+does not need to be extensive – often, fewer options stimulate greater 
+creativity. Keep your workshop goals in mind when selecting materials: Opt 
+for colorful materials for playful prototypes or provide options in limited 
+colors to create a shared aesthetic and maintain the focus on the underlying 
+speculative ideas. 
+
+Prototyping in progress during CollActive Materials workshops. 
+Photos: Felix Noak (left), Richard Ley (right) 
+
+
+Chapter 3 — Speculative Workshop Tools 
+
+
+Base materials in various sizes and qualities 
+
+→ Paper and cardboard 
+→ Cloth, cotton, yarn, thread 
+→ Wood, e.g., popsicle sticks 
+→ Air-dry clay or modeling clay 
+→ Foil, e.g., biodegradable cellulose 
+→ Waste materials 
+Specific materials 
+
+→ Materials related to the research topic 
+→ Materials used or created during a ↗hands-on experience 
+→ Materials with specific functions, e.g., straws, balloons, stickers 
+→ Materials that stimulate different senses 
+Binders or other connecting materials 
+
+→ Glue 
+→ Adhesive tape 
+→ Wire, bare or covered with paper or yarn 
+→ Sewing kits 
+→ Stapler 
+Cutting tools 
+
+→ Scissors 
+→ (Cutting) ruler 
+→ Cutting knives 
+→ Cutting mats 
+Shaping tools 
+
+→ Ceramic tools 
+→ Water bowls to use with clay 
+Drawing and writing equipment 
+
+→ Pens 
+→ Markers 
+→ Inks, paint, brushes 
+49 
+
+50 51 
+
+
+’ 
+
+52 53 
+
+
+In this final phase of the workshop, co-speculators present the 
+
+3.5 Sharing Futures future scenarios and prototypes that they have developed in
+their groups. This part of the workshop is essential, as it reveals 
+Ways for participants to share and debate their ideas each group’s process, enabling others to gain insights into it, 
+with each other. and creates space for reflection and debate. 
+
+55 
+
+’ 
+
+’ 
+
+56 57 
+
+
+’ 
+
+58 59 
+
+
+4
+
+Case Studies 
+
+In this chapter, we present three case studiesfrom our project, each of which is unique inits own way. We provide concept overviewsand workshop plans as examples. See themnot as step-by-step instructions for you tofollow, but rather as sketches of experiments
+
+ from
+
+that you can refer to when shaping your own.
+
+ CollActive 
+Materials 
+
+
+62 63 
+
+
+64 65 
+
+
+66 67 
+
+
+68 69 
+
+
+70 71 
+
+
+72 73 
+
+
+74 75 
+
+
+Image Captions 
+
+Front Cover: Balloon samples made from biodegradable cellulose, developed by textile designer Eva 
+Bullermann. Photo: Michelle Mantel 
+Inside Front Cover: Speculation sketch and bubble prototype, co-created during a workshop on soft 
+
+robotics and magic machines. Photo: Richard Ley 
+Page 6/7: Experience station at a workshop on air and climate. Several of these stations were 
+
+conceptualized and facilitated by Prof. Clemens Winkler and the students of the Masters program 
+»Spiel und Objekt« at Ernst Busch University of Theatre Arts Berlin. Photo: German Palomeque 
+Page 14/15: Collage prototype, co-designed during a workshop on material futures. 
+
+Photo: CollActive Materials 
+
+Page 20/21: Collage prototype, co-designed during a workshop on material futures. 
+Photo: CollActive Materials 
+Page 22: Several material samples of degradable and non-degradable plastics, at a workshop on material 
+
+futures. Photo: Richard Ley 
+Page 28: Workshop participants during a hands-on experience at Futurium Lab. Photo: Richard Ley 
+Page 34: Speculative designer Emilia Tikka consulting a workshop group during their speculation process. 
+
+Photo: Felix Noak 
+Page 44: Prototyping with pine bark, the research object itself. Photo: Richard Ley 
+Page 52: Workshop participants sharing their speculative ideas with each other. Photo: Felix Noak 
+Page 58/59: Collective performance AIRNSHARE #2 by artist Doris Dziersk, during the closing night of the 
+
+exhibition AIRBOUND. Photo: Felix Noak 
+Page 74: Workshop participants prototyping with air-drying clay and hydrogels. Photo: Richard Ley 
+Inside Back Cover: Prototype of a novel material combining hydrogel and solar fibers, co-created during a 
+
+workshop on climate-adaptive architecture. Photo: Richard Ley 
+Back Cover: Prototype of a hydrogel brick for sustainable flood prevention, co-created during a workshop 
+on climate-adaptive architecture. Photo: Richard Ley 
+
+Imprint 
+
+© CollActive Materials, 2025 
+
+Authors: Dr. Kristin Werner & Antje Nestler 
+Editing: Liliana Alfreda, probicon GmbH 
+Graphic Design: NODE Berlin Oslo 
+(Serge Rompza, Georg Stahlbock) 
+Production: Gallery Print 
+
+The CollActive Materials Team: 
+
+Project Leaders: Dr. Léa Perraudin & 
+Dr. Martin Müller 
+Coordination & Public Engagement: 
+Dr. Kristin Werner 
+Project Assistant: Eva Bullermann 
+Principal Investigators: Prof. Dr. Oliver 
+Brock, Prof. Dr. Claudia Mareis, Antje 
+Nestler, Prof. Dr. Wolfgang Schäffner, 
+Solveig Steinhardt 
+
+Workshop & Exhibition Support: 
+Julia Blumenthal, Eileen Klingner, 
+Maxim Landau, Richard Ley 
+Project Consultants: Martin Kim Luge, 
+Mina Mahouti, Emilia Tikka, 
+Prof. Clemens Winkler 
+
+Researchers, designers, and artists 
+who contributed to the workshops and 
+exhibitions: 
+Rodolfo Acosta Castro, Dimitra Almpani-
+Lekka, Bastian Beyer, PhD, Valerian 
+Blos, Lena Böckmann, Eva Bullermann, 
+Prof. Dr. Oliver Brock, Monika Dorniak, 
+Doris Dziersk, Dr. Michaela Eder, Mari 
+Hakopyan, Friedel Hänsel, Johanna 
+Hehemeyer Cürten, Yoonha Kim, 
+Leonie Kopineck, Dr. Maxime Le Calvé, 
+Gosia Lehmann, Katja Lonzeck, Martin 
+Kim Luge, Prof. Dr. John Nyakatura, 
+Mina Mahouti, Natalija Miodragović, 
+Jonas Olbrich, Vili Pääkkö, Anne von 
+Petersdorff, Felix Rasehorn, Veronika 
+Risnovska, Anna Schäffner, Maxie 
+Schneider, Emilia Tikka, Apoorv Vaish, 
+Jeffrey van der Geest, Brenda Vazquez, 
+Dr. Charlett Wenig, Prof. Clemens Winkler 
+
+Over the course of our project, about 
+300 workshop participants have shared 
+their ideas and speculations with us. 
+We acknowledge every single person’s 
+contribution – without them, this project 
+would not have been possible. Thank you! 
+
+Realized by: 
+
+
+Funded by the Federal Ministry of 
+Education and Research (BMBF) and the 
+State of Berlin as part of the Excellence 
+Strategy of the German federal and state 
+governments. 
+
+Funding is granted by the »Berlin 
+University Alliance. Crossing Boundaries 
+towards an Integrated Research 
+Environment«, the alliance of Freie 
+Universität Berlin, Humboldt-Universität 
+zu Berlin, Technische Universität Berlin 
+and Charité – Universitätsmedizin Berlin, 
+funded by the Excellence Strategy of the 
+German federal and state Governments/ 
+Universities of Excellence funding line. 
+
+The authors acknowledge the 
+support of the Cluster of Excellence 
+»Matters of Activity. Image Space 
+Material« funded by the Deutsche 
+Forschungsgemeinschaft (DFG, German 
+Research Foundation) under Germany's 
+Excellence Strategy – EXC 2025 – 
+390648296. 
+
+
+
