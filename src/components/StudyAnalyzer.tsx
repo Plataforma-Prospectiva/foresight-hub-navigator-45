@@ -12,7 +12,7 @@ import { Brain, Target, Clock, Users, Zap, MapPin, Building, FileText, ArrowDown
 import { useTechniques } from "@/context/TechniqueContext";
 import { StudyProfile } from "@/types/technique";
 import { TechniqueCard } from "./TechniqueCard";
-import { SequenceVisualization } from "./SequenceVisualization";
+import { SequenceFlowVisualization } from "./SequenceFlowVisualization";
 
 export const StudyAnalyzer = () => {
   const { createStudyProfile, getRecommendedTechniques, techniques } = useTechniques();
@@ -469,7 +469,7 @@ export const StudyAnalyzer = () => {
           </Card>
 
           {/* Visualización de secuencias */}
-          <SequenceVisualization results={results} techniques={techniques} />
+          <SequenceFlowVisualization results={results} techniques={techniques} />
 
           {/* Técnicas recomendadas con justificaciones */}
           <Card>
