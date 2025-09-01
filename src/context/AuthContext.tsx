@@ -5,7 +5,7 @@ interface User {
   id: string;
   name: string;
   email: string;
-  role: 'admin' | 'user';
+  role: 'admin' | 'user' | 'beta';
 }
 
 interface AuthContextType {
@@ -28,12 +28,19 @@ const defaultUsers: User[] = [
     name: 'Administrador',
     email: 'admin@plataforma.com',
     role: 'admin'
+  },
+  {
+    id: '2',
+    name: 'Usuario Beta',
+    email: 'beta@plataforma.com',
+    role: 'beta'
   }
 ];
 
 // Contraseñas simuladas (en un app real estarían hasheadas)
 const userPasswords: Record<string, string> = {
-  'admin@plataforma.com': 'admin123'
+  'admin@plataforma.com': 'admin123',
+  'beta@plataforma.com': 'beta123'
 };
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {

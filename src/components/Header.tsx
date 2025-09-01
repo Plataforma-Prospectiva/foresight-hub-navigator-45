@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { HelpCircle, Brain, Languages } from "lucide-react";
 import { DocumentationModal } from "@/components/DocumentationModal";
 import { SettingsModal } from "@/components/SettingsModal";
+import { BetaCommentsModal } from "@/components/BetaCommentsModal";
 import { useLanguage } from "@/context/LanguageContext";
 
 interface HeaderProps {
@@ -29,29 +30,31 @@ export const Header = ({ onIconChange, onAddTool }: HeaderProps) => {
             </div>
           </div>
 
-          <div className="flex items-center space-x-4">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setLanguage(language === 'en' ? 'es' : 'en')}
-              title={language === 'en' ? 'Switch to Spanish' : 'Cambiar a Inglés'}
-            >
-              <Languages className="w-4 h-4" />
-              <span className="ml-2 text-sm">{language === 'en' ? 'ES' : 'EN'}</span>
-            </Button>
+            <div className="flex items-center space-x-4">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setLanguage(language === 'en' ? 'es' : 'en')}
+                title={language === 'en' ? 'Switch to Spanish' : 'Cambiar a Inglés'}
+              >
+                <Languages className="w-4 h-4" />
+                <span className="ml-2 text-sm">{language === 'en' ? 'ES' : 'EN'}</span>
+              </Button>
 
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setShowDocumentation(true)}
-            >
-              <HelpCircle className="w-4 h-4" />
-            </Button>
+              <BetaCommentsModal />
 
-            <div data-settings-button>
-              <SettingsModal onIconChange={onIconChange} onAddTool={onAddTool} />
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setShowDocumentation(true)}
+              >
+                <HelpCircle className="w-4 h-4" />
+              </Button>
+
+              <div data-settings-button>
+                <SettingsModal onIconChange={onIconChange} onAddTool={onAddTool} />
+              </div>
             </div>
-          </div>
         </div>
       </div>
 

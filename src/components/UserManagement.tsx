@@ -13,10 +13,10 @@ export const UserManagement = () => {
   const [editingUser, setEditingUser] = useState<string | null>(null);
   const [newUserName, setNewUserName] = useState("");
   const [newUserEmail, setNewUserEmail] = useState("");
-  const [newUserRole, setNewUserRole] = useState<"admin" | "user">("user");
+  const [newUserRole, setNewUserRole] = useState<"admin" | "user" | "beta">("user");
   const [editName, setEditName] = useState("");
   const [editEmail, setEditEmail] = useState("");
-  const [editRole, setEditRole] = useState<"admin" | "user">("user");
+  const [editRole, setEditRole] = useState<"admin" | "user" | "beta">("user");
 
   // Solo admins pueden ver este componente
   if (!user || user.role !== 'admin') {
@@ -106,12 +106,13 @@ export const UserManagement = () => {
 
             <div className="space-y-2">
               <Label htmlFor="new-user-role">Rol</Label>
-              <Select value={newUserRole} onValueChange={(value) => setNewUserRole(value as "admin" | "user")}>
+              <Select value={newUserRole} onValueChange={(value) => setNewUserRole(value as "admin" | "user" | "beta")}>
                 <SelectTrigger>
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="user">Usuario</SelectItem>
+                  <SelectItem value="beta">Beta Tester</SelectItem>
                   <SelectItem value="admin">Administrador</SelectItem>
                 </SelectContent>
               </Select>
@@ -142,12 +143,13 @@ export const UserManagement = () => {
                         onChange={(e) => setEditEmail(e.target.value)}
                         placeholder="Email"
                       />
-                      <Select value={editRole} onValueChange={(value) => setEditRole(value as "admin" | "user")}>
+                      <Select value={editRole} onValueChange={(value) => setEditRole(value as "admin" | "user" | "beta")}>
                         <SelectTrigger>
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
                           <SelectItem value="user">Usuario</SelectItem>
+                          <SelectItem value="beta">Beta Tester</SelectItem>
                           <SelectItem value="admin">Administrador</SelectItem>
                         </SelectContent>
                       </Select>
