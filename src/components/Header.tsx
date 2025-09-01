@@ -1,11 +1,13 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { HelpCircle, Brain, Languages } from "lucide-react";
+import { HelpCircle, Brain, Languages, Activity } from "lucide-react";
 import { DocumentationModal } from "@/components/DocumentationModal";
 import { SettingsModal } from "@/components/SettingsModal";
 import { BetaCommentsModal } from "@/components/BetaCommentsModal";
+import { AccessLogsViewer } from "@/components/AccessLogsViewer";
 import { useLanguage } from "@/context/LanguageContext";
+import { useAuth } from "@/context/AuthContext";
 
 interface HeaderProps {
   onIconChange: (toolId: string, newIcon: string) => void;
@@ -15,6 +17,7 @@ interface HeaderProps {
 export const Header = ({ onIconChange, onAddTool }: HeaderProps) => {
   const [showDocumentation, setShowDocumentation] = useState(false);
   const { language, setLanguage, t } = useLanguage();
+  const { user } = useAuth();
 
   return (
     <header className="bg-white border-b border-slate-200 sticky top-0 z-50">
@@ -42,6 +45,8 @@ export const Header = ({ onIconChange, onAddTool }: HeaderProps) => {
               </Button>
 
               <BetaCommentsModal />
+
+              <AccessLogsViewer />
 
               <Button
                 variant="ghost"
