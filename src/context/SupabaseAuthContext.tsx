@@ -20,24 +20,50 @@ export const SupabaseAuthProvider = ({ children }: { children: ReactNode }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Set up auth state listener FIRST
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (event, session) => {
+    const initAuth = async () => {
+      // Create admin user if it doesn't exist
+      await createAdminUserIfNeeded();
+      
+      // Set up auth state listener FIRST
+      const { data: { subscription } } = supabase.auth.onAuthStateChange(
+        (event, session) => {
+          setSession(session);
+          setUser(session?.user ?? null);
+          setLoading(false);
+        }
+      );
+
+      // THEN check for existing session
+      supabase.auth.getSession().then(({ data: { session } }) => {
         setSession(session);
         setUser(session?.user ?? null);
         setLoading(false);
-      }
-    );
+      });
 
-    // THEN check for existing session
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-      setUser(session?.user ?? null);
-      setLoading(false);
-    });
+      return () => subscription.unsubscribe();
+    };
 
-    return () => subscription.unsubscribe();
+    initAuth();
   }, []);
+
+  const createAdminUserIfNeeded = async () => {
+    try {
+      // Try to sign up the admin user - if it already exists, this will fail silently
+      await supabase.auth.signUp({
+        email: 'admin@admin.com',
+        password: 'Perrito',
+        options: {
+          emailRedirectTo: `${window.location.origin}/`,
+          data: {
+            display_name: 'Admin'
+          }
+        }
+      });
+    } catch (error) {
+      // Admin user might already exist, that's fine
+      console.log('Admin user creation attempt:', error);
+    }
+  };
 
   const signUp = async (email: string, password: string, displayName?: string) => {
     const redirectUrl = `${window.location.origin}/`;
