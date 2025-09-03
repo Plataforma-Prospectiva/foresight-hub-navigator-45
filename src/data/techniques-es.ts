@@ -2706,7 +2706,7 @@ export const techniquesES: Technique[] = [
     name: 'Design Futures / Speculative Design',
     icon: Brush,
     complexity: 3,
-    category: 'creative',
+    category: 'speculative-design',
     description: 'Explorar futuros posibles a través de objetos, imágenes y prototipos que provocan reflexión crítica.',
     objectives: [
       'Concretar lo abstracto',
