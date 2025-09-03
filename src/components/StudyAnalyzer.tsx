@@ -288,23 +288,21 @@ export const StudyAnalyzer = () => {
             <div className="space-y-2">
               <div className="flex items-center gap-2">
                 <Label htmlFor="informationDepth">Profundidad de Información</Label>
-                <TooltipProvider>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <HelpCircle className="w-4 h-4 text-gray-500" />
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <div className="max-w-xs">
-                        <p className="font-semibold mb-2">Niveles de Profundidad:</p>
-                        <ul className="text-sm space-y-1">
-                          <li><strong>Superficial:</strong> Información básica, datos generales</li>
-                          <li><strong>Media:</strong> Información detallada, algunos datos específicos</li>
-                          <li><strong>Profunda:</strong> Información exhaustiva, datos granulares, series históricas</li>
-                        </ul>
-                      </div>
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <HelpCircle className="w-4 h-4 text-gray-500" />
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <div className="max-w-xs">
+                      <p className="font-semibold mb-2">Niveles de Profundidad:</p>
+                      <ul className="text-sm space-y-1">
+                        <li><strong>Superficial:</strong> Información básica, datos generales</li>
+                        <li><strong>Media:</strong> Información detallada, algunos datos específicos</li>
+                        <li><strong>Profunda:</strong> Información exhaustiva, datos granulares, series históricas</li>
+                      </ul>
+                    </div>
+                  </TooltipContent>
+                </Tooltip>
               </div>
               <Select value={formData.informationDepth} onValueChange={(value) => handleInputChange("informationDepth", value)}>
                 <SelectTrigger>
@@ -323,23 +321,21 @@ export const StudyAnalyzer = () => {
             <div className="space-y-2">
               <div className="flex items-center gap-2">
                 <Label htmlFor="objectiveComplexity">Complejidad del Objetivo</Label>
-                <TooltipProvider>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <HelpCircle className="w-4 h-4 text-gray-500" />
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <div className="max-w-xs">
-                        <p className="font-semibold mb-2">Niveles de Complejidad:</p>
-                        <ul className="text-sm space-y-1">
-                          <li><strong>Baja:</strong> Objetivos claros, pocos actores, variables conocidas</li>
-                          <li><strong>Media:</strong> Objetivos moderadamente complejos, múltiples variables</li>
-                          <li><strong>Alta:</strong> Objetivos complejos, muchos actores, alta incertidumbre</li>
-                        </ul>
-                      </div>
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <HelpCircle className="w-4 h-4 text-gray-500" />
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <div className="max-w-xs">
+                      <p className="font-semibold mb-2">Niveles de Complejidad:</p>
+                      <ul className="text-sm space-y-1">
+                        <li><strong>Baja:</strong> Objetivos claros, pocos actores, variables conocidas</li>
+                        <li><strong>Media:</strong> Objetivos moderadamente complejos, múltiples variables</li>
+                        <li><strong>Alta:</strong> Objetivos complejos, muchos actores, alta incertidumbre</li>
+                      </ul>
+                    </div>
+                  </TooltipContent>
+                </Tooltip>
               </div>
               <Select value={formData.objectiveComplexity} onValueChange={(value) => handleInputChange("objectiveComplexity", value)}>
                 <SelectTrigger>
@@ -356,23 +352,21 @@ export const StudyAnalyzer = () => {
             <div className="space-y-2">
               <div className="flex items-center gap-2">
                 <Label htmlFor="teamExperience">Experiencia del Equipo</Label>
-                <TooltipProvider>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <HelpCircle className="w-4 h-4 text-gray-500" />
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <div className="max-w-xs">
-                        <p className="font-semibold mb-2">Niveles de Experiencia:</p>
-                        <ul className="text-sm space-y-1">
-                          <li><strong>Principiante:</strong> Poca experiencia en estudios prospectivos</li>
-                          <li><strong>Intermedio:</strong> Experiencia moderada, conoce metodologías básicas</li>
-                          <li><strong>Experto:</strong> Amplia experiencia, domina técnicas avanzadas</li>
-                        </ul>
-                      </div>
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <HelpCircle className="w-4 h-4 text-gray-500" />
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <div className="max-w-xs">
+                      <p className="font-semibold mb-2">Niveles de Experiencia:</p>
+                      <ul className="text-sm space-y-1">
+                        <li><strong>Principiante:</strong> Poca experiencia en estudios prospectivos</li>
+                        <li><strong>Intermedio:</strong> Experiencia moderada, conoce metodologías básicas</li>
+                        <li><strong>Experto:</strong> Amplia experiencia, domina técnicas avanzadas</li>
+                      </ul>
+                    </div>
+                  </TooltipContent>
+                </Tooltip>
               </div>
               <Select value={formData.teamExperience} onValueChange={(value) => handleInputChange("teamExperience", value)}>
                 <SelectTrigger>
