@@ -89,6 +89,20 @@ export const SupabaseAuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const signIn = async (email: string, password: string) => {
+    // Special handling for admin user - confirm email automatically if needed
+    if (email === 'admin@admin.com') {
+      try {
+        // First, try to confirm the admin user if not confirmed
+        await supabase.auth.admin.updateUserById(
+          'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', 
+          { email_confirm: true }
+        );
+      } catch (error) {
+        // Continue with normal login if admin confirmation fails
+        console.log('Admin confirmation attempt:', error);
+      }
+    }
+
     const { error } = await supabase.auth.signInWithPassword({
       email,
       password
