@@ -61,6 +61,9 @@ export interface StudyProfile {
     customResources: string[];
   };
   teamExperience: 'beginner' | 'intermediate' | 'expert';
+  informationDepth: 'shallow' | 'medium' | 'deep';
+  llmProvider: 'mistral' | 'openai-gpt4' | 'openai-gpt3.5' | 'claude-sonnet' | 'claude-haiku' | 'gemini-pro' | 'llama2' | 'perplexity' | 'custom';
+  customLlmApiKey?: string;
   recommendedTechniques: {
     techniqueId: string;
     justification: string;

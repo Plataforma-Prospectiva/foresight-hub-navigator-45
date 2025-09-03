@@ -9,11 +9,13 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Brain, Target, Clock, Users, Zap, MapPin, Building, FileText, ArrowDown, BarChart3, Terminal, TestTube2 } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Brain, Target, Clock, Users, Zap, MapPin, Building, FileText, ArrowDown, BarChart3, Terminal, TestTube2, HelpCircle, Settings } from "lucide-react";
 import { useTechniques } from "@/context/TechniqueContext";
 import { StudyProfile } from "@/types/technique";
 import { TechniqueCard } from "./TechniqueCard";
 import { SequenceFlowVisualization } from "./SequenceFlowVisualization";
+import { LLMConfigModal } from "./LLMConfigModal";
 
 export const StudyAnalyzer = () => {
   const { createStudyProfile, getRecommendedTechniques, techniques } = useTechniques();
@@ -47,6 +49,9 @@ export const StudyAnalyzer = () => {
       customResources: [] as string[],
     },
     teamExperience: "intermediate" as "beginner" | "intermediate" | "expert",
+    informationDepth: "medium" as "shallow" | "medium" | "deep",
+    llmProvider: "mistral" as "mistral" | "openai-gpt4" | "openai-gpt3.5" | "claude-sonnet" | "claude-haiku" | "gemini-pro" | "llama2" | "custom",
+    customLlmApiKey: "",
   });
 
   const [customResource, setCustomResource] = useState("");
@@ -76,7 +81,10 @@ export const StudyAnalyzer = () => {
         institutionalFramework: true,
         customResources: ["Datos de GPS de buses", "Encuestas de origen-destino", "Modelos de microsimulación"]
       },
-      teamExperience: "expert"
+      teamExperience: "expert",
+      informationDepth: "deep",
+      llmProvider: "mistral",
+      customLlmApiKey: ""
     });
   };
 
@@ -154,8 +162,9 @@ export const StudyAnalyzer = () => {
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
-          {/* Botón de datos de prueba */}
-          <div className="flex justify-end">
+          {/* Configuración de IA y datos de prueba */}
+          <div className="flex justify-between items-center">
+            <LLMConfigModal formData={formData} handleInputChange={handleInputChange} />
             <Button 
               variant="outline" 
               onClick={fillTestData}
@@ -265,7 +274,7 @@ export const StudyAnalyzer = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="estimatedTime">Tiempo Disponible</Label>
               <Input
@@ -277,29 +286,102 @@ export const StudyAnalyzer = () => {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="objectiveComplexity">Complejidad del Objetivo</Label>
+              <div className="flex items-center gap-2">
+                <Label htmlFor="informationDepth">Profundidad de Información</Label>
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <HelpCircle className="w-4 h-4 text-gray-500" />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <div className="max-w-xs">
+                        <p className="font-semibold mb-2">Niveles de Profundidad:</p>
+                        <ul className="text-sm space-y-1">
+                          <li><strong>Superficial:</strong> Información básica, datos generales</li>
+                          <li><strong>Media:</strong> Información detallada, algunos datos específicos</li>
+                          <li><strong>Profunda:</strong> Información exhaustiva, datos granulares, series históricas</li>
+                        </ul>
+                      </div>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </div>
+              <Select value={formData.informationDepth} onValueChange={(value) => handleInputChange("informationDepth", value)}>
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="shallow">Superficial</SelectItem>
+                  <SelectItem value="medium">Media</SelectItem>
+                  <SelectItem value="deep">Profunda</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <div className="flex items-center gap-2">
+                <Label htmlFor="objectiveComplexity">Complejidad del Objetivo</Label>
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <HelpCircle className="w-4 h-4 text-gray-500" />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <div className="max-w-xs">
+                        <p className="font-semibold mb-2">Niveles de Complejidad:</p>
+                        <ul className="text-sm space-y-1">
+                          <li><strong>Baja:</strong> Objetivos claros, pocos actores, variables conocidas</li>
+                          <li><strong>Media:</strong> Objetivos moderadamente complejos, múltiples variables</li>
+                          <li><strong>Alta:</strong> Objetivos complejos, muchos actores, alta incertidumbre</li>
+                        </ul>
+                      </div>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </div>
               <Select value={formData.objectiveComplexity} onValueChange={(value) => handleInputChange("objectiveComplexity", value)}>
                 <SelectTrigger>
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="low">Low</SelectItem>
-                  <SelectItem value="medium">Medium</SelectItem>
-                  <SelectItem value="high">High</SelectItem>
+                  <SelectItem value="low">Baja</SelectItem>
+                  <SelectItem value="medium">Media</SelectItem>
+                  <SelectItem value="high">Alta</SelectItem>
                 </SelectContent>
               </Select>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="teamExperience">Experiencia del Equipo</Label>
+              <div className="flex items-center gap-2">
+                <Label htmlFor="teamExperience">Experiencia del Equipo</Label>
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <HelpCircle className="w-4 h-4 text-gray-500" />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <div className="max-w-xs">
+                        <p className="font-semibold mb-2">Niveles de Experiencia:</p>
+                        <ul className="text-sm space-y-1">
+                          <li><strong>Principiante:</strong> Poca experiencia en estudios prospectivos</li>
+                          <li><strong>Intermedio:</strong> Experiencia moderada, conoce metodologías básicas</li>
+                          <li><strong>Experto:</strong> Amplia experiencia, domina técnicas avanzadas</li>
+                        </ul>
+                      </div>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </div>
               <Select value={formData.teamExperience} onValueChange={(value) => handleInputChange("teamExperience", value)}>
                 <SelectTrigger>
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="beginner">Beginner</SelectItem>
-                  <SelectItem value="intermediate">Intermediate</SelectItem>
-                  <SelectItem value="expert">Expert</SelectItem>
+                  <SelectItem value="beginner">Principiante</SelectItem>
+                  <SelectItem value="intermediate">Intermedio</SelectItem>
+                  <SelectItem value="expert">Experto</SelectItem>
                 </SelectContent>
               </Select>
             </div>

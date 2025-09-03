@@ -167,7 +167,7 @@ export const TechniqueProvider = ({ children }: { children: ReactNode }) => {
     filteredSimilarTechniques?: number;
   }> => {
     try {
-      console.log('Calling Mistral AI for sequence analysis...');
+      console.log('Calling AI for sequence analysis...', profile.llmProvider);
       
       // Prepare simplified technique data for the AI
       const simplifiedTechniques = techniques.map(tech => ({
@@ -185,21 +185,23 @@ export const TechniqueProvider = ({ children }: { children: ReactNode }) => {
       const { data, error } = await supabase.functions.invoke('mistral-sequence-analyzer', {
         body: {
           profile,
-          techniques: simplifiedTechniques
+          techniques: simplifiedTechniques,
+          llmProvider: profile.llmProvider || 'mistral',
+          customApiKey: profile.customLlmApiKey
         }
       });
 
       if (error) {
-        console.error('Error calling Mistral AI function:', error);
+        console.error('Error calling AI function:', error);
         throw new Error('Failed to analyze with AI: ' + error.message);
       }
 
       if (!data || !data.recommendedTechniques) {
-        console.error('Invalid response from Mistral AI:', data);
+        console.error('Invalid response from AI:', data);
         throw new Error('Invalid AI response format');
       }
 
-      console.log('Mistral AI analysis completed successfully:', data);
+      console.log('AI analysis completed successfully with', profile.llmProvider, ':', data);
       
       // Sort by sequence order and return full analysis data
       return {
@@ -224,6 +226,7 @@ export const TechniqueProvider = ({ children }: { children: ReactNode }) => {
         if (profile.objectiveComplexity === 'medium' && technique.complexity === 3) score += 25;
         if (profile.objectiveComplexity === 'low' && technique.complexity <= 2) score += 20;
         
+        
         if (profile.teamExperience === 'expert' && technique.complexity >= 4) score += 25;
         if (profile.teamExperience === 'intermediate' && technique.complexity <= 3) score += 20;
         if (profile.teamExperience === 'beginner' && technique.complexity <= 2) score += 25;
@@ -237,7 +240,7 @@ export const TechniqueProvider = ({ children }: { children: ReactNode }) => {
         return {
           techniqueId: technique.id,
           score,
-          justification: `Técnica recomendada basada en análisis heurístico (complejidad ${technique.complexity}/5, categoría ${technique.category})`,
+          justification: `Técnica recomendada basada en análisis heurístico (complejidad ${technique.complexity}/5, categoría ${technique.category}, información ${profile.informationDepth || 'media'})`,
           sequenceOrder
         };
       });
