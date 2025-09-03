@@ -355,6 +355,82 @@ export const StudyAnalyzer = () => {
 
       {results && (
         <div className="space-y-6">
+          {/* Información sobre el análisis inteligente con AI */}
+          {(results as any).analysisDescription && (
+            <Card className="border-2 border-amber-200 bg-gradient-to-r from-amber-50 to-yellow-50">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl">
+                  <Brain className="w-6 h-6 text-amber-600" />
+                  🤖 Transparencia del Análisis con IA
+                </CardTitle>
+                <CardDescription className="text-base">
+                  Consulta enviada a Mistral AI y razonamiento aplicado
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {(results as any).analysisDescription && (
+                  <div className="bg-white p-4 rounded-lg border">
+                    <h4 className="font-semibold text-amber-900 mb-2 flex items-center gap-2">
+                      <Target className="w-4 h-4" />
+                      Descripción del Análisis Metodológico
+                    </h4>
+                    <p className="text-sm text-gray-700 whitespace-pre-wrap">{(results as any).analysisDescription}</p>
+                  </div>
+                )}
+                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <Card className="bg-white shadow-sm">
+                    <CardContent className="p-4">
+                      <div className="text-center">
+                        <div className="text-2xl font-bold text-blue-600 mb-1">
+                          {(results as any).totalTechniquesConsidered || techniques.length}
+                        </div>
+                        <div className="text-sm font-medium text-gray-700">Técnicas Evaluadas</div>
+                        <div className="text-xs text-gray-500 mt-1">Por la IA</div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                  
+                  <Card className="bg-white shadow-sm">
+                    <CardContent className="p-4">
+                      <div className="text-center">
+                        <div className="text-2xl font-bold text-red-600 mb-1">
+                          {(results as any).filteredSimilarTechniques || 0}
+                        </div>
+                        <div className="text-sm font-medium text-gray-700">Técnicas Filtradas</div>
+                        <div className="text-xs text-gray-500 mt-1">Por similitud</div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                  
+                  <Card className="bg-white shadow-sm">
+                    <CardContent className="p-4">
+                      <div className="text-center">
+                        <div className="text-2xl font-bold text-green-600 mb-1">
+                          {results.recommendedTechniques.length}
+                        </div>
+                        <div className="text-sm font-medium text-gray-700">Recomendadas</div>
+                        <div className="text-xs text-gray-500 mt-1">Finales</div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {(results as any).aiQuery && (
+                  <details className="bg-gray-50 p-4 rounded-lg border">
+                    <summary className="font-semibold text-gray-900 cursor-pointer hover:text-gray-700 flex items-center gap-2">
+                      <FileText className="w-4 h-4" />
+                      Ver Consulta Enviada a la IA (Prompt Completo)
+                    </summary>
+                    <div className="mt-3 text-xs text-gray-600 font-mono bg-white p-3 rounded border overflow-auto max-h-60">
+                      <pre className="whitespace-pre-wrap">{(results as any).aiQuery}</pre>
+                    </div>
+                  </details>
+                )}
+              </CardContent>
+            </Card>
+          )}
+
           {/* Resultados destacados del análisis inteligente */}
           <Card className="border-2 border-blue-200 bg-gradient-to-r from-blue-50 to-indigo-50">
             <CardHeader>
@@ -384,10 +460,10 @@ export const StudyAnalyzer = () => {
                   <CardContent className="p-4">
                     <div className="text-center">
                       <div className="text-3xl font-bold text-green-600 mb-2">
-                        95%
+                        {(results as any).analysisDescription ? '95%' : '85%'}
                       </div>
                       <div className="text-sm font-medium text-gray-700">Nivel de Coincidencia</div>
-                      <div className="text-xs text-gray-500 mt-1">IA personalizada</div>
+                      <div className="text-xs text-gray-500 mt-1">{(results as any).analysisDescription ? 'IA personalizada' : 'Heurístico'}</div>
                     </div>
                   </CardContent>
                 </Card>
@@ -409,13 +485,18 @@ export const StudyAnalyzer = () => {
                 <div className="flex items-start gap-3">
                   <Zap className="w-5 h-5 text-blue-600 mt-0.5" />
                   <div>
-                    <div className="font-medium text-blue-900 mb-1">Análisis Inteligente Aplicado</div>
+                    <div className="font-medium text-blue-900 mb-1">
+                      {(results as any).analysisDescription ? 'Análisis Inteligente con IA' : 'Análisis Heurístico de Respaldo'}
+                    </div>
                     <div className="text-sm text-blue-800">
-                      La IA consideró {Object.keys(formData.availableResources).filter(key => 
-                        key !== 'customResources' && key !== 'budget' && formData.availableResources[key as keyof typeof formData.availableResources]
-                      ).length + formData.availableResources.customResources.length} recursos disponibles, 
-                      complejidad {formData.objectiveComplexity}, experiencia {formData.teamExperience} y 
-                      alcance {formData.scope} para generar recomendaciones personalizadas.
+                      {(results as any).analysisDescription ? 
+                        `La IA consideró ${Object.keys(formData.availableResources).filter(key => 
+                          key !== 'customResources' && key !== 'budget' && formData.availableResources[key as keyof typeof formData.availableResources]
+                        ).length + formData.availableResources.customResources.length} recursos disponibles, 
+                        complejidad ${formData.objectiveComplexity}, experiencia ${formData.teamExperience} y 
+                        alcance ${formData.scope} para generar recomendaciones personalizadas con validación anti-duplicados.` :
+                        'Se aplicó el método heurístico de respaldo debido a un problema temporal con la IA. Las recomendaciones se basan en reglas predefinidas y factores de compatibilidad básicos.'
+                      }
                     </div>
                   </div>
                 </div>

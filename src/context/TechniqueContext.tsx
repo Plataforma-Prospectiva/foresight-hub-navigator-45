@@ -158,7 +158,14 @@ export const TechniqueProvider = ({ children }: { children: ReactNode }) => {
     setResourceOptions(prev => prev.filter(resource => resource.id !== id));
   };
 
-  const analyzeStudyWithAI = async (profile: Omit<StudyProfile, 'id' | 'createdAt' | 'recommendedTechniques'>): Promise<{ techniqueId: string; justification: string; sequenceOrder: number }[]> => {
+  const analyzeStudyWithAI = async (profile: Omit<StudyProfile, 'id' | 'createdAt' | 'recommendedTechniques'>): Promise<{ 
+    recommendedTechniques: { techniqueId: string; justification: string; sequenceOrder: number }[];
+    analysisDescription?: string;
+    estimatedDuration?: string;
+    aiQuery?: string;
+    totalTechniquesConsidered?: number;
+    filteredSimilarTechniques?: number;
+  }> => {
     try {
       console.log('Calling Mistral AI for sequence analysis...');
       
@@ -194,8 +201,15 @@ export const TechniqueProvider = ({ children }: { children: ReactNode }) => {
 
       console.log('Mistral AI analysis completed successfully:', data);
       
-      // Sort by sequence order and return
-      return data.recommendedTechniques.sort((a, b) => a.sequenceOrder - b.sequenceOrder);
+      // Sort by sequence order and return full analysis data
+      return {
+        recommendedTechniques: data.recommendedTechniques.sort((a, b) => a.sequenceOrder - b.sequenceOrder),
+        analysisDescription: data.analysisDescription,
+        estimatedDuration: data.estimatedDuration,
+        aiQuery: data.aiQuery,
+        totalTechniquesConsidered: data.totalTechniquesConsidered,
+        filteredSimilarTechniques: data.filteredSimilarTechniques
+      };
       
     } catch (error) {
       console.error('Error in AI analysis, falling back to heuristic method:', error);
@@ -228,8 +242,8 @@ export const TechniqueProvider = ({ children }: { children: ReactNode }) => {
         };
       });
       
-      // Return top 5 techniques sorted by score
-      return compatibilityScores
+      // Return top 5 techniques sorted by score (fallback format)
+      const fallbackTechniques = compatibilityScores
         .sort((a, b) => b.score - a.score)
         .slice(0, 5)
         .sort((a, b) => a.sequenceOrder - b.sequenceOrder)
@@ -238,20 +252,38 @@ export const TechniqueProvider = ({ children }: { children: ReactNode }) => {
           justification,
           sequenceOrder
         }));
+      
+      return {
+        recommendedTechniques: fallbackTechniques,
+        analysisDescription: 'Análisis realizado con método heurístico de respaldo debido a error en IA.',
+        estimatedDuration: profile.estimatedTime,
+        totalTechniquesConsidered: techniques.length,
+        filteredSimilarTechniques: 0
+      };
     }
   };
 
-  const createStudyProfile = async (profileData: Omit<StudyProfile, 'id' | 'createdAt' | 'recommendedTechniques'>): Promise<StudyProfile> => {
-    const recommendedTechniques = await analyzeStudyWithAI(profileData);
+  const createStudyProfile = async (profileData: Omit<StudyProfile, 'id' | 'createdAt' | 'recommendedTechniques'>): Promise<StudyProfile & { 
+    analysisDescription?: string; 
+    aiQuery?: string; 
+    totalTechniquesConsidered?: number; 
+    filteredSimilarTechniques?: number; 
+  }> => {
+    const analysisResult = await analyzeStudyWithAI(profileData);
     
-    const newProfile: StudyProfile = {
+    const newProfile = {
       ...profileData,
       id: Date.now().toString(),
       createdAt: new Date(),
-      recommendedTechniques,
+      recommendedTechniques: analysisResult.recommendedTechniques,
+      estimatedDuration: analysisResult.estimatedDuration,
+      analysisDescription: analysisResult.analysisDescription,
+      aiQuery: analysisResult.aiQuery,
+      totalTechniquesConsidered: analysisResult.totalTechniquesConsidered,
+      filteredSimilarTechniques: analysisResult.filteredSimilarTechniques,
     };
     
-    setStudyProfiles(prev => [...prev, newProfile]);
+    setStudyProfiles(prev => [...prev, newProfile as StudyProfile]);
     return newProfile;
   };
 

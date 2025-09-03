@@ -151,11 +151,19 @@ IMPORTANTE: Responde ÚNICAMENTE con el JSON válido, sin texto adicional.`;
     // Parse the AI response
     let parsedResponse;
     try {
-      // Clean the response to extract JSON
-      const jsonMatch = aiResponse.match(/\{[\s\S]*\}/);
+      // Clean the response to extract JSON - handle markdown code blocks
+      let cleanResponse = aiResponse.trim();
+      
+      // Remove markdown code block markers if present
+      cleanResponse = cleanResponse.replace(/^```json\s*/, '').replace(/\s*```$/, '');
+      cleanResponse = cleanResponse.replace(/^```\s*/, '').replace(/\s*```$/, '');
+      
+      // Find JSON object
+      const jsonMatch = cleanResponse.match(/\{[\s\S]*\}/);
       if (!jsonMatch) {
         throw new Error('No JSON found in AI response');
       }
+      
       parsedResponse = JSON.parse(jsonMatch[0]);
     } catch (parseError) {
       console.error('Error parsing AI response:', parseError);
@@ -177,10 +185,48 @@ IMPORTANTE: Responde ÚNICAMENTE con el JSON válido, sin texto adicional.`;
       throw new Error('No valid techniques recommended by AI');
     }
 
+    // Check for similar techniques and avoid duplicates
+    const filteredTechniques = [];
+    const usedCategories = new Set();
+    const similarityThreshold = 0.7; // Threshold for similarity
+
+    for (const rec of validTechniques) {
+      const technique = techniques.find(t => t.id === rec.techniqueId);
+      if (!technique) continue;
+
+      // Check if we already have a very similar technique
+      const isSimilar = filteredTechniques.some(existing => {
+        const existingTech = techniques.find(t => t.id === existing.techniqueId);
+        if (!existingTech) return false;
+        
+        // Check category similarity
+        const categoryMatch = existingTech.category === technique.category;
+        
+        // Check name similarity (simple word overlap)
+        const words1 = technique.name.toLowerCase().split(/\s+/);
+        const words2 = existingTech.name.toLowerCase().split(/\s+/);
+        const commonWords = words1.filter(word => words2.includes(word));
+        const similarity = commonWords.length / Math.max(words1.length, words2.length);
+        
+        return categoryMatch && similarity > similarityThreshold;
+      });
+
+      if (!isSimilar) {
+        filteredTechniques.push(rec);
+      } else {
+        console.log(`Skipped similar technique: ${technique.name}`);
+      }
+    }
+
+    const finalTechniques = filteredTechniques.length > 0 ? filteredTechniques : validTechniques;
+
     const result = {
-      recommendedTechniques: validTechniques,
+      recommendedTechniques: finalTechniques,
       analysisDescription: parsedResponse.analysisDescription || 'Análisis metodológico generado por IA',
-      estimatedDuration: parsedResponse.estimatedDuration || profile.estimatedTime
+      estimatedDuration: parsedResponse.estimatedDuration || profile.estimatedTime,
+      aiQuery: prompt, // Include the original query sent to AI
+      totalTechniquesConsidered: techniques.length,
+      filteredSimilarTechniques: validTechniques.length - finalTechniques.length
     };
 
     console.log('Successful analysis result:', result);
