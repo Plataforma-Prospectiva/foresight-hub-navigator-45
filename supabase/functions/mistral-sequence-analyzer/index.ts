@@ -102,14 +102,18 @@ INSTRUCCIONES:
    - Recursos disponibles
    - Experiencia del equipo
    - Objetivos del estudio
-3. Para cada técnica, proporciona una justificación clara
+3. Para cada técnica, proporciona una justificación detallada que incluya:
+   - CRITERIO PRINCIPAL: El criterio fundamental que justifica su selección
+   - ALINEACIÓN CON OBJETIVOS: Cómo contribuye a los objetivos específicos del estudio
+   - RECURSOS REQUERIDOS: Qué recursos del perfil aprovecha o requiere
+   - SECUENCIA METODOLÓGICA: Por qué debe ir en ese orden específico
 
 FORMATO DE RESPUESTA (JSON estricto):
 {
   "recommendedTechniques": [
     {
       "techniqueId": "id_de_la_tecnica",
-      "justification": "Justificación detallada de por qué esta técnica es apropiada en este momento de la secuencia",
+      "justification": "CRITERIO: [criterio fundamental]. OBJETIVOS: [alineación con objetivos]. RECURSOS: [recursos requeridos/aprovechados]. SECUENCIA: [justificación del orden].",
       "sequenceOrder": 1
     }
   ],
@@ -259,7 +263,7 @@ IMPORTANTE: Responde ÚNICAMENTE con el JSON válido, sin texto adicional.`;
       .slice(0, 4) // Take first 4 techniques
       .map((technique, index) => ({
         techniqueId: technique.id,
-        justification: `Técnica seleccionada por método heurístico basado en complejidad (${technique.complexity}/5) y experiencia del equipo (${profile.teamExperience}).`,
+        justification: `CRITERIO: Compatibilidad con experiencia del equipo (${profile.teamExperience}) y complejidad técnica (${technique.complexity}/5). OBJETIVOS: Alineación con ${profile.studyObjective}. RECURSOS: Aprovecha ${profile.availableResources.budget} presupuesto disponible. SECUENCIA: Orden ${index + 1} por progresión de complejidad metodológica.`,
         sequenceOrder: index + 1
       }));
 
