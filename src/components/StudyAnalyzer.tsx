@@ -535,6 +535,12 @@ export const StudyAnalyzer = () => {
                   </Card>
                 </div>
 
+                {(results as any).aiError && (
+                  <div className="bg-red-50 border border-red-200 text-red-700 p-3 rounded">
+                    <span className="font-semibold">Error de IA:</span> {(results as any).aiError}. Se aplicó el método heurístico de respaldo.
+                  </div>
+                )}
+
                 {(results as any).aiQuery && (
                   <div className="flex gap-3">
                     <Dialog open={showConsole} onOpenChange={setShowConsole}>
@@ -557,10 +563,17 @@ export const StudyAnalyzer = () => {
                           <div className="border-l-2 border-green-500 pl-3">
                             <pre className="whitespace-pre-wrap text-green-400">{(results as any).aiQuery}</pre>
                           </div>
-                          <div className="text-gray-400 mt-3 flex items-center gap-2">
-                            <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-                            Análisis completado exitosamente
-                          </div>
+                          {(results as any).aiError ? (
+                            <div className="text-red-400 mt-3 flex items-center gap-2">
+                              <span className="w-2 h-2 bg-red-400 rounded-full animate-pulse"></span>
+                              Error de IA: {(results as any).aiError}. Se aplicó el método heurístico de respaldo.
+                            </div>
+                          ) : (
+                            <div className="text-gray-400 mt-3 flex items-center gap-2">
+                              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                              Análisis completado exitosamente
+                            </div>
+                          )}
                         </div>
                       </DialogContent>
                     </Dialog>

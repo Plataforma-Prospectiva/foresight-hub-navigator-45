@@ -165,6 +165,7 @@ export const TechniqueProvider = ({ children }: { children: ReactNode }) => {
     aiQuery?: string;
     totalTechniquesConsidered?: number;
     filteredSimilarTechniques?: number;
+    aiError?: string;
   }> => {
     try {
       console.log('Calling AI for sequence analysis...', profile.llmProvider);
@@ -215,6 +216,7 @@ export const TechniqueProvider = ({ children }: { children: ReactNode }) => {
       
     } catch (error) {
       console.error('Error in AI analysis, falling back to heuristic method:', error);
+      const errorMessage = error instanceof Error ? error.message : String(error);
       
       // Fallback to simplified heuristic method
       const compatibilityScores = techniques.map(technique => {
@@ -288,7 +290,8 @@ Total de técnicas consideradas: ${techniques.length}
         estimatedDuration: profile.estimatedTime,
         aiQuery: simulatedQuery,
         totalTechniquesConsidered: techniques.length,
-        filteredSimilarTechniques: 0
+        filteredSimilarTechniques: 0,
+        aiError: errorMessage,
       };
     }
   };
@@ -298,6 +301,7 @@ Total de técnicas consideradas: ${techniques.length}
     aiQuery?: string; 
     totalTechniquesConsidered?: number; 
     filteredSimilarTechniques?: number; 
+    aiError?: string;
   }> => {
     const analysisResult = await analyzeStudyWithAI(profileData);
     
@@ -311,6 +315,7 @@ Total de técnicas consideradas: ${techniques.length}
       aiQuery: analysisResult.aiQuery,
       totalTechniquesConsidered: analysisResult.totalTechniquesConsidered,
       filteredSimilarTechniques: analysisResult.filteredSimilarTechniques,
+      aiError: analysisResult.aiError,
     };
     
     setStudyProfiles(prev => [...prev, newProfile as StudyProfile]);
