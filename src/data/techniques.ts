@@ -7,7 +7,11 @@ import {
   FlaskConical, Grid3x3, ArrowUpDown, ArrowLeftRight, Workflow,
   Scale, Gauge, Eye, Crosshair, UserCheck, Shapes, Palette,
   Settings, Presentation, Camera, Clock, Sparkles, Heart,
-  MessageSquare, Layers3, Puzzle, TestTube, Rocket, Users2
+  MessageSquare, Layers3, Puzzle, TestTube, Rocket, Users2,
+  History, CloudDrizzle, ArrowDown, Telescope, GraduationCap,
+  UserSquare, DollarSign, Shield, Route, Crown, Gamepad2,
+  Brush, Navigation, BookOpen, AlertTriangle, TrendingDown,
+  Handshake, Boxes, Wrench, Megaphone
 } from 'lucide-react';
 import { techniquesES } from './techniques-es';
 
@@ -2068,15 +2072,15 @@ export const techniques: Technique[] = [
     icon: Heart,
     complexity: 1,
     category: 'reflection',
-    description: 'Closing activity where participants identify and share their key insights, learnings, and commitments from the speculative process.',
+    description: 'Closing activity where participants identify and share key insights, learnings, and commitments from the speculative process.',
     objectives: [
       'Consolidate learning insights',
-      'Create personal meaning-making',
+      'Create personal meaning construction',
       'Plan future actions',
       'Generate group closure'
     ],
     applications: [
-      'Workshop closings',
+      'Workshop closure',
       'Learning consolidation',
       'Action planning',
       'Program evaluation',
@@ -2092,7 +2096,7 @@ export const techniques: Technique[] = [
       {
         step: 2,
         title: 'Individual Reflection',
-        description: 'Participants reflect individually on their experience and key takeaways.',
+        description: 'Participants reflect individually on their experience and key learnings.',
         duration: '10-15 minutes'
       },
       {
@@ -2117,7 +2121,7 @@ export const techniques: Technique[] = [
     advantages: [
       'Consolidates learning experience',
       'Creates personal commitment',
-      'Enables group appreciation',
+      'Allows group appreciation',
       'Provides evaluation data'
     ],
     limitations: [
@@ -2136,6 +2140,609 @@ export const techniques: Technique[] = [
         year: 2025,
         institution: 'CollActive Materials',
         url: 'https://doi.org/10.18452/31342'
+      }
+    ]
+  },
+  {
+    id: 'scenario-planning',
+    name: 'Scenario Planning',
+    icon: Map,
+    complexity: 4,
+    category: 'exploratory',
+    description: 'Systematic method for creating multiple plausible visions of the future to improve decision-making under uncertainty.',
+    objectives: [
+      'Develop multiple plausible futures',
+      'Explore key uncertainties and implications',
+      'Improve strategic planning',
+      'Prepare for different possible futures'
+    ],
+    applications: [
+      'Business strategic planning',
+      'Public policy and government planning',
+      'Risk management',
+      'Product and service development'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Problem Definition',
+        description: 'Clarify focal question and establish time horizon for study.',
+        duration: '1 week'
+      },
+      {
+        step: 2,
+        title: 'Driving Forces Identification',
+        description: 'Identify and analyze key factors influencing system future.',
+        duration: '2-3 weeks'
+      },
+      {
+        step: 3,
+        title: 'Uncertainty Analysis',
+        description: 'Evaluate uncertainty level and impact of each driving force.',
+        duration: '1-2 weeks'
+      },
+      {
+        step: 4,
+        title: 'Scenario Construction',
+        description: 'Develop coherent narratives combining different states of driving forces.',
+        duration: '2-3 weeks'
+      },
+      {
+        step: 5,
+        title: 'Implications Analysis',
+        description: 'Evaluate implications of each scenario for decision-making.',
+        duration: '1-2 weeks'
+      }
+    ],
+    advantages: [
+      'Addresses multiple possible futures',
+      'Improves preparedness for uncertainty',
+      'Facilitates creative thinking',
+      'Provides framework for strategy evaluation'
+    ],
+    limitations: [
+      'Intensive in time and resources',
+      'Requires expert facilitation',
+      'May result in analysis paralysis',
+      'Difficulty assigning probabilities'
+    ],
+    timeHorizon: '5-30 years',
+    participants: '6-15 participants',
+    bibliographicSources: [
+      {
+        type: 'book',
+        title: 'The Art of the Long View',
+        authors: ['Peter Schwartz'],
+        year: 1991,
+        publisher: 'Doubleday'
+      },
+      {
+        type: 'book',
+        title: 'Scenario Planning: The Link Between Future and Strategy',
+        authors: ['Mats Lindgren', 'Hans Bandhold'],
+        year: 2003,
+        publisher: 'Palgrave Macmillan'
+      }
+    ]
+  },
+  {
+    id: 'setting-the-space',
+    name: 'Setting the Space',
+    icon: Settings,
+    complexity: 1,
+    category: 'preparation',
+    description: 'Intentional design of workshop physical space to create welcoming atmosphere that establishes expectations and facilitates collaborative speculation.',
+    objectives: [
+      'Create welcoming and stimulating environment',
+      'Establish speculative tone',
+      'Facilitate group interaction',
+      'Prepare materials and resources'
+    ],
+    applications: [
+      'Speculation workshops',
+      'Collaborative design sessions',
+      'Creative workshops',
+      'Group facilitation',
+      'Participatory events'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Space Planning',
+        description: 'Design layout facilitating movement and group work, considering acoustics and lighting.',
+        duration: '30 minutes'
+      },
+      {
+        step: 2,
+        title: 'Object Selection',
+        description: 'Choose objects, images, or materials that illustrate theme and stimulate creativity.',
+        duration: '15 minutes'
+      },
+      {
+        step: 3,
+        title: 'Sensory Environment',
+        description: 'Configure music, scents, temperature, and other appropriate sensory elements.',
+        duration: '10 minutes'
+      },
+      {
+        step: 4,
+        title: 'Material Preparation',
+        description: 'Organize and distribute work materials, tools, and necessary resources.',
+        duration: '15 minutes'
+      },
+      {
+        step: 5,
+        title: 'Final Check',
+        description: 'Review everything is in order and adjust elements based on specific needs.',
+        duration: '5 minutes'
+      }
+    ],
+    advantages: [
+      'Establishes appropriate expectations',
+      'Reduces participant anxiety',
+      'Stimulates creativity from start',
+      'Facilitates natural engagement'
+    ],
+    limitations: [
+      'Requires preparation time',
+      'Depends on available resources',
+      'May be culturally sensitive',
+      'Limited by spatial constraints'
+    ],
+    timeHorizon: 'Workshop duration',
+    participants: 'Facilitators and organizers',
+    bibliographicSources: [
+      {
+        type: 'guide',
+        title: 'Co-Creating Futures: How can public engagement foster creative exchange between science and society?',
+        authors: ['Kristin Werner', 'Antje Nestler'],
+        year: 2025,
+        institution: 'CollActive Materials',
+        url: 'https://doi.org/10.18452/31342'
+      }
+    ]
+  },
+  {
+    id: 'speculation-groups',
+    name: 'Speculation Groups',
+    icon: Users2,
+    complexity: 1,
+    category: 'group-dynamics',
+    description: 'Strategic formation of small groups of 3-5 participants to facilitate effective collaborative speculation and equitable participation.',
+    objectives: [
+      'Optimize group dynamics',
+      'Facilitate equitable participation',
+      'Create diversity of perspectives',
+      'Maintain productive focus'
+    ],
+    applications: [
+      'Participatory workshops',
+      'Brainstorming sessions',
+      'Design workshops',
+      'Citizen consultations',
+      'Collaborative processes'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Size Determination',
+        description: 'Establish groups of 3-5 people to balance diversity and decisional efficiency.',
+        duration: '5 minutes'
+      },
+      {
+        step: 2,
+        title: 'Grouping Criteria',
+        description: 'Decide method: self-selection, random, by expertise, or by interest topic.',
+        duration: '10 minutes'
+      },
+      {
+        step: 3,
+        title: 'Group Assignment',
+        description: 'Implement chosen method using techniques like colored labels or symbols.',
+        duration: '10 minutes'
+      },
+      {
+        step: 4,
+        title: 'Spatial Arrangement',
+        description: 'Organize physical spaces allowing intimate group work without interference.',
+        duration: '5 minutes'
+      },
+      {
+        step: 5,
+        title: 'Balance Verification',
+        description: 'Review group composition and make adjustments if necessary for balance.',
+        duration: '5 minutes'
+      }
+    ],
+    advantages: [
+      'Optimal size for participation',
+      'Facilitates decision-making',
+      'Reduces social intimidation',
+      'Allows multiple perspectives'
+    ],
+    limitations: [
+      'May create fragmentation',
+      'Some groups may dominate',
+      'Requires multiple facilitation',
+      'Dynamics may vary significantly'
+    ],
+    timeHorizon: 'Process duration',
+    participants: '3-5 people per group',
+    bibliographicSources: [
+      {
+        type: 'guide',
+        title: 'Co-Creating Futures: How can public engagement foster creative exchange between science and society?',
+        authors: ['Kristin Werner', 'Antje Nestler'],
+        year: 2025,
+        institution: 'CollActive Materials',
+        url: 'https://doi.org/10.18452/31342'
+      }
+    ]
+  },
+  {
+    id: 'speculative-introductions',
+    name: 'Speculative Introductions',
+    icon: Presentation,
+    complexity: 1,
+    category: 'icebreaker',
+    description: 'Introduction activity that activates participants in speculative mode, sharing personal perspectives and establishing thematic connections.',
+    objectives: [
+      'Activate speculative thinking',
+      'Establish personal connections',
+      'Introduce diverse perspectives',
+      'Create atmosphere of openness'
+    ],
+    applications: [
+      'Workshop opening',
+      'Start of participatory processes',
+      'Integration activities',
+      'Collaborative design sessions',
+      'Interdisciplinary encounters'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Question Preparation',
+        description: 'Design speculative questions connecting personal with workshop theme.',
+        duration: '10 minutes'
+      },
+      {
+        step: 2,
+        title: 'Clear Instructions',
+        description: 'Explain format and establish time limit for each presentation.',
+        duration: '5 minutes'
+      },
+      {
+        step: 3,
+        title: 'Introduction Round',
+        description: 'Each participant introduces themselves using speculative questions as guide.',
+        duration: '2-3 minutes per person'
+      },
+      {
+        step: 4,
+        title: 'Connection Identification',
+        description: 'Facilitator highlights common themes or interesting contrasts between presentations.',
+        duration: '10 minutes'
+      },
+      {
+        step: 5,
+        title: 'Theme Transition',
+        description: 'Connect insights from presentations with main workshop objectives.',
+        duration: '5 minutes'
+      }
+    ],
+    advantages: [
+      'Activates speculative mindset',
+      'Reveals perspective diversity',
+      'Creates common base for work',
+      'Reduces social barriers'
+    ],
+    limitations: [
+      'May consume considerable time',
+      'Some participants may resist',
+      'Requires skillful facilitation',
+      'May generate initial anxiety'
+    ],
+    timeHorizon: 'Process beginning',
+    participants: 'All participants',
+    bibliographicSources: [
+      {
+        type: 'guide',
+        title: 'Co-Creating Futures: How can public engagement foster creative exchange between science and society?',
+        authors: ['Kristin Werner', 'Antje Nestler'],
+        year: 2025,
+        institution: 'CollActive Materials',
+        url: 'https://doi.org/10.18452/31342'
+      }
+    ]
+  },
+  {
+    id: 'impromptu-exhibition',
+    name: 'Impromptu Exhibition',
+    icon: Camera,
+    complexity: 2,
+    category: 'display',
+    description: 'Quick creation of temporary exhibition space where groups display prototypes and speculations for informal public exploration.',
+    objectives: [
+      'Create accessible exhibition space',
+      'Facilitate informal exploration',
+      'Generate sense of accomplishment',
+      'Allow visual documentation'
+    ],
+    applications: [
+      'Workshop closure',
+      'Community events',
+      'Participatory processes',
+      'Educational workshops',
+      'Progress celebrations'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Quick Space Preparation',
+        description: 'Organize display area with improvised tables, walls, or pedestals.',
+        duration: '15-20 minutes'
+      },
+      {
+        step: 2,
+        title: 'Work Installation',
+        description: 'Groups install prototypes, sketches, and materials with identification labels.',
+        duration: '20-30 minutes'
+      },
+      {
+        step: 3,
+        title: 'Informal Opening',
+        description: 'Invite free exploration with creators available to explain.',
+        duration: '30-45 minutes'
+      },
+      {
+        step: 4,
+        title: 'Collective Documentation',
+        description: 'Take photos of installation and allow participants to document.',
+        duration: '15 minutes'
+      },
+      {
+        step: 5,
+        title: 'Closing Reflection',
+        description: 'Gather group for final reflections on exhibition experience.',
+        duration: '15 minutes'
+      }
+    ],
+    advantages: [
+      'Celebrates tangible achievements',
+      'Creates memorable experience',
+      'Facilitates natural documentation',
+      'Generates participant pride'
+    ],
+    limitations: [
+      'Requires adequate space',
+      'Variable exhibition quality',
+      'May feel amateur',
+      'Limited by available materials'
+    ],
+    timeHorizon: 'Process end',
+    participants: 'All participants',
+    bibliographicSources: [
+      {
+        type: 'guide',
+        title: 'Co-Creating Futures: How can public engagement foster creative exchange between science and society?',
+        authors: ['Kristin Werner', 'Antje Nestler'],
+        year: 2025,
+        institution: 'CollActive Materials',
+        url: 'https://doi.org/10.18452/31342'
+      }
+    ]
+  },
+  {
+    id: 'three-horizons',
+    name: 'Three Horizons Framework',
+    icon: Layers3,
+    complexity: 3,
+    category: 'transition',
+    description: 'Analyze transitions between present and emerging futures, identifying tensions between established, declining, and emerging systems.',
+    objectives: [
+      'Understand transition dynamics',
+      'Identify tensions between systems',
+      'Integrate multiple temporal perspectives',
+      'Facilitate transformative change'
+    ],
+    applications: [
+      'Territorial planning',
+      'Innovation public policies',
+      'Organizational strategies'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Horizon 1 Mapping',
+        description: 'Identify and characterize current dominant system.',
+        duration: '1 hour'
+      },
+      {
+        step: 2,
+        title: 'Horizon 3 Visualization',
+        description: 'Define long-term transformative vision.',
+        duration: '1 hour'
+      },
+      {
+        step: 3,
+        title: 'Horizon 2 Exploration',
+        description: 'Analyze innovation and conflict zones between H1 and H3.',
+        duration: '1.5 hours'
+      },
+      {
+        step: 4,
+        title: 'Transition Pathways',
+        description: 'Discuss interactions and possible change paths.',
+        duration: '1 hour'
+      }
+    ],
+    advantages: [
+      'Facilitates transition understanding',
+      'Integrates short, medium, and long term',
+      'Visualizes change dynamics'
+    ],
+    limitations: [
+      'Requires expert facilitation',
+      'May oversimplify complex realities',
+      'Does not quantify change speeds'
+    ],
+    timeHorizon: '10-30 years',
+    participants: '5-20 participants',
+    bibliographicSources: [
+      {
+        type: 'book',
+        title: 'Three Horizons: The Patterning of Hope',
+        authors: ['B. Sharpe'],
+        year: 2013
+      },
+      {
+        type: 'article',
+        title: 'Seeing in Multiple Horizons',
+        authors: ['A. Curry', 'A. Hodgson'],
+        year: 2008
+      }
+    ]
+  },
+  {
+    id: 'futures-literacy-labs',
+    name: 'Futures Literacy Labs (UNESCO)',
+    icon: GraduationCap,
+    complexity: 4,
+    category: 'participatory',
+    description: 'Develop people\'s capacity to use the future as a resource in present decision-making.',
+    objectives: [
+      'Develop futures literacy',
+      'Empower participants',
+      'Generate transformative learning',
+      'Confront future perceptions'
+    ],
+    applications: [
+      'Educational and community processes',
+      'Public policies',
+      'Social innovation'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Perception Diagnosis',
+        description: 'Identify implicit assumptions about the future.',
+        duration: '2 hours'
+      },
+      {
+        step: 2,
+        title: 'Confrontational Exercises',
+        description: 'Challenge established conceptions through dynamics.',
+        duration: '4 hours'
+      },
+      {
+        step: 3,
+        title: 'Futures Co-creation',
+        description: 'Build new ways of imagining the future.',
+        duration: '3 hours'
+      },
+      {
+        step: 4,
+        title: 'Learning Synthesis',
+        description: 'Consolidate new developed capacities.',
+        duration: '1 hour'
+      }
+    ],
+    advantages: [
+      'Empowers participants',
+      'Generates transformative learning',
+      'UNESCO-validated methodology'
+    ],
+    limitations: [
+      'High logistical demand',
+      'Requires accredited facilitators',
+      'Intensive and complex process'
+    ],
+    timeHorizon: '10-50 years',
+    participants: '20-40 participants',
+    bibliographicSources: [
+      {
+        type: 'institutional',
+        title: 'Futures Literacy',
+        institution: 'UNESCO',
+        year: 2018
+      },
+      {
+        type: 'book',
+        title: 'Learning, the future, and complexity',
+        authors: ['R. Miller'],
+        year: 2015
+      }
+    ]
+  },
+  {
+    id: 'wild-cards-analysis',
+    name: 'Wild Cards Analysis',
+    icon: AlertTriangle,
+    complexity: 3,
+    category: 'risk',
+    description: 'Identify improbable but high-impact events that could disruptively alter the future.',
+    objectives: [
+      'Strengthen resilience',
+      'Broaden range of considered futures',
+      'Prepare for disruptions',
+      'Identify black swans'
+    ],
+    applications: [
+      'Risk management',
+      'Strategic planning',
+      'Disruption exploration'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Event Brainstorming',
+        description: 'Generate list of improbable but impactful events.',
+        duration: '2 hours'
+      },
+      {
+        step: 2,
+        title: 'Probability and Impact Assessment',
+        description: 'Analyze each event according to these criteria.',
+        duration: '1 day'
+      },
+      {
+        step: 3,
+        title: 'Scenario Development',
+        description: 'Create detailed narratives of selected events.',
+        duration: '1 week'
+      },
+      {
+        step: 4,
+        title: 'Preparation Strategies',
+        description: 'Design responses and preventive measures.',
+        duration: '2-3 days'
+      }
+    ],
+    advantages: [
+      'Strengthens resilience',
+      'Broadens range of considered futures',
+      'Improves response capacity'
+    ],
+    limitations: [
+      'Difficult to quantify',
+      'May generate excessive fear',
+      'Biases in event selection'
+    ],
+    timeHorizon: '5-30 years',
+    participants: '10-25 participants',
+    bibliographicSources: [
+      {
+        type: 'book',
+        title: 'Out of the Blue: How to Anticipate Big Future Surprises',
+        authors: ['J. Petersen'],
+        year: 1997
+      },
+      {
+        type: 'guide',
+        title: 'Foresight Manual',
+        institution: 'UNDP',
+        year: 2018
       }
     ]
   }
