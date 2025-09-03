@@ -12,6 +12,16 @@ export const DocumentationModal = () => {
       content: "La prospectiva es una disciplina que analiza futuros posibles y probables para ayudar en la toma de decisiones estratégicas."
     },
     {
+      title: "Análisis Inteligente",
+      description: "Metodología del algoritmo heurístico de recomendación",
+      content: "Sistema de puntuación basado en reglas que evalúa complejidad del proyecto, experiencia del equipo, alcance y recursos disponibles para recomendar técnicas prospectivas optimizadas."
+    },
+    {
+      title: "Secuencias Metodológicas", 
+      description: "Ordenamiento lógico de técnicas prospectivas",
+      content: "Las técnicas se organizan en 4 fases: 1) Exploratorias (mapeo inicial), 2) Estructurales (análisis de factores), 3) Participativas (consulta a stakeholders), 4) Validación (refinamiento de escenarios)."
+    },
+    {
       title: "Herramientas de Mapeo",
       description: "Guía para usar las herramientas de mapeo de tendencias",
       content: "Utiliza estas herramientas para visualizar conexiones entre factores de cambio y identificar señales débiles."

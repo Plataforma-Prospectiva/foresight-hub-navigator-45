@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { HelpCircle, Brain, Languages, Activity, Database } from "lucide-react";
+import { HelpCircle, Brain, Languages, Activity, Database, HelpingHand } from "lucide-react";
 import { DocumentationModal } from "@/components/DocumentationModal";
 import { SettingsModal } from "@/components/SettingsModal";
 import { BetaCommentsModal } from "@/components/BetaCommentsModal";
@@ -11,6 +11,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { useSupabaseAuth } from "@/context/SupabaseAuthContext";
 import { seedTechniquesToDatabase } from "@/utils/techniqueSeeder";
 import { toast } from "sonner";
+import { Link } from "react-router-dom";
 
 interface HeaderProps {
   onIconChange: (toolId: string, newIcon: string) => void;
@@ -72,6 +73,16 @@ export const Header = ({ onIconChange, onAddTool }: HeaderProps) => {
               <BetaCommentsModal />
 
               <AccessLogsViewer />
+
+              <Link to="/help">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  title="Centro de Ayuda"
+                >
+                  <HelpingHand className="w-4 h-4" />
+                </Button>
+              </Link>
 
               {user && (
                 <Button
