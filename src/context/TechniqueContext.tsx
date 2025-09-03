@@ -1,8 +1,40 @@
 
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import { Technique, StudyProfile, ResourceOption } from '@/types/technique';
 import { getTechniques } from '@/data/techniques';
+import { getTechniquesFromDatabase } from '@/utils/techniqueSeeder';
 import { useLanguage } from './LanguageContext';
+import { useAuth } from './AuthContext';
+import { 
+  TrendingUp, BarChart3, GitBranch, Network, Brain, Target,
+  Search, Users, Map, Layers, Activity, Zap, TreePine, Shuffle,
+  Lightbulb, ChevronRight, Timer, Building, Globe, Compass,
+  FileText, PieChart, LineChart, Microscope, Calculator, 
+  FlaskConical, Grid3x3, ArrowUpDown, ArrowLeftRight, Workflow,
+  Scale, Gauge, Eye, Crosshair, UserCheck, Shapes, Palette,
+  Settings, Presentation, Camera, Clock, Sparkles, Heart,
+  MessageSquare, Layers3, Puzzle, TestTube, Rocket, Users2,
+  History, CloudDrizzle, ArrowDown, Telescope, GraduationCap,
+  UserSquare, DollarSign, Shield, Route, Crown, Gamepad2,
+  Brush, Navigation, BookOpen, AlertTriangle, TrendingDown,
+  Handshake, Boxes, Wrench, Megaphone
+} from 'lucide-react';
+
+// Map icon names to icon components
+const iconMap: Record<string, any> = {
+  TrendingUp, BarChart3, GitBranch, Network, Brain, Target,
+  Search, Users, Map, Layers, Activity, Zap, TreePine, Shuffle,
+  Lightbulb, ChevronRight, Timer, Building, Globe, Compass,
+  FileText, PieChart, LineChart, Microscope, Calculator, 
+  FlaskConical, Grid3x3, ArrowUpDown, ArrowLeftRight, Workflow,
+  Scale, Gauge, Eye, Crosshair, UserCheck, Shapes, Palette,
+  Settings, Presentation, Camera, Clock, Sparkles, Heart,
+  MessageSquare, Layers3, Puzzle, TestTube, Rocket, Users2,
+  History, CloudDrizzle, ArrowDown, Telescope, GraduationCap,
+  UserSquare, DollarSign, Shield, Route, Crown, Gamepad2,
+  Brush, Navigation, BookOpen, AlertTriangle, TrendingDown,
+  Handshake, Boxes, Wrench, Megaphone
+};
 
 interface TechniqueContextType {
   techniques: Technique[];
@@ -16,6 +48,9 @@ interface TechniqueContextType {
   addResourceOption: (resource: Omit<ResourceOption, 'id'>) => void;
   updateResourceOption: (id: string, updates: Partial<ResourceOption>) => void;
   deleteResourceOption: (id: string) => void;
+  loadTechniquesFromDatabase: () => Promise<void>;
+  useDatabase: boolean;
+  setUseDatabase: (use: boolean) => void;
 }
 
 const defaultResourceOptions: ResourceOption[] = [
@@ -37,14 +72,51 @@ const TechniqueContext = createContext<TechniqueContextType | null>(null);
 
 export const TechniqueProvider = ({ children }: { children: ReactNode }) => {
   const { language } = useLanguage();
+  const { user } = useAuth();
   const [techniques, setTechniques] = useState<Technique[]>(getTechniques(language));
   const [studyProfiles, setStudyProfiles] = useState<StudyProfile[]>([]);
   const [resourceOptions, setResourceOptions] = useState<ResourceOption[]>(defaultResourceOptions);
+  const [useDatabase, setUseDatabase] = useState(false);
 
-  // Update techniques when language changes
+  // Function to load techniques from database and convert to Technique format
+  const loadTechniquesFromDatabase = async () => {
+    try {
+      const dbTechniques = await getTechniquesFromDatabase(language);
+      if (dbTechniques) {
+        // Convert database techniques to Technique format
+        const convertedTechniques: Technique[] = dbTechniques.map(dbTech => ({
+          id: dbTech.technique_id,
+          name: dbTech.name,
+          icon: iconMap[dbTech.icon_name] || Lightbulb,
+          complexity: dbTech.complexity,
+          category: dbTech.category,
+          description: dbTech.description,
+          objectives: dbTech.objectives,
+          applications: dbTech.applications,
+          methodology: dbTech.methodology as any,
+          advantages: dbTech.advantages,
+          limitations: dbTech.limitations,
+          timeHorizon: dbTech.time_horizon,
+          participants: dbTech.participants,
+          bibliographicSources: dbTech.bibliographic_sources as any
+        }));
+        setTechniques(convertedTechniques);
+      }
+    } catch (error) {
+      console.error('Error loading techniques from database:', error);
+      // Fallback to file techniques
+      setTechniques(getTechniques(language));
+    }
+  };
+
+  // Update techniques when language changes or when switching between file/database sources
   React.useEffect(() => {
-    setTechniques(getTechniques(language));
-  }, [language]);
+    if (useDatabase && user) {
+      loadTechniquesFromDatabase();
+    } else {
+      setTechniques(getTechniques(language));
+    }
+  }, [language, useDatabase, user]);
 
   const addTechnique = (techniqueData: Omit<Technique, 'id'>) => {
     const newTechnique: Technique = {
@@ -195,6 +267,9 @@ export const TechniqueProvider = ({ children }: { children: ReactNode }) => {
       addResourceOption,
       updateResourceOption,
       deleteResourceOption,
+      loadTechniquesFromDatabase,
+      useDatabase,
+      setUseDatabase,
     }}>
       {children}
     </TechniqueContext.Provider>

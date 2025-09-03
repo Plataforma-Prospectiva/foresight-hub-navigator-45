@@ -353,6 +353,75 @@ export type Database = {
           },
         ]
       }
+      techniques: {
+        Row: {
+          advantages: string[]
+          applications: string[]
+          bibliographic_sources: Json
+          category: string
+          complexity: number
+          created_at: string
+          created_by: string | null
+          description: string
+          icon_name: string
+          id: string
+          is_active: boolean
+          language: string
+          limitations: string[]
+          methodology: Json
+          name: string
+          objectives: string[]
+          participants: string
+          technique_id: string
+          time_horizon: string
+          updated_at: string
+        }
+        Insert: {
+          advantages?: string[]
+          applications?: string[]
+          bibliographic_sources?: Json
+          category: string
+          complexity: number
+          created_at?: string
+          created_by?: string | null
+          description: string
+          icon_name: string
+          id?: string
+          is_active?: boolean
+          language?: string
+          limitations?: string[]
+          methodology?: Json
+          name: string
+          objectives?: string[]
+          participants: string
+          technique_id: string
+          time_horizon: string
+          updated_at?: string
+        }
+        Update: {
+          advantages?: string[]
+          applications?: string[]
+          bibliographic_sources?: Json
+          category?: string
+          complexity?: number
+          created_at?: string
+          created_by?: string | null
+          description?: string
+          icon_name?: string
+          id?: string
+          is_active?: boolean
+          language?: string
+          limitations?: string[]
+          methodology?: Json
+          name?: string
+          objectives?: string[]
+          participants?: string
+          technique_id?: string
+          time_horizon?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string

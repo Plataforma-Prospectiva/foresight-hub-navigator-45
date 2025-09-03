@@ -1,13 +1,15 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { HelpCircle, Brain, Languages, Activity } from "lucide-react";
+import { HelpCircle, Brain, Languages, Activity, Database } from "lucide-react";
 import { DocumentationModal } from "@/components/DocumentationModal";
 import { SettingsModal } from "@/components/SettingsModal";
 import { BetaCommentsModal } from "@/components/BetaCommentsModal";
 import { AccessLogsViewer } from "@/components/AccessLogsViewer";
 import { useLanguage } from "@/context/LanguageContext";
 import { useAuth } from "@/context/AuthContext";
+import { seedTechniquesToDatabase } from "@/utils/techniqueSeeder";
+import { toast } from "sonner";
 
 interface HeaderProps {
   onIconChange: (toolId: string, newIcon: string) => void;
@@ -16,8 +18,30 @@ interface HeaderProps {
 
 export const Header = ({ onIconChange, onAddTool }: HeaderProps) => {
   const [showDocumentation, setShowDocumentation] = useState(false);
+  const [isMigrating, setIsMigrating] = useState(false);
   const { language, setLanguage, t } = useLanguage();
   const { user } = useAuth();
+
+  const handleMigrateTechniques = async () => {
+    if (!user) {
+      toast.error("Debes estar autenticado para realizar esta acción");
+      return;
+    }
+
+    setIsMigrating(true);
+    try {
+      const result = await seedTechniquesToDatabase();
+      if (result.success) {
+        toast.success(result.message);
+      } else {
+        toast.error(result.message);
+      }
+    } catch (error) {
+      toast.error("Error inesperado al migrar técnicas");
+    } finally {
+      setIsMigrating(false);
+    }
+  };
 
   return (
     <header className="bg-white border-b border-slate-200 sticky top-0 z-50">
@@ -47,6 +71,19 @@ export const Header = ({ onIconChange, onAddTool }: HeaderProps) => {
               <BetaCommentsModal />
 
               <AccessLogsViewer />
+
+              {user && (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={handleMigrateTechniques}
+                  disabled={isMigrating}
+                  title="Migrar técnicas a la base de datos"
+                >
+                  <Database className="w-4 h-4" />
+                  {isMigrating && <span className="ml-2 text-sm">...</span>}
+                </Button>
+              )}
 
               <Button
                 variant="ghost"
