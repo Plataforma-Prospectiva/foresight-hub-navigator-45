@@ -76,7 +76,7 @@ export const TechniqueProvider = ({ children }: { children: ReactNode }) => {
   const [techniques, setTechniques] = useState<Technique[]>(getTechniques(language));
   const [studyProfiles, setStudyProfiles] = useState<StudyProfile[]>([]);
   const [resourceOptions, setResourceOptions] = useState<ResourceOption[]>(defaultResourceOptions);
-  const [useDatabase, setUseDatabase] = useState(false);
+  const [useDatabase, setUseDatabase] = useState(true);
 
   // Function to load techniques from database and convert to Technique format
   const loadTechniquesFromDatabase = async () => {
@@ -114,12 +114,12 @@ export const TechniqueProvider = ({ children }: { children: ReactNode }) => {
 
   // Update techniques when language changes or when switching between file/database sources
   React.useEffect(() => {
-    if (useDatabase && user) {
+    if (useDatabase) {
       loadTechniquesFromDatabase();
     } else {
       setTechniques(getTechniques(language));
     }
-  }, [language, useDatabase, user]);
+  }, [language, useDatabase]);
 
   const addTechnique = (techniqueData: Omit<Technique, 'id'>) => {
     const newTechnique: Technique = {
