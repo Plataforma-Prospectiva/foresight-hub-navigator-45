@@ -82,7 +82,7 @@ export const TechniqueProvider = ({ children }: { children: ReactNode }) => {
   const loadTechniquesFromDatabase = async () => {
     try {
       const dbTechniques = await getTechniquesFromDatabase(language);
-      if (dbTechniques) {
+      if (Array.isArray(dbTechniques) && dbTechniques.length > 0) {
         // Convert database techniques to Technique format
         const convertedTechniques: Technique[] = dbTechniques.map(dbTech => ({
           id: dbTech.technique_id,
@@ -101,6 +101,9 @@ export const TechniqueProvider = ({ children }: { children: ReactNode }) => {
           bibliographicSources: dbTech.bibliographic_sources as any
         }));
         setTechniques(convertedTechniques);
+      } else {
+        console.warn('No techniques found in database, falling back to file data.');
+        setTechniques(getTechniques(language));
       }
     } catch (error) {
       console.error('Error loading techniques from database:', error);
