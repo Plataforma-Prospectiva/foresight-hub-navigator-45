@@ -25,14 +25,14 @@ const IndexContent = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [tools, setTools] = useState(initialTools);
-  const { techniques } = useTechniques();
-  
+  const {
+    techniques
+  } = useTechniques();
+
   // Calculate statistics
   const totalTechniques = techniques.length;
   const categories = new Set(techniques.map(t => t.category)).size;
-  const avgComplexity = techniques.length > 0 
-    ? techniques.reduce((sum, t) => sum + t.complexity, 0) / techniques.length 
-    : 0;
+  const avgComplexity = techniques.length > 0 ? techniques.reduce((sum, t) => sum + t.complexity, 0) / techniques.length : 0;
   const handleIconChange = (toolId: string, newIconName: string) => {
     const newIcon = iconMap[newIconName as keyof typeof iconMap];
     if (newIcon) {
@@ -46,8 +46,7 @@ const IndexContent = () => {
     setTools(prevTools => [...prevTools, newTool]);
     console.log('Nueva herramienta agregada:', newTool);
   };
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-secondary/20">
+  return <div className="min-h-screen bg-gradient-to-br from-background via-background to-secondary/20">
       <Header onIconChange={handleIconChange} onAddTool={handleAddTool} />
       
       <main className="relative">
@@ -123,9 +122,7 @@ const IndexContent = () => {
           <section id="tools-section" className="animate-slide-up">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold text-primary mb-4">Desarrolladas para aplicar técnicas prospectivas</h2>
-              <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                Potencia tu análisis con herramientas especializadas para cada fase del proceso prospectivo
-              </p>
+              <p className="text-lg text-muted-foreground max-w-3xl mx-auto"> Herramientas especializadas para el proceso prospectivo</p>
             </div>
 
             {/* Search and Filters */}
@@ -159,15 +156,11 @@ const IndexContent = () => {
           </div>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 const Index = () => {
-  return (
-    <TechniqueProvider>
+  return <TechniqueProvider>
       <IndexContent />
-    </TechniqueProvider>
-  );
+    </TechniqueProvider>;
 };
 export default Index;
