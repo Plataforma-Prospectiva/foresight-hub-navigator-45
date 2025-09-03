@@ -3132,7 +3132,7 @@ export const techniquesES: Technique[] = [
     name: 'Object & Collage Prototyping',
     icon: Boxes,
     complexity: 2,
-    category: 'creative',
+    category: 'speculative-design',
     description: 'Construir prototipos visuales o materiales que representen escenarios de futuro.',
     objectives: [
       'Hacer tangibles ideas abstractas',

@@ -110,7 +110,7 @@ export const techniques: Technique[] = [
     name: 'Delphi Method',
     icon: Users,
     complexity: 5,
-    category: 'expert-consultation',
+    category: 'participatory',
     description: 'Structured communication technique that relies on a panel of experts to converge on complex issues through iterative rounds of surveys.',
     objectives: [
       'Achieve expert consensus on complex topics',
@@ -192,7 +192,7 @@ export const techniques: Technique[] = [
     name: 'Morphological Analysis',
     icon: Grid3x3,
     complexity: 4,
-    category: 'scenario-building',
+    category: 'exploratory',
     description: 'Systematic method for exploring all possible solutions to a multi-dimensional problem by decomposing it into its fundamental parameters.',
     objectives: [
       'Explore comprehensive solution space',
@@ -390,7 +390,7 @@ export const techniques: Technique[] = [
     name: 'Scenario Building',
     icon: GitBranch,
     complexity: 5,
-    category: 'scenario-building',
+    category: 'exploratory',
     description: 'Construction of multiple coherent and plausible future narratives to explore different possibilities and their implications.',
     objectives: [
       'Explore multiple future possibilities',
@@ -479,7 +479,7 @@ export const techniques: Technique[] = [
     name: 'Cross-Impact Analysis',
     icon: Network,
     complexity: 5,
-    category: 'systems-analysis',
+    category: 'structural',
     description: 'Systematic approach to analyze interdependencies between different factors and their mutual influences in complex systems.',
     objectives: [
       'Understand system interdependencies',
@@ -562,7 +562,7 @@ export const techniques: Technique[] = [
     name: 'Stakeholder Mapping',
     icon: Users,
     complexity: 2,
-    category: 'actor-analysis',
+    category: 'analytical',
     description: 'Systematic identification and analysis of relevant actors, their interests, influences, and interrelationships within a system.',
     objectives: [
       'Identify all relevant stakeholders',
@@ -644,7 +644,7 @@ export const techniques: Technique[] = [
     name: 'Environmental Scanning',
     icon: Search,
     complexity: 3,
-    category: 'information-analysis',
+    category: 'analytical',
     description: 'Systematic monitoring of external environment to identify emerging trends, issues, and weak signals that may impact the future.',
     objectives: [
       'Monitor external environment continuously',
@@ -809,7 +809,7 @@ export const techniques: Technique[] = [
     name: 'X-Curve Analysis',
     icon: Workflow,
     complexity: 4,
-    category: 'transition-analysis',
+    category: 'transition',
     description: 'Visual tool for mapping transition dynamics and facilitating co-creation for systemic change by understanding building and breaking patterns.',
     objectives: [
       'Map transition dynamics systematically',
@@ -975,7 +975,7 @@ export const techniques: Technique[] = [
     name: 'Weak Signals Detection',
     icon: Eye,
     complexity: 3,
-    category: 'early-warning',
+    category: 'exploratory',
     description: 'Systematic approach to identify and analyze emerging phenomena that could become significant trends or disruptions in the future.',
     objectives: [
       'Detect early indicators of change',
@@ -1141,7 +1141,7 @@ export const techniques: Technique[] = [
     name: 'Causal Layered Analysis (CLA)',
     icon: Layers,
     complexity: 4,
-    category: 'deep-analysis',
+    category: 'analytical',
     description: 'Four-level analytical framework that examines surface trends, systems, worldviews, and myths/metaphors to understand deeper causes of change.',
     objectives: [
       'Understand deeper causes of phenomena',
