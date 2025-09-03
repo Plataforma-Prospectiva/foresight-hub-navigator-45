@@ -106,12 +106,9 @@ const IndexContent = () => {
                 </CardContent>
               </Card>
               <Card className="hover-lift shadow-elegant border-0 bg-gradient-to-br from-blue-500/5 to-blue-500/10">
-                <CardHeader className="text-center pb-2">
-                  <div className="w-12 h-12 mx-auto bg-blue-500/20 rounded-full flex items-center justify-center mb-2">
-                    <Layers className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <CardTitle className="text-lg font-semibold text-foreground">Categorías</CardTitle>
-                </CardHeader>
+                 <CardHeader className="text-center pb-2">
+                   <CardTitle className="text-lg font-semibold text-foreground">Categorías</CardTitle>
+                 </CardHeader>
                 <CardContent className="text-center pt-0">
                   <div className="text-3xl font-bold text-blue-600 mb-1">{categories}</div>
                   <p className="text-sm text-muted-foreground">Diferentes enfoques</p>
