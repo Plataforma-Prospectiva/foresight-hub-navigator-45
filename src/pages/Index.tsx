@@ -92,7 +92,7 @@ const IndexContent = () => {
             </div>
 
             {/* Stats Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto animate-slide-up">
+            <div className="flex justify-center max-w-4xl mx-auto animate-slide-up">
               <Card className="hover-lift shadow-elegant border-0 bg-gradient-to-br from-primary/5 to-primary/10">
                 <CardHeader className="text-center pb-2">
                   <div className="w-12 h-12 mx-auto bg-primary/20 rounded-full flex items-center justify-center mb-2">
