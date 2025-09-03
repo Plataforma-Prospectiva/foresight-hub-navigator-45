@@ -4,7 +4,7 @@ import { Technique, StudyProfile, ResourceOption } from '@/types/technique';
 import { getTechniques } from '@/data/techniques';
 import { getTechniquesFromDatabase } from '@/utils/techniqueSeeder';
 import { useLanguage } from './LanguageContext';
-import { useSupabaseAuth } from './SupabaseAuthContext';
+import { useSupabaseAuth } from '@/context/SupabaseAuthContext';
 import { 
   TrendingUp, BarChart3, GitBranch, Network, Brain, Target,
   Search, Users, Map, Layers, Activity, Zap, TreePine, Shuffle,
