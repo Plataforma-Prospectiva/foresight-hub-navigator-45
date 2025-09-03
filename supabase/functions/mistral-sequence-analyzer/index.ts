@@ -53,9 +53,10 @@ serve(async (req) => {
   }
 
   try {
-    const { profile, techniques } = await req.json() as {
+    const { profile, techniques, customApiKey } = await req.json() as {
       profile: StudyProfile;
       techniques: Technique[];
+      customApiKey?: string;
     };
 
     console.log('Analyzing study profile with Mistral AI:', profile.title);
@@ -118,10 +119,13 @@ FORMATO DE RESPUESTA (JSON estricto):
 
 IMPORTANTE: Responde ÚNICAMENTE con el JSON válido, sin texto adicional.`;
 
+    // Use custom API key if provided, otherwise use the environment variable
+    const apiKey = customApiKey || mistralApiKey;
+    
     const response = await fetch('https://api.mistral.ai/v1/chat/completions', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${mistralApiKey}`,
+        'Authorization': `Bearer ${apiKey}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
@@ -132,6 +136,7 @@ IMPORTANTE: Responde ÚNICAMENTE con el JSON válido, sin texto adicional.`;
             content: prompt
           }
         ],
+        response_format: { type: "json_object" },
         temperature: 0.3,
         max_tokens: 2000
       }),
@@ -237,11 +242,39 @@ IMPORTANTE: Responde ÚNICAMENTE con el JSON válido, sin texto adicional.`;
 
   } catch (error) {
     console.error('Error in mistral-sequence-analyzer:', error);
-    return new Response(JSON.stringify({ 
-      error: 'Error processing analysis',
-      details: error.message 
-    }), {
-      status: 500,
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    
+    // Return a successful response with heuristic fallback instead of 500 error
+    // This ensures the frontend can display the console and error information
+    
+    // Simple heuristic fallback: select techniques based on complexity and resources
+    const heuristicTechniques = techniques
+      .filter(t => {
+        // Filter based on team experience and complexity
+        const maxComplexity = profile.teamExperience === 'expert' ? 5 : 
+                            profile.teamExperience === 'intermediate' ? 4 : 3;
+        return t.complexity <= maxComplexity;
+      })
+      .sort((a, b) => a.complexity - b.complexity) // Sort by complexity
+      .slice(0, 4) // Take first 4 techniques
+      .map((technique, index) => ({
+        techniqueId: technique.id,
+        justification: `Técnica seleccionada por método heurístico basado en complejidad (${technique.complexity}/5) y experiencia del equipo (${profile.teamExperience}).`,
+        sequenceOrder: index + 1
+      }));
+
+    const fallbackResult = {
+      recommendedTechniques: heuristicTechniques,
+      analysisDescription: "Análisis realizado con método heurístico de respaldo debido a error en el análisis de IA",
+      estimatedDuration: profile.estimatedTime,
+      aiQuery: `CONSULTA ENVIADA A MISTRAL AI:\n\n${prompt}`,
+      aiError: `Failed to analyze with AI: ${errorMessage}`,
+      totalTechniquesConsidered: techniques.length,
+      filteredSimilarTechniques: 0
+    };
+
+    return new Response(JSON.stringify(fallbackResult), {
+      status: 200, // Return 200 instead of 500 to ensure frontend can process the response
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
   }
