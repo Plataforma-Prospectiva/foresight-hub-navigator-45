@@ -2745,6 +2745,716 @@ export const techniques: Technique[] = [
         year: 2018
       }
     ]
+  },
+  {
+    id: 'sci-fi-prototyping',
+    name: 'Sci-Fi Prototyping',
+    icon: Rocket,
+    complexity: 3,
+    category: 'creative',
+    description: 'Explore alternative futures through science fiction narratives applied to concrete societal or technological problems.',
+    objectives: [
+      'Explore disruptive innovations',
+      'Communicate complex futures',
+      'Generate vivid narratives',
+      'Stimulate technological imagination'
+    ],
+    applications: [
+      'Technological innovation',
+      'Futures education and communication',
+      'Disruptive scenario design'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Theme Identification',
+        description: 'Select innovation or trend to explore.',
+        duration: '1 hour'
+      },
+      {
+        step: 2,
+        title: 'Narrative Development',
+        description: 'Create stories describing future transformations.',
+        duration: '2-3 weeks'
+      },
+      {
+        step: 3,
+        title: 'Plausibility Review',
+        description: 'Evaluate scientific and technical credibility of narrative.',
+        duration: '1 week'
+      },
+      {
+        step: 4,
+        title: 'Implications Analysis',
+        description: 'Discuss social, ethical, and technical consequences.',
+        duration: '1-2 days'
+      }
+    ],
+    advantages: [
+      'High communication capacity',
+      'Generates vivid narratives',
+      'Stimulates technological creativity'
+    ],
+    limitations: [
+      'Risk of falling into fiction without reality connection',
+      'Requires critical systematization afterward',
+      'May be perceived as unserious'
+    ],
+    timeHorizon: '20-50 years',
+    participants: '3-10 writers or multidisciplinary teams',
+    bibliographicSources: [
+      {
+        type: 'book',
+        title: 'Science Fiction Prototyping',
+        authors: ['B. Johnson'],
+        year: 2011
+      },
+      {
+        type: 'book',
+        title: 'Transforming the Future',
+        authors: ['R. Miller'],
+        year: 2018
+      }
+    ]
+  },
+  {
+    id: 'future-personas',
+    name: 'Future Personas',
+    icon: UserSquare,
+    complexity: 2,
+    category: 'user-centered',
+    description: 'Represent archetypes of future users or citizens to explore needs, behaviors, and aspirations.',
+    objectives: [
+      'Humanize future scenarios',
+      'Explore future needs',
+      'Facilitate communication with non-experts',
+      'Center design on people'
+    ],
+    applications: [
+      'Public policy design centered on future citizens',
+      'Service innovation',
+      'Territorial planning'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Trend Research',
+        description: 'Gather demographic data and social projections.',
+        duration: '1-2 weeks'
+      },
+      {
+        step: 2,
+        title: 'Archetype Construction',
+        description: 'Create fictional characters based on trends.',
+        duration: '1 week'
+      },
+      {
+        step: 3,
+        title: 'Narrative Development',
+        description: 'Describe behaviors and needs of each persona.',
+        duration: '1 week'
+      },
+      {
+        step: 4,
+        title: 'Validation and Refinement',
+        description: 'Review and adjust personas with stakeholders.',
+        duration: '2-3 days'
+      }
+    ],
+    advantages: [
+      'Humanizes scenarios',
+      'Facilitates communication with non-expert actors',
+      'Generates empathy toward future users'
+    ],
+    limitations: [
+      'May fall into stereotypes',
+      'Requires quality data for construction',
+      'Risk of excessive simplification'
+    ],
+    timeHorizon: '5-20 years',
+    participants: '5-15 participants',
+    bibliographicSources: [
+      {
+        type: 'article',
+        title: 'Advantages and disadvantages of scenario approaches',
+        authors: ['D. Mietzner', 'G. Reger'],
+        year: 2005
+      },
+      {
+        type: 'guide',
+        title: 'Foresight Manual',
+        institution: 'UNDP',
+        year: 2018
+      }
+    ]
+  },
+  {
+    id: 'real-options-analysis',
+    name: 'Real Options Analysis',
+    icon: DollarSign,
+    complexity: 5,
+    category: 'analytical',
+    description: 'Evaluate strategic decisions in uncertainty contexts using financial tools adapted to policies and planning.',
+    objectives: [
+      'Quantify strategic flexibility',
+      'Manage uncertainty',
+      'Optimize investment decisions',
+      'Value future options'
+    ],
+    applications: [
+      'Infrastructure investments',
+      'Energy and climate change policies',
+      'Large-scale project management'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Option Identification',
+        description: 'Define available strategic options.',
+        duration: '1 week'
+      },
+      {
+        step: 2,
+        title: 'Financial Modeling',
+        description: 'Apply real options valuation models.',
+        duration: '2-3 weeks'
+      },
+      {
+        step: 3,
+        title: 'Sensitivity Analysis',
+        description: 'Evaluate how values change under different scenarios.',
+        duration: '1 week'
+      },
+      {
+        step: 4,
+        title: 'Decision Making',
+        description: 'Select strategies based on analysis.',
+        duration: '2-3 days'
+      }
+    ],
+    advantages: [
+      'Allows uncertainty management',
+      'Quantifies strategic flexibility',
+      'Rigorous mathematical foundation'
+    ],
+    limitations: [
+      'Requires advanced financial knowledge',
+      'Difficult to communicate to non-technical actors',
+      'Assumes rational behaviors'
+    ],
+    timeHorizon: '5-30 years',
+    participants: 'Expert analysts',
+    bibliographicSources: [
+      {
+        type: 'book',
+        title: 'Investment under Uncertainty',
+        authors: ['A. Dixit', 'R. Pindyck'],
+        year: 1994
+      },
+      {
+        type: 'institutional',
+        title: 'Decision making under deep uncertainty',
+        institution: 'OECD',
+        year: 2015
+      }
+    ]
+  },
+  {
+    id: 'robust-decision-making',
+    name: 'Robust Decision Making (RDM)',
+    icon: Shield,
+    complexity: 5,
+    category: 'analytical',
+    description: 'Make decisions that work under a wide range of possible futures.',
+    objectives: [
+      'Reduce failure risk',
+      'Adapt to high uncertainty',
+      'Evaluate multiple strategies',
+      'Identify robust decisions'
+    ],
+    applications: [
+      'Water and energy public policies',
+      'Climate planning',
+      'Long-term government strategies'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Strategy Definition',
+        description: 'Identify strategic options to evaluate.',
+        duration: '1 week'
+      },
+      {
+        step: 2,
+        title: 'Scenario Generation',
+        description: 'Create thousands of scenarios through simulation.',
+        duration: '2-3 weeks'
+      },
+      {
+        step: 3,
+        title: 'Robustness Evaluation',
+        description: 'Analyze strategy performance across all scenarios.',
+        duration: '1-2 weeks'
+      },
+      {
+        step: 4,
+        title: 'Strategy Selection',
+        description: 'Choose most robust options.',
+        duration: '1 week'
+      }
+    ],
+    advantages: [
+      'Reduces failure risk',
+      'Adapts to high uncertainty',
+      'RAND-proven methodology'
+    ],
+    limitations: [
+      'Computationally intensive',
+      'Requires extensive quantitative data',
+      'Complex to implement'
+    ],
+    timeHorizon: '10-50 years',
+    participants: 'Expert analysts and policy makers',
+    bibliographicSources: [
+      {
+        type: 'book',
+        title: 'Shaping the Next One Hundred Years',
+        authors: ['R. Lempert', 'et al.'],
+        year: 2003
+      },
+      {
+        type: 'institutional',
+        title: 'RDM Overview',
+        institution: 'RAND Corporation',
+        year: 2013
+      }
+    ]
+  },
+  {
+    id: 'dynamic-adaptive-pathways',
+    name: 'Dynamic Adaptive Policy Pathways (DAPP)',
+    icon: Route,
+    complexity: 4,
+    category: 'adaptive',
+    description: 'Design adaptive policies that adjust as future conditions change.',
+    objectives: [
+      'Incorporate flexibility in decisions',
+      'Reduce costs of wrong decisions',
+      'Adapt to changing conditions',
+      'Optimize decision points'
+    ],
+    applications: [
+      'Climate change adaptation planning',
+      'Water and coastal risk management',
+      'Resilient urban policies'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Pathway Mapping',
+        description: 'Create maps showing possible trajectories.',
+        duration: '2-3 weeks'
+      },
+      {
+        step: 2,
+        title: 'Decision Point Identification',
+        description: 'Define when and how to change strategy.',
+        duration: '1-2 weeks'
+      },
+      {
+        step: 3,
+        title: 'Warning Signal Design',
+        description: 'Establish early change indicators.',
+        duration: '1 week'
+      },
+      {
+        step: 4,
+        title: 'Adaptive Implementation',
+        description: 'Execute with continuous monitoring and adjustments.',
+        duration: 'Continuous'
+      }
+    ],
+    advantages: [
+      'Incorporates flexibility',
+      'Reduces costs of wrong decisions',
+      'Allows continuous adaptation'
+    ],
+    limitations: [
+      'Requires constant monitoring',
+      'Complex to implement in rigid institutions',
+      'Demands continuous resources'
+    ],
+    timeHorizon: '20-100 years',
+    participants: 'Multidisciplinary technical teams',
+    bibliographicSources: [
+      {
+        type: 'article',
+        title: 'Dynamic Adaptive Policy Pathways',
+        authors: ['M. Haasnoot', 'et al.'],
+        year: 2013
+      },
+      {
+        type: 'institutional',
+        title: 'Strategic Foresight',
+        institution: 'OECD',
+        year: 2019
+      }
+    ]
+  },
+  {
+    id: 'dator-archetypes',
+    name: 'Dator\'s Future Archetypes',
+    icon: Crown,
+    complexity: 2,
+    category: 'exploratory',
+    description: 'Explore four recurring future archetypes: continuity, collapse, discipline, and transformation.',
+    objectives: [
+      'Structure scenario discussions',
+      'Cover wide range of futures',
+      'Simplify complex analysis',
+      'Facilitate systematic thinking'
+    ],
+    applications: [
+      'Exploratory scenario design',
+      'Foresight education',
+      'Territorial planning'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Archetype Presentation',
+        description: 'Explain Dator\'s four future types.',
+        duration: '1 hour'
+      },
+      {
+        step: 2,
+        title: 'Development by Archetype',
+        description: 'Create specific narratives for each type.',
+        duration: '2 hours'
+      },
+      {
+        step: 3,
+        title: 'Comparative Analysis',
+        description: 'Compare implications of each archetype.',
+        duration: '1 hour'
+      },
+      {
+        step: 4,
+        title: 'Integrative Synthesis',
+        description: 'Identify hybrid elements and connections.',
+        duration: '30 minutes'
+      }
+    ],
+    advantages: [
+      'Simple to apply',
+      'Covers wide range of futures',
+      'Robust conceptual framework'
+    ],
+    limitations: [
+      'May oversimplify complexity',
+      'Does not include hybrid nuances',
+      'Risk of pigeonholing'
+    ],
+    timeHorizon: '20-50 years',
+    participants: '10-30 participants',
+    bibliographicSources: [
+      {
+        type: 'book',
+        title: 'Alternative Futures at the Manoa School',
+        authors: ['J. Dator'],
+        year: 2009
+      },
+      {
+        type: 'book',
+        title: 'Six pillars of futures studies',
+        authors: ['S. Inayatullah'],
+        year: 2007
+      }
+    ]
+  },
+  {
+    id: 'gaming-futures',
+    name: 'Gaming Futures (Serious Games)',
+    icon: Gamepad2,
+    complexity: 3,
+    category: 'participatory',
+    description: 'Simulate possible futures through role-playing games and interactive dynamics involving multiple actors.',
+    objectives: [
+      'Favor experiential learning',
+      'Generate high participation',
+      'Explore collective decisions',
+      'Simulate complex dynamics'
+    ],
+    applications: [
+      'Participatory territorial planning',
+      'Educational and environmental policies',
+      'Organizational training'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Game Design',
+        description: 'Create rules, roles, and simulation mechanics.',
+        duration: '2-3 weeks'
+      },
+      {
+        step: 2,
+        title: 'Role Assignment',
+        description: 'Distribute characters and responsibilities.',
+        duration: '30 minutes'
+      },
+      {
+        step: 3,
+        title: 'Simulation Execution',
+        description: 'Develop game with decisions and consequences.',
+        duration: '2-4 hours'
+      },
+      {
+        step: 4,
+        title: 'Final Reflection (Debriefing)',
+        description: 'Analyze learnings and connections to reality.',
+        duration: '1 hour'
+      }
+    ],
+    advantages: [
+      'Favors experiential learning',
+      'High participation level',
+      'Generates insights about complex dynamics'
+    ],
+    limitations: [
+      'Complex design',
+      'May trivialize serious topics if not well structured',
+      'Requires specialized facilitation'
+    ],
+    timeHorizon: '5-30 years',
+    participants: '15-50 participants',
+    bibliographicSources: [
+      {
+        type: 'book',
+        title: 'The Gaming of Policy and the Politics of Gaming',
+        authors: ['I. Mayer'],
+        year: 2009
+      },
+      {
+        type: 'book',
+        title: 'Serious Games',
+        authors: ['C. Abt'],
+        year: 1970
+      }
+    ]
+  },
+  {
+    id: 'speculative-design',
+    name: 'Design Futures / Speculative Design',
+    icon: Brush,
+    complexity: 3,
+    category: 'creative',
+    description: 'Explore possible futures through objects, images, and prototypes that provoke critical reflection.',
+    objectives: [
+      'Make abstract concrete',
+      'Generate high communicative impact',
+      'Provoke critical reflection',
+      'Question assumptions'
+    ],
+    applications: [
+      'Social innovation',
+      'Product and service design',
+      'Cultural exploration of futures'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Theme Identification',
+        description: 'Select aspect of future to explore.',
+        duration: '1-2 days'
+      },
+      {
+        step: 2,
+        title: 'Speculative Research',
+        description: 'Explore emerging trends and possibilities.',
+        duration: '1 week'
+      },
+      {
+        step: 3,
+        title: 'Artifact Creation',
+        description: 'Design objects, images, or future prototypes.',
+        duration: '2-3 weeks'
+      },
+      {
+        step: 4,
+        title: 'Exhibition and Dialogue',
+        description: 'Present creations and generate social debate.',
+        duration: '1-2 days'
+      }
+    ],
+    advantages: [
+      'Makes abstract concrete',
+      'Generates high communicative impact',
+      'Stimulates imagination'
+    ],
+    limitations: [
+      'May be perceived as artistic fiction',
+      'Requires creative facilitators',
+      'Difficult to systematize results'
+    ],
+    timeHorizon: '10-50 years',
+    participants: 'Design teams + stakeholders',
+    bibliographicSources: [
+      {
+        type: 'book',
+        title: 'Speculative Everything',
+        authors: ['A. Dunne', 'F. Raby'],
+        year: 2013
+      },
+      {
+        type: 'institutional',
+        title: 'UNESCO Futures Literacy Labs',
+        institution: 'UNESCO',
+        year: 2018
+      }
+    ]
+  },
+  {
+    id: 'futures-cartography',
+    name: 'Futures Cartography',
+    icon: Navigation,
+    complexity: 2,
+    category: 'visualization',
+    description: 'Visually map scenarios, trends, and interrelationships of possible futures.',
+    objectives: [
+      'Make complex connections visible',
+      'Facilitate communication between actors',
+      'Visualize systemic relationships',
+      'Structure complex information'
+    ],
+    applications: [
+      'Foresight education',
+      'Strategic visualization',
+      'Participatory processes'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Element Identification',
+        description: 'Define key trends, actors, and factors.',
+        duration: '1-2 days'
+      },
+      {
+        step: 2,
+        title: 'Relationship Mapping',
+        description: 'Establish connections and interactions.',
+        duration: '2-3 days'
+      },
+      {
+        step: 3,
+        title: 'Visual Design',
+        description: 'Create clear graphic representations.',
+        duration: '1 week'
+      },
+      {
+        step: 4,
+        title: 'Participatory Validation',
+        description: 'Review maps with stakeholders.',
+        duration: '1-2 days'
+      }
+    ],
+    advantages: [
+      'Makes complex connections visible',
+      'Facilitates communication between actors',
+      'Versatile tool'
+    ],
+    limitations: [
+      'May simplify complex relationships',
+      'Requires specialized visual design',
+      'Risk of visual overload'
+    ],
+    timeHorizon: 'Variable (short to long term)',
+    participants: '5-20 participants',
+    bibliographicSources: [
+      {
+        type: 'book',
+        title: 'Transforming the Future',
+        authors: ['R. Miller'],
+        year: 2018
+      },
+      {
+        type: 'book',
+        title: 'Foresight Methodology',
+        authors: ['R. Popper'],
+        year: 2008
+      }
+    ]
+  },
+  {
+    id: 'narrative-foresight',
+    name: 'Narrative Foresight',
+    icon: BookOpen,
+    complexity: 2,
+    category: 'cultural',
+    description: 'Explore and analyze futures through narratives and stories that reveal social imaginaries.',
+    objectives: [
+      'Understand cultural frameworks',
+      'Generate accessible and powerful stories',
+      'Explore social imaginaries',
+      'Reveal cultural assumptions'
+    ],
+    applications: [
+      'Cultural research',
+      'Inclusive public policies',
+      'Exploration of social imaginaries'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Narrative Collection',
+        description: 'Compile existing stories, tales, and discourses.',
+        duration: '1-2 weeks'
+      },
+      {
+        step: 2,
+        title: 'Content Analysis',
+        description: 'Identify themes, values, and future visions.',
+        duration: '1 week'
+      },
+      {
+        step: 3,
+        title: 'Story Co-creation',
+        description: 'Develop new narratives participatively.',
+        duration: '2-3 days'
+      },
+      {
+        step: 4,
+        title: 'Cultural Validation',
+        description: 'Review stories with relevant communities.',
+        duration: '1 week'
+      }
+    ],
+    advantages: [
+      'Allows understanding of cultural frameworks',
+      'Generates accessible and powerful stories',
+      'Culturally inclusive'
+    ],
+    limitations: [
+      'Less quantitative rigor',
+      'May fall into subjectivity',
+      'Difficult to generalize'
+    ],
+    timeHorizon: '10-50 years',
+    participants: 'Diverse groups',
+    bibliographicSources: [
+      {
+        type: 'article',
+        title: 'Narrative Foresight',
+        authors: ['A. Sools'],
+        year: 2020
+      },
+      {
+        type: 'book',
+        title: 'Transforming the Future',
+        authors: ['R. Miller'],
+        year: 2018
+      }
+    ]
   }
 ];
 
