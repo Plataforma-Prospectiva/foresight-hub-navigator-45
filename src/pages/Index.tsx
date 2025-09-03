@@ -105,19 +105,6 @@ const IndexContent = () => {
                   <p className="text-sm text-muted-foreground">Técnicas prospectivas</p>
                 </CardContent>
               </Card>
-              
-              <Card className="hover-lift shadow-elegant border-0 bg-gradient-to-br from-green-500/5 to-green-500/10">
-                <CardHeader className="text-center pb-2">
-                  <div className="w-12 h-12 mx-auto bg-green-500/20 rounded-full flex items-center justify-center mb-2">
-                    <Award className="w-6 h-6 text-green-600" />
-                  </div>
-                  <CardTitle className="text-lg font-semibold text-foreground">Complejidad Promedio</CardTitle>
-                </CardHeader>
-                <CardContent className="text-center pt-0">
-                  <div className="text-3xl font-bold text-green-600 mb-1">{avgComplexity.toFixed(1)}</div>
-                  <p className="text-sm text-muted-foreground">Nivel de dificultad</p>
-                </CardContent>
-              </Card>
             </div>
 
             {/* Scroll Indicator */}
