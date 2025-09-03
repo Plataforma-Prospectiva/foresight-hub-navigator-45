@@ -109,10 +109,6 @@ const IndexContent = () => {
                  <CardHeader className="text-center pb-2">
                    <CardTitle className="text-lg font-semibold text-foreground">Categorías</CardTitle>
                  </CardHeader>
-                <CardContent className="text-center pt-0">
-                  <div className="text-3xl font-bold text-blue-600 mb-1">{categories}</div>
-                  <p className="text-sm text-muted-foreground">Diferentes enfoques</p>
-                </CardContent>
               </Card>
               
               <Card className="hover-lift shadow-elegant border-0 bg-gradient-to-br from-green-500/5 to-green-500/10">
