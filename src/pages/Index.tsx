@@ -105,7 +105,6 @@ const IndexContent = () => {
                   <p className="text-sm text-muted-foreground">Técnicas prospectivas</p>
                 </CardContent>
               </Card>
-              
               <Card className="hover-lift shadow-elegant border-0 bg-gradient-to-br from-blue-500/5 to-blue-500/10">
                 <CardHeader className="text-center pb-2">
                   <div className="w-12 h-12 mx-auto bg-blue-500/20 rounded-full flex items-center justify-center mb-2">
