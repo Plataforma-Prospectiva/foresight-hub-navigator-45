@@ -256,10 +256,37 @@ export const TechniqueProvider = ({ children }: { children: ReactNode }) => {
           sequenceOrder
         }));
       
+      // Create simulated AI query for console display
+      const simulatedQuery = `
+**MÉTODO HEURÍSTICO DE RESPALDO APLICADO**
+
+Perfil del Estudio Analizado:
+- Ámbito: ${profile.scope}
+- Nivel: ${profile.stateLevel}
+- Territorio: ${profile.territoryName || 'No especificado'}
+- Profundidad: ${profile.informationDepth}
+- Complejidad: ${profile.objectiveComplexity}
+- Experiencia del equipo: ${profile.teamExperience}
+- Tiempo estimado: ${profile.estimatedTime}
+- Horizonte temporal: ${profile.timeHorizon}
+- Presupuesto: ${profile.availableResources.budget}
+- Acceso a expertos: ${profile.availableResources.expertAccess ? 'Sí' : 'No'}
+- Personal de campo: ${profile.availableResources.fieldPersonnel ? 'Sí' : 'No'}
+
+Criterios heurísticos aplicados:
+1. Filtrado por complejidad y experiencia del equipo
+2. Puntuación basada en recursos disponibles y profundidad de información
+3. Selección de 5 técnicas con mayor compatibilidad
+4. Ordenación por secuencia metodológica
+
+Total de técnicas consideradas: ${techniques.length}
+`.trim();
+
       return {
         recommendedTechniques: fallbackTechniques,
         analysisDescription: 'Análisis realizado con método heurístico de respaldo debido a error en IA.',
         estimatedDuration: profile.estimatedTime,
+        aiQuery: simulatedQuery,
         totalTechniquesConsidered: techniques.length,
         filteredSimilarTechniques: 0
       };
