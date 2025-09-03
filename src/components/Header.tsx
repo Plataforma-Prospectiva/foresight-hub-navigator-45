@@ -6,6 +6,7 @@ import { DocumentationModal } from "@/components/DocumentationModal";
 import { SettingsModal } from "@/components/SettingsModal";
 import { BetaCommentsModal } from "@/components/BetaCommentsModal";
 import { AccessLogsViewer } from "@/components/AccessLogsViewer";
+import { AuthModal } from "@/components/AuthModal";
 import { useLanguage } from "@/context/LanguageContext";
 import { useAuth } from "@/context/AuthContext";
 import { seedTechniquesToDatabase } from "@/utils/techniqueSeeder";
@@ -92,6 +93,8 @@ export const Header = ({ onIconChange, onAddTool }: HeaderProps) => {
               >
                 <HelpCircle className="w-4 h-4" />
               </Button>
+
+              <AuthModal />
 
               <div data-settings-button>
                 <SettingsModal onIconChange={onIconChange} onAddTool={onAddTool} />
