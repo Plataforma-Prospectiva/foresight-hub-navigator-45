@@ -1,1 +1,4 @@
 project_id = "xyeblzjuejqreiejnhgv"
+
+[functions.mistral-sequence-analyzer]
+verify_jwt = false

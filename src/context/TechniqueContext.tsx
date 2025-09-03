@@ -5,6 +5,7 @@ import { getTechniques } from '@/data/techniques';
 import { getTechniquesFromDatabase } from '@/utils/techniqueSeeder';
 import { useLanguage } from './LanguageContext';
 import { useSupabaseAuth } from '@/context/SupabaseAuthContext';
+import { supabase } from '@/integrations/supabase/client';
 import { 
   TrendingUp, BarChart3, GitBranch, Network, Brain, Target,
   Search, Users, Map, Layers, Activity, Zap, TreePine, Shuffle,
@@ -158,83 +159,86 @@ export const TechniqueProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const analyzeStudyWithAI = async (profile: Omit<StudyProfile, 'id' | 'createdAt' | 'recommendedTechniques'>): Promise<{ techniqueId: string; justification: string; sequenceOrder: number }[]> => {
-    // Análisis avanzado con IA que incluye justificaciones y secuencias
-    const compatibilityScores: { [key: string]: { score: number; justification: string; sequenceOrder: number } } = {};
-    
-    techniques.forEach(technique => {
-      let score = 0;
-      let justification = "";
-      let sequenceOrder = 0;
+    try {
+      console.log('Calling Mistral AI for sequence analysis...');
       
-      // Complexity analysis
-      if (profile.objectiveComplexity === 'high' && technique.complexity >= 4) {
-        score += 30;
-        justification += "High complexity requires advanced techniques. ";
-      }
-      if (profile.objectiveComplexity === 'medium' && technique.complexity === 3) {
-        score += 25;
-        justification += "Medium complexity aligns with intermediate techniques. ";
-      }
-      if (profile.objectiveComplexity === 'low' && technique.complexity <= 2) {
-        score += 20;
-        justification += "Low complexity allows for effective basic techniques. ";
-      }
-      
-      // Team experience analysis
-      if (profile.teamExperience === 'expert' && technique.complexity >= 4) {
-        score += 25;
-        justification += "Expert team can handle advanced techniques. ";
-      }
-      if (profile.teamExperience === 'intermediate' && technique.complexity <= 3) {
-        score += 20;
-        justification += "Intermediate experience fits well with this technique. ";
-      }
-      if (profile.teamExperience === 'beginner' && technique.complexity <= 2) {
-        score += 25;
-        justification += "Appropriate technique for beginner teams. ";
-      }
-      
-      // Scope and level analysis
-      if (profile.scope === 'public' && technique.category.includes('participatory')) {
-        score += 15;
-        justification += "Public scope favors participatory techniques. ";
-      }
-      if (profile.stateLevel === 'local' && technique.name.toLowerCase().includes('workshop')) {
-        score += 10;
-        justification += "Local level allows more effective workshops. ";
-      }
-      
-      // Available resources analysis
-      if (profile.availableResources.expertAccess && technique.complexity >= 4) {
-        score += 15;
-        justification += "Expert access enables more sophisticated techniques. ";
-      }
-      if (!profile.availableResources.expertAccess && technique.complexity <= 2) {
-        score += 10;
-        justification += "Without expert access, basic techniques are more viable. ";
-      }
-      
-      // Determine sequence order based on category and complexity
-      if (technique.category.includes('exploratory')) sequenceOrder = 1;
-      else if (technique.category.includes('structural')) sequenceOrder = 2;
-      else if (technique.category.includes('participatory')) sequenceOrder = 3;
-      else if (technique.category.includes('validation')) sequenceOrder = 4;
-      else sequenceOrder = Math.floor(score / 20) + 1;
-      
-      compatibilityScores[technique.id] = { score, justification: justification.trim(), sequenceOrder };
-    });
-    
-    // Ordenar por puntuación y retornar los mejores con sus justificaciones
-    const sortedTechniques = Object.entries(compatibilityScores)
-      .sort(([,a], [,b]) => b.score - a.score)
-      .slice(0, 5)
-      .map(([techniqueId, data]) => ({
-        techniqueId,
-        justification: data.justification || "Technique recommended based on general study profile analysis.",
-        sequenceOrder: data.sequenceOrder
+      // Prepare simplified technique data for the AI
+      const simplifiedTechniques = techniques.map(tech => ({
+        id: tech.id,
+        name: tech.name,
+        complexity: tech.complexity,
+        category: tech.category,
+        description: tech.description,
+        objectives: tech.objectives,
+        applications: tech.applications,
+        timeHorizon: tech.timeHorizon,
+        participants: tech.participants
       }));
-    
-    return sortedTechniques;
+
+      const { data, error } = await supabase.functions.invoke('mistral-sequence-analyzer', {
+        body: {
+          profile,
+          techniques: simplifiedTechniques
+        }
+      });
+
+      if (error) {
+        console.error('Error calling Mistral AI function:', error);
+        throw new Error('Failed to analyze with AI: ' + error.message);
+      }
+
+      if (!data || !data.recommendedTechniques) {
+        console.error('Invalid response from Mistral AI:', data);
+        throw new Error('Invalid AI response format');
+      }
+
+      console.log('Mistral AI analysis completed successfully:', data);
+      
+      // Sort by sequence order and return
+      return data.recommendedTechniques.sort((a, b) => a.sequenceOrder - b.sequenceOrder);
+      
+    } catch (error) {
+      console.error('Error in AI analysis, falling back to heuristic method:', error);
+      
+      // Fallback to simplified heuristic method
+      const compatibilityScores = techniques.map(technique => {
+        let score = 0;
+        let sequenceOrder = 1;
+        
+        // Basic scoring based on complexity and experience
+        if (profile.objectiveComplexity === 'high' && technique.complexity >= 4) score += 30;
+        if (profile.objectiveComplexity === 'medium' && technique.complexity === 3) score += 25;
+        if (profile.objectiveComplexity === 'low' && technique.complexity <= 2) score += 20;
+        
+        if (profile.teamExperience === 'expert' && technique.complexity >= 4) score += 25;
+        if (profile.teamExperience === 'intermediate' && technique.complexity <= 3) score += 20;
+        if (profile.teamExperience === 'beginner' && technique.complexity <= 2) score += 25;
+        
+        // Simple sequence ordering
+        if (technique.category.includes('exploratory')) sequenceOrder = 1;
+        else if (technique.category.includes('structural')) sequenceOrder = 2;
+        else if (technique.category.includes('participatory')) sequenceOrder = 3;
+        else sequenceOrder = 4;
+        
+        return {
+          techniqueId: technique.id,
+          score,
+          justification: `Técnica recomendada basada en análisis heurístico (complejidad ${technique.complexity}/5, categoría ${technique.category})`,
+          sequenceOrder
+        };
+      });
+      
+      // Return top 5 techniques sorted by score
+      return compatibilityScores
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 5)
+        .sort((a, b) => a.sequenceOrder - b.sequenceOrder)
+        .map(({ techniqueId, justification, sequenceOrder }) => ({
+          techniqueId,
+          justification,
+          sequenceOrder
+        }));
+    }
   };
 
   const createStudyProfile = async (profileData: Omit<StudyProfile, 'id' | 'createdAt' | 'recommendedTechniques'>): Promise<StudyProfile> => {
