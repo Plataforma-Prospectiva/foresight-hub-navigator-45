@@ -5,7 +5,8 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { useAuth } from "@/context/AuthContext";
+import { useSupabaseAuth } from "@/context/SupabaseAuthContext";
+import { useUserRole } from "@/hooks/useUserRole";
 import { useToast } from "@/hooks/use-toast";
 
 interface Comment {
@@ -17,14 +18,15 @@ interface Comment {
 }
 
 export const BetaCommentsModal = () => {
-  const { user } = useAuth();
+  const { user } = useSupabaseAuth();
+  const { hasRole } = useUserRole();
   const { toast } = useToast();
   const [comments, setComments] = useState<Comment[]>([]);
   const [newComment, setNewComment] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<Comment['category']>('general');
   const [isOpen, setIsOpen] = useState(false);
 
-  if (user?.role !== 'beta') return null;
+  if (!user || !hasRole('beta')) return null;
 
   const handleSubmitComment = () => {
     if (!newComment.trim()) return;
@@ -33,7 +35,7 @@ export const BetaCommentsModal = () => {
       id: Date.now().toString(),
       text: newComment.trim(),
       timestamp: new Date(),
-      userName: user.name,
+      userName: user.user_metadata?.display_name || user.email || 'Usuario Beta',
       category: selectedCategory
     };
 

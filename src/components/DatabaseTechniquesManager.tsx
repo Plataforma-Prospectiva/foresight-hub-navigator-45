@@ -13,7 +13,7 @@ import { Separator } from '@/components/ui/separator';
 import { Database, Plus, Edit, Trash2, Search, Filter, Eye, Save, X } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
-import { useAuth } from '@/context/AuthContext';
+import { useSupabaseAuth } from '@/context/SupabaseAuthContext';
 import { getTechniquesFromDatabase, seedTechniquesToDatabase } from '@/utils/techniqueSeeder';
 import type { Database as DatabaseType } from '@/integrations/supabase/types';
 
@@ -28,7 +28,7 @@ export const DatabaseTechniquesManager = () => {
   const [editingTechnique, setEditingTechnique] = useState<TechniqueRow | null>(null);
   const [showAddDialog, setShowAddDialog] = useState(false);
   const [isSyncing, setIsSyncing] = useState(false);
-  const { user } = useAuth();
+  const { user } = useSupabaseAuth();
 
   const categories = [
     { value: 'all', label: 'Todas las categorías' },

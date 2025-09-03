@@ -4,7 +4,7 @@ import { Technique, StudyProfile, ResourceOption } from '@/types/technique';
 import { getTechniques } from '@/data/techniques';
 import { getTechniquesFromDatabase } from '@/utils/techniqueSeeder';
 import { useLanguage } from './LanguageContext';
-import { useAuth } from './AuthContext';
+import { useSupabaseAuth } from './SupabaseAuthContext';
 import { 
   TrendingUp, BarChart3, GitBranch, Network, Brain, Target,
   Search, Users, Map, Layers, Activity, Zap, TreePine, Shuffle,
@@ -72,7 +72,7 @@ const TechniqueContext = createContext<TechniqueContextType | null>(null);
 
 export const TechniqueProvider = ({ children }: { children: ReactNode }) => {
   const { language } = useLanguage();
-  const { user } = useAuth();
+  const { user } = useSupabaseAuth();
   const [techniques, setTechniques] = useState<Technique[]>(getTechniques(language));
   const [studyProfiles, setStudyProfiles] = useState<StudyProfile[]>([]);
   const [resourceOptions, setResourceOptions] = useState<ResourceOption[]>(defaultResourceOptions);

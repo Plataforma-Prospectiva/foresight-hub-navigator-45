@@ -6,9 +6,9 @@ import { DocumentationModal } from "@/components/DocumentationModal";
 import { SettingsModal } from "@/components/SettingsModal";
 import { BetaCommentsModal } from "@/components/BetaCommentsModal";
 import { AccessLogsViewer } from "@/components/AccessLogsViewer";
-import { AuthModal } from "@/components/AuthModal";
+import { SupabaseAuthModal } from "@/components/SupabaseAuthModal";
 import { useLanguage } from "@/context/LanguageContext";
-import { useAuth } from "@/context/AuthContext";
+import { useSupabaseAuth } from "@/context/SupabaseAuthContext";
 import { seedTechniquesToDatabase } from "@/utils/techniqueSeeder";
 import { toast } from "sonner";
 
@@ -21,7 +21,7 @@ export const Header = ({ onIconChange, onAddTool }: HeaderProps) => {
   const [showDocumentation, setShowDocumentation] = useState(false);
   const [isMigrating, setIsMigrating] = useState(false);
   const { language, setLanguage, t } = useLanguage();
-  const { user } = useAuth();
+  const { user } = useSupabaseAuth();
 
   const handleMigrateTechniques = async () => {
     if (!user) {
@@ -94,7 +94,7 @@ export const Header = ({ onIconChange, onAddTool }: HeaderProps) => {
                 <HelpCircle className="w-4 h-4" />
               </Button>
 
-              <AuthModal />
+              <SupabaseAuthModal />
 
               <div data-settings-button>
                 <SettingsModal onIconChange={onIconChange} onAddTool={onAddTool} />

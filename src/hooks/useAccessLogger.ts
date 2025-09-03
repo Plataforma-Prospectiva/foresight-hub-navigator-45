@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { supabase } from '@/integrations/supabase/client';
-import { useAuth } from '@/context/AuthContext';
+import { useSupabaseAuth } from '@/context/SupabaseAuthContext';
 
 interface AccessLogData {
   ip_address: string;
@@ -97,7 +97,7 @@ const getClientIP = async (): Promise<string> => {
 };
 
 export const useAccessLogger = () => {
-  const { user } = useAuth();
+  const { user } = useSupabaseAuth();
   const hasLoggedRef = useRef(false);
   const sessionIdRef = useRef(generateSessionId());
 

@@ -6,7 +6,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { Activity, Eye, MapPin, Monitor, Globe, Clock, User, Smartphone } from "lucide-react";
-import { useAuth } from "@/context/AuthContext";
+import { useSupabaseAuth } from "@/context/SupabaseAuthContext";
+import { useUserRole } from "@/hooks/useUserRole";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
@@ -33,7 +34,8 @@ interface AccessLog {
 }
 
 export const AccessLogsViewer = () => {
-  const { user } = useAuth();
+  const { user } = useSupabaseAuth();
+  const { isAdmin } = useUserRole();
   const [logs, setLogs] = useState<AccessLog[]>([]);
   const [loading, setLoading] = useState(false);
   const [stats, setStats] = useState({
@@ -44,7 +46,7 @@ export const AccessLogsViewer = () => {
   });
 
   // Solo admins pueden ver este componente
-  if (!user || user.role !== 'admin') {
+  if (!user || !isAdmin) {
     return null;
   }
 
