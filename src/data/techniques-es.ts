@@ -7,7 +7,11 @@ import {
   FlaskConical, Grid3x3, ArrowUpDown, ArrowLeftRight, Workflow,
   Scale, Gauge, Eye, Crosshair, UserCheck, Shapes, Palette,
   Settings, Presentation, Camera, Clock, Sparkles, Heart,
-  MessageSquare, Layers3, Puzzle, TestTube, Rocket, Users2
+  MessageSquare, Layers3, Puzzle, TestTube, Rocket, Users2,
+  History, CloudDrizzle, ArrowDown, Telescope, GraduationCap,
+  UserSquare, DollarSign, Shield, Route, Crown, Gamepad2,
+  Brush, Navigation, BookOpen, AlertTriangle, TrendingDown,
+  Handshake, Boxes, Wrench, Megaphone
 } from 'lucide-react';
 
 export const techniquesES: Technique[] = [
@@ -1913,6 +1917,1425 @@ export const techniquesES: Technique[] = [
         year: 2025,
         institution: 'CollActive Materials',
         url: 'https://doi.org/10.18452/31342'
+      }
+    ]
+  },
+  {
+    id: 'backward-scanning',
+    name: 'Visión Retrospectiva (Backward Scanning)',
+    icon: History,
+    complexity: 2,
+    category: 'exploratory',
+    description: 'Comprender cómo los procesos históricos han configurado el presente e identificar patrones de continuidad o ruptura que influyen en los futuros posibles.',
+    objectives: [
+      'Reconstruir trayectorias históricas de tendencias',
+      'Detectar dinámicas que podrían proyectarse al futuro',
+      'Identificar patrones de continuidad o ruptura',
+      'Comprender las raíces profundas de problemas actuales'
+    ],
+    applications: [
+      'Análisis histórico de políticas públicas',
+      'Evolución de sectores productivos',
+      'Comprensión de dinámicas territoriales'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Revisión documental',
+        description: 'Recopilar fuentes históricas relevantes y documentos de archivo.',
+        duration: '2-3 semanas'
+      },
+      {
+        step: 2,
+        title: 'Construcción de líneas de tiempo',
+        description: 'Crear cronologías detalladas de eventos y tendencias clave.',
+        duration: '1-2 semanas'
+      },
+      {
+        step: 3,
+        title: 'Análisis de patrones',
+        description: 'Identificar ciclos, rupturas y continuidades en los procesos históricos.',
+        duration: '1 semana'
+      },
+      {
+        step: 4,
+        title: 'Proyección de dinámicas',
+        description: 'Extrapolar patrones históricos hacia futuros posibles.',
+        duration: '1 semana'
+      }
+    ],
+    advantages: [
+      'Amplía la perspectiva temporal',
+      'Ayuda a identificar raíces profundas de problemas actuales',
+      'Proporciona contexto histórico a las decisiones presentes'
+    ],
+    limitations: [
+      'Riesgo de determinismo histórico',
+      'Requiere acceso a fuentes confiables',
+      'Puede ser difícil generalizar patrones únicos'
+    ],
+    timeHorizon: '10-50 años hacia atrás como insumo para proyección futura',
+    participants: '1-5 investigadores',
+    bibliographicSources: [
+      {
+        type: 'institutional',
+        title: 'History and Foresight',
+        institution: 'RAND Corporation',
+        year: 2005
+      },
+      {
+        type: 'book',
+        title: 'Transforming the future',
+        authors: ['R. Miller'],
+        year: 2018
+      }
+    ]
+  },
+  {
+    id: 'structured-day-dreaming',
+    name: 'Structured Day-Dreaming',
+    icon: CloudDrizzle,
+    complexity: 2,
+    category: 'creative',
+    description: 'Explorar futuros posibles mediante imaginación guiada, estimulando creatividad e innovación en contextos de alta incertidumbre.',
+    objectives: [
+      'Estimular pensamiento divergente',
+      'Romper inercias cognitivas',
+      'Generar ideas disruptivas',
+      'Explorar futuros creativos'
+    ],
+    applications: [
+      'Generación de ideas disruptivas',
+      'Educación prospectiva',
+      'Procesos participativos ciudadanos'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Preparación del ambiente',
+        description: 'Crear un espacio relajado y propicio para la imaginación.',
+        duration: '30 minutos'
+      },
+      {
+        step: 2,
+        title: 'Inducción guiada',
+        description: 'Facilitar visualizaciones y escenas mentales dirigidas.',
+        duration: '45 minutos'
+      },
+      {
+        step: 3,
+        title: 'Compartir imaginarios',
+        description: 'Los participantes comparten sus visiones e ideas.',
+        duration: '1 hora'
+      },
+      {
+        step: 4,
+        title: 'Sistematización',
+        description: 'Organizar y categorizar las ideas emergentes.',
+        duration: '30 minutos'
+      }
+    ],
+    advantages: [
+      'Rompe inercias cognitivas',
+      'Estimula pensamiento divergente',
+      'Genera alta participación'
+    ],
+    limitations: [
+      'Puede carecer de rigor si no se sistematiza',
+      'Riesgo de dispersión en resultados',
+      'Requiere facilitación especializada'
+    ],
+    timeHorizon: '5-30 años',
+    participants: '8-20 participantes',
+    bibliographicSources: [
+      {
+        type: 'book',
+        title: 'Future Workshops',
+        authors: ['R. Jungk', 'N. Müllert'],
+        year: 1987
+      },
+      {
+        type: 'book',
+        title: 'Six pillars of futures studies',
+        authors: ['S. Inayatullah'],
+        year: 2007
+      }
+    ]
+  },
+  {
+    id: 'three-horizons',
+    name: 'Método de los Tres Horizontes (3 Horizons Framework)',
+    icon: Layers3,
+    complexity: 3,
+    category: 'transition',
+    description: 'Analizar transiciones entre el presente y futuros emergentes, identificando tensiones entre lo establecido, lo declinante y lo emergente.',
+    objectives: [
+      'Comprender dinámicas de transición',
+      'Identificar tensiones entre sistemas',
+      'Integrar perspectivas temporales múltiples',
+      'Facilitar cambio transformativo'
+    ],
+    applications: [
+      'Planificación territorial',
+      'Políticas públicas de innovación',
+      'Estrategias organizacionales'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Mapeo del Horizonte 1',
+        description: 'Identificar y caracterizar el sistema dominante actual.',
+        duration: '1 hora'
+      },
+      {
+        step: 2,
+        title: 'Visualización del Horizonte 3',
+        description: 'Definir la visión transformadora a largo plazo.',
+        duration: '1 hora'
+      },
+      {
+        step: 3,
+        title: 'Exploración del Horizonte 2',
+        description: 'Analizar zonas de innovación y conflicto entre H1 y H3.',
+        duration: '1.5 horas'
+      },
+      {
+        step: 4,
+        title: 'Trayectorias de transición',
+        description: 'Discutir interacciones y posibles caminos de cambio.',
+        duration: '1 hora'
+      }
+    ],
+    advantages: [
+      'Facilita comprensión de transiciones',
+      'Integra corto, mediano y largo plazo',
+      'Visualiza dinámicas de cambio'
+    ],
+    limitations: [
+      'Requiere facilitación experta',
+      'Puede simplificar excesivamente realidades complejas',
+      'No cuantifica velocidades de cambio'
+    ],
+    timeHorizon: '10-30 años',
+    participants: '5-20 participantes',
+    bibliographicSources: [
+      {
+        type: 'book',
+        title: 'Three Horizons: The Patterning of Hope',
+        authors: ['B. Sharpe'],
+        year: 2013
+      },
+      {
+        type: 'article',
+        title: 'Seeing in Multiple Horizons',
+        authors: ['A. Curry', 'A. Hodgson'],
+        year: 2008
+      }
+    ]
+  },
+  {
+    id: 'sci-fi-prototyping',
+    name: 'Sci-Fi Prototyping',
+    icon: Rocket,
+    complexity: 3,
+    category: 'creative',
+    description: 'Explorar futuros alternativos a través de relatos de ciencia ficción aplicados a problemas concretos de la sociedad o la tecnología.',
+    objectives: [
+      'Explorar innovaciones disruptivas',
+      'Comunicar futuros complejos',
+      'Generar narrativas vívidas',
+      'Estimular imaginación tecnológica'
+    ],
+    applications: [
+      'Innovación tecnológica',
+      'Educación y comunicación de futuros',
+      'Diseño de escenarios disruptivos'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Identificación de tema',
+        description: 'Seleccionar la innovación o tendencia a explorar.',
+        duration: '1 hora'
+      },
+      {
+        step: 2,
+        title: 'Desarrollo narrativo',
+        description: 'Crear historias que describan transformaciones futuras.',
+        duration: '2-3 semanas'
+      },
+      {
+        step: 3,
+        title: 'Revisión de plausibilidad',
+        description: 'Evaluar la credibilidad científica y técnica del relato.',
+        duration: '1 semana'
+      },
+      {
+        step: 4,
+        title: 'Análisis de implicaciones',
+        description: 'Discutir consecuencias sociales, éticas y técnicas.',
+        duration: '1-2 días'
+      }
+    ],
+    advantages: [
+      'Alta capacidad de comunicación',
+      'Genera narrativas vívidas',
+      'Estimula creatividad tecnológica'
+    ],
+    limitations: [
+      'Riesgo de caer en ficción sin conexión con la realidad',
+      'Requiere sistematización crítica posterior',
+      'Puede ser percibido como poco serio'
+    ],
+    timeHorizon: '20-50 años',
+    participants: '3-10 escritores o equipos multidisciplinarios',
+    bibliographicSources: [
+      {
+        type: 'book',
+        title: 'Science Fiction Prototyping',
+        authors: ['B. Johnson'],
+        year: 2011
+      },
+      {
+        type: 'book',
+        title: 'Transforming the future',
+        authors: ['R. Miller'],
+        year: 2018
+      }
+    ]
+  },
+  {
+    id: 'futures-literacy-labs',
+    name: 'Futures Literacy Labs (UNESCO)',
+    icon: GraduationCap,
+    complexity: 4,
+    category: 'participatory',
+    description: 'Desarrollar la capacidad de las personas para usar el futuro como recurso en la toma de decisiones presentes.',
+    objectives: [
+      'Desarrollar alfabetización futura',
+      'Empoderar a los participantes',
+      'Generar aprendizaje transformador',
+      'Confrontar percepciones de futuro'
+    ],
+    applications: [
+      'Procesos educativos y comunitarios',
+      'Políticas públicas',
+      'Innovación social'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Diagnóstico de percepciones',
+        description: 'Identificar supuestos implícitos sobre el futuro.',
+        duration: '2 horas'
+      },
+      {
+        step: 2,
+        title: 'Ejercicios confrontacionales',
+        description: 'Desafiar concepciones establecidas mediante dinámicas.',
+        duration: '4 horas'
+      },
+      {
+        step: 3,
+        title: 'Co-creación de futuros',
+        description: 'Construir nuevas formas de imaginar el porvenir.',
+        duration: '3 horas'
+      },
+      {
+        step: 4,
+        title: 'Síntesis de aprendizajes',
+        description: 'Consolidar nuevas capacidades desarrolladas.',
+        duration: '1 hora'
+      }
+    ],
+    advantages: [
+      'Empodera a los participantes',
+      'Genera aprendizaje transformador',
+      'Metodología validada por UNESCO'
+    ],
+    limitations: [
+      'Alta demanda logística',
+      'Requiere facilitadores acreditados',
+      'Proceso intensivo y complejo'
+    ],
+    timeHorizon: '10-50 años',
+    participants: '20-40 participantes',
+    bibliographicSources: [
+      {
+        type: 'institutional',
+        title: 'Futures Literacy',
+        institution: 'UNESCO',
+        year: 2018
+      },
+      {
+        type: 'book',
+        title: 'Learning, the future, and complexity',
+        authors: ['R. Miller'],
+        year: 2015
+      }
+    ]
+  },
+  {
+    id: 'future-personas',
+    name: 'Future Personas',
+    icon: UserSquare,
+    complexity: 2,
+    category: 'user-centered',
+    description: 'Representar arquetipos de usuarios o ciudadanos futuros para explorar necesidades, comportamientos y aspiraciones.',
+    objectives: [
+      'Humanizar escenarios futuros',
+      'Explorar necesidades futuras',
+      'Facilitar comunicación con no expertos',
+      'Centrar diseño en personas'
+    ],
+    applications: [
+      'Diseño de políticas públicas centradas en ciudadanos futuros',
+      'Innovación de servicios',
+      'Planeación territorial'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Investigación de tendencias',
+        description: 'Recopilar datos demográficos y proyecciones sociales.',
+        duration: '1-2 semanas'
+      },
+      {
+        step: 2,
+        title: 'Construcción de arquetipos',
+        description: 'Crear personajes ficticios basados en tendencias.',
+        duration: '1 semana'
+      },
+      {
+        step: 3,
+        title: 'Desarrollo de narrativas',
+        description: 'Describir comportamientos y necesidades de cada persona.',
+        duration: '1 semana'
+      },
+      {
+        step: 4,
+        title: 'Validación y refinamiento',
+        description: 'Revisar y ajustar personas con stakeholders.',
+        duration: '2-3 días'
+      }
+    ],
+    advantages: [
+      'Humaniza los escenarios',
+      'Facilita la comunicación con actores no expertos',
+      'Genera empatía hacia futuros usuarios'
+    ],
+    limitations: [
+      'Puede caer en estereotipos',
+      'Requiere datos de calidad para su construcción',
+      'Riesgo de simplificación excesiva'
+    ],
+    timeHorizon: '5-20 años',
+    participants: '5-15 participantes',
+    bibliographicSources: [
+      {
+        type: 'article',
+        title: 'Advantages and disadvantages of scenario approaches',
+        authors: ['D. Mietzner', 'G. Reger'],
+        year: 2005
+      },
+      {
+        type: 'guide',
+        title: 'Foresight Manual',
+        institution: 'UNDP',
+        year: 2018
+      }
+    ]
+  },
+  {
+    id: 'real-options-analysis',
+    name: 'Real Options Analysis',
+    icon: DollarSign,
+    complexity: 5,
+    category: 'analytical',
+    description: 'Evaluar decisiones estratégicas en contextos de incertidumbre usando herramientas financieras adaptadas a políticas y planificación.',
+    objectives: [
+      'Cuantificar flexibilidad estratégica',
+      'Gestionar incertidumbre',
+      'Optimizar decisiones de inversión',
+      'Valorar opciones futuras'
+    ],
+    applications: [
+      'Inversiones en infraestructura',
+      'Políticas de energía y cambio climático',
+      'Gestión de proyectos de gran escala'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Identificación de opciones',
+        description: 'Definir las opciones estratégicas disponibles.',
+        duration: '1 semana'
+      },
+      {
+        step: 2,
+        title: 'Modelado financiero',
+        description: 'Aplicar modelos de valoración de opciones reales.',
+        duration: '2-3 semanas'
+      },
+      {
+        step: 3,
+        title: 'Análisis de sensibilidad',
+        description: 'Evaluar cómo cambian los valores bajo diferentes escenarios.',
+        duration: '1 semana'
+      },
+      {
+        step: 4,
+        title: 'Toma de decisiones',
+        description: 'Seleccionar estrategias basadas en el análisis.',
+        duration: '2-3 días'
+      }
+    ],
+    advantages: [
+      'Permite gestionar incertidumbre',
+      'Cuantifica flexibilidad estratégica',
+      'Base matemática rigurosa'
+    ],
+    limitations: [
+      'Requiere conocimiento financiero avanzado',
+      'Difícil de comunicar a actores no técnicos',
+      'Asume comportamientos racionales'
+    ],
+    timeHorizon: '5-30 años',
+    participants: 'Expertos analistas',
+    bibliographicSources: [
+      {
+        type: 'book',
+        title: 'Investment under Uncertainty',
+        authors: ['A. Dixit', 'R. Pindyck'],
+        year: 1994
+      },
+      {
+        type: 'institutional',
+        title: 'Decision making under deep uncertainty',
+        institution: 'OECD',
+        year: 2015
+      }
+    ]
+  },
+  {
+    id: 'robust-decision-making',
+    name: 'Robust Decision Making (RDM)',
+    icon: Shield,
+    complexity: 5,
+    category: 'analytical',
+    description: 'Tomar decisiones que funcionen bajo una amplia gama de futuros posibles.',
+    objectives: [
+      'Reducir riesgo de fracaso',
+      'Adaptarse a alta incertidumbre',
+      'Evaluar múltiples estrategias',
+      'Identificar decisiones robustas'
+    ],
+    applications: [
+      'Políticas públicas de agua y energía',
+      'Planificación climática',
+      'Estrategias de largo plazo en gobiernos'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Definición de estrategias',
+        description: 'Identificar opciones estratégicas a evaluar.',
+        duration: '1 semana'
+      },
+      {
+        step: 2,
+        title: 'Generación de escenarios',
+        description: 'Crear miles de escenarios mediante simulación.',
+        duration: '2-3 semanas'
+      },
+      {
+        step: 3,
+        title: 'Evaluación de robustez',
+        description: 'Analizar desempeño de estrategias en todos los escenarios.',
+        duration: '1-2 semanas'
+      },
+      {
+        step: 4,
+        title: 'Selección de estrategias',
+        description: 'Elegir las opciones más robustas.',
+        duration: '1 semana'
+      }
+    ],
+    advantages: [
+      'Reduce riesgo de fracaso',
+      'Se adapta a alta incertidumbre',
+      'Metodología probada por RAND'
+    ],
+    limitations: [
+      'Computacionalmente intensivo',
+      'Requiere datos cuantitativos extensos',
+      'Complejo de implementar'
+    ],
+    timeHorizon: '10-50 años',
+    participants: 'Analistas expertos y decisores políticos',
+    bibliographicSources: [
+      {
+        type: 'book',
+        title: 'Shaping the Next One Hundred Years',
+        authors: ['R. Lempert', 'et al.'],
+        year: 2003
+      },
+      {
+        type: 'institutional',
+        title: 'RDM Overview',
+        institution: 'RAND Corporation',
+        year: 2013
+      }
+    ]
+  },
+  {
+    id: 'dynamic-adaptive-pathways',
+    name: 'Dynamic Adaptive Policy Pathways (DAPP)',
+    icon: Route,
+    complexity: 4,
+    category: 'adaptive',
+    description: 'Diseñar políticas adaptativas que se ajustan a medida que cambian las condiciones futuras.',
+    objectives: [
+      'Incorporar flexibilidad en decisiones',
+      'Reducir costos de decisiones erróneas',
+      'Adaptarse a condiciones cambiantes',
+      'Optimizar puntos de decisión'
+    ],
+    applications: [
+      'Planificación de adaptación al cambio climático',
+      'Gestión del agua y riesgos costeros',
+      'Políticas urbanas resilientes'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Mapeo de rutas',
+        description: 'Crear mapas que muestren trayectorias posibles.',
+        duration: '2-3 semanas'
+      },
+      {
+        step: 2,
+        title: 'Identificación de puntos de decisión',
+        description: 'Definir cuándo y cómo cambiar de estrategia.',
+        duration: '1-2 semanas'
+      },
+      {
+        step: 3,
+        title: 'Diseño de señales de alerta',
+        description: 'Establecer indicadores de cambio temprano.',
+        duration: '1 semana'
+      },
+      {
+        step: 4,
+        title: 'Implementación adaptativa',
+        description: 'Ejecutar con monitoreo y ajustes continuos.',
+        duration: 'Continuo'
+      }
+    ],
+    advantages: [
+      'Incorpora flexibilidad',
+      'Reduce costos de decisiones erróneas',
+      'Permite adaptación continua'
+    ],
+    limitations: [
+      'Requiere monitoreo constante',
+      'Complejo de implementar en instituciones rígidas',
+      'Demanda recursos continuos'
+    ],
+    timeHorizon: '20-100 años',
+    participants: 'Equipos técnicos multidisciplinarios',
+    bibliographicSources: [
+      {
+        type: 'article',
+        title: 'Dynamic Adaptive Policy Pathways',
+        authors: ['M. Haasnoot', 'et al.'],
+        year: 2013
+      },
+      {
+        type: 'institutional',
+        title: 'Strategic Foresight',
+        institution: 'OECD',
+        year: 2019
+      }
+    ]
+  },
+  {
+    id: 'dator-archetypes',
+    name: 'Futuros Arquetípicos (Dator\'s Archetypes)',
+    icon: Crown,
+    complexity: 2,
+    category: 'exploratory',
+    description: 'Explorar cuatro arquetipos de futuro recurrentes: continuidad, colapso, disciplina y transformación.',
+    objectives: [
+      'Estructurar discusiones de escenarios',
+      'Cubrir amplio rango de futuros',
+      'Simplificar análisis complejo',
+      'Facilitar pensamiento sistemático'
+    ],
+    applications: [
+      'Diseño de escenarios exploratorios',
+      'Educación en prospectiva',
+      'Planificación territorial'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Presentación de arquetipos',
+        description: 'Explicar los cuatro tipos de futuro de Dator.',
+        duration: '1 hora'
+      },
+      {
+        step: 2,
+        title: 'Desarrollo por arquetipo',
+        description: 'Crear narrativas específicas para cada tipo.',
+        duration: '2 horas'
+      },
+      {
+        step: 3,
+        title: 'Análisis comparativo',
+        description: 'Comparar implicaciones de cada arquetipo.',
+        duration: '1 hora'
+      },
+      {
+        step: 4,
+        title: 'Síntesis integradora',
+        description: 'Identificar elementos híbridos y conexiones.',
+        duration: '30 minutos'
+      }
+    ],
+    advantages: [
+      'Sencillo de aplicar',
+      'Cubre amplio rango de futuros',
+      'Marco conceptual robusto'
+    ],
+    limitations: [
+      'Puede simplificar excesivamente la complejidad',
+      'No incluye matices híbridos',
+      'Riesgo de encasillamiento'
+    ],
+    timeHorizon: '20-50 años',
+    participants: '10-30 participantes',
+    bibliographicSources: [
+      {
+        type: 'book',
+        title: 'Alternative Futures at the Manoa School',
+        authors: ['J. Dator'],
+        year: 2009
+      },
+      {
+        type: 'book',
+        title: 'Six pillars of futures studies',
+        authors: ['S. Inayatullah'],
+        year: 2007
+      }
+    ]
+  },
+  {
+    id: 'gaming-futures',
+    name: 'Gaming Futures (Serious Games)',
+    icon: Gamepad2,
+    complexity: 3,
+    category: 'participatory',
+    description: 'Simular futuros posibles mediante juegos de rol y dinámicas interactivas que involucran a múltiples actores.',
+    objectives: [
+      'Favorecer aprendizaje vivencial',
+      'Generar alta participación',
+      'Explorar decisiones colectivas',
+      'Simular dinámicas complejas'
+    ],
+    applications: [
+      'Planificación territorial participativa',
+      'Políticas educativas y ambientales',
+      'Entrenamiento organizacional'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Diseño del juego',
+        description: 'Crear reglas, roles y mecánicas de simulación.',
+        duration: '2-3 semanas'
+      },
+      {
+        step: 2,
+        title: 'Asignación de roles',
+        description: 'Distribuir personajes y responsabilidades.',
+        duration: '30 minutos'
+      },
+      {
+        step: 3,
+        title: 'Ejecución de la simulación',
+        description: 'Desarrollar el juego con decisiones y consecuencias.',
+        duration: '2-4 horas'
+      },
+      {
+        step: 4,
+        title: 'Reflexión final (debriefing)',
+        description: 'Analizar aprendizajes y conexiones con la realidad.',
+        duration: '1 hora'
+      }
+    ],
+    advantages: [
+      'Favorece el aprendizaje vivencial',
+      'Alto nivel de participación',
+      'Genera insights sobre dinámicas complejas'
+    ],
+    limitations: [
+      'Diseño complejo',
+      'Puede trivializar temas serios si no se estructura bien',
+      'Requiere facilitación especializada'
+    ],
+    timeHorizon: '5-30 años',
+    participants: '15-50 participantes',
+    bibliographicSources: [
+      {
+        type: 'book',
+        title: 'The Gaming of Policy and the Politics of Gaming',
+        authors: ['I. Mayer'],
+        year: 2009
+      },
+      {
+        type: 'book',
+        title: 'Serious Games',
+        authors: ['C. Abt'],
+        year: 1970
+      }
+    ]
+  },
+  {
+    id: 'speculative-design',
+    name: 'Design Futures / Speculative Design',
+    icon: Brush,
+    complexity: 3,
+    category: 'creative',
+    description: 'Explorar futuros posibles a través de objetos, imágenes y prototipos que provocan reflexión crítica.',
+    objectives: [
+      'Concretar lo abstracto',
+      'Generar alto impacto comunicativo',
+      'Provocar reflexión crítica',
+      'Cuestionar supuestos'
+    ],
+    applications: [
+      'Innovación social',
+      'Diseño de productos y servicios',
+      'Exploración cultural de futuros'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Identificación de tema',
+        description: 'Seleccionar el aspecto del futuro a explorar.',
+        duration: '1-2 días'
+      },
+      {
+        step: 2,
+        title: 'Investigación especulativa',
+        description: 'Explorar tendencias y posibilidades emergentes.',
+        duration: '1 semana'
+      },
+      {
+        step: 3,
+        title: 'Creación de artefactos',
+        description: 'Diseñar objetos, imágenes o prototipos del futuro.',
+        duration: '2-3 semanas'
+      },
+      {
+        step: 4,
+        title: 'Exhibición y diálogo',
+        description: 'Presentar creaciones y generar debate social.',
+        duration: '1-2 días'
+      }
+    ],
+    advantages: [
+      'Concreta lo abstracto',
+      'Genera alto impacto comunicativo',
+      'Estimula imaginación'
+    ],
+    limitations: [
+      'Puede percibirse como ficción artística',
+      'Requiere facilitadores creativos',
+      'Difícil de sistematizar resultados'
+    ],
+    timeHorizon: '10-50 años',
+    participants: 'Equipos de diseño + stakeholders',
+    bibliographicSources: [
+      {
+        type: 'book',
+        title: 'Speculative Everything',
+        authors: ['A. Dunne', 'F. Raby'],
+        year: 2013
+      },
+      {
+        type: 'institutional',
+        title: 'UNESCO Futures Literacy Labs',
+        institution: 'UNESCO',
+        year: 2018
+      }
+    ]
+  },
+  {
+    id: 'futures-cartography',
+    name: 'Futures Cartography',
+    icon: Navigation,
+    complexity: 2,
+    category: 'visualization',
+    description: 'Mapear de forma visual escenarios, tendencias e interrelaciones de futuros posibles.',
+    objectives: [
+      'Hacer visibles conexiones complejas',
+      'Facilitar comunicación entre actores',
+      'Visualizar relaciones sistémicas',
+      'Estructurar información compleja'
+    ],
+    applications: [
+      'Educación prospectiva',
+      'Visualización estratégica',
+      'Procesos participativos'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Identificación de elementos',
+        description: 'Definir tendencias, actores y factores clave.',
+        duration: '1-2 días'
+      },
+      {
+        step: 2,
+        title: 'Mapeo de relaciones',
+        description: 'Establecer conexiones e interacciones.',
+        duration: '2-3 días'
+      },
+      {
+        step: 3,
+        title: 'Diseño visual',
+        description: 'Crear representaciones gráficas claras.',
+        duration: '1 semana'
+      },
+      {
+        step: 4,
+        title: 'Validación participativa',
+        description: 'Revisar mapas con stakeholders.',
+        duration: '1-2 días'
+      }
+    ],
+    advantages: [
+      'Hace visibles conexiones complejas',
+      'Facilita comunicación entre actores',
+      'Herramienta versátil'
+    ],
+    limitations: [
+      'Puede simplificar relaciones complejas',
+      'Requiere diseño visual especializado',
+      'Riesgo de sobrecarga visual'
+    ],
+    timeHorizon: 'Variable (corto a largo plazo)',
+    participants: '5-20 participantes',
+    bibliographicSources: [
+      {
+        type: 'book',
+        title: 'Transforming the Future',
+        authors: ['R. Miller'],
+        year: 2018
+      },
+      {
+        type: 'book',
+        title: 'Foresight Methodology',
+        authors: ['R. Popper'],
+        year: 2008
+      }
+    ]
+  },
+  {
+    id: 'narrative-foresight',
+    name: 'Narrative Foresight',
+    icon: BookOpen,
+    complexity: 2,
+    category: 'cultural',
+    description: 'Explorar y analizar futuros a través de narrativas y relatos que revelan imaginarios sociales.',
+    objectives: [
+      'Comprender marcos culturales',
+      'Generar relatos accesibles y potentes',
+      'Explorar imaginarios sociales',
+      'Revelar supuestos culturales'
+    ],
+    applications: [
+      'Investigación cultural',
+      'Políticas públicas inclusivas',
+      'Exploración de imaginarios sociales'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Recolección de narrativas',
+        description: 'Compilar historias, cuentos y discursos existentes.',
+        duration: '1-2 semanas'
+      },
+      {
+        step: 2,
+        title: 'Análisis de contenido',
+        description: 'Identificar temas, valores y visiones de futuro.',
+        duration: '1 semana'
+      },
+      {
+        step: 3,
+        title: 'Co-creación de relatos',
+        description: 'Desarrollar nuevas narrativas participativamente.',
+        duration: '2-3 días'
+      },
+      {
+        step: 4,
+        title: 'Validación cultural',
+        description: 'Revisar relatos con comunidades relevantes.',
+        duration: '1 semana'
+      }
+    ],
+    advantages: [
+      'Permite comprender marcos culturales',
+      'Genera relatos accesibles y potentes',
+      'Inclusivo culturalmente'
+    ],
+    limitations: [
+      'Menor rigor cuantitativo',
+      'Puede caer en subjetividad',
+      'Difícil de generalizar'
+    ],
+    timeHorizon: '10-50 años',
+    participants: 'Grupos diversos',
+    bibliographicSources: [
+      {
+        type: 'article',
+        title: 'Narrative Foresight',
+        authors: ['A. Sools'],
+        year: 2020
+      },
+      {
+        type: 'book',
+        title: 'Transforming the Future',
+        authors: ['R. Miller'],
+        year: 2018
+      }
+    ]
+  },
+  {
+    id: 'wild-cards-analysis',
+    name: 'Wild Cards Analysis',
+    icon: AlertTriangle,
+    complexity: 3,
+    category: 'risk',
+    description: 'Identificar eventos improbables pero de alto impacto que podrían alterar el futuro de manera disruptiva.',
+    objectives: [
+      'Fortalecer resiliencia',
+      'Ampliar el rango de futuros considerados',
+      'Prepararse para disrupciones',
+      'Identificar cisnes negros'
+    ],
+    applications: [
+      'Gestión de riesgos',
+      'Planificación estratégica',
+      'Exploración de disrupciones'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Brainstorming de eventos',
+        description: 'Generar lista de eventos improbables pero impactantes.',
+        duration: '2 horas'
+      },
+      {
+        step: 2,
+        title: 'Evaluación de probabilidad e impacto',
+        description: 'Analizar cada evento según estos criterios.',
+        duration: '1 día'
+      },
+      {
+        step: 3,
+        title: 'Desarrollo de escenarios',
+        description: 'Crear narrativas detalladas de eventos seleccionados.',
+        duration: '1 semana'
+      },
+      {
+        step: 4,
+        title: 'Estrategias de preparación',
+        description: 'Diseñar respuestas y medidas preventivas.',
+        duration: '2-3 días'
+      }
+    ],
+    advantages: [
+      'Fortalece resiliencia',
+      'Amplía el rango de futuros considerados',
+      'Mejora capacidad de respuesta'
+    ],
+    limitations: [
+      'Difícil de cuantificar',
+      'Puede generar miedo excesivo',
+      'Sesgos en la selección de eventos'
+    ],
+    timeHorizon: '5-30 años',
+    participants: '10-25 participantes',
+    bibliographicSources: [
+      {
+        type: 'book',
+        title: 'Out of the Blue: How to Anticipate Big Future Surprises',
+        authors: ['J. Petersen'],
+        year: 1997
+      },
+      {
+        type: 'guide',
+        title: 'Foresight Manual',
+        institution: 'UNDP',
+        year: 2018
+      }
+    ]
+  },
+  {
+    id: 'x-curve-analysis-new',
+    name: 'X-Curve Analysis',
+    icon: TrendingDown,
+    complexity: 3,
+    category: 'transition',
+    description: 'Analizar dinámicas de transición entre sistemas que declinan y emergen.',
+    objectives: [
+      'Clarificar transiciones sistémicas',
+      'Identificar oportunidades de intervención',
+      'Visualizar cambios temporales',
+      'Comprender dinámicas de sustitución'
+    ],
+    applications: [
+      'Políticas de transición energética',
+      'Innovación tecnológica',
+      'Gestión de cambio institucional'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Identificación de sistemas',
+        description: 'Definir el sistema en declive y el emergente.',
+        duration: '1 día'
+      },
+      {
+        step: 2,
+        title: 'Mapeo temporal',
+        description: 'Ubicar trayectorias en línea de tiempo.',
+        duration: '2-3 días'
+      },
+      {
+        step: 3,
+        title: 'Análisis de intersección',
+        description: 'Estudiar el momento de cruce entre ambas curvas.',
+        duration: '1 día'
+      },
+      {
+        step: 4,
+        title: 'Identificación de intervenciones',
+        description: 'Definir puntos clave para acelerar o moderar transición.',
+        duration: '1-2 días'
+      }
+    ],
+    advantages: [
+      'Claridad visual de transiciones',
+      'Identifica oportunidades de intervención',
+      'Facilita comprensión de cambios'
+    ],
+    limitations: [
+      'No cuantifica velocidades de cambio',
+      'Puede ser demasiado simplista',
+      'Asume transiciones lineales'
+    ],
+    timeHorizon: '10-30 años',
+    participants: '5-15 participantes',
+    bibliographicSources: [
+      {
+        type: 'book',
+        title: 'Transition Management',
+        authors: ['D. Loorbach'],
+        year: 2010
+      },
+      {
+        type: 'book',
+        title: 'Three Horizons',
+        authors: ['B. Sharpe'],
+        year: 2013
+      }
+    ]
+  },
+  {
+    id: 'hands-on-futures',
+    name: 'Hands-On Futures',
+    icon: Handshake,
+    complexity: 2,
+    category: 'experiential',
+    description: 'Vincular teoría y práctica mediante experiencias inmersivas y materiales tangibles.',
+    objectives: [
+      'Crear experiencias memorables',
+      'Favorecer distintos estilos de aprendizaje',
+      'Vincular teoría con práctica',
+      'Generar comprensión táctil'
+    ],
+    applications: [
+      'Educación prospectiva',
+      'Procesos comunitarios',
+      'Diseño colaborativo'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Diseño de actividades',
+        description: 'Planificar experiencias manuales y prototipos.',
+        duration: '1 semana'
+      },
+      {
+        step: 2,
+        title: 'Preparación de materiales',
+        description: 'Reunir elementos tangibles para la actividad.',
+        duration: '1-2 días'
+      },
+      {
+        step: 3,
+        title: 'Experiencia inmersiva',
+        description: 'Desarrollar actividades prácticas con participantes.',
+        duration: '2-4 horas'
+      },
+      {
+        step: 4,
+        title: 'Reflexión y síntesis',
+        description: 'Conectar experiencias con conceptos teóricos.',
+        duration: '1 hora'
+      }
+    ],
+    advantages: [
+      'Crea experiencias memorables',
+      'Favorece distintos estilos de aprendizaje',
+      'Alta participación'
+    ],
+    limitations: [
+      'Puede requerir logística adicional',
+      'Resultados difíciles de sistematizar',
+      'Dependiente de facilitación'
+    ],
+    timeHorizon: 'Presente – corto plazo',
+    participants: '10-30 participantes',
+    bibliographicSources: [
+      {
+        type: 'institutional',
+        title: 'UNESCO Futures Literacy Labs',
+        institution: 'UNESCO',
+        year: 2018
+      },
+      {
+        type: 'book',
+        title: 'Speculative Everything',
+        authors: ['A. Dunne', 'F. Raby'],
+        year: 2013
+      }
+    ]
+  },
+  {
+    id: 'object-collage-prototyping',
+    name: 'Object & Collage Prototyping',
+    icon: Boxes,
+    complexity: 2,
+    category: 'creative',
+    description: 'Construir prototipos visuales o materiales que representen escenarios de futuro.',
+    objectives: [
+      'Hacer tangibles ideas abstractas',
+      'Estimular creatividad visual',
+      'Facilitar comprensión colectiva',
+      'Generar artefactos comunicativos'
+    ],
+    applications: [
+      'Diseño participativo',
+      'Visualización de escenarios',
+      'Procesos creativos'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Conceptualización',
+        description: 'Definir el escenario o idea a representar.',
+        duration: '30 minutos'
+      },
+      {
+        step: 2,
+        title: 'Recolección de materiales',
+        description: 'Reunir objetos, imágenes y elementos diversos.',
+        duration: '30 minutos'
+      },
+      {
+        step: 3,
+        title: 'Construcción colaborativa',
+        description: 'Crear prototipos usando collages y objetos.',
+        duration: '1.5 horas'
+      },
+      {
+        step: 4,
+        title: 'Presentación e interpretación',
+        description: 'Compartir creaciones y discutir significados.',
+        duration: '45 minutos'
+      }
+    ],
+    advantages: [
+      'Accesible a todos los participantes',
+      'Estimula creatividad visual',
+      'Facilita expresión no verbal'
+    ],
+    limitations: [
+      'Requiere facilitación artística',
+      'Puede percibirse como informal',
+      'Interpretación subjetiva'
+    ],
+    timeHorizon: 'Variable',
+    participants: '5-20 participantes',
+    bibliographicSources: [
+      {
+        type: 'book',
+        title: 'Speculative Everything',
+        authors: ['A. Dunne', 'F. Raby'],
+        year: 2013
+      },
+      {
+        type: 'book',
+        title: 'Transforming the Future',
+        authors: ['R. Miller'],
+        year: 2018
+      }
+    ]
+  },
+  {
+    id: 'fmea-prospective',
+    name: 'FMEA Prospectivo (Failure Mode and Effects Analysis)',
+    icon: Wrench,
+    complexity: 3,
+    category: 'risk',
+    description: 'Anticipar posibles fallas y sus efectos en sistemas futuros.',
+    objectives: [
+      'Prevenir errores tempranamente',
+      'Aplicar metodología estructurada',
+      'Identificar riesgos sistémicos',
+      'Mejorar robustez de diseños'
+    ],
+    applications: [
+      'Gestión de riesgos',
+      'Diseño de políticas públicas',
+      'Infraestructura crítica'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Identificación de componentes',
+        description: 'Definir elementos clave del sistema a analizar.',
+        duration: '1 día'
+      },
+      {
+        step: 2,
+        title: 'Análisis de modos de falla',
+        description: 'Identificar formas en que cada componente puede fallar.',
+        duration: '2-3 días'
+      },
+      {
+        step: 3,
+        title: 'Evaluación de efectos',
+        description: 'Analizar consecuencias de cada tipo de falla.',
+        duration: '1-2 días'
+      },
+      {
+        step: 4,
+        title: 'Medidas preventivas',
+        description: 'Diseñar controles y acciones correctivas.',
+        duration: '1 día'
+      }
+    ],
+    advantages: [
+      'Previene errores tempranamente',
+      'Metodología estructurada',
+      'Enfoque sistemático'
+    ],
+    limitations: [
+      'Puede centrarse demasiado en lo técnico',
+      'No siempre incorpora lo social o político',
+      'Requiere expertise técnico'
+    ],
+    timeHorizon: 'Corto a mediano plazo',
+    participants: 'Equipos técnicos multidisciplinarios',
+    bibliographicSources: [
+      {
+        type: 'book',
+        title: 'Failure Mode and Effect Analysis',
+        authors: ['D. Stamatis'],
+        year: 2003
+      },
+      {
+        type: 'article',
+        title: 'Aplicaciones prospectivas recientes en ingeniería de políticas',
+        year: 2020
+      }
+    ]
+  },
+  {
+    id: 'crowdsourcing-prospective',
+    name: 'Inteligencia Colectiva Online (Crowdsourcing Prospectivo)',
+    icon: Megaphone,
+    complexity: 3,
+    category: 'digital',
+    description: 'Aprovechar la inteligencia colectiva a través de plataformas digitales para anticipar tendencias y escenarios.',
+    objectives: [
+      'Ampliar base de conocimiento',
+      'Generar alta legitimidad social',
+      'Capturar diversidad de perspectivas',
+      'Escalar participación ciudadana'
+    ],
+    applications: [
+      'Consultas ciudadanas sobre el futuro',
+      'Innovación abierta',
+      'Prospectiva territorial participativa'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Diseño de plataforma',
+        description: 'Crear herramientas digitales para la participación.',
+        duration: '2-4 semanas'
+      },
+      {
+        step: 2,
+        title: 'Convocatoria masiva',
+        description: 'Invitar participación ciudadana amplia.',
+        duration: '1 semana'
+      },
+      {
+        step: 3,
+        title: 'Facilitación online',
+        description: 'Moderar discusiones y recopilar contribuciones.',
+        duration: '2-4 semanas'
+      },
+      {
+        step: 4,
+        title: 'Síntesis colaborativa',
+        description: 'Procesar y consolidar insights colectivos.',
+        duration: '1-2 semanas'
+      }
+    ],
+    advantages: [
+      'Amplia base de conocimiento',
+      'Alta legitimidad social',
+      'Escalabilidad digital'
+    ],
+    limitations: [
+      'Difícil de moderar',
+      'Puede sesgarse por grupos dominantes',
+      'Calidad variable de contribuciones'
+    ],
+    timeHorizon: 'Variable',
+    participants: 'Cientos o miles',
+    bibliographicSources: [
+      {
+        type: 'book',
+        title: 'The Wisdom of Crowds',
+        authors: ['J. Surowiecki'],
+        year: 2004
+      },
+      {
+        type: 'institutional',
+        title: 'Foresight & Crowdsourcing',
+        institution: 'UNDP',
+        year: 2021
       }
     ]
   }
