@@ -893,7 +893,7 @@ export const techniques: Technique[] = [
     name: 'Régnier Abacus',
     icon: Gauge,
     complexity: 2,
-    category: 'evaluation',
+    category: 'group-dynamics',
     description: 'Survey tool using chromatic scale to evaluate group consensus or dissensus on different propositions in participatory processes.',
     objectives: [
       'Measure group agreement levels',
@@ -1307,7 +1307,7 @@ export const techniques: Technique[] = [
     name: 'Futures Check-In',
     icon: UserCheck,
     complexity: 1,
-    category: 'orientation',
+    category: 'knowledge-transfer',
     description: 'Reflective activity where participants identify their roles, interests, and values as starting point for speculative engagement.',
     objectives: [
       'Establish personal perspective baseline',
@@ -1994,7 +1994,7 @@ export const techniques: Technique[] = [
     name: 'Gallery Walk',
     icon: Camera,
     complexity: 1,
-    category: 'exhibition',
+    category: 'speculative-design',
     description: 'Self-paced exploration method where participants move through displayed speculative scenarios and prototypes at their own rhythm.',
     objectives: [
       'Enable detailed exploration',
