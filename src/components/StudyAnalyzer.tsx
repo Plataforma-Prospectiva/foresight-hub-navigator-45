@@ -8,7 +8,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Brain, Target, Clock, Users, Zap, MapPin, Building, FileText, ArrowDown, BarChart3 } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Brain, Target, Clock, Users, Zap, MapPin, Building, FileText, ArrowDown, BarChart3, Terminal, TestTube2 } from "lucide-react";
 import { useTechniques } from "@/context/TechniqueContext";
 import { StudyProfile } from "@/types/technique";
 import { TechniqueCard } from "./TechniqueCard";
@@ -19,6 +20,7 @@ export const StudyAnalyzer = () => {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [results, setResults] = useState<StudyProfile | null>(null);
   const [expandedTechnique, setExpandedTechnique] = useState<string | null>(null);
+  const [showConsole, setShowConsole] = useState(false);
 
   const [formData, setFormData] = useState({
     title: "",
@@ -48,6 +50,35 @@ export const StudyAnalyzer = () => {
   });
 
   const [customResource, setCustomResource] = useState("");
+
+  const fillTestData = () => {
+    setFormData({
+      title: "Plan Estratégico de Movilidad Urbana Sostenible 2030",
+      description: "Estudio prospectivo para diseñar un plan integral de movilidad urbana que integre transporte público, movilidad activa y nuevas tecnologías en la ciudad metropolitana. El estudio debe considerar el crecimiento demográfico proyectado, la transición energética, y las metas de reducción de emisiones de carbono. Se busca crear escenarios futuros que guíen la toma de decisiones en infraestructura, políticas públicas y regulaciones para lograr una ciudad más sostenible y conectada.",
+      country: "Chile",
+      stateLevel: "regional",
+      territoryName: "Región Metropolitana de Santiago",
+      scope: "public",
+      estimatedTime: "8 meses",
+      studyObjective: "Desarrollar una estrategia integral de movilidad urbana que reduzca las emisiones de CO2 en un 40% para 2030, mejore la conectividad entre comunas y promueva el uso de transporte público y movilidad activa a través de la implementación de tecnologías inteligentes y participación ciudadana.",
+      timeHorizon: "2025-2030",
+      objectiveComplexity: "high",
+      availableResources: {
+        budget: "extensive",
+        expertAccess: true,
+        fieldPersonnel: true,
+        physicalInfrastructure: false,
+        currentInformation: true,
+        historicalInformation: true,
+        surveyTools: true,
+        dataProcessingTools: true,
+        previousPlans: true,
+        institutionalFramework: true,
+        customResources: ["Datos de GPS de buses", "Encuestas de origen-destino", "Modelos de microsimulación"]
+      },
+      teamExperience: "expert"
+    });
+  };
 
   const handleInputChange = (field: string, value: any) => {
     if (field.includes('.')) {
@@ -123,6 +154,18 @@ export const StudyAnalyzer = () => {
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
+          {/* Botón de datos de prueba */}
+          <div className="flex justify-end">
+            <Button 
+              variant="outline" 
+              onClick={fillTestData}
+              className="flex items-center gap-2 text-sm"
+            >
+              <TestTube2 className="w-4 h-4" />
+              Llenar Datos de Prueba
+            </Button>
+          </div>
+          
           {/* Información básica del estudio */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
@@ -417,15 +460,45 @@ export const StudyAnalyzer = () => {
                 </div>
 
                 {(results as any).aiQuery && (
-                  <details className="bg-gray-50 p-4 rounded-lg border">
-                    <summary className="font-semibold text-gray-900 cursor-pointer hover:text-gray-700 flex items-center gap-2">
-                      <FileText className="w-4 h-4" />
-                      Ver Consulta Enviada a la IA (Prompt Completo)
-                    </summary>
-                    <div className="mt-3 text-xs text-gray-600 font-mono bg-white p-3 rounded border overflow-auto max-h-60">
-                      <pre className="whitespace-pre-wrap">{(results as any).aiQuery}</pre>
-                    </div>
-                  </details>
+                  <div className="flex gap-3">
+                    <Dialog open={showConsole} onOpenChange={setShowConsole}>
+                      <DialogTrigger asChild>
+                        <Button variant="outline" className="flex items-center gap-2">
+                          <Terminal className="w-4 h-4" />
+                          Abrir Consola de IA
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-4xl max-h-[80vh] overflow-hidden">
+                        <DialogHeader>
+                          <DialogTitle className="flex items-center gap-2">
+                            <Terminal className="w-5 h-5" />
+                            Consola de Análisis - Prompt Enviado a Mistral AI
+                          </DialogTitle>
+                        </DialogHeader>
+                        <div className="bg-black text-green-400 p-4 rounded-lg font-mono text-sm overflow-auto max-h-[60vh] border-2 border-gray-700">
+                          <div className="text-green-300 mb-2">$ mistral-ai-analyzer --input study-profile</div>
+                          <div className="text-gray-400 mb-3">Enviando consulta a Mistral AI...</div>
+                          <div className="border-l-2 border-green-500 pl-3">
+                            <pre className="whitespace-pre-wrap text-green-400">{(results as any).aiQuery}</pre>
+                          </div>
+                          <div className="text-gray-400 mt-3 flex items-center gap-2">
+                            <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                            Análisis completado exitosamente
+                          </div>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
+                    
+                    <details className="bg-gray-50 p-4 rounded-lg border flex-1">
+                      <summary className="font-semibold text-gray-900 cursor-pointer hover:text-gray-700 flex items-center gap-2">
+                        <FileText className="w-4 h-4" />
+                        Ver Prompt Compacto (Expandir Aquí)
+                      </summary>
+                      <div className="mt-3 text-xs text-gray-600 font-mono bg-white p-3 rounded border overflow-auto max-h-40">
+                        <pre className="whitespace-pre-wrap">{(results as any).aiQuery}</pre>
+                      </div>
+                    </details>
+                  </div>
                 )}
               </CardContent>
             </Card>
