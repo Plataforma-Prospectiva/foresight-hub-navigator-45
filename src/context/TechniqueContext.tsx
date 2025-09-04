@@ -50,6 +50,7 @@ interface TechniqueContextType {
   updateResourceOption: (id: string, updates: Partial<ResourceOption>) => void;
   deleteResourceOption: (id: string) => void;
   loadTechniquesFromDatabase: () => Promise<void>;
+  syncTechniquesToDatabase: () => Promise<{ success: boolean; message: string; count?: number }>;
   useDatabase: boolean;
   setUseDatabase: (use: boolean) => void;
 }
@@ -78,6 +79,24 @@ export const TechniqueProvider = ({ children }: { children: ReactNode }) => {
   const [studyProfiles, setStudyProfiles] = useState<StudyProfile[]>([]);
   const [resourceOptions, setResourceOptions] = useState<ResourceOption[]>(defaultResourceOptions);
   const [useDatabase, setUseDatabase] = useState(true);
+
+  const syncTechniquesToDatabase = async () => {
+    try {
+      const { seedTechniquesToDatabase } = await import('@/utils/techniqueSeeder');
+      const result = await seedTechniquesToDatabase();
+      if (result.success) {
+        console.log('✅ Técnicas sincronizadas:', result.message);
+        await loadTechniquesFromDatabase(); // Reload from database
+        return result;
+      } else {
+        console.error('❌ Error sincronizando técnicas:', result.message);
+        return result;
+      }
+    } catch (error) {
+      console.error('❌ Error inesperado sincronizando técnicas:', error);
+      return { success: false, message: 'Error inesperado' };
+    }
+  };
 
   // Function to load techniques from database and convert to Technique format
   const loadTechniquesFromDatabase = async () => {
@@ -115,11 +134,37 @@ export const TechniqueProvider = ({ children }: { children: ReactNode }) => {
 
   // Update techniques when language changes or when switching between file/database sources
   React.useEffect(() => {
-    if (useDatabase) {
-      loadTechniquesFromDatabase();
-    } else {
-      setTechniques(getTechniques(language));
-    }
+    const loadAndSyncIfNeeded = async () => {
+      if (useDatabase) {
+        await loadTechniquesFromDatabase();
+        
+        try {
+          // Check if problem-tree technique exists in database
+          const { data: existingTechnique, error } = await supabase
+            .from('techniques')
+            .select('technique_id')
+            .eq('technique_id', 'problem-tree')
+            .eq('language', language);
+          
+          // If not found, sync with files to add it
+          if (!error && existingTechnique && existingTechnique.length === 0) {
+            console.log('🔄 Nueva técnica detectada en archivos, sincronizando...');
+            const syncResult = await syncTechniquesToDatabase();
+            if (syncResult.success) {
+              console.log('✅ Sincronización exitosa:', syncResult.message);
+              // Reload techniques after sync
+              await loadTechniquesFromDatabase();
+            }
+          }
+        } catch (error) {
+          console.error('Error verificando técnicas:', error);
+        }
+      } else {
+        setTechniques(getTechniques(language));
+      }
+    };
+    
+    loadAndSyncIfNeeded();
   }, [language, useDatabase]);
 
   const addTechnique = (techniqueData: Omit<Technique, 'id'>) => {
@@ -342,6 +387,7 @@ Total de técnicas consideradas: ${techniques.length}
       updateResourceOption,
       deleteResourceOption,
       loadTechniquesFromDatabase,
+      syncTechniquesToDatabase,
       useDatabase,
       setUseDatabase,
     }}>

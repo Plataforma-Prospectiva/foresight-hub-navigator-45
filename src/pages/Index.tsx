@@ -26,8 +26,24 @@ const IndexContent = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [tools, setTools] = useState(initialTools);
   const {
-    techniques
+    techniques,
+    syncTechniquesToDatabase
   } = useTechniques();
+
+  // Auto-sync new techniques on component mount
+  useEffect(() => {
+    const autoSync = async () => {
+      try {
+        const result = await syncTechniquesToDatabase();
+        if (result.success && result.count && result.count > 0) {
+          console.log('🔄 Técnicas sincronizadas automáticamente:', result.message);
+        }
+      } catch (error) {
+        console.log('No se requiere sincronización');
+      }
+    };
+    autoSync();
+  }, []);
 
   // Calculate statistics
   const totalTechniques = techniques.length;
