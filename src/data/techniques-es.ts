@@ -3338,5 +3338,102 @@ export const techniquesES: Technique[] = [
         year: 2021
       }
     ]
+  },
+  {
+    id: 'problem-tree',
+    name: 'Árbol de Problemas',
+    icon: GitBranch,
+    complexity: 3,
+    category: 'structural',
+    description: 'Herramienta de análisis causal que identifica y mapea sistemáticamente las causas raíz y efectos de un problema central para comprender su estructura lógica.',
+    objectives: [
+      'Identificar causas raíz del problema central',
+      'Mapear relaciones causales entre factores',
+      'Visualizar efectos y consecuencias del problema',
+      'Establecer jerarquías causales para priorizar intervenciones'
+    ],
+    applications: [
+      'Formulación de proyectos de desarrollo',
+      'Análisis de políticas públicas',
+      'Planificación estratégica organizacional',
+      'Diagnóstico de problemas complejos'
+    ],
+    methodology: [
+      {
+        step: 1,
+        title: 'Definición del Problema Central',
+        description: 'Identificar y formular claramente el problema principal a analizar, asegurando que sea específico y medible.',
+        duration: '1-2 días'
+      },
+      {
+        step: 2,
+        title: 'Identificación de Causas',
+        description: 'Mediante lluvia de ideas, identificar todas las posibles causas directas e indirectas del problema central.',
+        duration: '1-2 días'
+      },
+      {
+        step: 3,
+        title: 'Identificación de Efectos',
+        description: 'Determinar las consecuencias y efectos que produce el problema central en diferentes niveles.',
+        duration: '1 día'
+      },
+      {
+        step: 4,
+        title: 'Construcción del Árbol',
+        description: 'Organizar causas y efectos en una estructura jerárquica visual con el problema central en el medio.',
+        duration: '1-2 días'
+      },
+      {
+        step: 5,
+        title: 'Validación y Refinamiento',
+        description: 'Revisar la lógica causal, verificar conexiones y refinar la estructura del árbol.',
+        duration: '1 día'
+      }
+    ],
+    advantages: [
+      'Visualización clara de relaciones causales',
+      'Facilita identificación de puntos de intervención',
+      'Enfoque sistemático y estructurado',
+      'Promueve comprensión compartida del problema'
+    ],
+    limitations: [
+      'Puede simplificar excesivamente problemas complejos',
+      'Requiere facilitación experta para evitar sesgos',
+      'Limitado a relaciones causales lineales',
+      'Puede generar árboles muy extensos difíciles de manejar'
+    ],
+    timeHorizon: 'Inmediato a 2 años',
+    participants: '4-12 participantes',
+    bibliographicSources: [
+      {
+        type: 'guide',
+        title: 'Manual de Gestión del Ciclo de Proyecto',
+        authors: ['Comisión Europea'],
+        institution: 'EuropeAid Oficina de Cooperación',
+        year: 2004,
+        publisher: 'Oficina de Publicaciones de la Unión Europea'
+      },
+      {
+        type: 'methodological',
+        title: 'Logical Framework Approach Handbook',
+        authors: ['NORAD'],
+        institution: 'Norwegian Agency for Development Cooperation',
+        year: 1999
+      },
+      {
+        type: 'book',
+        title: 'Project Planning and Management: An Integrated System for Improving Productivity',
+        authors: ['Kathleen Schwalbe'],
+        year: 2018,
+        publisher: 'Cengage Learning'
+      },
+      {
+        type: 'institutional',
+        title: 'Guía de Planificación de Proyectos',
+        institution: 'Banco Interamericano de Desarrollo',
+        year: 2020,
+        url: 'https://www.iadb.org'
+      }
+    ]
   }
 ];
