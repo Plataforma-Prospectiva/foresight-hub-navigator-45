@@ -137,13 +137,6 @@ export const AuthModal = () => {
             {isLogin ? "¿No tienes cuenta? Regístrate" : "¿Ya tienes cuenta? Inicia sesión"}
           </Button>
 
-          {isLogin && (
-            <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded text-sm">
-              <strong>Usuario Admin:</strong><br />
-              Email: admin@plataforma.com<br />
-              Contraseña: admin123
-            </div>
-          )}
         </form>
       </SheetContent>
     </Sheet>
