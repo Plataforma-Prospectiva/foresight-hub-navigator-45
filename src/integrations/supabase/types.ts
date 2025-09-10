@@ -455,6 +455,10 @@ export type Database = {
         Args: Record<PropertyKey, never>
         Returns: undefined
       }
+      expert_matches_auth_user: {
+        Args: { _auth_user_id: string; _expert_id: string }
+        Returns: boolean
+      }
       get_user_roles: {
         Args: { _user_id: string }
         Returns: Database["public"]["Enums"]["app_role"][]
