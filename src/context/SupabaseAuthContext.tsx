@@ -2,14 +2,25 @@ import { createContext, useContext, useState, useEffect, ReactNode } from 'react
 import { User, Session } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
+import { 
+  authRateLimiter, 
+  validatePasswordStrength, 
+  validateEmail, 
+  sanitizeInput, 
+  logSecurityEvent,
+  validateSession
+} from '@/utils/security';
 
 interface AuthContextType {
   user: User | null;
   session: Session | null;
-  signUp: (email: string, password: string, displayName?: string) => Promise<{ error: any }>;
-  signIn: (email: string, password: string) => Promise<{ error: any }>;
+  signUp: (email: string, password: string, displayName?: string) => Promise<{ error: any; rateLimited?: boolean; passwordWeak?: boolean }>;
+  signIn: (email: string, password: string) => Promise<{ error: any; rateLimited?: boolean; remainingAttempts?: number }>;
   signOut: () => Promise<void>;
   loading: boolean;
+  validatePasswordStrength: (password: string) => ReturnType<typeof validatePasswordStrength>;
+  isRateLimited: (email: string) => boolean;
+  getRemainingAttempts: (email: string) => number;
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
@@ -40,50 +51,201 @@ export const SupabaseAuthProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const signUp = async (email: string, password: string, displayName?: string) => {
-    const redirectUrl = `${window.location.origin}/`;
+    // Input validation and sanitization
+    const sanitizedEmail = sanitizeInput(email).toLowerCase();
+    const sanitizedDisplayName = displayName ? sanitizeInput(displayName) : undefined;
     
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        emailRedirectTo: redirectUrl,
-        data: {
-          display_name: displayName || email
-        }
-      }
-    });
-
-    if (error) {
-      toast.error(error.message);
-    } else {
-      toast.success('¡Registro exitoso! Revisa tu email para confirmar tu cuenta.');
+    // Validate email format
+    const emailValidation = validateEmail(sanitizedEmail);
+    if (!emailValidation.isValid) {
+      const errorMsg = emailValidation.errors.join(', ');
+      toast.error(`Email inválido: ${errorMsg}`);
+      await logSecurityEvent({
+        type: 'auth_failure',
+        email: sanitizedEmail,
+        details: 'Invalid email format during signup'
+      });
+      return { error: { message: errorMsg } };
     }
 
-    return { error };
+    // Check rate limiting
+    if (authRateLimiter.isBlocked(sanitizedEmail)) {
+      const blockedUntil = authRateLimiter.getBlockedUntil(sanitizedEmail);
+      const remainingTime = blockedUntil ? Math.ceil((blockedUntil - Date.now()) / 60000) : 30;
+      toast.error(`Demasiados intentos. Intenta de nuevo en ${remainingTime} minutos.`);
+      await logSecurityEvent({
+        type: 'rate_limit',
+        email: sanitizedEmail,
+        details: 'Signup rate limit exceeded'
+      });
+      return { error: { message: 'Rate limited' }, rateLimited: true };
+    }
+
+    // Validate password strength
+    const passwordValidation = validatePasswordStrength(password);
+    if (!passwordValidation.isValid) {
+      toast.error(`Contraseña débil: ${passwordValidation.feedback.join(', ')}`);
+      await logSecurityEvent({
+        type: 'auth_failure',
+        email: sanitizedEmail,
+        details: 'Weak password during signup'
+      });
+      return { error: { message: 'Weak password' }, passwordWeak: true };
+    }
+
+    try {
+      const redirectUrl = `${window.location.origin}/`;
+      
+      const { error } = await supabase.auth.signUp({
+        email: sanitizedEmail,
+        password,
+        options: {
+          emailRedirectTo: redirectUrl,
+          data: {
+            display_name: sanitizedDisplayName || sanitizedEmail
+          }
+        }
+      });
+
+      // Record attempt
+      authRateLimiter.recordAttempt(sanitizedEmail, !error);
+
+      if (error) {
+        toast.error(error.message);
+        await logSecurityEvent({
+          type: 'auth_failure',
+          email: sanitizedEmail,
+          details: `Signup failed: ${error.message}`
+        });
+      } else {
+        toast.success('¡Registro exitoso! Revisa tu email para confirmar tu cuenta.');
+        await logSecurityEvent({
+          type: 'auth_success',
+          email: sanitizedEmail,
+          details: 'Successful signup'
+        });
+      }
+
+      return { error };
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      await logSecurityEvent({
+        type: 'auth_failure',
+        email: sanitizedEmail,
+        details: `Signup exception: ${errorMessage}`
+      });
+      return { error: { message: errorMessage } };
+    }
   };
 
   const signIn = async (email: string, password: string) => {
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password
-    });
-
-    if (error) {
-      toast.error(error.message);
-    } else {
-      toast.success('¡Sesión iniciada exitosamente!');
+    // Input validation and sanitization
+    const sanitizedEmail = sanitizeInput(email).toLowerCase();
+    
+    // Validate email format
+    const emailValidation = validateEmail(sanitizedEmail);
+    if (!emailValidation.isValid) {
+      const errorMsg = emailValidation.errors.join(', ');
+      toast.error(`Email inválido: ${errorMsg}`);
+      await logSecurityEvent({
+        type: 'auth_failure',
+        email: sanitizedEmail,
+        details: 'Invalid email format during signin'
+      });
+      return { error: { message: errorMsg } };
     }
 
-    return { error };
+    // Check rate limiting
+    if (authRateLimiter.isBlocked(sanitizedEmail)) {
+      const blockedUntil = authRateLimiter.getBlockedUntil(sanitizedEmail);
+      const remainingTime = blockedUntil ? Math.ceil((blockedUntil - Date.now()) / 60000) : 30;
+      toast.error(`Demasiados intentos fallidos. Intenta de nuevo en ${remainingTime} minutos.`);
+      await logSecurityEvent({
+        type: 'rate_limit',
+        email: sanitizedEmail,
+        details: 'Signin rate limit exceeded'
+      });
+      return { error: { message: 'Rate limited' }, rateLimited: true };
+    }
+
+    try {
+      const { error } = await supabase.auth.signInWithPassword({
+        email: sanitizedEmail,
+        password
+      });
+
+      // Record attempt result
+      const result = authRateLimiter.recordAttempt(sanitizedEmail, !error);
+
+      if (error) {
+        toast.error(`Error de autenticación. Intentos restantes: ${result.remainingAttempts}`);
+        await logSecurityEvent({
+          type: 'auth_failure',
+          email: sanitizedEmail,
+          details: `Signin failed: ${error.message}`,
+          metadata: { remainingAttempts: result.remainingAttempts }
+        });
+        return { 
+          error, 
+          remainingAttempts: result.remainingAttempts,
+          rateLimited: result.blocked 
+        };
+      } else {
+        toast.success('¡Sesión iniciada exitosamente!');
+        await logSecurityEvent({
+          type: 'auth_success',
+          email: sanitizedEmail,
+          details: 'Successful signin'
+        });
+        return { error };
+      }
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      await logSecurityEvent({
+        type: 'auth_failure',
+        email: sanitizedEmail,
+        details: `Signin exception: ${errorMessage}`
+      });
+      return { error: { message: errorMessage } };
+    }
   };
 
   const signOut = async () => {
-    const { error } = await supabase.auth.signOut();
-    if (error) {
-      toast.error('Error al cerrar sesión');
-    } else {
-      toast.success('Sesión cerrada');
+    try {
+      const currentUser = user;
+      const { error } = await supabase.auth.signOut();
+      
+      if (error) {
+        toast.error('Error al cerrar sesión');
+        await logSecurityEvent({
+          type: 'suspicious_activity',
+          userId: currentUser?.id,
+          details: `Signout failed: ${error.message}`
+        });
+      } else {
+        toast.success('Sesión cerrada');
+        await logSecurityEvent({
+          type: 'auth_success',
+          userId: currentUser?.id,
+          details: 'Successful signout'
+        });
+      }
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      await logSecurityEvent({
+        type: 'suspicious_activity',
+        details: `Signout exception: ${errorMessage}`
+      });
     }
+  };
+
+  // Additional security utilities
+  const isRateLimited = (email: string) => {
+    return authRateLimiter.isBlocked(sanitizeInput(email).toLowerCase());
+  };
+
+  const getRemainingAttempts = (email: string) => {
+    return authRateLimiter.getRemainingAttempts(sanitizeInput(email).toLowerCase());
   };
 
   return (
@@ -93,7 +255,10 @@ export const SupabaseAuthProvider = ({ children }: { children: ReactNode }) => {
       signUp,
       signIn,
       signOut,
-      loading
+      loading,
+      validatePasswordStrength,
+      isRateLimited,
+      getRemainingAttempts
     }}>
       {children}
     </AuthContext.Provider>
