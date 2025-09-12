@@ -16,6 +16,7 @@ import { StudyProfile } from "@/types/technique";
 import { TechniqueCard } from "./TechniqueCard";
 import { SequenceFlowVisualization } from "./SequenceFlowVisualization";
 import { LLMConfigModal } from "./LLMConfigModal";
+import { SimilarCases } from "./SimilarCases";
 
 export const StudyAnalyzer = () => {
   const { createStudyProfile, getRecommendedTechniques, techniques } = useTechniques();
@@ -713,6 +714,9 @@ export const StudyAnalyzer = () => {
 
           {/* Visualización de secuencias */}
           <SequenceFlowVisualization results={results} techniques={techniques} />
+
+          {/* Similar Cases Section */}
+          <SimilarCases profile={results} />
 
           {/* Técnicas recomendadas con justificaciones */}
           <Card>
