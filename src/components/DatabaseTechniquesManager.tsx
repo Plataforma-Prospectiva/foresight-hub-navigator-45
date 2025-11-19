@@ -145,30 +145,20 @@ export const DatabaseTechniquesManager = () => {
   }
 
   return (
-    <div className="container mx-auto p-6 space-y-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-bold text-slate-800 flex items-center gap-2">
-            <Database className="w-6 h-6" />
-            Gestor de Técnicas - Base de Datos
-          </h1>
-          <p className="text-slate-600">Gestiona las técnicas prospectivas almacenadas en Supabase</p>
-        </div>
+    <div className="w-full space-y-6">
+      <div className="flex items-center justify-end gap-2">
+        <Button
+          onClick={handleSyncWithFiles}
+          disabled={isSyncing}
+          variant="outline"
+        >
+          {isSyncing ? 'Sincronizando...' : 'Sincronizar con archivos'}
+        </Button>
         
-        <div className="flex gap-2">
-          <Button
-            onClick={handleSyncWithFiles}
-            disabled={isSyncing}
-            variant="outline"
-          >
-            {isSyncing ? 'Sincronizando...' : 'Sincronizar con archivos'}
-          </Button>
-          
-          <Button onClick={() => setShowAddDialog(true)}>
-            <Plus className="w-4 h-4 mr-2" />
-            Nueva Técnica
-          </Button>
-        </div>
+        <Button onClick={() => setShowAddDialog(true)}>
+          <Plus className="w-4 h-4 mr-2" />
+          Nueva Técnica
+        </Button>
       </div>
 
       <Card>
