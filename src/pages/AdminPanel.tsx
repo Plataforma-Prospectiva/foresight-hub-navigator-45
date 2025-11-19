@@ -124,15 +124,7 @@ export default function AdminPanel() {
   }
 
   return (
-    <div className="container mx-auto py-8 px-4">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-foreground flex items-center gap-2">
-          <Shield className="w-8 h-8" />
-          Panel de Administración
-        </h1>
-        <p className="text-muted-foreground mt-2">Gestiona usuarios y roles del sistema</p>
-      </div>
-
+    <div className="w-full">
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">

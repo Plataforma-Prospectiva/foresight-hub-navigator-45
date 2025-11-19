@@ -13,6 +13,7 @@ import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
 import { HelpPage } from "./pages/HelpPage";
 import AdminPanel from "./pages/AdminPanel";
+import AdminDashboard from "./pages/AdminDashboard";
 
 const queryClient = new QueryClient();
 
@@ -25,8 +26,7 @@ const AppContent = () => {
         <Route path="/" element={<Index />} />
         <Route path="/auth" element={<Auth />} />
         <Route path="/help" element={<HelpPage />} />
-        <Route path="/admin/users" element={<AdminGuard><AdminPanel /></AdminGuard>} />
-        <Route path="/admin/techniques" element={<AdminGuard><DatabaseTechniquesManager /></AdminGuard>} />
+        <Route path="/admin" element={<AdminGuard><AdminDashboard /></AdminGuard>} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -77,7 +77,7 @@ export const Header = ({ onIconChange, onAddTool }: HeaderProps) => {
               <AccessLogsViewer />
 
               {isAdmin && (
-                <Link to="/admin/users">
+                <Link to="/admin">
                   <Button
                     variant="ghost"
                     size="sm"
