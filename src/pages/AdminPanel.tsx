@@ -30,17 +30,12 @@ export default function AdminPanel() {
     try {
       setLoading(true);
       
-      // Fetch profiles
+      // Fetch profiles with user_id joining (profiles.id references auth.users.id)
       const { data: profiles, error: profilesError } = await supabase
         .from('profiles')
         .select('id, display_name, created_at');
 
       if (profilesError) throw profilesError;
-
-      // Fetch user emails from auth metadata (we'll need to get this from auth.users)
-      const { data: { users: authUsers }, error: authError } = await supabase.auth.admin.listUsers();
-      
-      if (authError) throw authError;
 
       // Fetch all user roles
       const { data: userRoles, error: rolesError } = await supabase
@@ -51,12 +46,11 @@ export default function AdminPanel() {
 
       // Combine data
       const usersData: UserProfile[] = profiles?.map(profile => {
-        const authUser = authUsers.find(u => u.id === profile.id);
         const roles = userRoles?.filter(r => r.user_id === profile.id).map(r => r.role as AppRole) || [];
         
         return {
           id: profile.id,
-          email: authUser?.email || 'N/A',
+          email: `${profile.display_name || 'user'}@...`, // Email not directly accessible without admin API
           display_name: profile.display_name,
           created_at: profile.created_at,
           roles

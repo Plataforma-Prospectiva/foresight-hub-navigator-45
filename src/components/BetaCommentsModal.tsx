@@ -26,7 +26,7 @@ export const BetaCommentsModal = () => {
   const [selectedCategory, setSelectedCategory] = useState<Comment['category']>('general');
   const [isOpen, setIsOpen] = useState(false);
 
-  if (!user || !hasRole('beta')) return null;
+  if (!user || !hasRole('admin' as any)) return null;
 
   const handleSubmitComment = () => {
     if (!newComment.trim()) return;

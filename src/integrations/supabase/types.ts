@@ -14,6 +14,72 @@ export type Database = {
   }
   public: {
     Tables: {
+      access_logs: {
+        Row: {
+          action_type: string
+          additional_data: Json | null
+          browser: string
+          city: string | null
+          country: string | null
+          created_at: string
+          device_type: string
+          id: string
+          ip_address: string
+          language: string
+          os: string
+          page_url: string
+          referer: string | null
+          region: string | null
+          screen_resolution: string | null
+          session_id: string
+          timezone: string
+          user_agent: string
+          user_id: string | null
+        }
+        Insert: {
+          action_type: string
+          additional_data?: Json | null
+          browser: string
+          city?: string | null
+          country?: string | null
+          created_at?: string
+          device_type: string
+          id?: string
+          ip_address: string
+          language: string
+          os: string
+          page_url: string
+          referer?: string | null
+          region?: string | null
+          screen_resolution?: string | null
+          session_id: string
+          timezone?: string
+          user_agent: string
+          user_id?: string | null
+        }
+        Update: {
+          action_type?: string
+          additional_data?: Json | null
+          browser?: string
+          city?: string | null
+          country?: string | null
+          created_at?: string
+          device_type?: string
+          id?: string
+          ip_address?: string
+          language?: string
+          os?: string
+          page_url?: string
+          referer?: string | null
+          region?: string | null
+          screen_resolution?: string | null
+          session_id?: string
+          timezone?: string
+          user_agent?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -34,6 +100,90 @@ export type Database = {
           created_at?: string
           display_name?: string | null
           id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      techniques: {
+        Row: {
+          advantages: string | null
+          applications: string | null
+          category: string
+          complexity: number
+          created_at: string
+          description: string | null
+          difficulty_level: string | null
+          duration_estimate: string | null
+          examples: string | null
+          icon_name: string | null
+          id: string
+          is_active: boolean
+          language: string
+          limitations: string | null
+          methodology: string | null
+          name: string
+          objectives: string | null
+          participants_max: number | null
+          participants_min: number | null
+          recommended_for: string | null
+          required_resources: string | null
+          technique_id: string
+          technique_references: string | null
+          time_horizon: string | null
+          updated_at: string
+        }
+        Insert: {
+          advantages?: string | null
+          applications?: string | null
+          category: string
+          complexity: number
+          created_at?: string
+          description?: string | null
+          difficulty_level?: string | null
+          duration_estimate?: string | null
+          examples?: string | null
+          icon_name?: string | null
+          id?: string
+          is_active?: boolean
+          language?: string
+          limitations?: string | null
+          methodology?: string | null
+          name: string
+          objectives?: string | null
+          participants_max?: number | null
+          participants_min?: number | null
+          recommended_for?: string | null
+          required_resources?: string | null
+          technique_id: string
+          technique_references?: string | null
+          time_horizon?: string | null
+          updated_at?: string
+        }
+        Update: {
+          advantages?: string | null
+          applications?: string | null
+          category?: string
+          complexity?: number
+          created_at?: string
+          description?: string | null
+          difficulty_level?: string | null
+          duration_estimate?: string | null
+          examples?: string | null
+          icon_name?: string | null
+          id?: string
+          is_active?: boolean
+          language?: string
+          limitations?: string | null
+          methodology?: string | null
+          name?: string
+          objectives?: string | null
+          participants_max?: number | null
+          participants_min?: number | null
+          recommended_for?: string | null
+          required_resources?: string | null
+          technique_id?: string
+          technique_references?: string | null
+          time_horizon?: string | null
           updated_at?: string
         }
         Relationships: []
@@ -77,7 +227,7 @@ export type Database = {
       setup_initial_admin: { Args: { admin_email: string }; Returns: undefined }
     }
     Enums: {
-      app_role: "admin" | "moderator" | "user"
+      app_role: "admin" | "moderator" | "user" | "beta"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -205,7 +355,7 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
-      app_role: ["admin", "moderator", "user"],
+      app_role: ["admin", "moderator", "user", "beta"],
     },
   },
 } as const
