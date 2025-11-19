@@ -1,6 +1,6 @@
 
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
-import { Technique, StudyProfile, ResourceOption } from '@/types/technique';
+import { Technique, StudyProfile, ResourceOption, MethodologyStep } from '@/types/technique';
 import { getTechniques } from '@/data/techniques';
 import { getTechniquesFromDatabase } from '@/utils/techniqueSeeder';
 import { useLanguage } from './LanguageContext';
@@ -98,6 +98,35 @@ export const TechniqueProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  // Helper to parse JSON strings to arrays
+  const parseJsonField = (field: string | null): string[] => {
+    if (!field) return [];
+    try {
+      const parsed = JSON.parse(field);
+      return Array.isArray(parsed) ? parsed : [field];
+    } catch {
+      return [field];
+    }
+  };
+
+  // Helper to parse methodology
+  const parseMethodology = (field: string | null): MethodologyStep[] => {
+    if (!field) return [];
+    try {
+      const parsed = JSON.parse(field);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch {
+      return [];
+    }
+  };
+
+  // Helper to create participants string
+  const createParticipantsString = (min: number | null, max: number | null): string => {
+    const minVal = min || 1;
+    const maxVal = max || 100;
+    return `${minVal}-${maxVal} participantes`;
+  };
+
   // Function to load techniques from database and convert to Technique format
   const loadTechniquesFromDatabase = async () => {
     try {
@@ -111,14 +140,19 @@ export const TechniqueProvider = ({ children }: { children: ReactNode }) => {
           complexity: dbTech.complexity,
           category: dbTech.category,
           description: dbTech.description,
-          objectives: dbTech.objectives,
-          applications: dbTech.applications,
-          methodology: dbTech.methodology as any,
-          advantages: dbTech.advantages,
-          limitations: dbTech.limitations,
+          objectives: parseJsonField(dbTech.objectives),
+          applications: parseJsonField(dbTech.applications),
+          methodology: parseMethodology(dbTech.methodology),
+          advantages: parseJsonField(dbTech.advantages),
+          limitations: parseJsonField(dbTech.limitations),
           timeHorizon: dbTech.time_horizon,
-          participants: dbTech.participants,
-          bibliographicSources: dbTech.bibliographic_sources as any
+          participants: createParticipantsString(dbTech.participants_min, dbTech.participants_max),
+          bibliographicSources: dbTech.technique_references ? 
+            [{
+              type: 'guide' as const,
+              title: dbTech.technique_references,
+              year: new Date().getFullYear()
+            }] : []
         }));
         setTechniques(convertedTechniques);
       } else {
