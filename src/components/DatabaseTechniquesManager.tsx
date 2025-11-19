@@ -280,7 +280,9 @@ export const DatabaseTechniquesManager = () => {
                             <div>
                               <h4 className="font-medium mb-2">Objetivos</h4>
                               <ul className="text-sm text-slate-600 space-y-1">
-                                {technique.objectives.map((objective, index) => (
+                                {(Array.isArray(technique.objectives) ? technique.objectives : 
+                                  typeof technique.objectives === 'string' ? JSON.parse(technique.objectives || '[]') : []
+                                ).map((objective: string, index: number) => (
                                   <li key={index}>• {objective}</li>
                                 ))}
                               </ul>
@@ -291,7 +293,9 @@ export const DatabaseTechniquesManager = () => {
                             <div>
                               <h4 className="font-medium mb-2">Aplicaciones</h4>
                               <ul className="text-sm text-slate-600 space-y-1">
-                                {technique.applications.map((application, index) => (
+                                {(Array.isArray(technique.applications) ? technique.applications : 
+                                  typeof technique.applications === 'string' ? JSON.parse(technique.applications || '[]') : []
+                                ).map((application: string, index: number) => (
                                   <li key={index}>• {application}</li>
                                 ))}
                               </ul>
@@ -302,7 +306,9 @@ export const DatabaseTechniquesManager = () => {
                             <div>
                               <h4 className="font-medium mb-2">Ventajas</h4>
                               <ul className="text-sm text-slate-600 space-y-1">
-                                {technique.advantages.map((advantage, index) => (
+                                {(Array.isArray(technique.advantages) ? technique.advantages : 
+                                  typeof technique.advantages === 'string' ? JSON.parse(technique.advantages || '[]') : []
+                                ).map((advantage: string, index: number) => (
                                   <li key={index}>• {advantage}</li>
                                 ))}
                               </ul>
@@ -313,7 +319,9 @@ export const DatabaseTechniquesManager = () => {
                             <div>
                               <h4 className="font-medium mb-2">Limitaciones</h4>
                               <ul className="text-sm text-slate-600 space-y-1">
-                                {technique.limitations.map((limitation, index) => (
+                                {(Array.isArray(technique.limitations) ? technique.limitations : 
+                                  typeof technique.limitations === 'string' ? JSON.parse(technique.limitations || '[]') : []
+                                ).map((limitation: string, index: number) => (
                                   <li key={index}>• {limitation}</li>
                                 ))}
                               </ul>

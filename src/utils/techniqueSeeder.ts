@@ -129,12 +129,22 @@ export const seedTechniquesToDatabase = async (): Promise<{ success: boolean; me
 
     console.log(`Insertando ${techniquesToInsert.length} técnicas nuevas...`);
 
+    // Convertir arrays a strings para la base de datos
+    const dbTechniques = techniquesToInsert.map(t => ({
+      ...t,
+      objectives: Array.isArray(t.objectives) ? JSON.stringify(t.objectives) : t.objectives,
+      applications: Array.isArray(t.applications) ? JSON.stringify(t.applications) : t.applications,
+      advantages: Array.isArray(t.advantages) ? JSON.stringify(t.advantages) : t.advantages,
+      limitations: Array.isArray(t.limitations) ? JSON.stringify(t.limitations) : t.limitations,
+      methodology: typeof t.methodology === 'object' ? JSON.stringify(t.methodology) : t.methodology,
+    }));
+
     // Insertar las técnicas en lotes de 50 para evitar límites
     const batchSize = 50;
     let totalInserted = 0;
 
-    for (let i = 0; i < techniquesToInsert.length; i += batchSize) {
-      const batch = techniquesToInsert.slice(i, i + batchSize);
+    for (let i = 0; i < dbTechniques.length; i += batchSize) {
+      const batch = dbTechniques.slice(i, i + batchSize);
       
       const { data, error } = await supabase
         .from('techniques')
