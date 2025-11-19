@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { HelpCircle, Brain, Languages, Activity, Database, HelpingHand } from "lucide-react";
+import { HelpCircle, Brain, Languages, Activity, Database, HelpingHand, Shield } from "lucide-react";
 import { DocumentationModal } from "@/components/DocumentationModal";
 import { SettingsModal } from "@/components/SettingsModal";
 import { BetaCommentsModal } from "@/components/BetaCommentsModal";
@@ -9,6 +9,7 @@ import { AccessLogsViewer } from "@/components/AccessLogsViewer";
 import { SupabaseAuthModal } from "@/components/SupabaseAuthModal";
 import { useLanguage } from "@/context/LanguageContext";
 import { useSupabaseAuth } from "@/context/SupabaseAuthContext";
+import { useUserRole } from "@/hooks/useUserRole";
 import { seedTechniquesToDatabase } from "@/utils/techniqueSeeder";
 import { toast } from "sonner";
 import { Link } from "react-router-dom";
@@ -23,6 +24,7 @@ export const Header = ({ onIconChange, onAddTool }: HeaderProps) => {
   const [isMigrating, setIsMigrating] = useState(false);
   const { language, setLanguage, t } = useLanguage();
   const { user } = useSupabaseAuth();
+  const { isAdmin } = useUserRole();
 
   const handleMigrateTechniques = async () => {
     if (!user) {
@@ -73,6 +75,18 @@ export const Header = ({ onIconChange, onAddTool }: HeaderProps) => {
               <BetaCommentsModal />
 
               <AccessLogsViewer />
+
+              {isAdmin && (
+                <Link to="/admin/users">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    title="Panel de Administración"
+                  >
+                    <Shield className="w-4 h-4" />
+                  </Button>
+                </Link>
+              )}
 
               <Link to="/help">
                 <Button

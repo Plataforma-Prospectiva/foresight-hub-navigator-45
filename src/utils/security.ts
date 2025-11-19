@@ -219,10 +219,18 @@ export const logSecurityEvent = async (event: {
   try {
     // Log to Supabase if user is authenticated or for critical events
     await supabase.from('access_logs').insert({
-      event_type: 'security_event',
+      action_type: 'security_event',
       user_agent: navigator.userAgent,
       ip_address: 'client', // Client-side, so we can't get real IP
-      metadata: {
+      user_id: event.userId || null,
+      page_url: window.location.href,
+      session_id: 'security-log',
+      device_type: /Mobile/.test(navigator.userAgent) ? 'mobile' : 'desktop',
+      browser: navigator.userAgent.split(' ').pop() || 'unknown',
+      os: navigator.platform,
+      language: navigator.language,
+      referer: document.referrer || '',
+      additional_data: {
         security_event: event.type,
         details: event.details,
         email: event.email,
