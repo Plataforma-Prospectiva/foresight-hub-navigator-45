@@ -46,24 +46,7 @@ const IndexContent = () => {
         <div className="container mx-auto px-6 py-8 relative">
           {/* Enhanced Hero Section */}
           <section className="text-center mb-16 animate-fade-in">
-            <div className="mb-8">
-              <h1 className="text-6xl md:text-7xl font-bold mb-6 gradient-text leading-tight">
-                Creador de Metodologías Prospectivas
-              </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-8">                                             x<span className="font-semibold text-primary">Análisis inteligente con IA</span> para generar secuencias metodológicas personalizadas 
-                y casos similares para tu estudio prospectivo
-              </p>
-              
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-                <Button size="lg" className="px-8 py-4 text-lg font-semibold shadow-elegant hover:shadow-glow transition-all duration-300" onClick={() => document.getElementById('methodology-section')?.scrollIntoView({
-                behavior: 'smooth'
-              })}>
-                  <Brain className="w-5 h-5 mr-2" />
-                  Crear Metodología
-                </Button>
-              </div>
-            </div>
+            
 
             {/* Stats Cards */}
             <div className="flex justify-center max-w-4xl mx-auto animate-slide-up">
