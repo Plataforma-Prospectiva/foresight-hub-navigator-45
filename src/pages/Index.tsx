@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { TechniqueProvider, useTechniques } from "@/context/TechniqueContext";
 import { StudyAnalyzer } from "@/components/StudyAnalyzer";
-
 const IndexContent = () => {
   const {
     techniques,
@@ -29,9 +28,7 @@ const IndexContent = () => {
 
   // Calculate statistics
   const totalTechniques = techniques.length;
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-secondary/20">
+  return <div className="min-h-screen bg-gradient-to-br from-background via-background to-secondary/20">
       <Header onIconChange={() => {}} onAddTool={() => {}} />
       
       <main className="relative">
@@ -39,11 +36,11 @@ const IndexContent = () => {
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-float"></div>
           <div className="absolute top-40 right-20 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl animate-float" style={{
-            animationDelay: '2s'
-          }}></div>
+          animationDelay: '2s'
+        }}></div>
           <div className="absolute bottom-40 left-1/3 w-80 h-80 bg-green-500/5 rounded-full blur-3xl animate-float" style={{
-            animationDelay: '4s'
-          }}></div>
+          animationDelay: '4s'
+        }}></div>
         </div>
 
         <div className="container mx-auto px-6 py-8 relative">
@@ -53,16 +50,15 @@ const IndexContent = () => {
               <h1 className="text-6xl md:text-7xl font-bold mb-6 gradient-text leading-tight">
                 Creador de Metodologías Prospectivas
               </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-8">
-                <span className="font-semibold text-primary">Análisis inteligente con IA</span> para generar secuencias metodológicas personalizadas 
+              <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-8">   Secuencias metodológicas personalizadas y casos similares para tu estudio prospectivo<span className="font-semibold text-primary">Análisis inteligente con IA</span> para generar secuencias metodológicas personalizadas 
                 y casos similares para tu estudio prospectivo
               </p>
               
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
                 <Button size="lg" className="px-8 py-4 text-lg font-semibold shadow-elegant hover:shadow-glow transition-all duration-300" onClick={() => document.getElementById('methodology-section')?.scrollIntoView({
-                  behavior: 'smooth'
-                })}>
+                behavior: 'smooth'
+              })}>
                   <Brain className="w-5 h-5 mr-2" />
                   Crear Metodología
                 </Button>
@@ -112,16 +108,11 @@ const IndexContent = () => {
           </div>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 const Index = () => {
-  return (
-    <TechniqueProvider>
+  return <TechniqueProvider>
       <IndexContent />
-    </TechniqueProvider>
-  );
+    </TechniqueProvider>;
 };
-
 export default Index;
