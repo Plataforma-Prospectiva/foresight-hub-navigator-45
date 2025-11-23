@@ -50,7 +50,7 @@ const IndexContent = () => {
               <h1 className="text-6xl md:text-7xl font-bold mb-6 gradient-text leading-tight">
                 Creador de Metodologías Prospectivas
               </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-8">   Secuencias metodológicas personalizadas y casos similares para tu estudio prospectivo<span className="font-semibold text-primary">Análisis inteligente con IA</span> para generar secuencias metodológicas personalizadas 
+              <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-8">               secuencias metodológicas personalizadas y casos similares para tu estudio prospectivo<span className="font-semibold text-primary">Análisis inteligente con IA</span> para generar secuencias metodológicas personalizadas 
                 y casos similares para tu estudio prospectivo
               </p>
               
