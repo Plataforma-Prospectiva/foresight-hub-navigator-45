@@ -8,7 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Brain, Target, Clock, Users, Zap, MapPin, Building, FileText, ArrowDown, BarChart3 } from "lucide-react";
+import { Brain, Target, Clock, Users, Zap, MapPin, Building, FileText, ArrowDown, BarChart3, Sparkles } from "lucide-react";
 import { useTechniques } from "@/context/TechniqueContext";
 import { StudyProfile } from "@/types/technique";
 import { TechniqueCard } from "./TechniqueCard";
@@ -85,6 +85,35 @@ export const StudyAnalyzer = () => {
         customResources: prev.availableResources.customResources.filter((_, i) => i !== index)
       }
     }));
+  };
+
+  const fillExampleData = () => {
+    setFormData({
+      title: "Plan Estratégico de Desarrollo Urbano Sostenible 2040",
+      description: "Estudio prospectivo integral para diseñar estrategias de desarrollo urbano sostenible, considerando movilidad, vivienda, espacios públicos y medio ambiente. Se busca anticipar escenarios futuros y construir consensos entre actores clave del territorio.",
+      country: "Chile",
+      stateLevel: "regional",
+      territoryName: "Región Metropolitana de Santiago",
+      scope: "public",
+      estimatedTime: "6 meses",
+      studyObjective: "Identificar escenarios futuros deseables y construir una hoja de ruta estratégica para el desarrollo urbano sostenible, con participación de actores públicos, privados y sociedad civil.",
+      timeHorizon: "2040 (15-20 años)",
+      objectiveComplexity: "high",
+      availableResources: {
+        budget: "extensive",
+        expertAccess: true,
+        fieldPersonnel: true,
+        physicalInfrastructure: true,
+        currentInformation: true,
+        historicalInformation: true,
+        surveyTools: true,
+        dataProcessingTools: true,
+        previousPlans: true,
+        institutionalFramework: true,
+        customResources: ["Plataforma digital de participación", "Equipo de comunicaciones"],
+      },
+      teamExperience: "intermediate",
+    });
   };
 
   const handleAnalyze = async () => {
@@ -333,23 +362,33 @@ export const StudyAnalyzer = () => {
             </div>
           </div>
 
-          <Button 
-            onClick={handleAnalyze} 
-            disabled={isAnalyzing || !formData.title || !formData.description || !formData.country}
-            className="w-full"
-          >
-            {isAnalyzing ? (
-              <div className="flex items-center gap-2">
-                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
-                Analizando con IA...
-              </div>
-            ) : (
-              <div className="flex items-center gap-2">
-                <Zap className="w-4 h-4" />
-                Analizar y Recomendar Técnicas
-              </div>
-            )}
-          </Button>
+          <div className="flex gap-2">
+            <Button 
+              onClick={fillExampleData}
+              variant="outline"
+              className="flex-shrink-0"
+            >
+              <Sparkles className="w-4 h-4 mr-2" />
+              Prellenar Ejemplo
+            </Button>
+            <Button 
+              onClick={handleAnalyze} 
+              disabled={isAnalyzing || !formData.title || !formData.description || !formData.country}
+              className="w-full"
+            >
+              {isAnalyzing ? (
+                <div className="flex items-center gap-2">
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                  Analizando con IA...
+                </div>
+              ) : (
+                <div className="flex items-center gap-2">
+                  <Zap className="w-4 h-4" />
+                  Analizar y Recomendar Técnicas
+                </div>
+              )}
+            </Button>
+          </div>
         </CardContent>
       </Card>
 

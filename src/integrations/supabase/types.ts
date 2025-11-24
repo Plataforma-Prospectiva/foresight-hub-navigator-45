@@ -7,255 +7,207 @@ export type Json =
   | Json[]
 
 export type Database = {
-  // Allows to automatically instanciate createClient with right options
+  // Allows to automatically instantiate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
-    PostgrestVersion: "12.2.3 (519615d)"
+    PostgrestVersion: "13.0.5"
   }
   public: {
     Tables: {
-      experts: {
+      access_logs: {
         Row: {
+          action_type: string
+          additional_data: Json | null
+          browser: string
+          city: string | null
+          country: string | null
           created_at: string
-          education_level: string | null
-          email: string
-          expertise_area: string | null
+          device_type: string
           id: string
-          institution: string | null
-          name: string
-          notes: string | null
-          phone: string | null
-          status: string
-          updated_at: string
-          user_id: string
-          years_experience: number | null
+          ip_address: string
+          language: string
+          os: string
+          page_url: string
+          referer: string | null
+          region: string | null
+          screen_resolution: string | null
+          session_id: string
+          timezone: string
+          user_agent: string
+          user_id: string | null
         }
         Insert: {
+          action_type: string
+          additional_data?: Json | null
+          browser: string
+          city?: string | null
+          country?: string | null
           created_at?: string
-          education_level?: string | null
-          email: string
-          expertise_area?: string | null
+          device_type: string
           id?: string
-          institution?: string | null
-          name: string
-          notes?: string | null
-          phone?: string | null
-          status?: string
-          updated_at?: string
-          user_id: string
-          years_experience?: number | null
+          ip_address: string
+          language: string
+          os: string
+          page_url: string
+          referer?: string | null
+          region?: string | null
+          screen_resolution?: string | null
+          session_id: string
+          timezone?: string
+          user_agent: string
+          user_id?: string | null
         }
         Update: {
+          action_type?: string
+          additional_data?: Json | null
+          browser?: string
+          city?: string | null
+          country?: string | null
           created_at?: string
-          education_level?: string | null
-          email?: string
-          expertise_area?: string | null
+          device_type?: string
           id?: string
-          institution?: string | null
-          name?: string
-          notes?: string | null
-          phone?: string | null
-          status?: string
-          updated_at?: string
-          user_id?: string
-          years_experience?: number | null
+          ip_address?: string
+          language?: string
+          os?: string
+          page_url?: string
+          referer?: string | null
+          region?: string | null
+          screen_resolution?: string | null
+          session_id?: string
+          timezone?: string
+          user_agent?: string
+          user_id?: string | null
         }
         Relationships: []
       }
       profiles: {
         Row: {
+          avatar_url: string | null
           created_at: string
           display_name: string | null
-          email: string | null
           id: string
           updated_at: string
-          user_id: string
         }
         Insert: {
+          avatar_url?: string | null
           created_at?: string
           display_name?: string | null
-          email?: string | null
-          id?: string
+          id: string
           updated_at?: string
-          user_id: string
         }
         Update: {
+          avatar_url?: string | null
           created_at?: string
           display_name?: string | null
-          email?: string | null
           id?: string
           updated_at?: string
-          user_id?: string
         }
         Relationships: []
       }
-      studies: {
+      techniques: {
         Row: {
-          category: string | null
+          advantages: string | null
+          applications: string | null
+          category: string
+          complexity: number
           created_at: string
-          description_en: string | null
-          description_es: string | null
+          description: string | null
+          difficulty_level: string | null
+          duration_estimate: string | null
+          examples: string | null
+          icon_name: string | null
           id: string
-          rounds_data: Json | null
-          settings: Json | null
-          status: string
-          title_en: string
-          title_es: string
-          type: string
+          is_active: boolean
+          language: string
+          limitations: string | null
+          methodology: string | null
+          name: string
+          objectives: string | null
+          participants_max: number | null
+          participants_min: number | null
+          recommended_for: string | null
+          required_resources: string | null
+          technique_id: string
+          technique_references: string | null
+          time_horizon: string | null
           updated_at: string
-          user_id: string
         }
         Insert: {
-          category?: string | null
+          advantages?: string | null
+          applications?: string | null
+          category: string
+          complexity: number
           created_at?: string
-          description_en?: string | null
-          description_es?: string | null
+          description?: string | null
+          difficulty_level?: string | null
+          duration_estimate?: string | null
+          examples?: string | null
+          icon_name?: string | null
           id?: string
-          rounds_data?: Json | null
-          settings?: Json | null
-          status?: string
-          title_en: string
-          title_es: string
-          type: string
+          is_active?: boolean
+          language?: string
+          limitations?: string | null
+          methodology?: string | null
+          name: string
+          objectives?: string | null
+          participants_max?: number | null
+          participants_min?: number | null
+          recommended_for?: string | null
+          required_resources?: string | null
+          technique_id: string
+          technique_references?: string | null
+          time_horizon?: string | null
           updated_at?: string
-          user_id: string
         }
         Update: {
-          category?: string | null
+          advantages?: string | null
+          applications?: string | null
+          category?: string
+          complexity?: number
           created_at?: string
-          description_en?: string | null
-          description_es?: string | null
+          description?: string | null
+          difficulty_level?: string | null
+          duration_estimate?: string | null
+          examples?: string | null
+          icon_name?: string | null
           id?: string
-          rounds_data?: Json | null
-          settings?: Json | null
-          status?: string
-          title_en?: string
-          title_es?: string
-          type?: string
+          is_active?: boolean
+          language?: string
+          limitations?: string | null
+          methodology?: string | null
+          name?: string
+          objectives?: string | null
+          participants_max?: number | null
+          participants_min?: number | null
+          recommended_for?: string | null
+          required_resources?: string | null
+          technique_id?: string
+          technique_references?: string | null
+          time_horizon?: string | null
           updated_at?: string
-          user_id?: string
         }
         Relationships: []
-      }
-      study_participants: {
-        Row: {
-          created_at: string
-          expert_id: string
-          id: string
-          invitation_sent_at: string | null
-          last_response_at: string | null
-          response_status: string
-          rounds_completed: number | null
-          study_id: string
-          updated_at: string
-        }
-        Insert: {
-          created_at?: string
-          expert_id: string
-          id?: string
-          invitation_sent_at?: string | null
-          last_response_at?: string | null
-          response_status?: string
-          rounds_completed?: number | null
-          study_id: string
-          updated_at?: string
-        }
-        Update: {
-          created_at?: string
-          expert_id?: string
-          id?: string
-          invitation_sent_at?: string | null
-          last_response_at?: string | null
-          response_status?: string
-          rounds_completed?: number | null
-          study_id?: string
-          updated_at?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "study_participants_expert_id_fkey"
-            columns: ["expert_id"]
-            isOneToOne: false
-            referencedRelation: "experts"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "study_participants_study_id_fkey"
-            columns: ["study_id"]
-            isOneToOne: false
-            referencedRelation: "studies"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      study_responses: {
-        Row: {
-          created_at: string
-          expert_id: string
-          id: string
-          responses: Json
-          round_number: number
-          study_id: string
-          submitted_at: string | null
-          updated_at: string
-        }
-        Insert: {
-          created_at?: string
-          expert_id: string
-          id?: string
-          responses?: Json
-          round_number?: number
-          study_id: string
-          submitted_at?: string | null
-          updated_at?: string
-        }
-        Update: {
-          created_at?: string
-          expert_id?: string
-          id?: string
-          responses?: Json
-          round_number?: number
-          study_id?: string
-          submitted_at?: string | null
-          updated_at?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "study_responses_expert_id_fkey"
-            columns: ["expert_id"]
-            isOneToOne: false
-            referencedRelation: "experts"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "study_responses_study_id_fkey"
-            columns: ["study_id"]
-            isOneToOne: false
-            referencedRelation: "studies"
-            referencedColumns: ["id"]
-          },
-        ]
       }
       user_roles: {
         Row: {
-          created_at: string
+          assigned_at: string
+          assigned_by: string | null
           id: string
           role: Database["public"]["Enums"]["app_role"]
-          updated_at: string
           user_id: string
         }
         Insert: {
-          created_at?: string
+          assigned_at?: string
+          assigned_by?: string | null
           id?: string
           role: Database["public"]["Enums"]["app_role"]
-          updated_at?: string
           user_id: string
         }
         Update: {
-          created_at?: string
+          assigned_at?: string
+          assigned_by?: string | null
           id?: string
           role?: Database["public"]["Enums"]["app_role"]
-          updated_at?: string
           user_id?: string
         }
         Relationships: []
@@ -265,20 +217,17 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      get_user_roles: {
-        Args: { _user_id: string }
-        Returns: Database["public"]["Enums"]["app_role"][]
-      }
       has_role: {
         Args: {
-          _user_id: string
           _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
         }
         Returns: boolean
       }
+      setup_initial_admin: { Args: { admin_email: string }; Returns: undefined }
     }
     Enums: {
-      app_role: "admin" | "manager" | "expert"
+      app_role: "admin" | "moderator" | "user" | "beta"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -406,7 +355,7 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
-      app_role: ["admin", "manager", "expert"],
+      app_role: ["admin", "moderator", "user", "beta"],
     },
   },
 } as const
