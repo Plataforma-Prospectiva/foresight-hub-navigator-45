@@ -65,8 +65,7 @@ const Index = () => {
                     Plataforma Prospectiva
                   </h1>
                   <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-8">
-                    <span className="font-semibold text-primary">Toolkit de herramientas prospectivas</span> para análisis prospectivo, 
-                    desarrollo de escenarios y toma de decisiones estratégicas
+                     Metodologias
                   </p>
                   
                   {/* CTA Buttons */}
