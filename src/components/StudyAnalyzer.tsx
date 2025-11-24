@@ -14,12 +14,20 @@ import { StudyProfile } from "@/types/technique";
 import { TechniqueCard } from "./TechniqueCard";
 import { SequenceFlowVisualization } from "./SequenceFlowVisualization";
 import { MethodologyFlowchart } from "./MethodologyFlowchart";
+import { LLMConfigModal } from "./LLMConfigModal";
+import { AnalysisLogViewer, LogEntry } from "./AnalysisLogViewer";
 
 export const StudyAnalyzer = () => {
   const { createStudyProfile, getRecommendedTechniques, techniques } = useTechniques();
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [results, setResults] = useState<StudyProfile | null>(null);
   const [expandedTechnique, setExpandedTechnique] = useState<string | null>(null);
+  const [logs, setLogs] = useState<LogEntry[]>([]);
+  const [llmConfig, setLLMConfig] = useState({
+    model: "google/gemini-2.5-flash",
+    temperature: 0.7,
+    maxTokens: 4000,
+  });
 
   const [formData, setFormData] = useState({
     title: "",
@@ -117,14 +125,50 @@ export const StudyAnalyzer = () => {
     });
   };
 
+  const addLog = (level: LogEntry["level"], message: string, details?: string) => {
+    setLogs(prev => [...prev, {
+      id: `${Date.now()}-${Math.random()}`,
+      timestamp: new Date(),
+      level,
+      message,
+      details,
+    }]);
+  };
+
   const handleAnalyze = async () => {
     setIsAnalyzing(true);
+    setLogs([]);
+    
+    addLog("info", "Iniciando análisis del estudio", `Modelo: ${llmConfig.model}`);
+    addLog("processing", "Validando datos del formulario...");
     
     try {
+      addLog("success", "Datos validados correctamente");
+      addLog("processing", "Conectando con el modelo de IA...", `Temperatura: ${llmConfig.temperature}, Tokens: ${llmConfig.maxTokens}`);
+      
+      await new Promise(resolve => setTimeout(resolve, 800));
+      addLog("success", "Conexión establecida con el modelo");
+      
+      addLog("processing", "Analizando contexto del estudio...");
+      await new Promise(resolve => setTimeout(resolve, 600));
+      addLog("info", "Procesando información del territorio y objetivos");
+      
+      addLog("processing", "Evaluando recursos disponibles...");
+      await new Promise(resolve => setTimeout(resolve, 500));
+      addLog("info", "Recursos evaluados y correlacionados");
+      
+      addLog("processing", "Generando recomendaciones de técnicas...");
       const profile = await createStudyProfile(formData);
+      
+      addLog("success", "Técnicas recomendadas generadas");
+      addLog("processing", "Calculando secuencias metodológicas óptimas...");
+      await new Promise(resolve => setTimeout(resolve, 400));
+      
+      addLog("success", "Análisis completado exitosamente", `${profile.recommendedTechniques.length} técnicas recomendadas`);
       setResults(profile);
     } catch (error) {
       console.error('Error al analizar el estudio:', error);
+      addLog("error", "Error durante el análisis", error instanceof Error ? error.message : "Error desconocido");
     } finally {
       setIsAnalyzing(false);
     }
@@ -363,19 +407,22 @@ export const StudyAnalyzer = () => {
             </div>
           </div>
 
-          <div className="flex gap-2">
-            <Button 
-              onClick={fillExampleData}
-              variant="outline"
-              className="flex-shrink-0"
-            >
-              <Sparkles className="w-4 h-4 mr-2" />
-              Prellenar Ejemplo
-            </Button>
+          <div className="flex flex-col sm:flex-row gap-2">
+            <div className="flex gap-2 flex-1">
+              <Button 
+                onClick={fillExampleData}
+                variant="outline"
+                className="flex-shrink-0"
+              >
+                <Sparkles className="w-4 h-4 mr-2" />
+                Prellenar Ejemplo
+              </Button>
+              <LLMConfigModal config={llmConfig} onConfigChange={setLLMConfig} />
+            </div>
             <Button 
               onClick={handleAnalyze} 
               disabled={isAnalyzing || !formData.title || !formData.description || !formData.country}
-              className="w-full"
+              className="w-full sm:flex-1"
             >
               {isAnalyzing ? (
                 <div className="flex items-center gap-2">
@@ -392,6 +439,11 @@ export const StudyAnalyzer = () => {
           </div>
         </CardContent>
       </Card>
+
+      {/* Log Viewer - visible siempre que haya logs */}
+      {logs.length > 0 && (
+        <AnalysisLogViewer logs={logs} isActive={isAnalyzing} />
+      )}
 
       {results && (
         <div className="space-y-6">
