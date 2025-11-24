@@ -64,9 +64,7 @@ const Index = () => {
                   <h1 className="text-6xl md:text-7xl font-bold mb-6 gradient-text leading-tight">
                     Plataforma Prospectiva
                   </h1>
-                  <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-8">
-                     Metodologias
-                  </p>
+                  
                   
                   {/* CTA Buttons */}
                   <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
