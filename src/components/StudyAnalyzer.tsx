@@ -13,6 +13,7 @@ import { useTechniques } from "@/context/TechniqueContext";
 import { StudyProfile } from "@/types/technique";
 import { TechniqueCard } from "./TechniqueCard";
 import { SequenceFlowVisualization } from "./SequenceFlowVisualization";
+import { MethodologyFlowchart } from "./MethodologyFlowchart";
 
 export const StudyAnalyzer = () => {
   const { createStudyProfile, getRecommendedTechniques, techniques } = useTechniques();
@@ -509,6 +510,25 @@ export const StudyAnalyzer = () => {
 
           {/* Visualización de secuencias */}
           <SequenceFlowVisualization results={results} techniques={techniques} />
+
+          {/* Diagrama de flujo de la metodología */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <FileText className="w-5 h-5 text-purple-600" />
+                Diagrama de Flujo Metodológico
+              </CardTitle>
+              <CardDescription>
+                Visualización interactiva del flujo de trabajo recomendado
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <MethodologyFlowchart
+                techniques={techniques}
+                recommendations={results.recommendedTechniques}
+              />
+            </CardContent>
+          </Card>
 
           {/* Técnicas recomendadas con justificaciones */}
           <Card>
