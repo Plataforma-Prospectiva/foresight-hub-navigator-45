@@ -1,13 +1,15 @@
 
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import { Technique, StudyProfile, ResourceOption } from '@/types/technique';
-import { getTechniques } from '@/data/techniques';
+import { useTechniquesFromDB } from '@/hooks/useTechniquesFromDB';
 import { useLanguage } from './LanguageContext';
 
 interface TechniqueContextType {
   techniques: Technique[];
   studyProfiles: StudyProfile[];
   resourceOptions: ResourceOption[];
+  isLoading: boolean;
+  isFromDatabase: boolean;
   addTechnique: (technique: Omit<Technique, 'id'>) => void;
   updateTechnique: (id: string, updates: Partial<Technique>) => void;
   deleteTechnique: (id: string) => void;
@@ -16,6 +18,7 @@ interface TechniqueContextType {
   addResourceOption: (resource: Omit<ResourceOption, 'id'>) => void;
   updateResourceOption: (id: string, updates: Partial<ResourceOption>) => void;
   deleteResourceOption: (id: string) => void;
+  refetchTechniques: () => void;
 }
 
 const defaultResourceOptions: ResourceOption[] = [
@@ -37,14 +40,21 @@ const TechniqueContext = createContext<TechniqueContextType | null>(null);
 
 export const TechniqueProvider = ({ children }: { children: ReactNode }) => {
   const { language } = useLanguage();
-  const [techniques, setTechniques] = useState<Technique[]>(getTechniques(language));
+  const { 
+    techniques: dbTechniques, 
+    isLoading, 
+    isFromDatabase, 
+    refetch 
+  } = useTechniquesFromDB(language as 'es' | 'en');
+  
+  const [techniques, setTechniques] = useState<Technique[]>([]);
   const [studyProfiles, setStudyProfiles] = useState<StudyProfile[]>([]);
   const [resourceOptions, setResourceOptions] = useState<ResourceOption[]>(defaultResourceOptions);
 
-  // Update techniques when language changes
-  React.useEffect(() => {
-    setTechniques(getTechniques(language));
-  }, [language]);
+  // Sync techniques from database hook
+  useEffect(() => {
+    setTechniques(dbTechniques);
+  }, [dbTechniques]);
 
   const addTechnique = (techniqueData: Omit<Technique, 'id'>) => {
     const newTechnique: Technique = {
@@ -187,6 +197,8 @@ export const TechniqueProvider = ({ children }: { children: ReactNode }) => {
       techniques,
       studyProfiles,
       resourceOptions,
+      isLoading,
+      isFromDatabase,
       addTechnique,
       updateTechnique,
       deleteTechnique,
@@ -195,6 +207,7 @@ export const TechniqueProvider = ({ children }: { children: ReactNode }) => {
       addResourceOption,
       updateResourceOption,
       deleteResourceOption,
+      refetchTechniques: refetch,
     }}>
       {children}
     </TechniqueContext.Provider>

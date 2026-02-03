@@ -5,15 +5,22 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Search, Filter, BookOpen, Brain, Plus, Settings, BookMarked, GitBranch } from "lucide-react";
+import { Search, Filter, BookOpen, Brain, Plus, Settings, BookMarked, GitBranch, Database, Loader2, Cloud, HardDrive } from "lucide-react";
 import { useTechniques } from "@/context/TechniqueContext";
 import { TechniqueCard } from "./TechniqueCard";
 import { StudyAnalyzer } from "./StudyAnalyzer";
 import { ComplexityPyramid } from "./ComplexityPyramid";
+import { DatabaseMigrationPanel } from "./DatabaseMigrationPanel";
+import { useAuth } from "@/context/AuthContext";
+
 export const TechniquesManager = () => {
   const {
-    techniques
+    techniques,
+    isLoading,
+    isFromDatabase
   } = useTechniques();
+  const { user } = useAuth();
+  const isAdmin = user?.role === 'admin';
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedComplexity, setSelectedComplexity] = useState("all");
@@ -50,11 +57,33 @@ export const TechniquesManager = () => {
     }
   };
   return <div className="space-y-6">
-      {/* Header con estadísticas */}
-      
+      {/* Data Source Indicator */}
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          {isLoading ? (
+            <Badge variant="outline" className="flex items-center gap-1">
+              <Loader2 className="h-3 w-3 animate-spin" />
+              Cargando técnicas...
+            </Badge>
+          ) : isFromDatabase ? (
+            <Badge variant="default" className="flex items-center gap-1 bg-green-600">
+              <Cloud className="h-3 w-3" />
+              Datos desde base de datos
+            </Badge>
+          ) : (
+            <Badge variant="secondary" className="flex items-center gap-1">
+              <HardDrive className="h-3 w-3" />
+              Datos desde archivos locales
+            </Badge>
+          )}
+          <span className="text-sm text-muted-foreground">
+            {techniques.length} técnicas disponibles
+          </span>
+        </div>
+      </div>
 
       <Tabs defaultValue="browse" className="w-full">
-        <TabsList className="grid w-full grid-cols-4">
+        <TabsList className="grid w-full grid-cols-5">
           <TabsTrigger value="browse" className="flex items-center gap-2">
             <BookOpen className="w-4 h-4" />
             Explorar Técnicas
@@ -71,6 +100,12 @@ export const TechniquesManager = () => {
             <BookMarked className="w-4 h-4" />
             Fuentes Bibliográficas
           </TabsTrigger>
+          {isAdmin && (
+            <TabsTrigger value="database" className="flex items-center gap-2">
+              <Database className="w-4 h-4" />
+              Base de Datos
+            </TabsTrigger>
+          )}
         </TabsList>
 
         <TabsContent value="browse" className="space-y-6">
@@ -387,6 +422,13 @@ export const TechniquesManager = () => {
             </CardContent>
           </Card>
         </TabsContent>
+
+        {/* Database Management Tab - Admin Only */}
+        {isAdmin && (
+          <TabsContent value="database" className="space-y-6">
+            <DatabaseMigrationPanel />
+          </TabsContent>
+        )}
       </Tabs>
     </div>;
 };
