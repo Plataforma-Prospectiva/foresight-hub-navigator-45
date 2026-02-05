@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { HelpCircle, Brain, Languages } from "lucide-react";
 import { DocumentationModal } from "@/components/DocumentationModal";
 import { SettingsModal } from "@/components/SettingsModal";
+import { AuthModal } from "@/components/AuthModal";
 import { useLanguage } from "@/context/LanguageContext";
 
 interface HeaderProps {
@@ -29,7 +30,7 @@ export const Header = ({ onIconChange, onAddTool }: HeaderProps) => {
             </div>
           </div>
 
-          <div className="flex items-center space-x-4">
+           <div className="flex items-center space-x-4">
             <Button
               variant="ghost"
               size="sm"
@@ -47,6 +48,8 @@ export const Header = ({ onIconChange, onAddTool }: HeaderProps) => {
             >
               <HelpCircle className="w-4 h-4" />
             </Button>
+
+            <AuthModal />
 
             <div data-settings-button>
               <SettingsModal onIconChange={onIconChange} onAddTool={onAddTool} />
