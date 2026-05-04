@@ -11,6 +11,7 @@ import { TechniqueCard } from "./TechniqueCard";
 import { StudyAnalyzer } from "./StudyAnalyzer";
 import { ComplexityPyramid } from "./ComplexityPyramid";
 import { DatabaseMigrationPanel } from "./DatabaseMigrationPanel";
+import { TechniquesTable } from "./TechniquesTable";
 import { useAuth } from "@/context/AuthContext";
 
 export const TechniquesManager = () => {
@@ -427,6 +428,7 @@ export const TechniquesManager = () => {
         {isAdmin && (
           <TabsContent value="database" className="space-y-6">
             <DatabaseMigrationPanel />
+            <TechniquesTable />
           </TabsContent>
         )}
       </Tabs>
