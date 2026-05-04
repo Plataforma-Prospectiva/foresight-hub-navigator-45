@@ -428,6 +428,7 @@ export const TechniquesManager = () => {
         {isAdmin && (
           <TabsContent value="database" className="space-y-6">
             <DatabaseMigrationPanel />
+            <TechniquesTable />
           </TabsContent>
         )}
       </Tabs>
