@@ -101,7 +101,7 @@ export const techniquesES: Technique[] = [
     ]
   },
   {
-    id: 'scenario-planning',
+    id: 'scenario-building',
     name: 'Planificación de Escenarios',
     icon: Map,
     complexity: 4,
@@ -757,7 +757,7 @@ export const techniquesES: Technique[] = [
     ]
   },
   {
-    id: 'analysis-competing-hypotheses',
+    id: 'competing-hypotheses',
     name: 'Análisis de Hipótesis Competitivas (ACH)',
     icon: Scale,
     complexity: 3,
