@@ -15,12 +15,13 @@ export const AuthModal = () => {
   const [name, setName] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
 
+    let success = false;
     if (isLogin) {
-      const success = login(email, password);
+      success = await login(email, password);
       if (!success) {
         setError("Credenciales incorrectas");
       }
@@ -29,13 +30,13 @@ export const AuthModal = () => {
         setError("El nombre es requerido");
         return;
       }
-      const success = register(name, email, password);
+      success = await register(name, email, password);
       if (!success) {
-        setError("El email ya está registrado");
+        setError("No se pudo registrar el usuario");
       }
     }
 
-    if (!error) {
+    if (success) {
       setEmail("");
       setPassword("");
       setName("");
@@ -43,7 +44,7 @@ export const AuthModal = () => {
   };
 
   const handleLogout = () => {
-    logout();
+    void logout();
   };
 
   if (user) {
@@ -139,9 +140,7 @@ export const AuthModal = () => {
 
           {isLogin && (
             <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded text-sm">
-              <strong>Usuario Admin:</strong><br />
-              Email: admin@plataforma.com<br />
-              Contraseña: admin123
+              Inicia sesión con tu cuenta administradora registrada para sincronizar la base de datos.
             </div>
           )}
         </form>
