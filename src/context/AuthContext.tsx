@@ -1,5 +1,6 @@
 
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import { supabase } from '@/integrations/supabase/client';
 
 interface User {
   id: string;
@@ -11,9 +12,9 @@ interface User {
 interface AuthContextType {
   user: User | null;
   users: User[];
-  login: (email: string, password: string) => boolean;
-  register: (name: string, email: string, password: string) => boolean;
-  logout: () => void;
+  login: (email: string, password: string) => Promise<boolean>;
+  register: (name: string, email: string, password: string) => Promise<boolean>;
+  logout: () => Promise<void>;
   addUser: (user: Omit<User, 'id'>) => void;
   updateUser: (id: string, updates: Partial<User>) => void;
   deleteUser: (id: string) => void;
@@ -21,57 +22,80 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
-// Usuarios por defecto
-const defaultUsers: User[] = [
-  {
-    id: '1',
-    name: 'Administrador',
-    email: 'admin@plataforma.com',
-    role: 'admin'
-  }
-];
-
-// Contraseñas simuladas (en un app real estarían hasheadas)
-const userPasswords: Record<string, string> = {
-  'admin@plataforma.com': 'admin123'
-};
-
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
-  const [users, setUsers] = useState<User[]>(defaultUsers);
+  const [users, setUsers] = useState<User[]>([]);
 
-  const login = (email: string, password: string): boolean => {
-    const foundUser = users.find(u => u.email === email);
-    if (foundUser && userPasswords[email] === password) {
-      setUser(foundUser);
-      console.log('Sesión iniciada exitosamente:', foundUser);
-      return true;
-    }
-    console.log('Credenciales incorrectas');
-    return false;
+  const loadUser = async (id: string, email?: string | null) => {
+    const [{ data: profile }, { data: roles }] = await Promise.all([
+      supabase.from('profiles').select('display_name').eq('id', id).maybeSingle(),
+      supabase.from('user_roles').select('role').eq('user_id', id),
+    ]);
+
+    const role = roles?.some(item => item.role === 'admin') ? 'admin' : 'user';
+    const resolvedUser: User = {
+      id,
+      email: email || '',
+      name: profile?.display_name || email?.split('@')[0] || 'Usuario',
+      role,
+    };
+
+    setUser(resolvedUser);
+    setUsers(prev => prev.some(item => item.id === id) ? prev.map(item => item.id === id ? resolvedUser : item) : [resolvedUser, ...prev]);
+    return resolvedUser;
   };
 
-  const register = (name: string, email: string, password: string): boolean => {
-    if (users.find(u => u.email === email)) {
-      console.log('El email ya está registrado');
+  useEffect(() => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session?.user) {
+        void loadUser(session.user.id, session.user.email);
+      } else {
+        setUser(null);
+      }
+    });
+
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session?.user) {
+        void loadUser(session.user.id, session.user.email);
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const login = async (email: string, password: string): Promise<boolean> => {
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+    if (error || !data.user) {
+      console.log('Credenciales incorrectas', error?.message);
       return false;
     }
 
-    const newUser: User = {
-      id: Date.now().toString(),
-      name,
-      email,
-      role: 'user'
-    };
-
-    setUsers(prev => [...prev, newUser]);
-    userPasswords[email] = password;
-    setUser(newUser);
-    console.log('Usuario registrado exitosamente:', newUser);
+    await loadUser(data.user.id, data.user.email);
+    console.log('Sesión iniciada exitosamente:', data.user.email);
     return true;
   };
 
-  const logout = () => {
+  const register = async (name: string, email: string, password: string): Promise<boolean> => {
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: { display_name: name },
+        emailRedirectTo: window.location.origin,
+      },
+    });
+
+    if (error) {
+      console.log('Error registrando usuario:', error.message);
+      return false;
+    }
+
+    if (data.user) await loadUser(data.user.id, data.user.email);
+    return true;
+  };
+
+  const logout = async () => {
+    await supabase.auth.signOut();
     setUser(null);
     console.log('Sesión cerrada');
   };
