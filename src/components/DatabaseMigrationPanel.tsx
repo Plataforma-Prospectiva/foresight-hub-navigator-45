@@ -9,6 +9,7 @@ import { getTechniques } from '@/data/techniques';
 import { mapTechniqueToDatabase } from '@/hooks/useTechniquesFromDB';
 import { Database, Upload, Check, AlertCircle, Loader2, RefreshCw } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { useAuth } from '@/context/AuthContext';
 
 interface MigrationLog {
   timestamp: Date;
@@ -22,6 +23,7 @@ export const DatabaseMigrationPanel: React.FC = () => {
   const [logs, setLogs] = useState<MigrationLog[]>([]);
   const [dbStats, setDbStats] = useState<{ es: number; en: number } | null>(null);
   const { toast } = useToast();
+  const { user } = useAuth();
 
   const addLog = (level: MigrationLog['level'], message: string) => {
     setLogs(prev => [...prev, { timestamp: new Date(), level, message }]);
@@ -55,6 +57,16 @@ export const DatabaseMigrationPanel: React.FC = () => {
   }, []);
 
   const runMigration = async () => {
+    if (user?.role !== 'admin') {
+      addLog('error', 'Debe iniciar sesión con una cuenta administradora real antes de migrar.');
+      toast({
+        title: "Sesión administradora requerida",
+        description: "Inicie sesión con su cuenta administradora registrada en la nube.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsRunning(true);
     setProgress(0);
     setLogs([]);
@@ -71,22 +83,23 @@ export const DatabaseMigrationPanel: React.FC = () => {
       addLog('info', `Técnicas en inglés: ${techniquesEN.length}`);
       
       let processed = 0;
-
-      // Migrate Spanish techniques
-      addLog('info', 'Migrando técnicas en español...');
-      for (const technique of techniquesES) {
-        const dbData = mapTechniqueToDatabase(technique, 'es');
-        
-        const { error } = await supabase
-          .from('techniques')
-          .upsert(dbData, { onConflict: 'technique_id,language' });
+      const migrateTechnique = async (technique: ReturnType<typeof getTechniques>[number], language: 'es' | 'en') => {
+        const dbData = mapTechniqueToDatabase(technique, language);
+        const { error } = await supabase.functions.invoke('migrate-techniques', {
+          body: { techniques: [dbData] },
+        });
 
         if (error) {
           addLog('error', `Error migrando ${technique.name}: ${error.message}`);
         } else {
-          addLog('success', `✓ ${technique.name} (ES)`);
+          addLog('success', `✓ ${technique.name} (${language.toUpperCase()})`);
         }
-        
+      };
+
+      // Migrate Spanish techniques
+      addLog('info', 'Migrando técnicas en español...');
+      for (const technique of techniquesES) {
+        await migrateTechnique(technique, 'es');
         processed++;
         setProgress((processed / totalTechniques) * 100);
       }
@@ -94,18 +107,7 @@ export const DatabaseMigrationPanel: React.FC = () => {
       // Migrate English techniques
       addLog('info', 'Migrando técnicas en inglés...');
       for (const technique of techniquesEN) {
-        const dbData = mapTechniqueToDatabase(technique, 'en');
-        
-        const { error } = await supabase
-          .from('techniques')
-          .upsert(dbData, { onConflict: 'technique_id,language' });
-
-        if (error) {
-          addLog('error', `Error migrando ${technique.name}: ${error.message}`);
-        } else {
-          addLog('success', `✓ ${technique.name} (EN)`);
-        }
-        
+        await migrateTechnique(technique, 'en');
         processed++;
         setProgress((processed / totalTechniques) * 100);
       }
@@ -119,6 +121,7 @@ export const DatabaseMigrationPanel: React.FC = () => {
 
       // Refresh stats
       await checkDatabaseStatus();
+      window.dispatchEvent(new Event('techniques-db-updated'));
 
     } catch (error) {
       addLog('error', `Error crítico: ${error instanceof Error ? error.message : 'Unknown error'}`);
@@ -155,6 +158,7 @@ export const DatabaseMigrationPanel: React.FC = () => {
       });
 
       await checkDatabaseStatus();
+      window.dispatchEvent(new Event('techniques-db-updated'));
     } catch (error) {
       addLog('error', `Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
     } finally {
