@@ -83,22 +83,23 @@ export const DatabaseMigrationPanel: React.FC = () => {
       addLog('info', `Técnicas en inglés: ${techniquesEN.length}`);
       
       let processed = 0;
-
-      // Migrate Spanish techniques
-      addLog('info', 'Migrando técnicas en español...');
-      for (const technique of techniquesES) {
-        const dbData = mapTechniqueToDatabase(technique, 'es');
-        
-        const { error } = await supabase
-          .from('techniques')
-          .upsert(dbData, { onConflict: 'technique_id,language' });
+      const migrateTechnique = async (technique: ReturnType<typeof getTechniques>[number], language: 'es' | 'en') => {
+        const dbData = mapTechniqueToDatabase(technique, language);
+        const { error } = await supabase.functions.invoke('migrate-techniques', {
+          body: { techniques: [dbData] },
+        });
 
         if (error) {
           addLog('error', `Error migrando ${technique.name}: ${error.message}`);
         } else {
-          addLog('success', `✓ ${technique.name} (ES)`);
+          addLog('success', `✓ ${technique.name} (${language.toUpperCase()})`);
         }
-        
+      };
+
+      // Migrate Spanish techniques
+      addLog('info', 'Migrando técnicas en español...');
+      for (const technique of techniquesES) {
+        await migrateTechnique(technique, 'es');
         processed++;
         setProgress((processed / totalTechniques) * 100);
       }
@@ -106,18 +107,7 @@ export const DatabaseMigrationPanel: React.FC = () => {
       // Migrate English techniques
       addLog('info', 'Migrando técnicas en inglés...');
       for (const technique of techniquesEN) {
-        const dbData = mapTechniqueToDatabase(technique, 'en');
-        
-        const { error } = await supabase
-          .from('techniques')
-          .upsert(dbData, { onConflict: 'technique_id,language' });
-
-        if (error) {
-          addLog('error', `Error migrando ${technique.name}: ${error.message}`);
-        } else {
-          addLog('success', `✓ ${technique.name} (EN)`);
-        }
-        
+        await migrateTechnique(technique, 'en');
         processed++;
         setProgress((processed / totalTechniques) * 100);
       }
