@@ -41,6 +41,8 @@ export const TechniquesTable: React.FC = () => {
 
   useEffect(() => {
     fetchRows();
+    window.addEventListener('techniques-db-updated', fetchRows);
+    return () => window.removeEventListener('techniques-db-updated', fetchRows);
   }, []);
 
   const filtered = rows.filter(r => {
