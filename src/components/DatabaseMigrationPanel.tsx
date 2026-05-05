@@ -9,6 +9,7 @@ import { getTechniques } from '@/data/techniques';
 import { mapTechniqueToDatabase } from '@/hooks/useTechniquesFromDB';
 import { Database, Upload, Check, AlertCircle, Loader2, RefreshCw } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { useAuth } from '@/context/AuthContext';
 
 interface MigrationLog {
   timestamp: Date;
@@ -22,6 +23,7 @@ export const DatabaseMigrationPanel: React.FC = () => {
   const [logs, setLogs] = useState<MigrationLog[]>([]);
   const [dbStats, setDbStats] = useState<{ es: number; en: number } | null>(null);
   const { toast } = useToast();
+  const { user } = useAuth();
 
   const addLog = (level: MigrationLog['level'], message: string) => {
     setLogs(prev => [...prev, { timestamp: new Date(), level, message }]);
@@ -55,6 +57,16 @@ export const DatabaseMigrationPanel: React.FC = () => {
   }, []);
 
   const runMigration = async () => {
+    if (user?.role !== 'admin') {
+      addLog('error', 'Debe iniciar sesión con una cuenta administradora real antes de migrar.');
+      toast({
+        title: "Sesión administradora requerida",
+        description: "Inicie sesión con su cuenta administradora registrada en la nube.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsRunning(true);
     setProgress(0);
     setLogs([]);
@@ -119,6 +131,7 @@ export const DatabaseMigrationPanel: React.FC = () => {
 
       // Refresh stats
       await checkDatabaseStatus();
+      window.dispatchEvent(new Event('techniques-db-updated'));
 
     } catch (error) {
       addLog('error', `Error crítico: ${error instanceof Error ? error.message : 'Unknown error'}`);
@@ -155,6 +168,7 @@ export const DatabaseMigrationPanel: React.FC = () => {
       });
 
       await checkDatabaseStatus();
+      window.dispatchEvent(new Event('techniques-db-updated'));
     } catch (error) {
       addLog('error', `Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
     } finally {
