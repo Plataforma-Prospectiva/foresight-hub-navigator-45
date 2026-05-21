@@ -85,10 +85,14 @@ export const TechniquesManager = () => {
       </div>
 
       <Tabs defaultValue="browse" className="w-full">
-        <TabsList className="grid w-full grid-cols-5">
+        <TabsList className={`grid w-full ${isAdmin ? 'grid-cols-6' : 'grid-cols-5'}`}>
           <TabsTrigger value="browse" className="flex items-center gap-2">
             <BookOpen className="w-4 h-4" />
             Explorar Técnicas
+          </TabsTrigger>
+          <TabsTrigger value="cases" className="flex items-center gap-2">
+            <Briefcase className="w-4 h-4" />
+            Casos de Aplicación
           </TabsTrigger>
           <TabsTrigger value="analyze" className="flex items-center gap-2">
             <Brain className="w-4 h-4" />
