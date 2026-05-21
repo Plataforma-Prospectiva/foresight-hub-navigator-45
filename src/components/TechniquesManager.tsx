@@ -199,9 +199,14 @@ export const TechniquesManager = () => {
             </Card>}
         </TabsContent>
 
+        <TabsContent value="cases">
+          <ApplicationCasesPanel />
+        </TabsContent>
+
         <TabsContent value="analyze">
           <StudyAnalyzer />
         </TabsContent>
+
 
         <TabsContent value="sequences" className="space-y-6">
           <Card>
