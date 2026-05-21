@@ -80,6 +80,110 @@ export type Database = {
         }
         Relationships: []
       }
+      application_case_techniques: {
+        Row: {
+          case_id: string
+          combination_notes: string | null
+          created_at: string
+          id: string
+          sequence_order: number
+          technique_id: string
+        }
+        Insert: {
+          case_id: string
+          combination_notes?: string | null
+          created_at?: string
+          id?: string
+          sequence_order?: number
+          technique_id: string
+        }
+        Update: {
+          case_id?: string
+          combination_notes?: string | null
+          created_at?: string
+          id?: string
+          sequence_order?: number
+          technique_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "application_case_techniques_case_id_fkey"
+            columns: ["case_id"]
+            isOneToOne: false
+            referencedRelation: "application_cases"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      application_cases: {
+        Row: {
+          context: string | null
+          country: string | null
+          created_at: string
+          description: string | null
+          id: string
+          language: string
+          lessons_learned: string | null
+          methodology_summary: string | null
+          objective: string | null
+          organization: string | null
+          references_text: string | null
+          results: string | null
+          reviewed_at: string | null
+          reviewed_by: string | null
+          sector: string | null
+          status: Database["public"]["Enums"]["case_status"]
+          submitted_by: string | null
+          title: string
+          updated_at: string
+          year: number | null
+        }
+        Insert: {
+          context?: string | null
+          country?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          language?: string
+          lessons_learned?: string | null
+          methodology_summary?: string | null
+          objective?: string | null
+          organization?: string | null
+          references_text?: string | null
+          results?: string | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          sector?: string | null
+          status?: Database["public"]["Enums"]["case_status"]
+          submitted_by?: string | null
+          title: string
+          updated_at?: string
+          year?: number | null
+        }
+        Update: {
+          context?: string | null
+          country?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          language?: string
+          lessons_learned?: string | null
+          methodology_summary?: string | null
+          objective?: string | null
+          organization?: string | null
+          references_text?: string | null
+          results?: string | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          sector?: string | null
+          status?: Database["public"]["Enums"]["case_status"]
+          submitted_by?: string | null
+          title?: string
+          updated_at?: string
+          year?: number | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -228,6 +332,7 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "moderator" | "user" | "beta"
+      case_status: "pending" | "approved" | "rejected"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -356,6 +461,7 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "moderator", "user", "beta"],
+      case_status: ["pending", "approved", "rejected"],
     },
   },
 } as const

@@ -5,13 +5,14 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Search, Filter, BookOpen, Brain, Plus, Settings, BookMarked, GitBranch, Database, Loader2, Cloud, HardDrive } from "lucide-react";
+import { Search, Filter, BookOpen, Brain, Plus, Settings, BookMarked, GitBranch, Database, Loader2, Cloud, HardDrive, Briefcase } from "lucide-react";
 import { useTechniques } from "@/context/TechniqueContext";
 import { TechniqueCard } from "./TechniqueCard";
 import { StudyAnalyzer } from "./StudyAnalyzer";
 import { ComplexityPyramid } from "./ComplexityPyramid";
 import { DatabaseMigrationPanel } from "./DatabaseMigrationPanel";
 import { TechniquesTable } from "./TechniquesTable";
+import { ApplicationCasesPanel } from "./ApplicationCasesPanel";
 import { useAuth } from "@/context/AuthContext";
 
 export const TechniquesManager = () => {
@@ -84,10 +85,14 @@ export const TechniquesManager = () => {
       </div>
 
       <Tabs defaultValue="browse" className="w-full">
-        <TabsList className="grid w-full grid-cols-5">
+        <TabsList className={`grid w-full ${isAdmin ? 'grid-cols-6' : 'grid-cols-5'}`}>
           <TabsTrigger value="browse" className="flex items-center gap-2">
             <BookOpen className="w-4 h-4" />
             Explorar Técnicas
+          </TabsTrigger>
+          <TabsTrigger value="cases" className="flex items-center gap-2">
+            <Briefcase className="w-4 h-4" />
+            Casos de Aplicación
           </TabsTrigger>
           <TabsTrigger value="analyze" className="flex items-center gap-2">
             <Brain className="w-4 h-4" />
@@ -194,9 +199,14 @@ export const TechniquesManager = () => {
             </Card>}
         </TabsContent>
 
+        <TabsContent value="cases">
+          <ApplicationCasesPanel />
+        </TabsContent>
+
         <TabsContent value="analyze">
           <StudyAnalyzer />
         </TabsContent>
+
 
         <TabsContent value="sequences" className="space-y-6">
           <Card>
