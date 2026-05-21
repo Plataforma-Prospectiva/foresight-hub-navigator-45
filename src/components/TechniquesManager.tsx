@@ -5,13 +5,14 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Search, Filter, BookOpen, Brain, Plus, Settings, BookMarked, GitBranch, Database, Loader2, Cloud, HardDrive } from "lucide-react";
+import { Search, Filter, BookOpen, Brain, Plus, Settings, BookMarked, GitBranch, Database, Loader2, Cloud, HardDrive, Briefcase } from "lucide-react";
 import { useTechniques } from "@/context/TechniqueContext";
 import { TechniqueCard } from "./TechniqueCard";
 import { StudyAnalyzer } from "./StudyAnalyzer";
 import { ComplexityPyramid } from "./ComplexityPyramid";
 import { DatabaseMigrationPanel } from "./DatabaseMigrationPanel";
 import { TechniquesTable } from "./TechniquesTable";
+import { ApplicationCasesPanel } from "./ApplicationCasesPanel";
 import { useAuth } from "@/context/AuthContext";
 
 export const TechniquesManager = () => {
