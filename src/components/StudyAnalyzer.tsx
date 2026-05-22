@@ -16,6 +16,8 @@ import { SequenceFlowVisualization } from "./SequenceFlowVisualization";
 import { MethodologyFlowchart } from "./MethodologyFlowchart";
 import { LLMConfigModal } from "./LLMConfigModal";
 import { AnalysisLogViewer, LogEntry } from "./AnalysisLogViewer";
+import { LLMConsoleViewer, LLMCallTrace } from "./LLMConsoleViewer";
+import { supabase } from "@/integrations/supabase/client";
 
 export const StudyAnalyzer = () => {
   const { createStudyProfile, getRecommendedTechniques, techniques } = useTechniques();
@@ -23,6 +25,7 @@ export const StudyAnalyzer = () => {
   const [results, setResults] = useState<StudyProfile | null>(null);
   const [expandedTechnique, setExpandedTechnique] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
+  const [llmTraces, setLLMTraces] = useState<LLMCallTrace[]>([]);
   const [llmConfig, setLLMConfig] = useState({
     model: "google/gemini-2.5-flash",
     temperature: 0.7,
