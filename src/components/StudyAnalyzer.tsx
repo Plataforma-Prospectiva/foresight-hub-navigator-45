@@ -126,13 +126,19 @@ export const StudyAnalyzer = () => {
   };
 
   const addLog = (level: LogEntry["level"], message: string, details?: string) => {
-    setLogs(prev => [...prev, {
-      id: `${Date.now()}-${Math.random()}`,
-      timestamp: new Date(),
-      level,
-      message,
-      details,
-    }]);
+    setLogs(prev => {
+      // Cierra cualquier paso "processing" pendiente al agregar un nuevo log
+      const closed = prev.map(l =>
+        l.level === "processing" ? { ...l, level: "success" as const } : l
+      );
+      return [...closed, {
+        id: `${Date.now()}-${Math.random()}`,
+        timestamp: new Date(),
+        level,
+        message,
+        details,
+      }];
+    });
   };
 
   const handleAnalyze = async () => {
