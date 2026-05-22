@@ -16,6 +16,8 @@ import { SequenceFlowVisualization } from "./SequenceFlowVisualization";
 import { MethodologyFlowchart } from "./MethodologyFlowchart";
 import { LLMConfigModal } from "./LLMConfigModal";
 import { AnalysisLogViewer, LogEntry } from "./AnalysisLogViewer";
+import { LLMConsoleViewer, LLMCallTrace } from "./LLMConsoleViewer";
+import { supabase } from "@/integrations/supabase/client";
 
 export const StudyAnalyzer = () => {
   const { createStudyProfile, getRecommendedTechniques, techniques } = useTechniques();
@@ -23,6 +25,7 @@ export const StudyAnalyzer = () => {
   const [results, setResults] = useState<StudyProfile | null>(null);
   const [expandedTechnique, setExpandedTechnique] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
+  const [llmTraces, setLLMTraces] = useState<LLMCallTrace[]>([]);
   const [llmConfig, setLLMConfig] = useState({
     model: "google/gemini-2.5-flash",
     temperature: 0.7,
@@ -144,34 +147,86 @@ export const StudyAnalyzer = () => {
   const handleAnalyze = async () => {
     setIsAnalyzing(true);
     setLogs([]);
-    
+    setLLMTraces([]);
+
     addLog("info", "Iniciando análisis del estudio", `Modelo: ${llmConfig.model}`);
     addLog("processing", "Validando datos del formulario...");
-    
+
+    const traceId = `${Date.now()}`;
+    const endpoint = "/functions/v1/analyze-study → ai.gateway.lovable.dev";
+    const techniquesCatalog = techniques.map(t => ({
+      id: t.id,
+      name: t.name,
+      category: t.category,
+      complexity: t.complexity,
+    }));
+    const requestPayload = {
+      profile: formData,
+      techniques: techniquesCatalog,
+      model: llmConfig.model,
+      temperature: llmConfig.temperature,
+      maxTokens: llmConfig.maxTokens,
+    };
+
+    setLLMTraces(prev => [...prev, {
+      id: traceId,
+      timestamp: new Date(),
+      endpoint,
+      model: llmConfig.model,
+      status: "pending",
+      request: requestPayload,
+    }]);
+
     try {
       addLog("success", "Datos validados correctamente");
-      addLog("processing", "Conectando con el modelo de IA...", `Temperatura: ${llmConfig.temperature}, Tokens: ${llmConfig.maxTokens}`);
-      
-      await new Promise(resolve => setTimeout(resolve, 800));
-      addLog("success", "Conexión establecida con el modelo");
-      
-      addLog("processing", "Analizando contexto del estudio...");
-      await new Promise(resolve => setTimeout(resolve, 600));
-      addLog("info", "Procesando información del territorio y objetivos");
-      
-      addLog("processing", "Evaluando recursos disponibles...");
-      await new Promise(resolve => setTimeout(resolve, 500));
-      addLog("info", "Recursos evaluados y correlacionados");
-      
-      addLog("processing", "Generando recomendaciones de técnicas...");
+      addLog("processing", "Invocando edge function analyze-study...", `${techniquesCatalog.length} técnicas en catálogo`);
+
+      const started = Date.now();
+      const { data, error } = await supabase.functions.invoke("analyze-study", {
+        body: requestPayload,
+      });
+      const elapsed = Date.now() - started;
+
+      if (error) {
+        setLLMTraces(prev => prev.map(t => t.id === traceId ? {
+          ...t, status: "error", elapsedMs: elapsed,
+          error: error.message, response: (error as any).context ?? null,
+        } : t));
+        addLog("error", "Error al invocar la edge function", error.message);
+        throw error;
+      }
+
+      const recs = Array.isArray(data?.recommendations) ? data.recommendations : [];
+      setLLMTraces(prev => prev.map(t => t.id === traceId ? {
+        ...t,
+        status: data?.error ? "error" : "success",
+        httpStatus: data?.error ? (data.status ?? 500) : 200,
+        elapsedMs: data?.elapsedMs ?? elapsed,
+        request: data?.request ?? t.request,
+        response: data?.rawResponse ?? data,
+        usage: data?.usage ?? null,
+        error: data?.error,
+      } : t));
+
+      if (data?.error) {
+        addLog("error", "El modelo devolvió un error", data.error);
+        throw new Error(data.error);
+      }
+
+      addLog("success", `Modelo respondió en ${data?.elapsedMs ?? elapsed} ms`,
+        `${recs.length} técnicas recomendadas por el LLM`);
+
+      addLog("processing", "Componiendo perfil final del estudio...");
       const profile = await createStudyProfile(formData);
-      
-      addLog("success", "Técnicas recomendadas generadas");
-      addLog("processing", "Calculando secuencias metodológicas óptimas...");
-      await new Promise(resolve => setTimeout(resolve, 400));
-      
-      addLog("success", "Análisis completado exitosamente", `${profile.recommendedTechniques.length} técnicas recomendadas`);
-      setResults(profile);
+
+      // Si el LLM produjo recomendaciones válidas, las usamos en lugar del heurístico.
+      const merged: StudyProfile = recs.length > 0
+        ? { ...profile, recommendedTechniques: recs }
+        : profile;
+
+      addLog("success", "Análisis completado exitosamente",
+        `${merged.recommendedTechniques.length} técnicas en la secuencia final`);
+      setResults(merged);
     } catch (error) {
       console.error('Error al analizar el estudio:', error);
       addLog("error", "Error durante el análisis", error instanceof Error ? error.message : "Error desconocido");
@@ -446,9 +501,16 @@ export const StudyAnalyzer = () => {
         </CardContent>
       </Card>
 
-      {/* Log Viewer - visible siempre que haya logs */}
-      {logs.length > 0 && (
-        <AnalysisLogViewer logs={logs} isActive={isAnalyzing} />
+      {/* Log Viewer + Consola LLM */}
+      {(logs.length > 0 || llmTraces.length > 0) && (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          {logs.length > 0 && (
+            <AnalysisLogViewer logs={logs} isActive={isAnalyzing} />
+          )}
+          {llmTraces.length > 0 && (
+            <LLMConsoleViewer traces={llmTraces} />
+          )}
+        </div>
       )}
 
       {results && (
