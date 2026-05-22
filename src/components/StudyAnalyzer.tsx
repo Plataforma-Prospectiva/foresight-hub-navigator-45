@@ -501,9 +501,16 @@ export const StudyAnalyzer = () => {
         </CardContent>
       </Card>
 
-      {/* Log Viewer - visible siempre que haya logs */}
-      {logs.length > 0 && (
-        <AnalysisLogViewer logs={logs} isActive={isAnalyzing} />
+      {/* Log Viewer + Consola LLM */}
+      {(logs.length > 0 || llmTraces.length > 0) && (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          {logs.length > 0 && (
+            <AnalysisLogViewer logs={logs} isActive={isAnalyzing} />
+          )}
+          {llmTraces.length > 0 && (
+            <LLMConsoleViewer traces={llmTraces} />
+          )}
+        </div>
       )}
 
       {results && (
