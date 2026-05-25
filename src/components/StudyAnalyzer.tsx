@@ -168,6 +168,8 @@ export const StudyAnalyzer = () => {
       model: llmConfig.model,
       temperature: llmConfig.temperature,
       maxTokens: llmConfig.maxTokens,
+      ...(promptOverrides.systemPrompt ? { systemPrompt: promptOverrides.systemPrompt } : {}),
+      ...(promptOverrides.userPrompt ? { userPrompt: promptOverrides.userPrompt } : {}),
     };
 
     setLLMTraces(prev => [...prev, {
