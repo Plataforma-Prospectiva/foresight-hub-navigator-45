@@ -32,6 +32,7 @@ export const StudyAnalyzer = () => {
     temperature: 0.7,
     maxTokens: 4000,
   });
+  const [promptOverrides, setPromptOverrides] = useState<PromptOverrides>({});
 
   const [formData, setFormData] = useState({
     title: "",
