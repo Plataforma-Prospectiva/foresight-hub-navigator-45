@@ -15,6 +15,7 @@ import { TechniqueCard } from "./TechniqueCard";
 import { SequenceFlowVisualization } from "./SequenceFlowVisualization";
 import { MethodologyFlowchart } from "./MethodologyFlowchart";
 import { LLMConfigModal } from "./LLMConfigModal";
+import { PromptEditorModal, PromptOverrides } from "./PromptEditorModal";
 import { AnalysisLogViewer, LogEntry } from "./AnalysisLogViewer";
 import { LLMConsoleViewer, LLMCallTrace } from "./LLMConsoleViewer";
 import { supabase } from "@/integrations/supabase/client";
@@ -31,6 +32,7 @@ export const StudyAnalyzer = () => {
     temperature: 0.7,
     maxTokens: 4000,
   });
+  const [promptOverrides, setPromptOverrides] = useState<PromptOverrides>({});
 
   const [formData, setFormData] = useState({
     title: "",
@@ -166,6 +168,8 @@ export const StudyAnalyzer = () => {
       model: llmConfig.model,
       temperature: llmConfig.temperature,
       maxTokens: llmConfig.maxTokens,
+      ...(promptOverrides.systemPrompt ? { systemPrompt: promptOverrides.systemPrompt } : {}),
+      ...(promptOverrides.userPrompt ? { userPrompt: promptOverrides.userPrompt } : {}),
     };
 
     setLLMTraces(prev => [...prev, {
@@ -479,6 +483,12 @@ export const StudyAnalyzer = () => {
                 Prellenar Ejemplo
               </Button>
               <LLMConfigModal config={llmConfig} onConfigChange={setLLMConfig} />
+              <PromptEditorModal
+                profile={formData}
+                techniquesCatalog={techniques.map(t => ({ id: t.id, name: t.name, category: t.category, complexity: t.complexity }))}
+                overrides={promptOverrides}
+                onChange={setPromptOverrides}
+              />
             </div>
             <Button 
               onClick={handleAnalyze} 
