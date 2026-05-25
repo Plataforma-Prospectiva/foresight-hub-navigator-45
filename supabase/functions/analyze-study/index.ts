@@ -31,12 +31,16 @@ Deno.serve(async (req) => {
       model = "google/gemini-2.5-flash",
       temperature = 0.7,
       maxTokens = 4000,
+      systemPrompt: systemPromptOverride,
+      userPrompt: userPromptOverride,
     } = body as {
       profile: Record<string, unknown>;
       techniques: TechniqueLite[];
       model?: string;
       temperature?: number;
       maxTokens?: number;
+      systemPrompt?: string;
+      userPrompt?: string;
     };
 
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
@@ -54,13 +58,16 @@ Deno.serve(async (req) => {
       complexity: t.complexity,
     }));
 
-    const systemPrompt = `Eres un experto en prospectiva estratégica y diseño metodológico.
+    const defaultSystemPrompt = `Eres un experto en prospectiva estratégica y diseño metodológico.
 Analizas un perfil de estudio prospectivo y recomiendas, del catálogo provisto,
 las 4 a 6 técnicas más adecuadas, justificando cada elección y ordenándolas
 en una secuencia metodológica coherente (1 = primera fase). Solo puedes usar
 ids que existan en el catálogo.`;
 
-    const userPrompt = `Perfil del estudio:\n${JSON.stringify(profile, null, 2)}\n\nCatálogo de técnicas disponibles:\n${JSON.stringify(techniquesCatalog, null, 2)}\n\nRecomienda las técnicas más adecuadas usando la función recommend_techniques.`;
+    const defaultUserPrompt = `Perfil del estudio:\n${JSON.stringify(profile, null, 2)}\n\nCatálogo de técnicas disponibles:\n${JSON.stringify(techniquesCatalog, null, 2)}\n\nRecomienda las técnicas más adecuadas usando la función recommend_techniques.`;
+
+    const systemPrompt = (systemPromptOverride && systemPromptOverride.trim()) ? systemPromptOverride : defaultSystemPrompt;
+    const userPrompt = (userPromptOverride && userPromptOverride.trim()) ? userPromptOverride : defaultUserPrompt;
 
     const gatewayRequest = {
       model,
