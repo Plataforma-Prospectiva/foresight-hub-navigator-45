@@ -483,6 +483,12 @@ export const StudyAnalyzer = () => {
                 Prellenar Ejemplo
               </Button>
               <LLMConfigModal config={llmConfig} onConfigChange={setLLMConfig} />
+              <PromptEditorModal
+                profile={formData}
+                techniquesCatalog={techniques.map(t => ({ id: t.id, name: t.name, category: t.category, complexity: t.complexity }))}
+                overrides={promptOverrides}
+                onChange={setPromptOverrides}
+              />
             </div>
             <Button 
               onClick={handleAnalyze} 
