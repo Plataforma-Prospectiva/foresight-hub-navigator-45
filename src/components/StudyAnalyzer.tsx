@@ -15,6 +15,7 @@ import { TechniqueCard } from "./TechniqueCard";
 import { SequenceFlowVisualization } from "./SequenceFlowVisualization";
 import { MethodologyFlowchart } from "./MethodologyFlowchart";
 import { LLMConfigModal } from "./LLMConfigModal";
+import { PromptEditorModal, PromptOverrides } from "./PromptEditorModal";
 import { AnalysisLogViewer, LogEntry } from "./AnalysisLogViewer";
 import { LLMConsoleViewer, LLMCallTrace } from "./LLMConsoleViewer";
 import { supabase } from "@/integrations/supabase/client";
